@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'code.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +31,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List timetableShow = [[], [], []];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,9 +42,15 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+          children: [
+            //Text(timetableShow[0][0]),
+            ElevatedButton(
+              onPressed: () {
+                timetableShow = code();
+                print(timetableShow);
+                setState(() {});
+              },
+              child: Text("a"),
             ),
           ],
         ),

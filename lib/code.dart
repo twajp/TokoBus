@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 
-void main() {
+List code() {
   List timetable = [
     [8, 00, "北口", "×"],
     [8, 05, "北口", "〇"],
@@ -92,88 +92,87 @@ void main() {
     timetable[i].insert(3, duration);
   }
 
+  List timetableShow = [[], [], []];
+  const Duration zero = Duration(seconds: 0);
+  for (int i = 0; i < timetable.length; i++) {
+    if (timetable[i][3] > zero) {
+      if (i == 0) {
+        //　始発より前の時間の場合
+        //時刻表示
+        timetableShow[0].insert(0, "-");
+        timetableShow[1].insert(0, DateFormat('hh:mm').format(timetable[i][2]));
+        timetableShow[2].insert(0, DateFormat('hh:mm').format(timetable[i + 1][2]));
 
+        //残り時間表示
+        timetableShow[0].insert(1, "-");
+        timetableShow[1].insert(1, "${timetable[i][3].inHours}:${timetable[i][3].inMinutes.remainder(60)}:${(timetable[i][3].inSeconds.remainder(60))}");
+        timetableShow[2].insert(1, "${timetable[i + 1][3].inHours}:${timetable[i + 1][3].inMinutes.remainder(60)}:${(timetable[i + 1][3].inSeconds.remainder(60))}");
 
-  List CulcCountdown(List timetable) {
-    print(timetable.length);
-    List timetableShow = [[],[],[]];
-    const Duration zero = Duration(seconds: 0);
-    for (int i = 0; i < timetable.length; i++) {
-      if (timetable[i][3] > zero) {
-        if (i == 0) { //　始発より前の時間の場合
-          //時刻表示
-          timetableShow[0].insert(0, "-");
-          timetableShow[1].insert(0, DateFormat('hh:mm').format(timetable[i][2]));
-          timetableShow[2].insert(0, DateFormat('hh:mm').format(timetable[i + 1][2]));
+        //発車場所/降車場所
+        timetableShow[0].insert(2, "-");
+        timetableShow[1].insert(2, timetable[i][4]);
+        timetableShow[2].insert(2, timetable[i + 1][4]);
 
-          //残り時間表示
-          timetableShow[0].insert(1, "-");
-          timetableShow[1].insert(1, "${timetable[i][3].inHours}:${timetable[i][3].inMinutes.remainder(60)}:${(timetable[i][3].inSeconds.remainder(60))}");
-          timetableShow[2].insert(1, "${timetable[i + 1][3].inHours}:${timetable[i + 1][3].inMinutes.remainder(60)}:${(timetable[i + 1][3].inSeconds.remainder(60))}");
-
-          //発車場所/降車場所
-          timetableShow[0].insert(2, "-");
-          timetableShow[1].insert(2, timetable[i][4]);
-          timetableShow[2].insert(2, timetable[i + 1][4]);
-
-          //車椅子対応or接続
-          timetableShow[0].insert(3, "-");
-          timetableShow[1].insert(3, timetable[i][5]);
-          timetableShow[2].insert(3, timetable[i + 1][5]);
-          break;
-        } else if (timetable[i][3] > zero && i < timetable.length - 1) { //通常時
-          for (int j = 0; j < 3; j++) {
-            timetableShow[j].insert(0, DateFormat('hh:mm').format(timetable[i - 1 + j][2]));
-            timetableShow[j].insert(1, "${timetable[i - 1 + j][3].inHours}:${timetable[i - 1 + j][3].inMinutes.remainder(60)}:${(timetable[i - 1 + j][3].inSeconds.remainder(60))}");
-            timetableShow[j].insert(2, timetable[i - 1 + j][4]);
-            timetableShow[j].insert(3, timetable[i - 1 + j][5]);
-          }
-          break;
-        } else if (i == timetable.length - 1) { // 次が最終便の場合
-          //時刻表示
-          timetableShow[0].insert(0, DateFormat('hh:mm').format(timetable[i - 1][2]));
-          timetableShow[1].insert(0, DateFormat('hh:mm').format(timetable[i][2]));
-          timetableShow[2].insert(0, "-");
-
-          //残り時間表示
-          timetableShow[0].insert(1, "${timetable[i - 1][3].inHours}:${timetable[i - 1][3].inMinutes.remainder(60)}:${(timetable[i - 1][3].inSeconds.remainder(60))}");
-          timetableShow[1].insert(1, "${timetable[i][3].inHours}:${timetable[i][3].inMinutes.remainder(60)}:${(timetable[i][3].inSeconds.remainder(60))}");
-          timetableShow[2].insert(1, "-");
-
-          //発車場所/降車場所
-          timetableShow[0].insert(2, timetable[i - 1][4]);
-          timetableShow[1].insert(2, timetable[i][4]);
-          timetableShow[2].insert(2, "-");
-
-          //車椅子対応or接続
-          timetableShow[0].insert(3, timetable[i - 1][5]);
-          timetableShow[1].insert(3, timetable[i][5]);
-          timetableShow[2].insert(3, "-");
-          break;
+        //車椅子対応or接続
+        timetableShow[0].insert(3, "-");
+        timetableShow[1].insert(3, timetable[i][5]);
+        timetableShow[2].insert(3, timetable[i + 1][5]);
+        break;
+      } else if (timetable[i][3] > zero && i < timetable.length - 1) {
+        //通常時
+        for (int j = 0; j < 3; j++) {
+          timetableShow[j].insert(0, DateFormat('hh:mm').format(timetable[i - 1 + j][2]));
+          timetableShow[j].insert(1, "${timetable[i - 1 + j][3].inHours}:${timetable[i - 1 + j][3].inMinutes.remainder(60)}:${(timetable[i - 1 + j][3].inSeconds.remainder(60))}");
+          timetableShow[j].insert(2, timetable[i - 1 + j][4]);
+          timetableShow[j].insert(3, timetable[i - 1 + j][5]);
         }
-      } else {//最終便の後の場合
+        break;
+      } else if (i == timetable.length - 1) {
+        // 次が最終便の場合
         //時刻表示
         timetableShow[0].insert(0, DateFormat('hh:mm').format(timetable[i - 1][2]));
-        timetableShow[1].insert(0, "-");
+        timetableShow[1].insert(0, DateFormat('hh:mm').format(timetable[i][2]));
         timetableShow[2].insert(0, "-");
 
         //残り時間表示
         timetableShow[0].insert(1, "${timetable[i - 1][3].inHours}:${timetable[i - 1][3].inMinutes.remainder(60)}:${(timetable[i - 1][3].inSeconds.remainder(60))}");
-        timetableShow[1].insert(1, "-");
+        timetableShow[1].insert(1, "${timetable[i][3].inHours}:${timetable[i][3].inMinutes.remainder(60)}:${(timetable[i][3].inSeconds.remainder(60))}");
         timetableShow[2].insert(1, "-");
 
         //発車場所/降車場所
         timetableShow[0].insert(2, timetable[i - 1][4]);
-        timetableShow[1].insert(2, "-");
+        timetableShow[1].insert(2, timetable[i][4]);
         timetableShow[2].insert(2, "-");
 
         //車椅子対応or接続
         timetableShow[0].insert(3, timetable[i - 1][5]);
-        timetableShow[1].insert(3, "-");
+        timetableShow[1].insert(3, timetable[i][5]);
         timetableShow[2].insert(3, "-");
+        break;
       }
+    } else {
+      //最終便の後の場合
+      //時刻表示
+      timetableShow[0].insert(0, DateFormat('hh:mm').format(timetable[i - 1][2]));
+      timetableShow[1].insert(0, "-");
+      timetableShow[2].insert(0, "-");
+
+      //残り時間表示
+      timetableShow[0].insert(1, "${timetable[i - 1][3].inHours}:${timetable[i - 1][3].inMinutes.remainder(60)}:${(timetable[i - 1][3].inSeconds.remainder(60))}");
+      timetableShow[1].insert(1, "-");
+      timetableShow[2].insert(1, "-");
+
+      //発車場所/降車場所
+      timetableShow[0].insert(2, timetable[i - 1][4]);
+      timetableShow[1].insert(2, "-");
+      timetableShow[2].insert(2, "-");
+
+      //車椅子対応or接続
+      timetableShow[0].insert(3, timetable[i - 1][5]);
+      timetableShow[1].insert(3, "-");
+      timetableShow[2].insert(3, "-");
     }
-    return timetableShow;
   }
-  print(CulcCountdown(timetable));
+
+  return timetableShow;
 }
