@@ -31,7 +31,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List timetableShow = [[], [], []];
+  List timetableCompact = code();
+  int count = 0;
+
+  Future<void> mainLoop() async {
+    while (true) {
+      await Future<void>.delayed(const Duration(seconds: 1));
+      setState(() {
+        timetableCompact = code();
+        print(timetableCompact);
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    mainLoop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,15 +60,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            //Text(timetableShow[0][0]),
-            ElevatedButton(
-              onPressed: () {
-                timetableShow = code();
-                print(timetableShow);
-                setState(() {});
-              },
-              child: Text("a"),
-            ),
+            Text("${timetableCompact[0][0]} ${timetableCompact[0][1]} ${timetableCompact[0][2]} ${timetableCompact[0][3]}"),
+            Text("${timetableCompact[1][0]} ${timetableCompact[1][1]} ${timetableCompact[1][2]} ${timetableCompact[1][3]}"),
+            Text("${timetableCompact[2][0]} ${timetableCompact[2][1]} ${timetableCompact[2][2]} ${timetableCompact[2][3]}"),
           ],
         ),
       ),
