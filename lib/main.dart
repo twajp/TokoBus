@@ -11,21 +11,39 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      title: 'TokoBus',
       theme: ThemeData(
-        primarySwatch: Colors.red,
-        brightness: Brightness.dark,
+        primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("TokoBus"),
-        ),
-        body: Center(
-          child: Column(
-            children: [
-              Text("小手指駅→キャンパス"),
-              Text("キャンパス→小手指駅"),
-            ],
-          ),
+      home: const MyHomePage(title: 'TokoBus'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'You have pushed the button this many times:',
+            ),
+          ],
         ),
       ),
     );
