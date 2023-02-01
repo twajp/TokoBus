@@ -16,6 +16,32 @@ List code() {
     timetable[i].insert(3, duration);
   }
 
+  String calcTimeRemaining(Duration time) {
+    if (time.inHours == 0) {
+      if (time.inMinutes == 0) {
+        if (time.isNegative == false) {
+          return "${time.inSeconds%60}秒";
+        }else {
+          return "-${60-time.inSeconds%60}秒";
+        }
+      } else {
+        if (time.isNegative == false){
+          return "${time.inMinutes%60}分${time.inSeconds%60}秒";
+
+        }else {
+          return "-${60-time.inMinutes%60}分${60-time.inSeconds%60}秒";
+        }
+      }
+    } else {
+      if (time.isNegative == false){
+        return "${time.inHours}時間${time.inMinutes%60}分${time.inSeconds%60}秒";
+
+      }else{
+        return "-${time.inHours}時間${60-time.inMinutes%60}分${60-time.inSeconds%60}秒";
+      }
+    }
+  }
+
   List timetableCompact = [[], [], []];
   const Duration zero = Duration(seconds: 0);
   for (int i = 0; i < timetable.length; i++) {
@@ -29,8 +55,8 @@ List code() {
 
         //残り時間表示
         timetableCompact[0].insert(1, "-");
-        timetableCompact[1].insert(1, "${timetable[i][3].inHours}:${timetable[i][3].inMinutes.remainder(60)}:${(timetable[i][3].inSeconds.remainder(60))}");
-        timetableCompact[2].insert(1, "${timetable[i + 1][3].inHours}:${timetable[i + 1][3].inMinutes.remainder(60)}:${(timetable[i + 1][3].inSeconds.remainder(60))}");
+        timetableCompact[1].insert(1, calcTimeRemaining(timetable[i][3]));
+        timetableCompact[2].insert(1, calcTimeRemaining(timetable[i+1][3]));
 
         //発車場所/降車場所
         timetableCompact[0].insert(2, "-");
@@ -46,7 +72,7 @@ List code() {
         //通常時
         for (int j = 0; j < 3; j++) {
           timetableCompact[j].insert(0, DateFormat('hh:mm').format(timetable[i - 1 + j][2]));
-          timetableCompact[j].insert(1, "${timetable[i - 1 + j][3].inHours}:${timetable[i - 1 + j][3].inMinutes.remainder(60)}:${(timetable[i - 1 + j][3].inSeconds.remainder(60))}");
+          timetableCompact[j].insert(1, calcTimeRemaining(timetable[i - 1 + j][3]));
           timetableCompact[j].insert(2, timetable[i - 1 + j][4]);
           timetableCompact[j].insert(3, timetable[i - 1 + j][5]);
         }
@@ -59,8 +85,8 @@ List code() {
         timetableCompact[2].insert(0, "-");
 
         //残り時間表示
-        timetableCompact[0].insert(1, "${timetable[i - 1][3].inHours}:${timetable[i - 1][3].inMinutes.remainder(60)}:${(timetable[i - 1][3].inSeconds.remainder(60))}");
-        timetableCompact[1].insert(1, "${timetable[i][3].inHours}:${timetable[i][3].inMinutes.remainder(60)}:${(timetable[i][3].inSeconds.remainder(60))}");
+        timetableCompact[0].insert(1, calcTimeRemaining(timetable[i - 1][3]));
+        timetableCompact[1].insert(1, calcTimeRemaining(timetable[i][3]));
         timetableCompact[2].insert(1, "-");
 
         //発車場所/降車場所
@@ -74,7 +100,7 @@ List code() {
         timetableCompact[2].insert(3, "-");
         break;
       }
-    } else {
+    } else if (i != 0) {
       //最終便の後の場合
       //時刻表示
       timetableCompact[0].insert(0, DateFormat('hh:mm').format(timetable[i - 1][2]));
@@ -82,7 +108,7 @@ List code() {
       timetableCompact[2].insert(0, "-");
 
       //残り時間表示
-      timetableCompact[0].insert(1, "${timetable[i - 1][3].inHours}:${timetable[i - 1][3].inMinutes.remainder(60)}:${(timetable[i - 1][3].inSeconds.remainder(60))}");
+      timetableCompact[0].insert(1, calcTimeRemaining(timetable[i - 1][3]));
       timetableCompact[1].insert(1, "-");
       timetableCompact[2].insert(1, "-");
 
