@@ -39,15 +39,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List timetableCompact = code();
+  List timetable = code();
   int count = 0;
 
   Future<void> mainLoop() async {
     while (true) {
       await Future<void>.delayed(const Duration(seconds: 1));
       setState(() {
-        timetableCompact = code();
-        //print(timetableCompact);
+        timetable = code();
+        //print(timetable[4);
       });
     }
   }
@@ -115,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 height: size.height * 0.06,
                                 width: size.width * 0.2,
                                 child: Text(
-                                  "${timetableCompact[0][0]}",
+                                  "${timetable[4][0][0]}",
                                   style: TextStyle(fontSize: 20),
                                 ),
                               ),
@@ -125,7 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 height: size.height * 0.06,
                                 width: size.width * 0.2,
                                 child: Text(
-                                  "${timetableCompact[1][0]}",
+                                  "${timetable[4][1][0]}",
                                   style: TextStyle(fontSize: 20),
                                 ),
                               ),
@@ -135,7 +135,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 height: size.height * 0.06,
                                 width: size.width * 0.2,
                                 child: Text(
-                                  "${timetableCompact[2][0]}",
+                                  "${timetable[4][2][0]}",
                                   style: TextStyle(fontSize: 20),
                                 ),
                               ),
@@ -160,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               height: size.height * 0.06,
                               width: size.width * 0.35,
                               child: Text(
-                                "${timetableCompact[0][1]}",
+                                "${timetable[4][0][1]}",
                                 style: TextStyle(fontSize: 20),
                               ),
                             ),
@@ -170,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               height: size.height * 0.06,
                               width: size.width * 0.35,
                               child: Text(
-                                "${timetableCompact[1][1]}",
+                                "${timetable[4][1][1]}",
                                 style: TextStyle(fontSize: 20),
                               ),
                             ),
@@ -180,7 +180,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               height: size.height * 0.06,
                               width: size.width * 0.35,
                               child: Text(
-                                "${timetableCompact[2][1]}",
+                                "${timetable[4][2][1]}",
                                 style: TextStyle(fontSize: 20),
                               ),
                             ),
@@ -204,7 +204,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               height: size.height * 0.06,
                               width: size.width * 0.2,
                               child: Text(
-                                "${timetableCompact[0][2]}",
+                                "${timetable[4][0][2]}",
                                 style: TextStyle(fontSize: 20),
                               ),
                             ),
@@ -214,7 +214,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               height: size.height * 0.06,
                               width: size.width * 0.2,
                               child: Text(
-                                "${timetableCompact[1][2]}",
+                                "${timetable[4][1][2]}",
                                 style: TextStyle(fontSize: 20),
                               ),
                             ),
@@ -224,7 +224,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               height: size.height * 0.06,
                               width: size.width * 0.2,
                               child: Text(
-                                "${timetableCompact[2][2]}",
+                                "${timetable[4][2][2]}",
                                 style: TextStyle(fontSize: 20),
                               ),
                             ),
@@ -248,7 +248,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               height: size.height * 0.06,
                               width: size.width * 0.16,
                               child: Text(
-                                "${timetableCompact[0][3]}",
+                                "${timetable[4][0][3]}",
                                 style: TextStyle(fontSize: 20),
                               ),
                             ),
@@ -258,7 +258,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               height: size.height * 0.06,
                               width: size.width * 0.16,
                               child: Text(
-                                "${timetableCompact[1][3]}",
+                                "${timetable[4][1][3]}",
                                 style: TextStyle(fontSize: 20),
                               ),
                             ),
@@ -268,7 +268,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               height: size.height * 0.06,
                               width: size.width * 0.16,
                               child: Text(
-                                "${timetableCompact[2][3]}",
+                                "${timetable[4][2][3]}",
                                 style: TextStyle(fontSize: 20),
                               ),
                             ),
