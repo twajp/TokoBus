@@ -1,5 +1,7 @@
+import 'package:nholiday_jp/nholiday_jp.dart';
+
 List timetables() {
-  List Timetable_2022A_Kotesashi_Campus_Weekdays = [
+  List Kotesashi_Campus_Weekdays = [
     [8, 00, "北口", "×"],
     [8, 05, "北口", "〇"],
     [8, 08, "北口", "×"],
@@ -78,7 +80,7 @@ List timetables() {
     [20, 15, "南口", "×"]
   ];
 
-  List Timetable_2022A_Kotesashi_Campus_Saturdays = [
+  List Kotesashi_Campus_Saturdays = [
     [8, 10, "北口", "〇"],
     [8, 25, "北口", "×"],
     [8, 40, "北口", "×"],
@@ -110,7 +112,7 @@ List timetables() {
     [20, 15, "南口", "×"],
   ];
 
-  List Timetable_2022A_Kotesashi_Campus_SundaysHolidays = [
+  List Kotesashi_Campus_SundaysHolidays = [
     [8, 15, "北口", "×"],
     [8, 55, "北口", "×"],
     [9, 45, "北口", "×"],
@@ -125,7 +127,7 @@ List timetables() {
     [19, 45, "南口", "×"],
   ];
 
-  List Timetable_2022A_Campus_Kotesashi_Weekdays = [
+  List Campus_Kotesashi_Weekdays = [
     [8, 55, "北口", "×"],
     [9, 45, "北口", "×"],
     [10, 30, "北口", "×"],
@@ -206,7 +208,7 @@ List timetables() {
     [21, 40, "南口", "×"],
   ];
 
-  List Timetable_2022A_Campus_Kotesashi_Saturdays = [
+  List Campus_Kotesashi_Saturdays = [
     [8, 45, "北口", "×"],
     [9, 35, "北口", "×"],
     [10, 05, "北口", "×"],
@@ -241,7 +243,7 @@ List timetables() {
     [21, 40, "南口", "×"],
   ];
 
-  List Timetable_2022A_Campus_Kotesashi_SundaysHolidays = [
+  List Campus_Kotesashi_SundaysHolidays = [
     [8, 35, "北口", "×"],
     [9, 25, "北口", "×"],
     [11, 05, "北口", "×"],
@@ -256,7 +258,7 @@ List timetables() {
     [21, 00, "南口", "×"],
   ];
 
-  List Timetable_2022A_Campus_FRC_Weekdays = [
+  List Campus_FRC_Weekdays = [
     [8, 25, "正門", "×"],
     [8, 40, "正門", "×"],
     [8, 50, "南門", "×"],
@@ -296,7 +298,7 @@ List timetables() {
     [20, 10, "正門", "×"],
   ];
 
-  List Timetable_2022A_Campus_FRC_Saturdays = [
+  List Campus_FRC_Saturdays = [
     [8, 35, "正門", "×"],
     [8, 50, "南門", "×"],
     [9, 10, "正門", "×"],
@@ -324,7 +326,7 @@ List timetables() {
     [20, 25, "南門", "×"],
   ];
 
-  List Timetable_2022A_FRC_Campus_Weekdays = [
+  List FRC_Campus_Weekdays = [
     [8, 45, "南門", "×"],
     [8, 55, "正門", "×"],
     [9, 15, "南門", "×"],
@@ -366,7 +368,7 @@ List timetables() {
     [21, 30, "正門", "〇"],
   ];
 
-  List Timetable_2022A_FRC_Campus_Saturdays = [
+  List FRC_Campus_Saturdays = [
     [8, 40, "南門", "×"],
     [8, 55, "正門", "×"],
     [9, 15, "南門", "×"],
@@ -395,7 +397,30 @@ List timetables() {
     [20, 30, "正門", "〇"],
   ];
 
-  List timetable = Timetable_2022A_Kotesashi_Campus_Weekdays;
+  List timetable = [];
+  var dt = DateTime.now();
+  var holidaysOfMonth = NHolidayJp.getByMonth(dt.year, dt.month);
+  List dateOfHolidaysOfMonth = [];
+  for (int i = 0; i < holidaysOfMonth.length; i++) {
+    dateOfHolidaysOfMonth.add(holidaysOfMonth[i].date);
+  }
 
+  if (dt.weekday == 7 || dateOfHolidaysOfMonth.contains(1) == true) {
+    //日曜日か祝日
+    timetable.add(Kotesashi_Campus_SundaysHolidays);
+    timetable.add(Campus_Kotesashi_SundaysHolidays);
+  } else if (dt.weekday >= 1 && dt.weekday <= 5) {
+    //平日
+    timetable.add(Kotesashi_Campus_Weekdays);
+    timetable.add(Campus_Kotesashi_Weekdays);
+    timetable.add(Campus_FRC_Weekdays);
+    timetable.add(FRC_Campus_Weekdays);
+  } else {
+    //土曜日
+    timetable.add(Kotesashi_Campus_Saturdays);
+    timetable.add(Campus_Kotesashi_Saturdays);
+    timetable.add(Campus_FRC_Saturdays);
+    timetable.add(FRC_Campus_Saturdays);
+  }
   return timetable;
 }
