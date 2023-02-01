@@ -50,8 +50,8 @@ List code() {
         //　始発より前の時間の場合
         //時刻表示
         timetableCompact[0].insert(0, "-");
-        timetableCompact[1].insert(0, DateFormat('hh:mm').format(timetable[i][2]));
-        timetableCompact[2].insert(0, DateFormat('hh:mm').format(timetable[i + 1][2]));
+        timetableCompact[1].insert(0, DateFormat('HH:mm').format(timetable[i][2]));
+        timetableCompact[2].insert(0, DateFormat('HH:mm').format(timetable[i + 1][2]));
 
         //残り時間表示
         timetableCompact[0].insert(1, "-");
@@ -71,7 +71,7 @@ List code() {
       } else if (timetable[i][3] > zero && i < timetable.length - 1) {
         //通常時
         for (int j = 0; j < 3; j++) {
-          timetableCompact[j].insert(0, DateFormat('hh:mm').format(timetable[i - 1 + j][2]));
+          timetableCompact[j].insert(0, DateFormat('HH:mm').format(timetable[i - 1 + j][2]));
           timetableCompact[j].insert(1, calcTimeRemaining(timetable[i - 1 + j][3]));
           timetableCompact[j].insert(2, timetable[i - 1 + j][4]);
           timetableCompact[j].insert(3, timetable[i - 1 + j][5]);
@@ -80,8 +80,8 @@ List code() {
       } else if (i == timetable.length - 1) {
         // 次が最終便の場合
         //時刻表示
-        timetableCompact[0].insert(0, DateFormat('hh:mm').format(timetable[i - 1][2]));
-        timetableCompact[1].insert(0, DateFormat('hh:mm').format(timetable[i][2]));
+        timetableCompact[0].insert(0, DateFormat('HH:mm').format(timetable[i - 1][2]));
+        timetableCompact[1].insert(0, DateFormat('HH:mm').format(timetable[i][2]));
         timetableCompact[2].insert(0, "-");
 
         //残り時間表示
@@ -103,7 +103,7 @@ List code() {
     } else if (i != 0) {
       //最終便の後の場合
       //時刻表示
-      timetableCompact[0].insert(0, DateFormat('hh:mm').format(timetable[i - 1][2]));
+      timetableCompact[0].insert(0, DateFormat('HH:mm').format(timetable[i - 1][2]));
       timetableCompact[1].insert(0, "-");
       timetableCompact[2].insert(0, "-");
 
