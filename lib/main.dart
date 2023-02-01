@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'TokoBus',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        brightness: Brightness.dark,
       ),
       home: const MyHomePage(title: 'TokoBus'),
     );
@@ -39,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
       await Future<void>.delayed(const Duration(seconds: 1));
       setState(() {
         timetableCompact = code();
-        print(timetableCompact);
+        //print(timetableCompact);
       });
     }
   }
@@ -52,20 +53,162 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("${timetableCompact[0][0]} ${timetableCompact[0][1]} ${timetableCompact[0][2]} ${timetableCompact[0][3]}"),
-            Text("${timetableCompact[1][0]} ${timetableCompact[1][1]} ${timetableCompact[1][2]} ${timetableCompact[1][3]}"),
-            Text("${timetableCompact[2][0]} ${timetableCompact[2][1]} ${timetableCompact[2][2]} ${timetableCompact[2][3]}"),
-          ],
+        appBar: AppBar(
+          title: Text(widget.title),
         ),
-      ),
-    );
+        body: Column(children: <Widget>[
+          Expanded(
+            flex: 5, // 割合
+            child: Container(
+              color: Colors.black,
+              child: Container(
+                alignment: Alignment.center,
+                color: Colors.grey,
+                margin: EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    Text(
+                      "小手指駅 → キャンパス",
+                      style: TextStyle(fontSize: 25),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              child: Text(
+                                "発車時刻",
+                                strutStyle: StrutStyle(height: 2, fontSize: 30),
+                              ),
+                            ),
+                            Container(
+                              child: Text(
+                                "${timetableCompact[0][0]}",
+                                strutStyle: StrutStyle(height: 2, fontSize: 30),
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(color: Color.fromRGBO(142, 23, 40, 100)),
+                              child: Text(
+                                "${timetableCompact[1][0]}",
+                                strutStyle: StrutStyle(height: 2, fontSize: 30),
+                              ),
+                            ),
+                            Container(
+                              child: Text(
+                                "${timetableCompact[2][0]}",
+                                strutStyle: StrutStyle(height: 2, fontSize: 30),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              child: Text(
+                                "残り時間",
+                                strutStyle: StrutStyle(height: 2, fontSize: 30),
+                              ),
+                            ),
+                            Container(
+                              child: Text(
+                                "${timetableCompact[0][1]}",
+                                strutStyle: StrutStyle(height: 2, fontSize: 30),
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(color: Color.fromRGBO(142, 23, 40, 100)),
+                              child: Text(
+                                "${timetableCompact[1][1]}",
+                                strutStyle: StrutStyle(height: 2, fontSize: 30),
+                              ),
+                            ),
+                            Container(
+                              child: Text(
+                                "${timetableCompact[2][1]}",
+                                strutStyle: StrutStyle(height: 2, fontSize: 30),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              child: Text(
+                                "発車場所",
+                                strutStyle: StrutStyle(height: 2, fontSize: 30),
+                              ),
+                            ),
+                            Container(
+                              child: Text(
+                                "${timetableCompact[0][2]}",
+                                strutStyle: StrutStyle(height: 2, fontSize: 30),
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(color: Color.fromRGBO(142, 23, 40, 100)),
+                              child: Text(
+                                "${timetableCompact[1][2]}",
+                                strutStyle: StrutStyle(height: 2, fontSize: 30),
+                              ),
+                            ),
+                            Container(
+                              child: Text(
+                                "${timetableCompact[2][2]}",
+                                strutStyle: StrutStyle(height: 2, fontSize: 30),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              child: Text(
+                                "車椅子",
+                                strutStyle: StrutStyle(height: 2, fontSize: 30),
+                              ),
+                            ),
+                            Container(
+                              child: Text(
+                                "${timetableCompact[0][3]}",
+                                strutStyle: StrutStyle(height: 2, fontSize: 30),
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(color: Color.fromRGBO(142, 23, 40, 100)),
+                              child: Text(
+                                "${timetableCompact[1][3]}",
+                                strutStyle: StrutStyle(height: 2, fontSize: 30),
+                              ),
+                            ),
+                            Container(
+                              child: Text(
+                                "${timetableCompact[2][3]}",
+                                strutStyle: StrutStyle(height: 2, fontSize: 30),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 5, // 割合
+            child: Container(
+              color: Colors.blue,
+            ),
+          )
+        ]));
   }
 }
