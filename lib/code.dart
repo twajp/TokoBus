@@ -3,14 +3,11 @@ import 'timetables.dart';
 
 List code() {
   List timetable = timetables();
+  // timetableの構造メモ
+  // timetable[0->3] == [[int 時, int 分, DateTime 時刻, Duration 残り時間, String 時:分, String 残り時間, String 場所, String 車椅子対応], ...]
+  // timetable[4->7] == [[String 時:分, String 残り時間, String 場所, String 車椅子対応], * 3]
 
-  Map tableInfo = {
-    0: {"title": "小手指駅 → キャンパス", "string0": "発車時刻", "string1": "残り時間", "string2": "発車場所", "string3": "車椅子", "nextBusIndex": 0},
-    1: {"title": "キャンパス → 小手指駅", "string0": "発車時刻", "string1": "残り時間", "string2": "降車場所", "string3": "車椅子", "nextBusIndex": 0},
-    2: {"title": "キャンパス → FRC", "string0": "発車時刻", "string1": "残り時間", "string2": "発車場所", "string3": "接続", "nextBusIndex": 0},
-    3: {"title": "FRC → キャンパス", "string0": "発車時刻", "string1": "残り時間", "string2": "降車場所", "string3": "接続", "nextBusIndex": 0},
-    "tableVer": "2022 秋学期"
-  };
+
 
   //現在時刻と0時0分の取得
   var now = DateTime.now();
@@ -75,7 +72,7 @@ List code() {
     for (int i = 0; i < timetable[tableNum].length; i++) {
       //timetableの長さ分ループ
       if (timetable[tableNum][i][3] > zero) {
-        tableInfo[tableNum]["nextBusIndex"] = i;
+        timetable[4][tableNum]["nextBusIndex"] = i;
         if (i == 0) {
           //　始発より前の時間の場合
           //時刻表示
@@ -157,10 +154,10 @@ List code() {
   }
 
   //print(tableInfo);
-  timetable.insert(8, tableInfo);
+  //timetable.insert(8, tableInfo);
 
-  print(timetable[4][0]);
-  print(timetable[0][0]);
+  //print(timetable[4][0]);
+  //print(timetable[0][0]);
   //print(timetable[8][0]["nextBusIndex"].runtimeType);
   return timetable;
 }

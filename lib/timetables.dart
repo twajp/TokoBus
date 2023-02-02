@@ -397,6 +397,15 @@ List timetables() {
     [20, 30, "正門", "〇"],
   ];
 
+  Map tableInfo = {
+    0: {"title": "小手指駅 → キャンパス", "string0": "発車時刻", "string1": "残り時間", "string2": "発車場所", "string3": "車椅子", "nextBusIndex": 0},
+    1: {"title": "キャンパス → 小手指駅", "string0": "発車時刻", "string1": "残り時間", "string2": "降車場所", "string3": "車椅子", "nextBusIndex": 0},
+    2: {"title": "キャンパス → FRC", "string0": "発車時刻", "string1": "残り時間", "string2": "発車場所", "string3": "接続", "nextBusIndex": 0},
+    3: {"title": "FRC → キャンパス", "string0": "発車時刻", "string1": "残り時間", "string2": "降車場所", "string3": "接続", "nextBusIndex": 0},
+    "tableVer": "2022年度秋学期",
+    "dayOfWeek": "",
+  };
+
   List timetable = [];
   var dt = DateTime.now();
   var holidaysOfMonth = NHolidayJp.getByMonth(dt.year, dt.month);
@@ -409,18 +418,24 @@ List timetables() {
     //日曜日か祝日
     timetable.add(Kotesashi_Campus_SundaysHolidays);
     timetable.add(Campus_Kotesashi_SundaysHolidays);
+    tableInfo["dayOfWeek"] = "日曜日/祝日";
   } else if (dt.weekday >= 1 && dt.weekday <= 5) {
     //平日
     timetable.add(Kotesashi_Campus_Weekdays);
     timetable.add(Campus_Kotesashi_Weekdays);
     timetable.add(Campus_FRC_Weekdays);
     timetable.add(FRC_Campus_Weekdays);
+    tableInfo["dayOfWeek"] = "平日";
   } else {
     //土曜日
     timetable.add(Kotesashi_Campus_Saturdays);
     timetable.add(Campus_Kotesashi_Saturdays);
     timetable.add(Campus_FRC_Saturdays);
     timetable.add(FRC_Campus_Saturdays);
+    tableInfo["dayOfWeek"] = "土曜日";
   }
+  print(tableInfo);
+  timetable.insert(4, tableInfo);
+
   return timetable;
 }

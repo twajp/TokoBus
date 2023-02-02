@@ -58,7 +58,7 @@ class _fullTimetableViewState extends State<fullTimetableView> {
                     width: size.width * 0.2,
                     child: Text(
                       timetable[8][tableIndex]["string0"],
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(fontSize: 17),
                     ),
                   ),
                   Container(
@@ -67,7 +67,7 @@ class _fullTimetableViewState extends State<fullTimetableView> {
                     width: size.width * 0.4,
                     child: Text(
                       timetable[8][tableIndex]["string1"],
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(fontSize: 17),
                     ),
                   ),
                   Container(
@@ -76,7 +76,7 @@ class _fullTimetableViewState extends State<fullTimetableView> {
                     width: size.width * 0.2,
                     child: Text(
                       timetable[8][tableIndex]["string2"],
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(fontSize: 17),
                     ),
                   ),
                   Container(
@@ -85,7 +85,7 @@ class _fullTimetableViewState extends State<fullTimetableView> {
                     width: size.width * 0.16,
                     child: Text(
                       timetable[8][tableIndex]["string3"],
-                      style: TextStyle(fontSize: 18),
+                      style: TextStyle(fontSize: 17),
                     ),
                   ),
                 ],
@@ -102,7 +102,7 @@ class _fullTimetableViewState extends State<fullTimetableView> {
                         color: wasedaColor,
                         child: Text(
                           timetable[tableIndex][i][4],
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 17),
                         ),
                       ),
                       Container(
@@ -112,7 +112,7 @@ class _fullTimetableViewState extends State<fullTimetableView> {
                         color: wasedaColor,
                         child: Text(
                           timetable[tableIndex][i][5],
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 17),
                         ),
                       ),
                       Container(
@@ -122,7 +122,7 @@ class _fullTimetableViewState extends State<fullTimetableView> {
                         color: wasedaColor,
                         child: Text(
                           timetable[tableIndex][i][6],
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 17),
                         ),
                       ),
                       Container(
@@ -132,7 +132,7 @@ class _fullTimetableViewState extends State<fullTimetableView> {
                         color: wasedaColor,
                         child: Text(
                           timetable[tableIndex][i][7],
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 17),
                         ),
                       ),
                     ],
@@ -147,7 +147,7 @@ class _fullTimetableViewState extends State<fullTimetableView> {
                         width: size.width * 0.2,
                         child: Text(
                           timetable[tableIndex][i][4],
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 17),
                         ),
                       ),
                       Container(
@@ -156,7 +156,7 @@ class _fullTimetableViewState extends State<fullTimetableView> {
                         width: size.width * 0.4,
                         child: Text(
                           timetable[tableIndex][i][5],
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 17),
                         ),
                       ),
                       Container(
@@ -165,7 +165,7 @@ class _fullTimetableViewState extends State<fullTimetableView> {
                         width: size.width * 0.2,
                         child: Text(
                           timetable[tableIndex][i][6],
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 17),
                         ),
                       ),
                       Container(
@@ -174,7 +174,7 @@ class _fullTimetableViewState extends State<fullTimetableView> {
                         width: size.width * 0.16,
                         child: Text(
                           timetable[tableIndex][i][7],
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 17),
                         ),
                       ),
                     ],
@@ -184,7 +184,7 @@ class _fullTimetableViewState extends State<fullTimetableView> {
               Container(
                 alignment: Alignment.center,
                 height: 50,
-                child: Text(timetable[8]["tableVer"]),
+                child: Text("${timetable[8]["tableVer"]} ${timetable[8]["dayOfWeek"]}ダイヤ"),
               ),
             ],
           ),
