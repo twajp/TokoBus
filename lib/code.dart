@@ -9,25 +9,33 @@ List code() {
   var lastMidnight = DateTime(now.year, now.month, now.day);
 
   String calcTimeRemaining(Duration time) {
-    if (time.inHours == 0) {
-      if (time.inMinutes == 0) {
-        if (time.isNegative == false) {
-          return "${time.inSeconds % 60}秒";
+    if (time.isNegative == false) {
+      int secondsFull = time.inSeconds;
+      int seconds = secondsFull % 60;
+      int minutes = secondsFull ~/ 60 % 60;
+      int hours = secondsFull / 60 ~/ 60;
+      if (time.inHours == 0) {
+        if (time.inMinutes == 0) {
+          return "$seconds秒";
         } else {
-          return "-${60 - time.inSeconds % 60 - 1}秒";
+          return "$minutes分$seconds秒";
         }
       } else {
-        if (time.isNegative == false) {
-          return "${time.inMinutes % 60}分${time.inSeconds % 60}秒";
-        } else {
-          return "-${60 - time.inMinutes % 60 - 1}分${60 - time.inSeconds % 60 - 1}秒";
-        }
+        return "$hours時間$minutes分$seconds秒";
       }
     } else {
-      if (time.isNegative == false) {
-        return "${time.inHours}時間${time.inMinutes % 60}分${time.inSeconds % 60}秒";
+      int secondsFull = time.inSeconds - 1;
+      int seconds = secondsFull % 60;
+      int minutes = secondsFull ~/ 60 % 60;
+      int hours = secondsFull / 60 ~/ 60;
+      if (time.inHours == 0) {
+        if (time.inMinutes == 0) {
+          return "-${(60 - seconds) % 60}秒";
+        } else {
+          return "-${60 - minutes}分${(60 - seconds) % 60}秒";
+        }
       } else {
-        return "${time.inHours}時間${60 - time.inMinutes % 60 - 1}分${60 - time.inSeconds % 60 - 1}秒";
+        return "$hours時間${60 - minutes}分${(60 - seconds) % 60}秒";
       }
     }
   }
