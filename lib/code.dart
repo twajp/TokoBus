@@ -7,8 +7,6 @@ List code() {
   // timetable[0->3] == [[int 時, int 分, DateTime 時刻, Duration 残り時間, String 時:分, String 残り時間, String 場所, String 車椅子対応], ...]
   // timetable[4->7] == [[String 時:分, String 残り時間, String 場所, String 車椅子対応], * 3]
 
-
-
   //現在時刻と0時0分の取得
   var now = DateTime.now();
   var lastMidnight = DateTime(now.year, now.month, now.day);

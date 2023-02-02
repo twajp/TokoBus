@@ -434,7 +434,7 @@ List timetables() {
     timetable.add(FRC_Campus_Saturdays);
     tableInfo["dayOfWeek"] = "土曜日";
   }
-  print(tableInfo);
+  //print(tableInfo);
   timetable.insert(4, tableInfo);
 
   return timetable;
