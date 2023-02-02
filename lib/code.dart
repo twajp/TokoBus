@@ -70,8 +70,6 @@ List code() {
           timetable[tableIndex + 4][1][3] = timetable[tableIndex][i][7];
           timetable[tableIndex + 4][2][3] = timetable[tableIndex][i + 1][7];
 
-
-
           //print(timetable[tableIndex+4]);
           break;
         } else if (timetable[tableIndex][i][3] > zero && i < timetable[tableIndex].length - 1) {
