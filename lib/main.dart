@@ -325,7 +325,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             height: size.height * 0.1,
                             width: size.width * 0.9,
                             child: Text(
-                              "キャンパス → 小手指駅",
+                              timetable[8][1]["title"],
                               style: TextStyle(fontSize: 30),
                             ),
                           ),
@@ -350,7 +350,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
-                                            "発車時刻",
+                                            timetable[8][1]["string0"],
                                             style: TextStyle(fontSize: 18),
                                           ),
                                         ),
@@ -395,7 +395,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
-                                          "残り時間",
+                                          timetable[8][1]["string1"],
                                           style: TextStyle(fontSize: 18),
                                         ),
                                       ),
@@ -439,7 +439,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
-                                          "降車場所",
+                                          timetable[8][1]["string2"],
                                           style: TextStyle(fontSize: 18),
                                         ),
                                       ),
@@ -483,7 +483,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
-                                          "車椅子",
+                                          timetable[8][1]["string3"],
                                           style: TextStyle(fontSize: 18),
                                         ),
                                       ),
@@ -556,7 +556,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             height: size.height * 0.1,
                             width: size.width * 0.9,
                             child: Text(
-                              "キャンパス → FRC",
+                              timetable[8][2]["title"],
                               style: TextStyle(fontSize: 30),
                             ),
                           ),
@@ -581,7 +581,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
-                                            "発車時刻",
+                                            timetable[8][2]["string0"],
                                             style: TextStyle(fontSize: 18),
                                           ),
                                         ),
@@ -626,7 +626,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
-                                          "残り時間",
+                                          timetable[8][2]["string1"],
                                           style: TextStyle(fontSize: 18),
                                         ),
                                       ),
@@ -670,7 +670,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
-                                          "発車場所",
+                                          timetable[8][2]["string2"],
                                           style: TextStyle(fontSize: 18),
                                         ),
                                       ),
@@ -714,7 +714,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
-                                          "接続",
+                                          timetable[8][2]["string3"],
                                           style: TextStyle(fontSize: 18),
                                         ),
                                       ),
@@ -783,7 +783,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             height: size.height * 0.1,
                             width: size.width * 0.9,
                             child: Text(
-                              "FRC → キャンパス",
+                              timetable[8][3]["title"],
                               style: TextStyle(fontSize: 30),
                             ),
                           ),
@@ -808,7 +808,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
-                                            "発車時刻",
+                                            timetable[8][3]["string0"],
                                             style: TextStyle(fontSize: 18),
                                           ),
                                         ),
@@ -853,7 +853,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
-                                          "残り時間",
+                                          timetable[8][3]["string1"],
                                           style: TextStyle(fontSize: 18),
                                         ),
                                       ),
@@ -897,7 +897,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
-                                          "降車場所",
+                                          timetable[8][3]["string2"],
                                           style: TextStyle(fontSize: 18),
                                         ),
                                       ),
@@ -941,7 +941,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
-                                          "接続",
+                                          timetable[8][3]["string3"],
                                           style: TextStyle(fontSize: 18),
                                         ),
                                       ),
