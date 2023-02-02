@@ -125,6 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           child: Text(
                                             timetable[8][0]["string0"],
                                             style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                           ),
                                         ),
                                         Container(
@@ -135,6 +136,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           child: Text(
                                             "${timetable[4][0][0]}",
                                             style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                           ),
                                         ),
                                         Container(
@@ -145,6 +147,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           child: Text(
                                             "${timetable[4][1][0]}",
                                             style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                           ),
                                         ),
                                         Container(
@@ -155,6 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           child: Text(
                                             "${timetable[4][2][0]}",
                                             style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                           ),
                                         ),
                                       ],
@@ -170,6 +174,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           timetable[8][0]["string1"],
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -180,6 +185,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[4][0][1]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -190,6 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[4][1][1]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -200,6 +207,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[4][2][1]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                     ],
@@ -214,6 +222,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           timetable[8][0]["string2"],
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -224,6 +233,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[4][0][2]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -234,6 +244,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[4][1][2]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -244,6 +255,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[4][2][2]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                     ],
@@ -258,6 +270,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           timetable[8][0]["string3"],
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -268,6 +281,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[4][0][3]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -278,6 +292,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[4][1][3]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -288,6 +303,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[4][2][3]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                     ],
@@ -352,6 +368,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           child: Text(
                                             timetable[8][1]["string0"],
                                             style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                           ),
                                         ),
                                         Container(
@@ -362,6 +379,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           child: Text(
                                             "${timetable[5][0][0]}",
                                             style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                           ),
                                         ),
                                         Container(
@@ -372,6 +390,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           child: Text(
                                             "${timetable[5][1][0]}",
                                             style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                           ),
                                         ),
                                         Container(
@@ -382,6 +401,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           child: Text(
                                             "${timetable[5][2][0]}",
                                             style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                           ),
                                         ),
                                       ],
@@ -397,6 +417,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           timetable[8][1]["string1"],
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -407,6 +428,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[5][0][1]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -417,6 +439,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[5][1][1]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -427,6 +450,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[5][2][1]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                     ],
@@ -441,6 +465,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           timetable[8][1]["string2"],
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -451,6 +476,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[5][0][2]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -461,6 +487,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[5][1][2]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -471,6 +498,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[5][2][2]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                     ],
@@ -485,6 +513,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           timetable[8][1]["string3"],
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -495,6 +524,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[5][0][3]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -505,6 +535,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[5][1][3]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -515,6 +546,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[5][2][3]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                     ],
@@ -583,6 +615,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           child: Text(
                                             timetable[8][2]["string0"],
                                             style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                           ),
                                         ),
                                         Container(
@@ -593,6 +626,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           child: Text(
                                             "${timetable[6][0][0]}",
                                             style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                           ),
                                         ),
                                         Container(
@@ -603,6 +637,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           child: Text(
                                             "${timetable[6][1][0]}",
                                             style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                           ),
                                         ),
                                         Container(
@@ -613,6 +648,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           child: Text(
                                             "${timetable[6][2][0]}",
                                             style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                           ),
                                         ),
                                       ],
@@ -628,6 +664,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           timetable[8][2]["string1"],
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -638,6 +675,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[6][0][1]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -648,6 +686,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[6][1][1]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -658,6 +697,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[6][2][1]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                     ],
@@ -672,6 +712,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           timetable[8][2]["string2"],
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -682,6 +723,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[6][0][2]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -692,6 +734,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[6][1][2]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -702,6 +745,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[6][2][2]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                     ],
@@ -716,6 +760,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           timetable[8][2]["string3"],
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -726,6 +771,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[6][0][3]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -736,6 +782,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[6][1][3]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -746,6 +793,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[6][2][3]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                     ],
@@ -810,6 +858,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           child: Text(
                                             timetable[8][3]["string0"],
                                             style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                           ),
                                         ),
                                         Container(
@@ -820,6 +869,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           child: Text(
                                             "${timetable[7][0][0]}",
                                             style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                           ),
                                         ),
                                         Container(
@@ -830,6 +880,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           child: Text(
                                             "${timetable[7][1][0]}",
                                             style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                           ),
                                         ),
                                         Container(
@@ -840,6 +891,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           child: Text(
                                             "${timetable[7][2][0]}",
                                             style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                           ),
                                         ),
                                       ],
@@ -855,6 +907,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           timetable[8][3]["string1"],
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -865,6 +918,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[7][0][1]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -875,6 +929,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[7][1][1]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -885,6 +940,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[7][2][1]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                     ],
@@ -899,6 +955,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           timetable[8][3]["string2"],
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -909,6 +966,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[7][0][2]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -919,6 +977,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[7][1][2]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -929,6 +988,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[7][2][2]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                     ],
@@ -943,6 +1003,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           timetable[8][3]["string3"],
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -953,6 +1014,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[7][0][3]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -963,6 +1025,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[7][1][3]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                       Container(
@@ -973,6 +1036,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         child: Text(
                                           "${timetable[7][2][3]}",
                                           style: TextStyle(fontSize: 18),
+                                          maxLines: 1,
                                         ),
                                       ),
                                     ],
