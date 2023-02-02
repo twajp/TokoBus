@@ -66,11 +66,16 @@ List code() {
         "-",
       ]
     ];
+
+    print(timetable.length);
+
     const Duration zero = Duration(seconds: 0);
     for (int i = 0; i < timetable[tableNum].length; i++) {
       //timetableの長さ分ループ
       if (timetable[tableNum][i][3] > zero) {
-        timetable[4][tableNum]["nextBusIndex"] = i;
+        print("${tableNum}  ${i}");
+        print(timetable[8][tableNum]);
+        timetable[8][tableNum]["nextBusIndex"] = i;
         if (i == 0) {
           //　始発より前の時間の場合
           //時刻表示
@@ -148,7 +153,7 @@ List code() {
         timetableCompact[2][3] = "-";
       }
     }
-    timetable.insert(tableNum + 4, timetableCompact);
+    timetable[tableNum + 4] = timetableCompact;
   }
 
   //print(tableInfo);

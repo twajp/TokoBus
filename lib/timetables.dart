@@ -437,5 +437,30 @@ List timetables() {
   //print(tableInfo);
   timetable.insert(4, tableInfo);
 
+  List timetableCompact = [
+    [
+      "-",
+      "-",
+      "-",
+      "-",
+    ],
+    [
+      "-",
+      "-",
+      "-",
+      "-",
+    ],
+    [
+      "-",
+      "-",
+      "-",
+      "-",
+    ]
+  ];
+
+  for (int i=0; i<=3; i++){
+    timetable.insert(i+4, timetableCompact);
+  }
+
   return timetable;
 }
