@@ -6,7 +6,7 @@ import 'package:nholiday_jp/nholiday_jp.dart';
 // timetable[8] == 下のコード参照
 
 List timetables() {
-  List Kotesashi_Campus_Weekdays = [
+  List stationCampusWeekdays = [
     [8, 00, "北口", "×"],
     [8, 05, "北口", "〇"],
     [8, 08, "北口", "×"],
@@ -85,7 +85,7 @@ List timetables() {
     [20, 15, "南口", "×"]
   ];
 
-  List Kotesashi_Campus_Saturdays = [
+  List stationCampusSaturdays = [
     [8, 10, "北口", "〇"],
     [8, 25, "北口", "×"],
     [8, 40, "北口", "×"],
@@ -117,7 +117,7 @@ List timetables() {
     [20, 15, "南口", "×"],
   ];
 
-  List Kotesashi_Campus_SundaysHolidays = [
+  List stationCampusSundaysHolidays = [
     [8, 15, "北口", "×"],
     [8, 55, "北口", "×"],
     [9, 45, "北口", "×"],
@@ -132,7 +132,7 @@ List timetables() {
     [19, 45, "南口", "×"],
   ];
 
-  List Campus_Kotesashi_Weekdays = [
+  List campusStationWeekdays = [
     [8, 55, "北口", "×"],
     [9, 45, "北口", "×"],
     [10, 30, "北口", "×"],
@@ -213,7 +213,7 @@ List timetables() {
     [21, 40, "南口", "×"],
   ];
 
-  List Campus_Kotesashi_Saturdays = [
+  List campusStationSaturdays = [
     [8, 45, "北口", "×"],
     [9, 35, "北口", "×"],
     [10, 05, "北口", "×"],
@@ -248,7 +248,7 @@ List timetables() {
     [21, 40, "南口", "×"],
   ];
 
-  List Campus_Kotesashi_SundaysHolidays = [
+  List campusStationSundaysHolidays = [
     [8, 35, "北口", "×"],
     [9, 25, "北口", "×"],
     [11, 05, "北口", "×"],
@@ -263,7 +263,7 @@ List timetables() {
     [21, 00, "南口", "×"],
   ];
 
-  List Campus_FRC_Weekdays = [
+  List campusFRCWeekdays = [
     [8, 25, "正門", "×"],
     [8, 40, "正門", "×"],
     [8, 50, "南門", "×"],
@@ -303,7 +303,7 @@ List timetables() {
     [20, 10, "正門", "×"],
   ];
 
-  List Campus_FRC_Saturdays = [
+  List campusFRCSaturdays = [
     [8, 35, "正門", "×"],
     [8, 50, "南門", "×"],
     [9, 10, "正門", "×"],
@@ -331,7 +331,7 @@ List timetables() {
     [20, 25, "南門", "×"],
   ];
 
-  List FRC_Campus_Weekdays = [
+  List frcCampusWeekdays = [
     [8, 45, "南門", "×"],
     [8, 55, "正門", "×"],
     [9, 15, "南門", "×"],
@@ -373,7 +373,7 @@ List timetables() {
     [21, 30, "正門", "〇"],
   ];
 
-  List FRC_Campus_Saturdays = [
+  List frcCampusSaturdays = [
     [8, 40, "南門", "×"],
     [8, 55, "正門", "×"],
     [9, 15, "南門", "×"],
@@ -421,22 +421,22 @@ List timetables() {
 
   if (dt.weekday == 7 || dateOfHolidaysOfMonth.contains(1) == true) {
     //日曜日か祝日
-    timetable.add(Kotesashi_Campus_SundaysHolidays);
-    timetable.add(Campus_Kotesashi_SundaysHolidays);
+    timetable.add(stationCampusSundaysHolidays);
+    timetable.add(campusStationSundaysHolidays);
     tableInfo["dayOfWeek"] = "日曜日/祝日";
   } else if (dt.weekday >= 1 && dt.weekday <= 5) {
     //平日
-    timetable.add(Kotesashi_Campus_Weekdays);
-    timetable.add(Campus_Kotesashi_Weekdays);
-    timetable.add(Campus_FRC_Weekdays);
-    timetable.add(FRC_Campus_Weekdays);
+    timetable.add(stationCampusWeekdays);
+    timetable.add(campusStationWeekdays);
+    timetable.add(campusFRCWeekdays);
+    timetable.add(frcCampusWeekdays);
     tableInfo["dayOfWeek"] = "平日";
   } else {
     //土曜日
-    timetable.add(Kotesashi_Campus_Saturdays);
-    timetable.add(Campus_Kotesashi_Saturdays);
-    timetable.add(Campus_FRC_Saturdays);
-    timetable.add(FRC_Campus_Saturdays);
+    timetable.add(stationCampusSaturdays);
+    timetable.add(campusStationSaturdays);
+    timetable.add(campusFRCSaturdays);
+    timetable.add(frcCampusSaturdays);
     tableInfo["dayOfWeek"] = "土曜日";
   }
 

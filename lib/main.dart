@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'code.dart';
-import 'compactTimetableWidget.dart';
+import 'CompactTimetableWidget.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -75,11 +75,11 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Expanded(
                   flex: 4, // 割合
-                  child: compactTimetableWidget(timetable: timetable, size: size, tableIndex: 0),
+                  child: CompactTimetableWidget(timetable: timetable, size: size, tableIndex: 0),
                 ),
                 Expanded(
                   flex: 6, // 割合
-                  child:compactTimetableWidget(timetable: timetable, size: size, tableIndex: 1),
+                  child: CompactTimetableWidget(timetable: timetable, size: size, tableIndex: 1),
                 ),
               ],
             ),
@@ -87,11 +87,11 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Expanded(
                   flex: 4, // 割合
-                  child: compactTimetableWidget(timetable: timetable, size: size, tableIndex: 2),
+                  child: CompactTimetableWidget(timetable: timetable, size: size, tableIndex: 2),
                 ),
                 Expanded(
                   flex: 6, // 割合
-                  child: compactTimetableWidget(timetable: timetable, size: size, tableIndex: 3),
+                  child: CompactTimetableWidget(timetable: timetable, size: size, tableIndex: 3),
                 ),
               ],
             ),
