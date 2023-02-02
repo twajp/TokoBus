@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'code.dart';
 import 'fullTimetableView.dart';
+import 'compactTimetableView.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,6 +55,10 @@ class _MyHomePageState extends State<MyHomePage> {
       await Future<void>.delayed(const Duration(seconds: 1));
       setState(() {
         timetable = code();
+
+        // print(timetable[4]);
+        // print(timetable[5]);
+
       });
     }
   }
@@ -77,230 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Expanded(
                   flex: 4, // 割合
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => fullTimetableView(timetable: timetable, size: size, tableIndex: 0),
-                          fullscreenDialog: true,
-                        ),
-                      );
-                    },
-                    child: Container(
-                      //color: Colors.black,
-                      child: Column(
-                        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Spacer(),
-                          Container(
-                            alignment: AlignmentDirectional.center,
-                            height: size.height * 0.1,
-                            width: size.width * 0.9,
-                            child: Text(
-                              timetable[8][0]["title"],
-                              style: TextStyle(fontSize: 30),
-                            ),
-                          ),
-                          Stack(
-                            alignment: AlignmentDirectional.center,
-                            children: [
-                              Container(
-                                alignment: AlignmentDirectional.center,
-                                color: darkGrey,
-                                height: size.height * 0.06 * 4,
-                                width: size.width * (0.2 + 0.35 + 0.2 + 0.16) * 1.05,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          alignment: AlignmentDirectional.center,
-                                          color: darkGrey,
-                                          height: size.height * 0.06,
-                                          width: size.width * 0.2,
-                                          child: Text(
-                                            timetable[8][0]["string0"],
-                                            style: TextStyle(fontSize: 17),
-                                          ),
-                                        ),
-                                        Container(
-                                          alignment: AlignmentDirectional.center,
-                                          color: darkGrey,
-                                          height: size.height * 0.06,
-                                          width: size.width * 0.2,
-                                          child: Text(
-                                            "${timetable[4][0][0]}",
-                                            style: TextStyle(fontSize: 17),
-                                          ),
-                                        ),
-                                        Container(
-                                          alignment: AlignmentDirectional.center,
-                                          color: wasedaColor,
-                                          height: size.height * 0.06,
-                                          width: size.width * 0.2,
-                                          child: Text(
-                                            "${timetable[4][1][0]}",
-                                            style: TextStyle(fontSize: 17),
-                                          ),
-                                        ),
-                                        Container(
-                                          alignment: AlignmentDirectional.center,
-                                          color: darkGrey,
-                                          height: size.height * 0.06,
-                                          width: size.width * 0.2,
-                                          child: Text(
-                                            "${timetable[4][2][0]}",
-                                            style: TextStyle(fontSize: 17),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Column(
-                                    children: [
-                                      Container(
-                                        alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
-                                        height: size.height * 0.06,
-                                        width: size.width * 0.35,
-                                        child: Text(
-                                          timetable[8][0]["string1"],
-                                          style: TextStyle(fontSize: 17),
-                                        ),
-                                      ),
-                                      Container(
-                                        alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
-                                        height: size.height * 0.06,
-                                        width: size.width * 0.35,
-                                        child: Text(
-                                          "${timetable[4][0][1]}",
-                                          style: TextStyle(fontSize: 17),
-                                        ),
-                                      ),
-                                      Container(
-                                        alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
-                                        height: size.height * 0.06,
-                                        width: size.width * 0.35,
-                                        child: Text(
-                                          "${timetable[4][1][1]}",
-                                          style: TextStyle(fontSize: 17),
-                                        ),
-                                      ),
-                                      Container(
-                                        alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
-                                        height: size.height * 0.06,
-                                        width: size.width * 0.35,
-                                        child: Text(
-                                          "${timetable[4][2][1]}",
-                                          style: TextStyle(fontSize: 17),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: [
-                                      Container(
-                                        alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
-                                        height: size.height * 0.06,
-                                        width: size.width * 0.2,
-                                        child: Text(
-                                          timetable[8][0]["string2"],
-                                          style: TextStyle(fontSize: 17),
-                                        ),
-                                      ),
-                                      Container(
-                                        alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
-                                        height: size.height * 0.06,
-                                        width: size.width * 0.2,
-                                        child: Text(
-                                          "${timetable[4][0][2]}",
-                                          style: TextStyle(fontSize: 17),
-                                        ),
-                                      ),
-                                      Container(
-                                        alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
-                                        height: size.height * 0.06,
-                                        width: size.width * 0.2,
-                                        child: Text(
-                                          "${timetable[4][1][2]}",
-                                          style: TextStyle(fontSize: 17),
-                                        ),
-                                      ),
-                                      Container(
-                                        alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
-                                        height: size.height * 0.06,
-                                        width: size.width * 0.2,
-                                        child: Text(
-                                          "${timetable[4][2][2]}",
-                                          style: TextStyle(fontSize: 17),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    children: [
-                                      Container(
-                                        alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
-                                        height: size.height * 0.06,
-                                        width: size.width * 0.16,
-                                        child: Text(
-                                          timetable[8][0]["string3"],
-                                          style: TextStyle(fontSize: 17),
-                                        ),
-                                      ),
-                                      Container(
-                                        alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
-                                        height: size.height * 0.06,
-                                        width: size.width * 0.16,
-                                        child: Text(
-                                          "${timetable[4][0][3]}",
-                                          style: TextStyle(fontSize: 17),
-                                        ),
-                                      ),
-                                      Container(
-                                        alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
-                                        height: size.height * 0.06,
-                                        width: size.width * 0.16,
-                                        child: Text(
-                                          "${timetable[4][1][3]}",
-                                          style: TextStyle(fontSize: 17),
-                                        ),
-                                      ),
-                                      Container(
-                                        alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
-                                        height: size.height * 0.06,
-                                        width: size.width * 0.16,
-                                        child: Text(
-                                          "${timetable[4][2][3]}",
-                                          style: TextStyle(fontSize: 17),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Spacer()
-                        ],
-                      ),
-                    ),
-                  ),
+                  child: compactTimetableWidget(timetable: timetable, size: size, tableIndex: 0),
                 ),
                 Expanded(
                   flex: 6, // 割合

@@ -5,7 +5,6 @@ import 'package:nholiday_jp/nholiday_jp.dart';
 // timetable[4->7] == [[String 時:分, String 残り時間, String 場所, String 車椅子対応], * 3]
 // timetable[8] == 下のコード参照
 
-
 List timetables() {
   List Kotesashi_Campus_Weekdays = [
     [8, 00, "北口", "×"],
@@ -441,29 +440,27 @@ List timetables() {
     tableInfo["dayOfWeek"] = "土曜日";
   }
 
-  List timetableCompactInit = [
-    [
-      "-",
-      "-",
-      "-",
-      "-",
-    ],
-    [
-      "-",
-      "-",
-      "-",
-      "-",
-    ],
-    [
-      "-",
-      "-",
-      "-",
-      "-",
-    ]
-  ];
-
-  for (int i=0; i<=3; i++){
-    timetable.insert(i+4, timetableCompactInit);
+  for (int i = 0; i <= 3; i++) {
+    timetable.insert(i + 4, [
+      [
+        "-",
+        "-",
+        "-",
+        "-",
+      ],
+      [
+        "-",
+        "-",
+        "-",
+        "-",
+      ],
+      [
+        "-",
+        "-",
+        "-",
+        "-",
+      ]
+    ]);
   }
 
   timetable.insert(8, tableInfo);
