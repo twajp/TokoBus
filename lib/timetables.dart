@@ -1,5 +1,11 @@
 import 'package:nholiday_jp/nholiday_jp.dart';
 
+// timetableの構造メモ
+// timetable[0->3] == [[int 時, int 分, DateTime 時刻, Duration 残り時間, String 時:分, String 残り時間, String 場所, String 車椅子対応], ...]
+// timetable[4->7] == [[String 時:分, String 残り時間, String 場所, String 車椅子対応], * 3]
+// timetable[8] == 下のコード参照
+
+
 List timetables() {
   List Kotesashi_Campus_Weekdays = [
     [8, 00, "北口", "×"],
@@ -434,10 +440,8 @@ List timetables() {
     timetable.add(FRC_Campus_Saturdays);
     tableInfo["dayOfWeek"] = "土曜日";
   }
-  //print(tableInfo);
-  timetable.insert(4, tableInfo);
 
-  List timetableCompact = [
+  List timetableCompactInit = [
     [
       "-",
       "-",
@@ -459,8 +463,10 @@ List timetables() {
   ];
 
   for (int i=0; i<=3; i++){
-    timetable.insert(i+4, timetableCompact);
+    timetable.insert(i+4, timetableCompactInit);
   }
+
+  timetable.insert(8, tableInfo);
 
   return timetable;
 }
