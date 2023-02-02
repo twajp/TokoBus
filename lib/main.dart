@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'code.dart';
+import 'fullTimetableView.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -63,67 +64,6 @@ class _MyHomePageState extends State<MyHomePage> {
     mainLoop();
   }
 
-  void _showBottomSheetMenu(BuildContext context, Size size) {
-    showModalBottomSheet(
-        context: context,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
-        ),
-        builder: (builder) {
-          return Container(
-            height: size.height*0.9,
-            color: Colors.transparent,
-            child: Container(
-              alignment: AlignmentDirectional.topCenter,
-              child: Row(
-                children: [
-                  Container(
-                    alignment: AlignmentDirectional.center,
-                    color: wasedaColor,
-                    height: size.height * 0.06,
-                    width: size.width * 0.2,
-                    child: Text(
-                      "発車時刻",
-                      style: TextStyle(fontSize: 19),
-                    ),
-                  ),
-                  Container(
-                    alignment: AlignmentDirectional.center,
-                    color: wasedaColor,
-                    height: size.height * 0.06,
-                    width: size.width * 0.2,
-                    child: Text(
-                      "${timetable[7][0][0]}",
-                      style: TextStyle(fontSize: 19),
-                    ),
-                  ),
-                  Container(
-                    alignment: AlignmentDirectional.center,
-                    color: darkGrey,
-                    height: size.height * 0.06,
-                    width: size.width * 0.2,
-                    child: Text(
-                      "${timetable[7][1][0]}",
-                      style: TextStyle(fontSize: 19),
-                    ),
-                  ),
-                  Container(
-                    alignment: AlignmentDirectional.center,
-                    color: wasedaColor,
-                    height: size.height * 0.06,
-                    width: size.width * 0.2,
-                    child: Text(
-                      "${timetable[7][2][0]}",
-                      style: TextStyle(fontSize: 19),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        });
-  }
-
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -138,8 +78,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 Expanded(
                   flex: 4, // 割合
                   child: GestureDetector(
-                    onTap: (){
-                      _showBottomSheetMenu(context, size);
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => fullTimetableView(timetable: timetable, size: size, tableIndex: 0),
+                          fullscreenDialog: true,
+                        ),
+                      );
                     },
                     child: Container(
                       //color: Colors.black,
@@ -152,7 +98,234 @@ class _MyHomePageState extends State<MyHomePage> {
                             height: size.height * 0.1,
                             width: size.width * 0.9,
                             child: Text(
-                              "小手指駅 → キャンパス",
+                              timetable[8][0]["title"],
+                              style: TextStyle(fontSize: 30),
+                            ),
+                          ),
+                          Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: [
+                              Container(
+                                alignment: AlignmentDirectional.center,
+                                color: wasedaColor,
+                                height: size.height * 0.06 * 4,
+                                width: size.width * (0.2 + 0.35 + 0.2 + 0.16) * 1.05,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          alignment: AlignmentDirectional.center,
+                                          color: wasedaColor,
+                                          height: size.height * 0.06,
+                                          width: size.width * 0.2,
+                                          child: Text(
+                                            timetable[8][0]["string0"],
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: AlignmentDirectional.center,
+                                          color: wasedaColor,
+                                          height: size.height * 0.06,
+                                          width: size.width * 0.2,
+                                          child: Text(
+                                            "${timetable[4][0][0]}",
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: AlignmentDirectional.center,
+                                          color: darkGrey,
+                                          height: size.height * 0.06,
+                                          width: size.width * 0.2,
+                                          child: Text(
+                                            "${timetable[4][1][0]}",
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: AlignmentDirectional.center,
+                                          color: wasedaColor,
+                                          height: size.height * 0.06,
+                                          width: size.width * 0.2,
+                                          child: Text(
+                                            "${timetable[4][2][0]}",
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Column(
+                                    children: [
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.35,
+                                        child: Text(
+                                          timetable[8][0]["string1"],
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.35,
+                                        child: Text(
+                                          "${timetable[4][0][1]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: darkGrey,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.35,
+                                        child: Text(
+                                          "${timetable[4][1][1]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.35,
+                                        child: Text(
+                                          "${timetable[4][2][1]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.2,
+                                        child: Text(
+                                          timetable[8][0]["string2"],
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.2,
+                                        child: Text(
+                                          "${timetable[4][0][2]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: darkGrey,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.2,
+                                        child: Text(
+                                          "${timetable[4][1][2]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.2,
+                                        child: Text(
+                                          "${timetable[4][2][2]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.16,
+                                        child: Text(
+                                          timetable[8][0]["string3"],
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.16,
+                                        child: Text(
+                                          "${timetable[4][0][3]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: darkGrey,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.16,
+                                        child: Text(
+                                          "${timetable[4][1][3]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.16,
+                                        child: Text(
+                                          "${timetable[4][2][3]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          Spacer()
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 6, // 割合
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => fullTimetableView(timetable: timetable, size: size, tableIndex: 1),
+                          fullscreenDialog: true,
+                        ),
+                      );
+                    },
+                    child: Container(
+                      //color: Colors.black,
+                      child: Column(
+                        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Spacer(),
+                          Container(
+                            alignment: AlignmentDirectional.center,
+                            height: size.height * 0.1,
+                            width: size.width * 0.9,
+                            child: Text(
+                              "キャンパス → 小手指駅",
                               style: TextStyle(fontSize: 30),
                             ),
                           ),
@@ -178,7 +351,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           width: size.width * 0.2,
                                           child: Text(
                                             "発車時刻",
-                                            style: TextStyle(fontSize: 19),
+                                            style: TextStyle(fontSize: 18),
                                           ),
                                         ),
                                         Container(
@@ -187,8 +360,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
-                                            "${timetable[4][0][0]}",
-                                            style: TextStyle(fontSize: 19),
+                                            "${timetable[5][0][0]}",
+                                            style: TextStyle(fontSize: 18),
                                           ),
                                         ),
                                         Container(
@@ -197,8 +370,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
-                                            "${timetable[4][1][0]}",
-                                            style: TextStyle(fontSize: 19),
+                                            "${timetable[5][1][0]}",
+                                            style: TextStyle(fontSize: 18),
                                           ),
                                         ),
                                         Container(
@@ -207,8 +380,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
-                                            "${timetable[4][2][0]}",
-                                            style: TextStyle(fontSize: 19),
+                                            "${timetable[5][2][0]}",
+                                            style: TextStyle(fontSize: 18),
                                           ),
                                         ),
                                       ],
@@ -223,7 +396,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         width: size.width * 0.35,
                                         child: Text(
                                           "残り時間",
-                                          style: TextStyle(fontSize: 19),
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                       Container(
@@ -232,8 +405,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
-                                          "${timetable[4][0][1]}",
-                                          style: TextStyle(fontSize: 19),
+                                          "${timetable[5][0][1]}",
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                       Container(
@@ -242,8 +415,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
-                                          "${timetable[4][1][1]}",
-                                          style: TextStyle(fontSize: 19),
+                                          "${timetable[5][1][1]}",
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                       Container(
@@ -252,8 +425,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
-                                          "${timetable[4][2][1]}",
-                                          style: TextStyle(fontSize: 19),
+                                          "${timetable[5][2][1]}",
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                     ],
@@ -266,8 +439,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
-                                          "発車場所",
-                                          style: TextStyle(fontSize: 19),
+                                          "降車場所",
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                       Container(
@@ -276,8 +449,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
-                                          "${timetable[4][0][2]}",
-                                          style: TextStyle(fontSize: 19),
+                                          "${timetable[5][0][2]}",
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                       Container(
@@ -286,8 +459,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
-                                          "${timetable[4][1][2]}",
-                                          style: TextStyle(fontSize: 19),
+                                          "${timetable[5][1][2]}",
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                       Container(
@@ -296,8 +469,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
-                                          "${timetable[4][2][2]}",
-                                          style: TextStyle(fontSize: 19),
+                                          "${timetable[5][2][2]}",
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                     ],
@@ -311,7 +484,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         width: size.width * 0.16,
                                         child: Text(
                                           "車椅子",
-                                          style: TextStyle(fontSize: 19),
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                       Container(
@@ -320,8 +493,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
-                                          "${timetable[4][0][3]}",
-                                          style: TextStyle(fontSize: 19),
+                                          "${timetable[5][0][3]}",
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                       Container(
@@ -330,8 +503,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
-                                          "${timetable[4][1][3]}",
-                                          style: TextStyle(fontSize: 19),
+                                          "${timetable[5][1][3]}",
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                       Container(
@@ -340,8 +513,239 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
-                                          "${timetable[4][2][3]}",
-                                          style: TextStyle(fontSize: 19),
+                                          "${timetable[5][2][3]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          Spacer()
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                Expanded(
+                  flex: 4, // 割合
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => fullTimetableView(timetable: timetable, size: size, tableIndex: 2),
+                          fullscreenDialog: true,
+                        ),
+                      );
+                    },
+                    child: Container(
+                      //color: Colors.black,
+                      child: Column(
+                        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Spacer(),
+                          Container(
+                            alignment: AlignmentDirectional.center,
+                            height: size.height * 0.1,
+                            width: size.width * 0.9,
+                            child: Text(
+                              "キャンパス → FRC",
+                              style: TextStyle(fontSize: 30),
+                            ),
+                          ),
+                          Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: [
+                              Container(
+                                alignment: AlignmentDirectional.center,
+                                color: wasedaColor,
+                                height: size.height * 0.06 * 4,
+                                width: size.width * (0.2 + 0.35 + 0.2 + 0.16) * 1.05,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          alignment: AlignmentDirectional.center,
+                                          color: wasedaColor,
+                                          height: size.height * 0.06,
+                                          width: size.width * 0.2,
+                                          child: Text(
+                                            "発車時刻",
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: AlignmentDirectional.center,
+                                          color: wasedaColor,
+                                          height: size.height * 0.06,
+                                          width: size.width * 0.2,
+                                          child: Text(
+                                            "${timetable[6][0][0]}",
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: AlignmentDirectional.center,
+                                          color: darkGrey,
+                                          height: size.height * 0.06,
+                                          width: size.width * 0.2,
+                                          child: Text(
+                                            "${timetable[6][1][0]}",
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: AlignmentDirectional.center,
+                                          color: wasedaColor,
+                                          height: size.height * 0.06,
+                                          width: size.width * 0.2,
+                                          child: Text(
+                                            "${timetable[6][2][0]}",
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Column(
+                                    children: [
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.35,
+                                        child: Text(
+                                          "残り時間",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.35,
+                                        child: Text(
+                                          "${timetable[6][0][1]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: darkGrey,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.35,
+                                        child: Text(
+                                          "${timetable[6][1][1]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.35,
+                                        child: Text(
+                                          "${timetable[6][2][1]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.2,
+                                        child: Text(
+                                          "発車場所",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.2,
+                                        child: Text(
+                                          "${timetable[6][0][2]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: darkGrey,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.2,
+                                        child: Text(
+                                          "${timetable[6][1][2]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.2,
+                                        child: Text(
+                                          "${timetable[6][2][2]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    children: [
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.16,
+                                        child: Text(
+                                          "接続",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.16,
+                                        child: Text(
+                                          "${timetable[6][0][3]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: darkGrey,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.16,
+                                        child: Text(
+                                          "${timetable[6][1][3]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.16,
+                                        child: Text(
+                                          "${timetable[6][2][3]}",
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                     ],
@@ -358,35 +762,134 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Expanded(
                   flex: 6, // 割合
-                  child: Container(
-                    //color: Colors.black,
-                    child: Column(
-                      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Spacer(),
-                        Container(
-                          alignment: AlignmentDirectional.center,
-                          height: size.height * 0.1,
-                          width: size.width * 0.9,
-                          child: Text(
-                            "キャンパス → 小手指駅",
-                            style: TextStyle(fontSize: 30),
-                          ),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => fullTimetableView(timetable: timetable, size: size, tableIndex: 3),
+                          fullscreenDialog: true,
                         ),
-                        Stack(
-                          alignment: AlignmentDirectional.center,
-                          children: [
-                            Container(
-                              alignment: AlignmentDirectional.center,
-                              color: wasedaColor,
-                              height: size.height * 0.06 * 4,
-                              width: size.width * (0.2 + 0.35 + 0.2 + 0.16) * 1.05,
+                      );
+                    },
+                    child: Container(
+                      //color: Colors.black,
+                      child: Column(
+                        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Spacer(),
+                          Container(
+                            alignment: AlignmentDirectional.center,
+                            height: size.height * 0.1,
+                            width: size.width * 0.9,
+                            child: Text(
+                              "FRC → キャンパス",
+                              style: TextStyle(fontSize: 30),
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  child: Column(
+                          ),
+                          Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: [
+                              Container(
+                                alignment: AlignmentDirectional.center,
+                                color: wasedaColor,
+                                height: size.height * 0.06 * 4,
+                                width: size.width * (0.2 + 0.35 + 0.2 + 0.16) * 1.05,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          alignment: AlignmentDirectional.center,
+                                          color: wasedaColor,
+                                          height: size.height * 0.06,
+                                          width: size.width * 0.2,
+                                          child: Text(
+                                            "発車時刻",
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: AlignmentDirectional.center,
+                                          color: wasedaColor,
+                                          height: size.height * 0.06,
+                                          width: size.width * 0.2,
+                                          child: Text(
+                                            "${timetable[7][0][0]}",
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: AlignmentDirectional.center,
+                                          color: darkGrey,
+                                          height: size.height * 0.06,
+                                          width: size.width * 0.2,
+                                          child: Text(
+                                            "${timetable[7][1][0]}",
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: AlignmentDirectional.center,
+                                          color: wasedaColor,
+                                          height: size.height * 0.06,
+                                          width: size.width * 0.2,
+                                          child: Text(
+                                            "${timetable[7][2][0]}",
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Column(
+                                    children: [
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.35,
+                                        child: Text(
+                                          "残り時間",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.35,
+                                        child: Text(
+                                          "${timetable[7][0][1]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: darkGrey,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.35,
+                                        child: Text(
+                                          "${timetable[7][1][1]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                      Container(
+                                        alignment: AlignmentDirectional.center,
+                                        color: wasedaColor,
+                                        height: size.height * 0.06,
+                                        width: size.width * 0.35,
+                                        child: Text(
+                                          "${timetable[7][2][1]}",
+                                          style: TextStyle(fontSize: 18),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
                                     children: [
                                       Container(
                                         alignment: AlignmentDirectional.center,
@@ -394,8 +897,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
-                                          "発車時刻",
-                                          style: TextStyle(fontSize: 19),
+                                          "降車場所",
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                       Container(
@@ -404,8 +907,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
-                                          "${timetable[5][0][0]}",
-                                          style: TextStyle(fontSize: 19),
+                                          "${timetable[7][0][2]}",
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                       Container(
@@ -414,8 +917,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
-                                          "${timetable[5][1][0]}",
-                                          style: TextStyle(fontSize: 19),
+                                          "${timetable[7][1][2]}",
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                       Container(
@@ -424,587 +927,63 @@ class _MyHomePageState extends State<MyHomePage> {
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
-                                          "${timetable[5][2][0]}",
-                                          style: TextStyle(fontSize: 19),
+                                          "${timetable[7][2][2]}",
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                     ],
                                   ),
-                                ),
-                                Column(
-                                  children: [
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.35,
-                                      child: Text(
-                                        "残り時間",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.35,
-                                      child: Text(
-                                        "${timetable[5][0][1]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: darkGrey,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.35,
-                                      child: Text(
-                                        "${timetable[5][1][1]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.35,
-                                      child: Text(
-                                        "${timetable[5][2][1]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.2,
-                                      child: Text(
-                                        "降車場所",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.2,
-                                      child: Text(
-                                        "${timetable[5][0][2]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: darkGrey,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.2,
-                                      child: Text(
-                                        "${timetable[5][1][2]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.2,
-                                      child: Text(
-                                        "${timetable[5][2][2]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.16,
-                                      child: Text(
-                                        "車椅子",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.16,
-                                      child: Text(
-                                        "${timetable[5][0][3]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: darkGrey,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.16,
-                                      child: Text(
-                                        "${timetable[5][1][3]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.16,
-                                      child: Text(
-                                        "${timetable[5][2][3]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Spacer()
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Column(
-              children: <Widget>[
-                Expanded(
-                  flex: 4, // 割合
-                  child: Container(
-                    //color: Colors.black,
-                    child: Column(
-                      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Spacer(),
-                        Container(
-                          alignment: AlignmentDirectional.center,
-                          height: size.height * 0.1,
-                          width: size.width * 0.9,
-                          child: Text(
-                            "キャンパス → FRC",
-                            style: TextStyle(fontSize: 30),
-                          ),
-                        ),
-                        Stack(
-                          alignment: AlignmentDirectional.center,
-                          children: [
-                            Container(
-                              alignment: AlignmentDirectional.center,
-                              color: wasedaColor,
-                              height: size.height * 0.06 * 4,
-                              width: size.width * (0.2 + 0.35 + 0.2 + 0.16) * 1.05,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  child: Column(
+                                  Column(
                                     children: [
                                       Container(
                                         alignment: AlignmentDirectional.center,
                                         color: wasedaColor,
                                         height: size.height * 0.06,
-                                        width: size.width * 0.2,
+                                        width: size.width * 0.16,
                                         child: Text(
-                                          "発車時刻",
-                                          style: TextStyle(fontSize: 19),
+                                          "接続",
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
                                         color: wasedaColor,
                                         height: size.height * 0.06,
-                                        width: size.width * 0.2,
+                                        width: size.width * 0.16,
                                         child: Text(
-                                          "${timetable[6][0][0]}",
-                                          style: TextStyle(fontSize: 19),
+                                          "${timetable[7][0][3]}",
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
                                         color: darkGrey,
                                         height: size.height * 0.06,
-                                        width: size.width * 0.2,
+                                        width: size.width * 0.16,
                                         child: Text(
-                                          "${timetable[6][1][0]}",
-                                          style: TextStyle(fontSize: 19),
+                                          "${timetable[7][1][3]}",
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
                                         color: wasedaColor,
                                         height: size.height * 0.06,
-                                        width: size.width * 0.2,
+                                        width: size.width * 0.16,
                                         child: Text(
-                                          "${timetable[6][2][0]}",
-                                          style: TextStyle(fontSize: 19),
+                                          "${timetable[7][2][3]}",
+                                          style: TextStyle(fontSize: 18),
                                         ),
                                       ),
                                     ],
                                   ),
-                                ),
-                                Column(
-                                  children: [
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.35,
-                                      child: Text(
-                                        "残り時間",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.35,
-                                      child: Text(
-                                        "${timetable[6][0][1]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: darkGrey,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.35,
-                                      child: Text(
-                                        "${timetable[6][1][1]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.35,
-                                      child: Text(
-                                        "${timetable[6][2][1]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.2,
-                                      child: Text(
-                                        "発車場所",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.2,
-                                      child: Text(
-                                        "${timetable[6][0][2]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: darkGrey,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.2,
-                                      child: Text(
-                                        "${timetable[6][1][2]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.2,
-                                      child: Text(
-                                        "${timetable[6][2][2]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.16,
-                                      child: Text(
-                                        "接続",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.16,
-                                      child: Text(
-                                        "${timetable[6][0][3]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: darkGrey,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.16,
-                                      child: Text(
-                                        "${timetable[6][1][3]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.16,
-                                      child: Text(
-                                        "${timetable[6][2][3]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Spacer()
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 6, // 割合
-                  child: Container(
-                    //color: Colors.black,
-                    child: Column(
-                      //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Spacer(),
-                        Container(
-                          alignment: AlignmentDirectional.center,
-                          height: size.height * 0.1,
-                          width: size.width * 0.9,
-                          child: Text(
-                            "FRC → キャンパス",
-                            style: TextStyle(fontSize: 30),
+                                ],
+                              ),
+                            ],
                           ),
-                        ),
-                        Stack(
-                          alignment: AlignmentDirectional.center,
-                          children: [
-                            Container(
-                              alignment: AlignmentDirectional.center,
-                              color: wasedaColor,
-                              height: size.height * 0.06 * 4,
-                              width: size.width * (0.2 + 0.35 + 0.2 + 0.16) * 1.05,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
-                                        height: size.height * 0.06,
-                                        width: size.width * 0.2,
-                                        child: Text(
-                                          "発車時刻",
-                                          style: TextStyle(fontSize: 19),
-                                        ),
-                                      ),
-                                      Container(
-                                        alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
-                                        height: size.height * 0.06,
-                                        width: size.width * 0.2,
-                                        child: Text(
-                                          "${timetable[7][0][0]}",
-                                          style: TextStyle(fontSize: 19),
-                                        ),
-                                      ),
-                                      Container(
-                                        alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
-                                        height: size.height * 0.06,
-                                        width: size.width * 0.2,
-                                        child: Text(
-                                          "${timetable[7][1][0]}",
-                                          style: TextStyle(fontSize: 19),
-                                        ),
-                                      ),
-                                      Container(
-                                        alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
-                                        height: size.height * 0.06,
-                                        width: size.width * 0.2,
-                                        child: Text(
-                                          "${timetable[7][2][0]}",
-                                          style: TextStyle(fontSize: 19),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Column(
-                                  children: [
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.35,
-                                      child: Text(
-                                        "残り時間",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.35,
-                                      child: Text(
-                                        "${timetable[7][0][1]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: darkGrey,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.35,
-                                      child: Text(
-                                        "${timetable[7][1][1]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.35,
-                                      child: Text(
-                                        "${timetable[7][2][1]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.2,
-                                      child: Text(
-                                        "降車場所",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.2,
-                                      child: Text(
-                                        "${timetable[7][0][2]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: darkGrey,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.2,
-                                      child: Text(
-                                        "${timetable[7][1][2]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.2,
-                                      child: Text(
-                                        "${timetable[7][2][2]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.16,
-                                      child: Text(
-                                        "接続",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.16,
-                                      child: Text(
-                                        "${timetable[7][0][3]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: darkGrey,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.16,
-                                      child: Text(
-                                        "${timetable[7][1][3]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: AlignmentDirectional.center,
-                                      color: wasedaColor,
-                                      height: size.height * 0.06,
-                                      width: size.width * 0.16,
-                                      child: Text(
-                                        "${timetable[7][2][3]}",
-                                        style: TextStyle(fontSize: 19),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        Spacer()
-                      ],
+                          Spacer()
+                        ],
+                      ),
                     ),
                   ),
                 ),

@@ -4,6 +4,14 @@ import 'timetables.dart';
 List code() {
   List timetable = timetables();
 
+  Map tableInfo = {
+    0: {"title": "小手指駅 → キャンパス", "string0": "発車時刻", "string1": "残り時間", "string2": "発車場所", "string3": "車椅子", "nextBusIndex": 0},
+    1: {"title": "キャンパス → 小手指駅", "string0": "発車時刻", "string1": "残り時間", "string2": "降車場所", "string3": "車椅子", "nextBusIndex": 0},
+    2: {"title": "キャンパス → FRC", "string0": "発車時刻", "string1": "残り時間", "string2": "発車場所", "string3": "接続", "nextBusIndex": 0},
+    3: {"title": "FRC → キャンパス", "string0": "発車時刻", "string1": "残り時間", "string2": "降車場所", "string3": "接続", "nextBusIndex": 0},
+    "tableVer": "2022 秋学期"
+  };
+
   //現在時刻と0時0分の取得
   var now = DateTime.now();
   var lastMidnight = DateTime(now.year, now.month, now.day);
@@ -39,6 +47,8 @@ List code() {
       final Duration duration = dtBus.difference(now);
       timetable[tableNum][i].insert(2, dtBus);
       timetable[tableNum][i].insert(3, duration);
+      timetable[tableNum][i].insert(4, DateFormat('HH:mm').format(timetable[tableNum][i][2]));
+      timetable[tableNum][i].insert(5, calcTimeRemaining(timetable[tableNum][i][3]));
     }
 
     List timetableCompact = [
@@ -65,6 +75,7 @@ List code() {
     for (int i = 0; i < timetable[tableNum].length; i++) {
       //timetableの長さ分ループ
       if (timetable[tableNum][i][3] > zero) {
+        tableInfo[tableNum]["nextBusIndex"] = i;
         if (i == 0) {
           //　始発より前の時間の場合
           //時刻表示
@@ -79,21 +90,21 @@ List code() {
 
           //発車場所/降車場所
           timetableCompact[0][2] = "-";
-          timetableCompact[1][2] = timetable[tableNum][i][4];
-          timetableCompact[2][2] = timetable[tableNum][i + 1][4];
+          timetableCompact[1][2] = timetable[tableNum][i][6];
+          timetableCompact[2][2] = timetable[tableNum][i + 1][6];
 
           //車椅子対応or接続
           timetableCompact[0][3] = "-";
-          timetableCompact[1][3] = timetable[tableNum][i][5];
-          timetableCompact[2][3] = timetable[tableNum][i + 1][5];
+          timetableCompact[1][3] = timetable[tableNum][i][7];
+          timetableCompact[2][3] = timetable[tableNum][i + 1][7];
           break;
         } else if (timetable[tableNum][i][3] > zero && i < timetable[tableNum].length - 1) {
           //通常時
           for (int j = 0; j < 3; j++) {
             timetableCompact[j][0] = DateFormat('HH:mm').format(timetable[tableNum][i - 1 + j][2]);
             timetableCompact[j][1] = calcTimeRemaining(timetable[tableNum][i - 1 + j][3]);
-            timetableCompact[j][2] = timetable[tableNum][i - 1 + j][4];
-            timetableCompact[j][3] = timetable[tableNum][i - 1 + j][5];
+            timetableCompact[j][2] = timetable[tableNum][i - 1 + j][6];
+            timetableCompact[j][3] = timetable[tableNum][i - 1 + j][7];
           }
           break;
         } else if (i == timetable[tableNum].length - 1) {
@@ -109,13 +120,13 @@ List code() {
           timetableCompact[2][1] = "-";
 
           //発車場所/降車場所
-          timetableCompact[0][2] = timetable[tableNum][i - 1][4];
-          timetableCompact[1][2] = timetable[tableNum][i][4];
+          timetableCompact[0][2] = timetable[tableNum][i - 1][6];
+          timetableCompact[1][2] = timetable[tableNum][i][6];
           timetableCompact[2][2] = "-";
 
           //車椅子対応or接続
-          timetableCompact[0][3] = timetable[tableNum][i - 1][5];
-          timetableCompact[1][3] = timetable[tableNum][i][5];
+          timetableCompact[0][3] = timetable[tableNum][i - 1][7];
+          timetableCompact[1][3] = timetable[tableNum][i][7];
           timetableCompact[2][3] = "-";
           break;
         }
@@ -132,12 +143,12 @@ List code() {
         timetableCompact[2][1] = "-";
 
         //発車場所/降車場所
-        timetableCompact[0][2] = timetable[tableNum].last[4];
+        timetableCompact[0][2] = timetable[tableNum].last[6];
         timetableCompact[1][2] = "-";
         timetableCompact[2][2] = "-";
 
         //車椅子対応or接続
-        timetableCompact[0][3] = timetable[tableNum].last[5];
+        timetableCompact[0][3] = timetable[tableNum].last[7];
         timetableCompact[1][3] = "-";
         timetableCompact[2][3] = "-";
       }
@@ -145,6 +156,10 @@ List code() {
     timetable.insert(tableNum + 4, timetableCompact);
   }
 
-  //print(timetable[7]);
+  //print(tableInfo);
+  timetable.insert(8, tableInfo);
+
+  print(timetable[4][0]);
+  print(timetable[0][0]);
   return timetable;
 }
