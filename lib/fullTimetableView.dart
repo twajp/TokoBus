@@ -39,6 +39,8 @@ class _fullTimetableViewState extends State<fullTimetableView> {
 
   @override
   Widget build(BuildContext context) {
+    //Color wasedaColor = Color.fromRGBO(44*2, 44*2, 46*2, 1);
+    Color wasedaColor = Colors.red;
     return Scaffold(
       appBar: AppBar(
         title: Text(timetable[8][tableIndex]["title"]),
@@ -89,50 +91,98 @@ class _fullTimetableViewState extends State<fullTimetableView> {
                   ),
                 ],
               ),
-
-              for(int i = 0; i < timetable[tableIndex].length; i++) ... {
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      alignment: AlignmentDirectional.center,
-                      height: size.height * 0.05,
-                      width: size.width * 0.2,
-                      child: Text(
-                        timetable[tableIndex][i][4],
-                        style: TextStyle(fontSize: 18),
+              for (int i = 0; i < timetable[tableIndex].length; i++) ...{
+                if (i == timetable[8][tableIndex]["nextBusIndex"]) ...{
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        alignment: AlignmentDirectional.center,
+                        height: size.height * 0.05,
+                        width: size.width * 0.2,
+                        child: Text(
+                          timetable[tableIndex][i][4],
+                          style: TextStyle(fontSize: 18, color: wasedaColor),
+                        ),
                       ),
-                    ),
-                    Container(
-                      alignment: AlignmentDirectional.center,
-                      height: size.height * 0.05,
-                      width: size.width * 0.4,
-                      child: Text(
-                        timetable[tableIndex][i][5],
-                        style: TextStyle(fontSize: 18),
+                      Container(
+                        alignment: AlignmentDirectional.center,
+                        height: size.height * 0.05,
+                        width: size.width * 0.4,
+                        child: Text(
+                          timetable[tableIndex][i][5],
+                          style: TextStyle(fontSize: 18, color: wasedaColor),
+                        ),
                       ),
-                    ),
-                    Container(
-                      alignment: AlignmentDirectional.center,
-                      height: size.height * 0.05,
-                      width: size.width * 0.2,
-                      child: Text(
-                        timetable[tableIndex][i][6],
-                        style: TextStyle(fontSize: 18),
+                      Container(
+                        alignment: AlignmentDirectional.center,
+                        height: size.height * 0.05,
+                        width: size.width * 0.2,
+                        child: Text(
+                          timetable[tableIndex][i][6],
+                          style: TextStyle(fontSize: 18, color: wasedaColor),
+                        ),
                       ),
-                    ),
-                    Container(
-                      alignment: AlignmentDirectional.center,
-                      height: size.height * 0.05,
-                      width: size.width * 0.16,
-                      child: Text(
-                        timetable[tableIndex][i][7],
-                        style: TextStyle(fontSize: 18),
+                      Container(
+                        alignment: AlignmentDirectional.center,
+                        height: size.height * 0.05,
+                        width: size.width * 0.16,
+                        child: Text(
+                          timetable[tableIndex][i][7],
+                          style: TextStyle(fontSize: 18, color: wasedaColor),
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              }
+                    ],
+                  ),
+                } else ...{
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        alignment: AlignmentDirectional.center,
+                        height: size.height * 0.05,
+                        width: size.width * 0.2,
+                        child: Text(
+                          timetable[tableIndex][i][4],
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                      Container(
+                        alignment: AlignmentDirectional.center,
+                        height: size.height * 0.05,
+                        width: size.width * 0.4,
+                        child: Text(
+                          timetable[tableIndex][i][5],
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                      Container(
+                        alignment: AlignmentDirectional.center,
+                        height: size.height * 0.05,
+                        width: size.width * 0.2,
+                        child: Text(
+                          timetable[tableIndex][i][6],
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                      Container(
+                        alignment: AlignmentDirectional.center,
+                        height: size.height * 0.05,
+                        width: size.width * 0.16,
+                        child: Text(
+                          timetable[tableIndex][i][7],
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ),
+                    ],
+                  ),
+                },
+              },
+              Container(
+                alignment: Alignment.center,
+                height: 50,
+                child: Text(timetable[8]["tableVer"]),
+              ),
             ],
           ),
         ),

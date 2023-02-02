@@ -161,5 +161,6 @@ List code() {
 
   print(timetable[4][0]);
   print(timetable[0][0]);
+  //print(timetable[8][0]["nextBusIndex"].runtimeType);
   return timetable;
 }
