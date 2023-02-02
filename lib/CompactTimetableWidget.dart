@@ -23,7 +23,6 @@ class CompactTimetableWidget extends StatelessWidget {
         );
       },
       child: Column(
-        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           const Spacer(),
           Container(
@@ -44,10 +43,10 @@ class CompactTimetableWidget extends StatelessWidget {
                 height: size.height * 0.06 * 4,
                 width: size.width * (0.2 + 0.35 + 0.2 + 0.16) * 1.05,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Column(
                 children: [
-                  Column(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
                         alignment: AlignmentDirectional.center,
@@ -63,80 +62,12 @@ class CompactTimetableWidget extends StatelessWidget {
                         alignment: AlignmentDirectional.center,
                         color: darkGrey,
                         height: size.height * 0.06,
-                        width: size.width * 0.2,
-                        child: Text(
-                          "${timetable[tableIndex + 4][0][0]}",
-                          style: const TextStyle(fontSize: 17),
-                        ),
-                      ),
-                      Container(
-                        alignment: AlignmentDirectional.center,
-                        color: wasedaColor,
-                        height: size.height * 0.06,
-                        width: size.width * 0.2,
-                        child: Text(
-                          "${timetable[tableIndex + 4][1][0]}",
-                          style: const TextStyle(fontSize: 17),
-                        ),
-                      ),
-                      Container(
-                        alignment: AlignmentDirectional.center,
-                        color: darkGrey,
-                        height: size.height * 0.06,
-                        width: size.width * 0.2,
-                        child: Text(
-                          "${timetable[tableIndex + 4][2][0]}",
-                          style: const TextStyle(fontSize: 17),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Container(
-                        alignment: AlignmentDirectional.center,
-                        color: darkGrey,
-                        height: size.height * 0.06,
                         width: size.width * 0.35,
                         child: Text(
                           timetable[8][tableIndex]["string1"],
                           style: const TextStyle(fontSize: 17),
                         ),
                       ),
-                      Container(
-                        alignment: AlignmentDirectional.center,
-                        color: darkGrey,
-                        height: size.height * 0.06,
-                        width: size.width * 0.35,
-                        child: Text(
-                          "${timetable[tableIndex + 4][0][1]}",
-                          style: const TextStyle(fontSize: 17),
-                        ),
-                      ),
-                      Container(
-                        alignment: AlignmentDirectional.center,
-                        color: wasedaColor,
-                        height: size.height * 0.06,
-                        width: size.width * 0.35,
-                        child: Text(
-                          "${timetable[tableIndex + 4][1][1]}",
-                          style: const TextStyle(fontSize: 17),
-                        ),
-                      ),
-                      Container(
-                        alignment: AlignmentDirectional.center,
-                        color: darkGrey,
-                        height: size.height * 0.06,
-                        width: size.width * 0.35,
-                        child: Text(
-                          "${timetable[tableIndex + 4][2][1]}",
-                          style: const TextStyle(fontSize: 17),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
                       Container(
                         alignment: AlignmentDirectional.center,
                         color: darkGrey,
@@ -151,53 +82,89 @@ class CompactTimetableWidget extends StatelessWidget {
                         alignment: AlignmentDirectional.center,
                         color: darkGrey,
                         height: size.height * 0.06,
-                        width: size.width * 0.2,
-                        child: Text(
-                          "${timetable[tableIndex + 4][0][2]}",
-                          style: const TextStyle(fontSize: 17),
-                        ),
-                      ),
-                      Container(
-                        alignment: AlignmentDirectional.center,
-                        color: wasedaColor,
-                        height: size.height * 0.06,
-                        width: size.width * 0.2,
-                        child: Text(
-                          "${timetable[tableIndex + 4][1][2]}",
-                          style: const TextStyle(fontSize: 17),
-                        ),
-                      ),
-                      Container(
-                        alignment: AlignmentDirectional.center,
-                        color: darkGrey,
-                        height: size.height * 0.06,
-                        width: size.width * 0.2,
-                        child: Text(
-                          "${timetable[tableIndex + 4][2][2]}",
-                          style: const TextStyle(fontSize: 17),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Container(
-                        alignment: AlignmentDirectional.center,
-                        color: darkGrey,
-                        height: size.height * 0.06,
                         width: size.width * 0.16,
                         child: Text(
                           timetable[8][tableIndex]["string3"],
                           style: const TextStyle(fontSize: 17),
                         ),
                       ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        alignment: AlignmentDirectional.center,
+                        color: darkGrey,
+                        height: size.height * 0.06,
+                        width: size.width * 0.2,
+                        child: Text(
+                            timetable[tableIndex + 4][0][0],
+                          style: const TextStyle(fontSize: 17, color: Colors.grey),
+                        ),
+                      ),
+                      Container(
+                        alignment: AlignmentDirectional.center,
+                        color: darkGrey,
+                        height: size.height * 0.06,
+                        width: size.width * 0.35,
+                        child: Text(
+                          timetable[tableIndex + 4][0][1],
+                          style: const TextStyle(fontSize: 17, color: Colors.grey),
+                        ),
+                      ),
+                      Container(
+                        alignment: AlignmentDirectional.center,
+                        color: darkGrey,
+                        height: size.height * 0.06,
+                        width: size.width * 0.2,
+                        child: Text(
+                          timetable[tableIndex + 4][0][2],
+                          style: const TextStyle(fontSize: 17, color: Colors.grey),
+                        ),
+                      ),
                       Container(
                         alignment: AlignmentDirectional.center,
                         color: darkGrey,
                         height: size.height * 0.06,
                         width: size.width * 0.16,
                         child: Text(
-                          "${timetable[tableIndex + 4][0][3]}",
+                          timetable[tableIndex + 4][0][3],
+                          style: const TextStyle(fontSize: 17, color: Colors.grey),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        alignment: AlignmentDirectional.center,
+                        color: wasedaColor,
+                        height: size.height * 0.06,
+                        width: size.width * 0.2,
+                        child: Text(
+                          timetable[tableIndex + 4][1][0],
+                          style: const TextStyle(fontSize: 17),
+                        ),
+                      ),
+                      Container(
+                        alignment: AlignmentDirectional.center,
+                        color: wasedaColor,
+                        height: size.height * 0.06,
+                        width: size.width * 0.35,
+                        child: Text(
+                          timetable[tableIndex + 4][1][1],
+                          style: const TextStyle(fontSize: 17),
+                        ),
+                      ),
+                      Container(
+                        alignment: AlignmentDirectional.center,
+                        color: wasedaColor,
+                        height: size.height * 0.06,
+                        width: size.width * 0.2,
+                        child: Text(
+                          timetable[tableIndex + 4][1][2],
                           style: const TextStyle(fontSize: 17),
                         ),
                       ),
@@ -207,7 +174,42 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: size.height * 0.06,
                         width: size.width * 0.16,
                         child: Text(
-                          "${timetable[tableIndex + 4][1][3]}",
+                          timetable[tableIndex + 4][1][3],
+                          style: const TextStyle(fontSize: 17),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        alignment: AlignmentDirectional.center,
+                        color: darkGrey,
+                        height: size.height * 0.06,
+                        width: size.width * 0.2,
+                        child: Text(
+                          timetable[tableIndex + 4][2][0],
+                          style: const TextStyle(fontSize: 17),
+                        ),
+                      ),
+                      Container(
+                        alignment: AlignmentDirectional.center,
+                        color: darkGrey,
+                        height: size.height * 0.06,
+                        width: size.width * 0.35,
+                        child: Text(
+                          timetable[tableIndex + 4][2][1],
+                          style: const TextStyle(fontSize: 17),
+                        ),
+                      ),
+                      Container(
+                        alignment: AlignmentDirectional.center,
+                        color: darkGrey,
+                        height: size.height * 0.06,
+                        width: size.width * 0.2,
+                        child: Text(
+                          timetable[tableIndex + 4][2][2],
                           style: const TextStyle(fontSize: 17),
                         ),
                       ),
@@ -217,7 +219,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: size.height * 0.06,
                         width: size.width * 0.16,
                         child: Text(
-                          "${timetable[tableIndex + 4][2][3]}",
+                          timetable[tableIndex + 4][2][3],
                           style: const TextStyle(fontSize: 17),
                         ),
                       ),

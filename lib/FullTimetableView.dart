@@ -46,7 +46,6 @@ class _FullTimetableViewState extends State<FullTimetableView> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          //alignment: AlignmentDirectional.topCenter,
           child: Column(
             children: [
               Row(
@@ -92,93 +91,11 @@ class _FullTimetableViewState extends State<FullTimetableView> {
               ),
               for (int i = 0; i < timetable[tableIndex].length; i++) ...{
                 if (i == timetable[8][tableIndex]["nextBusIndex"]) ...{
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        alignment: AlignmentDirectional.center,
-                        height: size.height * 0.05,
-                        width: size.width * 0.2,
-                        color: wasedaColor,
-                        child: Text(
-                          timetable[tableIndex][i][4],
-                          style: const TextStyle(fontSize: 17),
-                        ),
-                      ),
-                      Container(
-                        alignment: AlignmentDirectional.center,
-                        height: size.height * 0.05,
-                        width: size.width * 0.4,
-                        color: wasedaColor,
-                        child: Text(
-                          timetable[tableIndex][i][5],
-                          style: const TextStyle(fontSize: 17),
-                        ),
-                      ),
-                      Container(
-                        alignment: AlignmentDirectional.center,
-                        height: size.height * 0.05,
-                        width: size.width * 0.2,
-                        color: wasedaColor,
-                        child: Text(
-                          timetable[tableIndex][i][6],
-                          style: const TextStyle(fontSize: 17),
-                        ),
-                      ),
-                      Container(
-                        alignment: AlignmentDirectional.center,
-                        height: size.height * 0.05,
-                        width: size.width * 0.16,
-                        color: wasedaColor,
-                        child: Text(
-                          timetable[tableIndex][i][7],
-                          style: const TextStyle(fontSize: 17),
-                        ),
-                      ),
-                    ],
-                  ),
+                  OneRow(timetable: timetable, size: size, textStyle: const TextStyle(fontSize: 17), backgroundColor: wasedaColor, tableIndex: tableIndex, rowIndex: i),
+                } else if (i < timetable[8][tableIndex]["nextBusIndex"]) ...{
+                  OneRow(timetable: timetable, size: size, textStyle: const TextStyle(fontSize: 17, color: Colors.grey), backgroundColor: Colors.black, tableIndex: tableIndex, rowIndex: i),
                 } else ...{
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        alignment: AlignmentDirectional.center,
-                        height: size.height * 0.05,
-                        width: size.width * 0.2,
-                        child: Text(
-                          timetable[tableIndex][i][4],
-                          style: const TextStyle(fontSize: 17),
-                        ),
-                      ),
-                      Container(
-                        alignment: AlignmentDirectional.center,
-                        height: size.height * 0.05,
-                        width: size.width * 0.4,
-                        child: Text(
-                          timetable[tableIndex][i][5],
-                          style: const TextStyle(fontSize: 17),
-                        ),
-                      ),
-                      Container(
-                        alignment: AlignmentDirectional.center,
-                        height: size.height * 0.05,
-                        width: size.width * 0.2,
-                        child: Text(
-                          timetable[tableIndex][i][6],
-                          style: const TextStyle(fontSize: 17),
-                        ),
-                      ),
-                      Container(
-                        alignment: AlignmentDirectional.center,
-                        height: size.height * 0.05,
-                        width: size.width * 0.16,
-                        child: Text(
-                          timetable[tableIndex][i][7],
-                          style: const TextStyle(fontSize: 17),
-                        ),
-                      ),
-                    ],
-                  ),
+                  OneRow(timetable: timetable, size: size, textStyle: const TextStyle(fontSize: 17), backgroundColor: Colors.black, tableIndex: tableIndex, rowIndex: i)
                 },
               },
               Container(
@@ -190,6 +107,66 @@ class _FullTimetableViewState extends State<FullTimetableView> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class OneRow extends StatelessWidget {
+  final List timetable;
+  final Size size;
+  final TextStyle textStyle;
+  final Color backgroundColor;
+  final int tableIndex;
+  final int rowIndex;
+
+  const OneRow({Key? key, required this.timetable, required this.size, required this.textStyle, required this.backgroundColor, required this.tableIndex, required this.rowIndex}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          alignment: AlignmentDirectional.center,
+          height: size.height * 0.05,
+          width: size.width * 0.2,
+          color: backgroundColor,
+          child: Text(
+            timetable[tableIndex][rowIndex][4],
+            style: textStyle,
+          ),
+        ),
+        Container(
+          alignment: AlignmentDirectional.center,
+          height: size.height * 0.05,
+          width: size.width * 0.4,
+          color: backgroundColor,
+          child: Text(
+            timetable[tableIndex][rowIndex][5],
+            style: textStyle,
+          ),
+        ),
+        Container(
+          alignment: AlignmentDirectional.center,
+          height: size.height * 0.05,
+          width: size.width * 0.2,
+          color: backgroundColor,
+          child: Text(
+            timetable[tableIndex][rowIndex][6],
+            style: textStyle,
+          ),
+        ),
+        Container(
+          alignment: AlignmentDirectional.center,
+          height: size.height * 0.05,
+          width: size.width * 0.16,
+          color: backgroundColor,
+          child: Text(
+            timetable[tableIndex][rowIndex][7],
+            style: textStyle,
+          ),
+        ),
+      ],
     );
   }
 }
