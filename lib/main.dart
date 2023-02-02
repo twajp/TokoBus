@@ -46,8 +46,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   List timetable = code();
   int count = 0;
-  static const Color wasedaColor = Color.fromRGBO(44, 44, 46, 1);
-  static const Color darkGrey = Color.fromRGBO(142, 23, 40, 1);
+  static const Color darkGrey = Color.fromRGBO(44, 44, 46, 1);
+  static const Color wasedaColor = Color.fromRGBO(142, 23, 40, 1);
 
   Future<void> mainLoop() async {
     while (true) {
@@ -107,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             children: [
                               Container(
                                 alignment: AlignmentDirectional.center,
-                                color: wasedaColor,
+                                color: darkGrey,
                                 height: size.height * 0.06 * 4,
                                 width: size.width * (0.2 + 0.35 + 0.2 + 0.16) * 1.05,
                               ),
@@ -119,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       children: [
                                         Container(
                                           alignment: AlignmentDirectional.center,
-                                          color: wasedaColor,
+                                          color: darkGrey,
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
@@ -129,7 +129,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         ),
                                         Container(
                                           alignment: AlignmentDirectional.center,
-                                          color: wasedaColor,
+                                          color: darkGrey,
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
@@ -139,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         ),
                                         Container(
                                           alignment: AlignmentDirectional.center,
-                                          color: darkGrey,
+                                          color: wasedaColor,
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
@@ -149,7 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         ),
                                         Container(
                                           alignment: AlignmentDirectional.center,
-                                          color: wasedaColor,
+                                          color: darkGrey,
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
@@ -164,7 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     children: [
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
@@ -174,7 +174,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
@@ -184,7 +184,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
+                                        color: wasedaColor,
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
@@ -194,7 +194,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
@@ -208,7 +208,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     children: [
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
@@ -218,7 +218,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
@@ -228,7 +228,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
+                                        color: wasedaColor,
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
@@ -238,7 +238,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
@@ -252,7 +252,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     children: [
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
@@ -262,7 +262,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
@@ -272,7 +272,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
+                                        color: wasedaColor,
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
@@ -282,7 +282,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
@@ -334,7 +334,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             children: [
                               Container(
                                 alignment: AlignmentDirectional.center,
-                                color: wasedaColor,
+                                color: darkGrey,
                                 height: size.height * 0.06 * 4,
                                 width: size.width * (0.2 + 0.35 + 0.2 + 0.16) * 1.05,
                               ),
@@ -346,7 +346,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       children: [
                                         Container(
                                           alignment: AlignmentDirectional.center,
-                                          color: wasedaColor,
+                                          color: darkGrey,
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
@@ -356,7 +356,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         ),
                                         Container(
                                           alignment: AlignmentDirectional.center,
-                                          color: wasedaColor,
+                                          color: darkGrey,
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
@@ -366,7 +366,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         ),
                                         Container(
                                           alignment: AlignmentDirectional.center,
-                                          color: darkGrey,
+                                          color: wasedaColor,
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
@@ -376,7 +376,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         ),
                                         Container(
                                           alignment: AlignmentDirectional.center,
-                                          color: wasedaColor,
+                                          color: darkGrey,
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
@@ -391,7 +391,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     children: [
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
@@ -401,7 +401,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
@@ -411,7 +411,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
+                                        color: wasedaColor,
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
@@ -421,7 +421,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
@@ -435,7 +435,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     children: [
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
@@ -445,7 +445,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
@@ -455,7 +455,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
+                                        color: wasedaColor,
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
@@ -465,7 +465,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
@@ -479,7 +479,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     children: [
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
@@ -489,7 +489,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
@@ -499,7 +499,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
+                                        color: wasedaColor,
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
@@ -509,7 +509,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
@@ -565,7 +565,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             children: [
                               Container(
                                 alignment: AlignmentDirectional.center,
-                                color: wasedaColor,
+                                color: darkGrey,
                                 height: size.height * 0.06 * 4,
                                 width: size.width * (0.2 + 0.35 + 0.2 + 0.16) * 1.05,
                               ),
@@ -577,7 +577,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       children: [
                                         Container(
                                           alignment: AlignmentDirectional.center,
-                                          color: wasedaColor,
+                                          color: darkGrey,
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
@@ -587,7 +587,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         ),
                                         Container(
                                           alignment: AlignmentDirectional.center,
-                                          color: wasedaColor,
+                                          color: darkGrey,
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
@@ -597,7 +597,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         ),
                                         Container(
                                           alignment: AlignmentDirectional.center,
-                                          color: darkGrey,
+                                          color: wasedaColor,
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
@@ -607,7 +607,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         ),
                                         Container(
                                           alignment: AlignmentDirectional.center,
-                                          color: wasedaColor,
+                                          color: darkGrey,
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
@@ -622,7 +622,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     children: [
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
@@ -632,7 +632,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
@@ -642,7 +642,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
+                                        color: wasedaColor,
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
@@ -652,7 +652,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
@@ -666,7 +666,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     children: [
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
@@ -676,7 +676,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
@@ -686,7 +686,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
+                                        color: wasedaColor,
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
@@ -696,7 +696,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
@@ -710,7 +710,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     children: [
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
@@ -720,7 +720,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
@@ -730,7 +730,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
+                                        color: wasedaColor,
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
@@ -740,7 +740,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
@@ -792,7 +792,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             children: [
                               Container(
                                 alignment: AlignmentDirectional.center,
-                                color: wasedaColor,
+                                color: darkGrey,
                                 height: size.height * 0.06 * 4,
                                 width: size.width * (0.2 + 0.35 + 0.2 + 0.16) * 1.05,
                               ),
@@ -804,7 +804,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       children: [
                                         Container(
                                           alignment: AlignmentDirectional.center,
-                                          color: wasedaColor,
+                                          color: darkGrey,
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
@@ -814,7 +814,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         ),
                                         Container(
                                           alignment: AlignmentDirectional.center,
-                                          color: wasedaColor,
+                                          color: darkGrey,
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
@@ -824,7 +824,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         ),
                                         Container(
                                           alignment: AlignmentDirectional.center,
-                                          color: darkGrey,
+                                          color: wasedaColor,
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
@@ -834,7 +834,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         ),
                                         Container(
                                           alignment: AlignmentDirectional.center,
-                                          color: wasedaColor,
+                                          color: darkGrey,
                                           height: size.height * 0.06,
                                           width: size.width * 0.2,
                                           child: Text(
@@ -849,7 +849,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     children: [
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
@@ -859,7 +859,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
@@ -869,7 +869,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
+                                        color: wasedaColor,
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
@@ -879,7 +879,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.35,
                                         child: Text(
@@ -893,7 +893,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     children: [
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
@@ -903,7 +903,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
@@ -913,7 +913,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
+                                        color: wasedaColor,
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
@@ -923,7 +923,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.2,
                                         child: Text(
@@ -937,7 +937,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     children: [
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
@@ -947,7 +947,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
@@ -957,7 +957,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: darkGrey,
+                                        color: wasedaColor,
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
@@ -967,7 +967,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                       Container(
                                         alignment: AlignmentDirectional.center,
-                                        color: wasedaColor,
+                                        color: darkGrey,
                                         height: size.height * 0.06,
                                         width: size.width * 0.16,
                                         child: Text(
