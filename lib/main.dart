@@ -523,7 +523,12 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ],
                           ),
-                          Spacer()
+                          Spacer(),
+                          Container(
+                            alignment: Alignment.center,
+                            height: 50,
+                            child: Text("${timetable[8]["tableVer"]} ${timetable[8]["dayOfWeek"]}ダイヤ"),
+                          ),
                         ],
                       ),
                     ),
@@ -977,11 +982,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                     ],
                                   ),
+
                                 ],
                               ),
                             ],
                           ),
-                          Spacer()
+                          Spacer(),
+                          Container(
+                            alignment: Alignment.center,
+                            height: 50,
+                            child: Text("${timetable[8]["tableVer"]} ${timetable[8]["dayOfWeek"]}ダイヤ"),
+                          ),
                         ],
                       ),
                     ),
