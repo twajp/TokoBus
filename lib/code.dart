@@ -41,6 +41,11 @@ List code() {
   }
 
   for (int tableIndex = 0; tableIndex <= 3; tableIndex++) {
+    //日曜・祝日の場合何もせずreturn
+    if (timetable[tableIndex] == []) {
+      return timetable;
+    }
+
     //時刻と残り時間をdatetime型でリストに追加
     for (int i = 0; i < timetable[tableIndex].length; i++) {
       var dtBus = lastMidnight.add(Duration(hours: timetable[tableIndex][i][0], minutes: timetable[tableIndex][i][1]));

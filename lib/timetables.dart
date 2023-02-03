@@ -423,6 +423,8 @@ List timetables() {
     //日曜日か祝日
     timetable.add(stationCampusSundaysHolidays);
     timetable.add(campusStationSundaysHolidays);
+    timetable.add([]);
+    timetable.add([]);
     tableInfo["dayOfWeek"] = "日曜日/祝日";
   } else if (dt.weekday >= 1 && dt.weekday <= 5) {
     //平日
