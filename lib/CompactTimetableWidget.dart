@@ -99,7 +99,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: size.height * 0.06,
                         width: size.width * 0.2,
                         child: Text(
-                            timetable[tableIndex + 4][0][0],
+                          timetable[tableIndex + 4][0][0],
                           style: const TextStyle(fontSize: 17, color: Colors.grey),
                         ),
                       ),
