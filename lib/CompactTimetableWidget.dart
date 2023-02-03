@@ -234,7 +234,12 @@ class CompactTimetableWidget extends StatelessWidget {
             Container(
               alignment: Alignment.center,
               height: 50,
-              child: Text("${timetable[8]["tableVer"]} ${timetable[8]["dayOfWeek"]}ダイヤ"),
+              child: Text(
+                "${timetable[8]["dayOfWeek"]}ダイヤ   時刻表Ver: ${timetable[8]["tableVer"]}\n"
+                "3/28の特別ダイヤは非対応です",
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.grey),
+              ),
             ),
           }
         ],

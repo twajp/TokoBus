@@ -10,12 +10,12 @@ List code() {
 
   String calcTimeRemaining(Duration time) {
     if (time.isNegative == false) {
-      int secondsFull = time.inSeconds;
+      int secondsFull = time.inSeconds + 1;
       int seconds = secondsFull % 60;
       int minutes = secondsFull ~/ 60 % 60;
       int hours = secondsFull / 60 ~/ 60;
-      if (time.inHours == 0) {
-        if (time.inMinutes == 0) {
+      if (hours == 0) {
+        if (minutes == 0) {
           return "$seconds秒";
         } else {
           return "$minutes分$seconds秒";
@@ -24,18 +24,18 @@ List code() {
         return "$hours時間$minutes分$seconds秒";
       }
     } else {
-      int secondsFull = time.inSeconds - 1;
+      int secondsFull = time.inSeconds;
       int seconds = secondsFull % 60;
       int minutes = secondsFull ~/ 60 % 60;
       int hours = secondsFull / 60 ~/ 60;
-      if (time.inHours == 0) {
-        if (time.inMinutes == 0) {
+      if (hours == 0) {
+        if (minutes == 0) {
           return "-${(60 - seconds) % 60}秒";
         } else {
-          return "-${60 - minutes}分${(60 - seconds) % 60}秒";
+          return "-${(60 - minutes) % 60}分${(60 - seconds) % 60}秒";
         }
       } else {
-        return "$hours時間${60 - minutes}分${(60 - seconds) % 60}秒";
+        return "$hours時間${(60 - minutes) % 60}分${(60 - seconds) % 60}秒";
       }
     }
   }
