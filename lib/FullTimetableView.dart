@@ -45,66 +45,72 @@ class _FullTimetableViewState extends State<FullTimetableView> {
         title: Text(timetable[8][tableIndex]["title"]),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    alignment: AlignmentDirectional.center,
-                    height: size.height * 0.05,
-                    width: size.width * 0.2,
-                    child: Text(
-                      timetable[8][tableIndex]["string0"],
-                      style: const TextStyle(fontSize: 17),
-                    ),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  alignment: AlignmentDirectional.center,
+                  height: size.height * 0.05,
+                  width: size.width * 0.2,
+                  child: Text(
+                    timetable[8][tableIndex]["string0"],
+                    style: const TextStyle(fontSize: 17),
                   ),
-                  Container(
-                    alignment: AlignmentDirectional.center,
-                    height: size.height * 0.05,
-                    width: size.width * 0.4,
-                    child: Text(
-                      timetable[8][tableIndex]["string1"],
-                      style: const TextStyle(fontSize: 17),
-                    ),
+                ),
+                Container(
+                  alignment: AlignmentDirectional.center,
+                  height: size.height * 0.05,
+                  width: size.width * 0.4,
+                  child: Text(
+                    timetable[8][tableIndex]["string1"],
+                    style: const TextStyle(fontSize: 17),
                   ),
-                  Container(
-                    alignment: AlignmentDirectional.center,
-                    height: size.height * 0.05,
-                    width: size.width * 0.2,
-                    child: Text(
-                      timetable[8][tableIndex]["string2"],
-                      style: const TextStyle(fontSize: 17),
-                    ),
+                ),
+                Container(
+                  alignment: AlignmentDirectional.center,
+                  height: size.height * 0.05,
+                  width: size.width * 0.2,
+                  child: Text(
+                    timetable[8][tableIndex]["string2"],
+                    style: const TextStyle(fontSize: 17),
                   ),
-                  Container(
-                    alignment: AlignmentDirectional.center,
-                    height: size.height * 0.05,
-                    width: size.width * 0.16,
-                    child: Text(
-                      timetable[8][tableIndex]["string3"],
-                      style: const TextStyle(fontSize: 17),
-                    ),
+                ),
+                Container(
+                  alignment: AlignmentDirectional.center,
+                  height: size.height * 0.05,
+                  width: size.width * 0.16,
+                  child: Text(
+                    timetable[8][tableIndex]["string3"],
+                    style: const TextStyle(fontSize: 17),
                   ),
-                ],
+                ),
+              ],
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    for (int i = 0; i < timetable[tableIndex].length; i++) ...{
+                      if (i == timetable[8][tableIndex]["nextBusIndex"]) ...{
+                        OneRow(timetable: timetable, size: size, textStyle: const TextStyle(fontSize: 17), backgroundColor: wasedaColor, tableIndex: tableIndex, rowIndex: i),
+                      } else if (i < timetable[8][tableIndex]["nextBusIndex"]) ...{
+                        OneRow(timetable: timetable, size: size, textStyle: const TextStyle(fontSize: 17, color: Colors.grey), backgroundColor: Colors.black, tableIndex: tableIndex, rowIndex: i),
+                      } else ...{
+                        OneRow(timetable: timetable, size: size, textStyle: const TextStyle(fontSize: 17), backgroundColor: Colors.black, tableIndex: tableIndex, rowIndex: i)
+                      },
+                    },
+                    Container(
+                      alignment: Alignment.center,
+                      height: 50,
+                      child: Text("${timetable[8]["tableVer"]} ${timetable[8]["dayOfWeek"]}ダイヤ"),
+                    ),
+                  ],
+                ),
               ),
-              for (int i = 0; i < timetable[tableIndex].length; i++) ...{
-                if (i == timetable[8][tableIndex]["nextBusIndex"]) ...{
-                  OneRow(timetable: timetable, size: size, textStyle: const TextStyle(fontSize: 17), backgroundColor: wasedaColor, tableIndex: tableIndex, rowIndex: i),
-                } else if (i < timetable[8][tableIndex]["nextBusIndex"]) ...{
-                  OneRow(timetable: timetable, size: size, textStyle: const TextStyle(fontSize: 17, color: Colors.grey), backgroundColor: Colors.black, tableIndex: tableIndex, rowIndex: i),
-                } else ...{
-                  OneRow(timetable: timetable, size: size, textStyle: const TextStyle(fontSize: 17), backgroundColor: Colors.black, tableIndex: tableIndex, rowIndex: i)
-                },
-              },
-              Container(
-                alignment: Alignment.center,
-                height: 50,
-                child: Text("${timetable[8]["tableVer"]} ${timetable[8]["dayOfWeek"]}ダイヤ"),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
