@@ -3,10 +3,11 @@ import 'code.dart';
 
 class FullTimetableView extends StatefulWidget {
   final List timetable;
-  final Size size;
+  final double height;
+  final double width;
   final int tableIndex;
 
-  const FullTimetableView({Key? key, required this.timetable, required this.size, required this.tableIndex}) : super(key: key);
+  const FullTimetableView({Key? key, required this.timetable, required this.height, required this.width, required this.tableIndex}) : super(key: key);
 
   @override
   State<FullTimetableView> createState() => _FullTimetableViewState();
@@ -15,7 +16,8 @@ class FullTimetableView extends StatefulWidget {
 class _FullTimetableViewState extends State<FullTimetableView> {
   // 状態を管理する変数
   late List timetable;
-  late Size size;
+  late double height;
+  late double width;
   late int tableIndex;
 
   @override
@@ -23,7 +25,8 @@ class _FullTimetableViewState extends State<FullTimetableView> {
     super.initState();
     // 受け取ったデータを状態を管理する変数に格納
     timetable = widget.timetable;
-    size = widget.size;
+    height = widget.height;
+    width = widget.width;
     tableIndex = widget.tableIndex;
     mainLoop();
   }
@@ -52,8 +55,8 @@ class _FullTimetableViewState extends State<FullTimetableView> {
               children: [
                 Container(
                   alignment: AlignmentDirectional.center,
-                  height: size.height * 0.05,
-                  width: size.width * 0.2,
+                  height: height * 0.05,
+                  width: width * 0.2,
                   child: Text(
                     timetable[8][tableIndex]["string0"],
                     style: const TextStyle(fontSize: 17),
@@ -61,8 +64,8 @@ class _FullTimetableViewState extends State<FullTimetableView> {
                 ),
                 Container(
                   alignment: AlignmentDirectional.center,
-                  height: size.height * 0.05,
-                  width: size.width * 0.4,
+                  height: height * 0.05,
+                  width: width * 0.4,
                   child: Text(
                     timetable[8][tableIndex]["string1"],
                     style: const TextStyle(fontSize: 17),
@@ -70,8 +73,8 @@ class _FullTimetableViewState extends State<FullTimetableView> {
                 ),
                 Container(
                   alignment: AlignmentDirectional.center,
-                  height: size.height * 0.05,
-                  width: size.width * 0.2,
+                  height: height * 0.05,
+                  width: width * 0.2,
                   child: Text(
                     timetable[8][tableIndex]["string2"],
                     style: const TextStyle(fontSize: 17),
@@ -79,8 +82,8 @@ class _FullTimetableViewState extends State<FullTimetableView> {
                 ),
                 Container(
                   alignment: AlignmentDirectional.center,
-                  height: size.height * 0.05,
-                  width: size.width * 0.16,
+                  height: height * 0.05,
+                  width: width * 0.16,
                   child: Text(
                     timetable[8][tableIndex]["string3"],
                     style: const TextStyle(fontSize: 17),
@@ -94,11 +97,11 @@ class _FullTimetableViewState extends State<FullTimetableView> {
                   children: [
                     for (int i = 0; i < timetable[tableIndex].length; i++) ...{
                       if (i == timetable[8][tableIndex]["nextBusIndex"]) ...{
-                        OneRow(timetable: timetable, size: size, textStyle: const TextStyle(fontSize: 17), backgroundColor: wasedaColor, tableIndex: tableIndex, rowIndex: i),
+                        OneRow(timetable: timetable, height: height, width: width, textStyle: const TextStyle(fontSize: 17), backgroundColor: wasedaColor, tableIndex: tableIndex, rowIndex: i),
                       } else if (i < timetable[8][tableIndex]["nextBusIndex"]) ...{
-                        OneRow(timetable: timetable, size: size, textStyle: const TextStyle(fontSize: 17, color: Colors.grey), backgroundColor: Colors.black, tableIndex: tableIndex, rowIndex: i),
+                        OneRow(timetable: timetable, height: height, width: width, textStyle: const TextStyle(fontSize: 17, color: Colors.grey), backgroundColor: Colors.black, tableIndex: tableIndex, rowIndex: i),
                       } else ...{
-                        OneRow(timetable: timetable, size: size, textStyle: const TextStyle(fontSize: 17), backgroundColor: Colors.black, tableIndex: tableIndex, rowIndex: i)
+                        OneRow(timetable: timetable, height: height, width: width, textStyle: const TextStyle(fontSize: 17), backgroundColor: Colors.black, tableIndex: tableIndex, rowIndex: i)
                       },
                     },
                     Container(
@@ -124,13 +127,14 @@ class _FullTimetableViewState extends State<FullTimetableView> {
 
 class OneRow extends StatelessWidget {
   final List timetable;
-  final Size size;
+  final double height;
+  final double width;
   final TextStyle textStyle;
   final Color backgroundColor;
   final int tableIndex;
   final int rowIndex;
 
-  const OneRow({Key? key, required this.timetable, required this.size, required this.textStyle, required this.backgroundColor, required this.tableIndex, required this.rowIndex}) : super(key: key);
+  const OneRow({Key? key, required this.timetable, required this.height, required this.width, required this.textStyle, required this.backgroundColor, required this.tableIndex, required this.rowIndex}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -139,8 +143,8 @@ class OneRow extends StatelessWidget {
       children: [
         Container(
           alignment: AlignmentDirectional.center,
-          height: size.height * 0.05,
-          width: size.width * 0.2,
+          height: height * 0.05,
+          width: width * 0.2,
           color: backgroundColor,
           child: Text(
             timetable[tableIndex][rowIndex][4],
@@ -149,8 +153,8 @@ class OneRow extends StatelessWidget {
         ),
         Container(
           alignment: AlignmentDirectional.center,
-          height: size.height * 0.05,
-          width: size.width * 0.4,
+          height: height * 0.05,
+          width: width * 0.4,
           color: backgroundColor,
           child: Text(
             timetable[tableIndex][rowIndex][5],
@@ -159,8 +163,8 @@ class OneRow extends StatelessWidget {
         ),
         Container(
           alignment: AlignmentDirectional.center,
-          height: size.height * 0.05,
-          width: size.width * 0.2,
+          height: height * 0.05,
+          width: width * 0.2,
           color: backgroundColor,
           child: Text(
             timetable[tableIndex][rowIndex][6],
@@ -169,8 +173,8 @@ class OneRow extends StatelessWidget {
         ),
         Container(
           alignment: AlignmentDirectional.center,
-          height: size.height * 0.05,
-          width: size.width * 0.16,
+          height: height * 0.05,
+          width: width * 0.16,
           color: backgroundColor,
           child: Text(
             timetable[tableIndex][rowIndex][7],
