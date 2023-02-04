@@ -1,6 +1,6 @@
 {
-    "name": "tokobus",
-    "short_name": "tokobus",
+    "name": "TokoBus",
+    "short_name": "TokoBus",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
