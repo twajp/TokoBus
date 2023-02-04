@@ -93,6 +93,9 @@ class _FullTimetableViewState extends State<FullTimetableView> {
             ),
             Expanded(
               child: SingleChildScrollView(
+                controller: ScrollController(
+                  initialScrollOffset: (timetable[8][tableIndex]["nextBusIndex"] - 1) * height * 0.05,
+                ),
                 child: Column(
                   children: [
                     for (int i = 0; i < timetable[tableIndex].length; i++) ...{
