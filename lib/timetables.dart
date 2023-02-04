@@ -344,7 +344,7 @@ List timetables() {
     2: {"title": "キャンパス → FRC", "string0": "発車時刻", "string1": "残り時間", "string2": "乗車場所", "string3": "接続", "nextBusIndex": 0},
     3: {"title": "FRC → キャンパス", "string0": "発車時刻", "string1": "残り時間", "string2": "降車場所", "string3": "接続", "nextBusIndex": 0},
     "tableVer": "2023春季休業期間",
-    "dayOfWeek": "",
+    "tableSelected": "",
   };
 
   List timetable = [];
@@ -361,30 +361,29 @@ List timetables() {
     timetable.add(campusStationSundaysHolidays);
     timetable.add([]);
     timetable.add([]);
-    tableInfo["dayOfWeek"] = "日曜日/祝日";
+    tableInfo["tableSelected"] = "日曜日/祝日";
   } else if (dt.weekday >= 1 && dt.weekday <= 5) {
     //平日
     timetable.add(stationCampusWeekdays);
     timetable.add(campusStationWeekdays);
     timetable.add(campusFRCWeekdays);
     timetable.add(frcCampusWeekdays);
-    tableInfo["dayOfWeek"] = "平日";
+    tableInfo["tableSelected"] = "平日";
   } else {
     //土曜日
     timetable.add(stationCampusSaturdays);
     timetable.add(campusStationSaturdays);
     timetable.add(campusFRCSaturdays);
     timetable.add(frcCampusSaturdays);
-    tableInfo["dayOfWeek"] = "土曜日";
+    tableInfo["tableSelected"] = "土曜日";
   }
 
   // 3/28の特別ダイヤ
-  if (dt.month == 3 && dt.day == 28){
-    timetable[0]=stationCampusSpecial;
-    timetable[1]=campusStationSpecial;
-    tableInfo["dayOfWeek"] = "3/28特別";
+  if (dt.month == 3 && dt.day == 28) {
+    timetable[0] = stationCampusSpecial;
+    timetable[1] = campusStationSpecial;
+    tableInfo["tableSelected"] = "3/28特別";
   }
-
 
   for (int i = 0; i <= 3; i++) {
     timetable.insert(i + 4, [
