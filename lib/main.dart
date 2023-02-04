@@ -124,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             } else ...{
-              // Web版などの横長の画面の場合
+              // Web版やiPadなどの横長の画面の場合
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
