@@ -131,24 +131,20 @@ class _MyHomePageState extends State<MyHomePage> {
                   Expanded(
                     flex: 4,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        const Spacer(),
                         CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width / 2.2, tableIndex: 0),
-                        const Spacer(),
                         CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width / 2.2, tableIndex: 2),
-                        const Spacer(),
                       ],
                     ),
                   ),
                   Expanded(
                     flex: 5,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        const Spacer(),
                         CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width / 2.2, tableIndex: 1),
-                        const Spacer(),
                         CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width / 2.2, tableIndex: 3),
-                        const Spacer(),
                       ],
                     ),
                   ),
