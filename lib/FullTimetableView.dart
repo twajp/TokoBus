@@ -149,6 +149,7 @@ class OneRow extends StatelessWidget {
           child: Text(
             timetable[tableIndex][rowIndex][4],
             style: textStyle,
+            softWrap: false,
           ),
         ),
         Container(
@@ -159,6 +160,7 @@ class OneRow extends StatelessWidget {
           child: Text(
             timetable[tableIndex][rowIndex][5],
             style: textStyle,
+            softWrap: false,
           ),
         ),
         Container(
@@ -169,6 +171,7 @@ class OneRow extends StatelessWidget {
           child: Text(
             timetable[tableIndex][rowIndex][6],
             style: textStyle,
+            softWrap: false,
           ),
         ),
         Container(
@@ -179,6 +182,7 @@ class OneRow extends StatelessWidget {
           child: Text(
             timetable[tableIndex][rowIndex][7],
             style: textStyle,
+            softWrap: false,
           ),
         ),
       ],
