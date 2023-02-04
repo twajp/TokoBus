@@ -339,10 +339,10 @@ List timetables() {
   ];
 
   Map tableInfo = {
-    0: {"title": "小手指駅 → キャンパス", "string0": "発車時刻", "string1": "残り時間", "string2": "乗車場所", "string3": "車椅子", "nextBusIndex": 0},
-    1: {"title": "キャンパス → 小手指駅", "string0": "発車時刻", "string1": "残り時間", "string2": "降車場所", "string3": "車椅子", "nextBusIndex": 0},
-    2: {"title": "キャンパス → FRC", "string0": "発車時刻", "string1": "残り時間", "string2": "乗車場所", "string3": "接続", "nextBusIndex": 0},
-    3: {"title": "FRC → キャンパス", "string0": "発車時刻", "string1": "残り時間", "string2": "降車場所", "string3": "接続", "nextBusIndex": 0},
+    0: {"title": "小手指駅 → キャンパス", "string0": "発車時刻", "string1": "残り時間", "string2": "乗車場所", "string3": "車椅子", "nextBusIndex": 1000},
+    1: {"title": "キャンパス → 小手指駅", "string0": "発車時刻", "string1": "残り時間", "string2": "降車場所", "string3": "車椅子", "nextBusIndex": 1000},
+    2: {"title": "キャンパス → FRC", "string0": "発車時刻", "string1": "残り時間", "string2": "乗車場所", "string3": "接続", "nextBusIndex": 1000},
+    3: {"title": "FRC → キャンパス", "string0": "発車時刻", "string1": "残り時間", "string2": "降車場所", "string3": "接続", "nextBusIndex": 1000},
     "tableVer": "2023春季休業期間",
     "tableSelected": "",
   };
