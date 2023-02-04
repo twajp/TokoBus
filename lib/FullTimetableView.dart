@@ -105,7 +105,7 @@ class _FullTimetableViewState extends State<FullTimetableView> {
                       alignment: Alignment.center,
                       height: 50,
                       child: Text(
-                        "${timetable[8]["dayOfWeek"]}ダイヤ   時刻表Ver: ${timetable[8]["tableVer"]}\n"
+                        "${timetable[8]["tableSelected"]}ダイヤ   時刻表Ver: ${timetable[8]["tableVer"]}\n"
                         "3/28の特別ダイヤにも対応しています",
                         textAlign: TextAlign.center,
                         style: const TextStyle(color: Colors.grey),
