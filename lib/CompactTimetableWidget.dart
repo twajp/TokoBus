@@ -33,6 +33,7 @@ class CompactTimetableWidget extends StatelessWidget {
             child: Text(
               timetable[8][tableIndex]["title"],
               style: const TextStyle(fontSize: 30),
+              softWrap: false,
             ),
           ),
           Stack(
@@ -57,6 +58,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         child: Text(
                           timetable[8][tableIndex]["string0"],
                           style: const TextStyle(fontSize: 17),
+                          softWrap: false,
                         ),
                       ),
                       Container(
@@ -67,6 +69,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         child: Text(
                           timetable[8][tableIndex]["string1"],
                           style: const TextStyle(fontSize: 17),
+                          softWrap: false,
                         ),
                       ),
                       Container(
@@ -77,6 +80,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         child: Text(
                           timetable[8][tableIndex]["string2"],
                           style: const TextStyle(fontSize: 17),
+                          softWrap: false,
                         ),
                       ),
                       Container(
@@ -87,6 +91,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         child: Text(
                           timetable[8][tableIndex]["string3"],
                           style: const TextStyle(fontSize: 17),
+                          softWrap: false,
                         ),
                       ),
                     ],
@@ -102,6 +107,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         child: Text(
                           timetable[tableIndex + 4][0][0],
                           style: const TextStyle(fontSize: 17, color: Colors.grey),
+                          softWrap: false,
                         ),
                       ),
                       Container(
@@ -112,6 +118,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         child: Text(
                           timetable[tableIndex + 4][0][1],
                           style: const TextStyle(fontSize: 17, color: Colors.grey),
+                          softWrap: false,
                         ),
                       ),
                       Container(
@@ -122,6 +129,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         child: Text(
                           timetable[tableIndex + 4][0][2],
                           style: const TextStyle(fontSize: 17, color: Colors.grey),
+                          softWrap: false,
                         ),
                       ),
                       Container(
@@ -132,6 +140,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         child: Text(
                           timetable[tableIndex + 4][0][3],
                           style: const TextStyle(fontSize: 17, color: Colors.grey),
+                          softWrap: false,
                         ),
                       ),
                     ],
@@ -147,6 +156,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         child: Text(
                           timetable[tableIndex + 4][1][0],
                           style: const TextStyle(fontSize: 17),
+                          softWrap: false,
                         ),
                       ),
                       Container(
@@ -157,6 +167,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         child: Text(
                           timetable[tableIndex + 4][1][1],
                           style: const TextStyle(fontSize: 17),
+                          softWrap: false,
                         ),
                       ),
                       Container(
@@ -167,6 +178,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         child: Text(
                           timetable[tableIndex + 4][1][2],
                           style: const TextStyle(fontSize: 17),
+                          softWrap: false,
                         ),
                       ),
                       Container(
@@ -177,6 +189,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         child: Text(
                           timetable[tableIndex + 4][1][3],
                           style: const TextStyle(fontSize: 17),
+                          softWrap: false,
                         ),
                       ),
                     ],
@@ -192,6 +205,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         child: Text(
                           timetable[tableIndex + 4][2][0],
                           style: const TextStyle(fontSize: 17),
+                          softWrap: false,
                         ),
                       ),
                       Container(
@@ -202,6 +216,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         child: Text(
                           timetable[tableIndex + 4][2][1],
                           style: const TextStyle(fontSize: 17),
+                          softWrap: false,
                         ),
                       ),
                       Container(
@@ -212,6 +227,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         child: Text(
                           timetable[tableIndex + 4][2][2],
                           style: const TextStyle(fontSize: 17),
+                          softWrap: false,
                         ),
                       ),
                       Container(
@@ -222,6 +238,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         child: Text(
                           timetable[tableIndex + 4][2][3],
                           style: const TextStyle(fontSize: 17),
+                          softWrap: false,
                         ),
                       ),
                     ],
