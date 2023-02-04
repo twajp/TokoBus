@@ -71,30 +71,100 @@ class _MyHomePageState extends State<MyHomePage> {
         child: PageView(
           controller: controller,
           children: <Widget>[
-            Column(
-              children: <Widget>[
-                Expanded(
-                  flex: 4, // 割合
-                  child: CompactTimetableWidget(timetable: timetable, size: size, tableIndex: 0),
-                ),
-                Expanded(
-                  flex: 6, // 割合
-                  child: CompactTimetableWidget(timetable: timetable, size: size, tableIndex: 1),
-                ),
-              ],
-            ),
-            Column(
-              children: <Widget>[
-                Expanded(
-                  flex: 4, // 割合
-                  child: CompactTimetableWidget(timetable: timetable, size: size, tableIndex: 2),
-                ),
-                Expanded(
-                  flex: 6, // 割合
-                  child: CompactTimetableWidget(timetable: timetable, size: size, tableIndex: 3),
-                ),
-              ],
-            ),
+            if (size.height > size.width) ...{
+              // 縦長の画面の場合
+              Column(
+                children: <Widget>[
+                  Expanded(
+                    flex: 4, // 割合
+                    child: CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width, tableIndex: 0),
+                  ),
+                  Expanded(
+                    flex: 5, // 割合
+                    child: CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width, tableIndex: 1),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 50,
+                      child: Text(
+                        "${timetable[8]["tableSelected"]}ダイヤ   時刻表Ver: ${timetable[8]["tableVer"]}\n"
+                        "3/28の特別ダイヤにも対応しています",
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(color: Colors.grey),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Expanded(
+                    flex: 4, // 割合
+                    child: CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width, tableIndex: 2),
+                  ),
+                  Expanded(
+                    flex: 5, // 割合
+                    child: CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width, tableIndex: 3),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 50,
+                      child: Text(
+                        "${timetable[8]["tableSelected"]}ダイヤ   時刻表Ver: ${timetable[8]["tableVer"]}\n"
+                        "3/28の特別ダイヤにも対応しています",
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(color: Colors.grey),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            } else ...{
+              // Web版などの横長の画面の場合
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    flex: 4,
+                    child: Row(
+                      children: <Widget>[
+                        const Spacer(),
+                        CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width / 2.2, tableIndex: 0),
+                        const Spacer(),
+                        CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width / 2.2, tableIndex: 2),
+                        const Spacer(),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    flex: 5,
+                    child: Row(
+                      children: <Widget>[
+                        const Spacer(),
+                        CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width / 2.2, tableIndex: 1),
+                        const Spacer(),
+                        CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width / 2.2, tableIndex: 3),
+                        const Spacer(),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    height: 50,
+                    child: Text(
+                      "${timetable[8]["tableSelected"]}ダイヤ   時刻表Ver: ${timetable[8]["tableVer"]}\n"
+                          "3/28の特別ダイヤにも対応しています",
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                ],
+              ),
+            }
           ],
         ),
       ),
