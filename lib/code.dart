@@ -10,7 +10,7 @@ List code() {
 
   String calcTimeRemaining(Duration time) {
     if (time.isNegative == false) {
-      int secondsFull = time.inSeconds + 1;
+      int secondsFull = time.inSeconds;
       int seconds = secondsFull % 60;
       int minutes = secondsFull ~/ 60 % 60;
       int hours = secondsFull / 60 ~/ 60;
@@ -24,7 +24,7 @@ List code() {
         return "$hours時間$minutes分$seconds秒";
       }
     } else {
-      int secondsFull = time.inSeconds;
+      int secondsFull = time.inSeconds - 1;
       int seconds = secondsFull % 60;
       int minutes = secondsFull ~/ 60 % 60;
       int hours = secondsFull / 60 ~/ 60;
