@@ -7,4 +7,4 @@
 
 [Web版](https://twajp.github.io/TokoBus/#/)  
 [Apple App Store](https://apps.apple.com/jp/app/tokobus-%E6%89%80%E6%B2%A2%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%91%E3%82%B9%E6%99%82%E5%88%BB%E8%A1%A8%E3%82%A2%E3%83%97%E3%83%AA/id6443772387)  
-Google Play Store
+[Google Play Store](https://play.google.com/store/apps/details?id=jp.twa.tokobus)  
