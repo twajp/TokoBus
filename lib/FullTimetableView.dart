@@ -43,85 +43,91 @@ class _FullTimetableViewState extends State<FullTimetableView> {
   @override
   Widget build(BuildContext context) {
     Color wasedaColor = const Color.fromRGBO(142, 23, 40, 1);
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(timetable[8][tableIndex]["title"]),
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  alignment: AlignmentDirectional.center,
-                  height: height * 0.05,
-                  width: width * 0.2,
-                  child: Text(
-                    timetable[8][tableIndex]["string0"],
-                    style: const TextStyle(fontSize: 17),
-                  ),
-                ),
-                Container(
-                  alignment: AlignmentDirectional.center,
-                  height: height * 0.05,
-                  width: width * 0.4,
-                  child: Text(
-                    timetable[8][tableIndex]["string1"],
-                    style: const TextStyle(fontSize: 17),
-                  ),
-                ),
-                Container(
-                  alignment: AlignmentDirectional.center,
-                  height: height * 0.05,
-                  width: width * 0.2,
-                  child: Text(
-                    timetable[8][tableIndex]["string2"],
-                    style: const TextStyle(fontSize: 17),
-                  ),
-                ),
-                Container(
-                  alignment: AlignmentDirectional.center,
-                  height: height * 0.05,
-                  width: width * 0.16,
-                  child: Text(
-                    timetable[8][tableIndex]["string3"],
-                    style: const TextStyle(fontSize: 17),
-                  ),
-                ),
-              ],
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                controller: ScrollController(
-                  initialScrollOffset: (timetable[8][tableIndex]["nextBusIndex"] - 1) * height * 0.05,
-                ),
-                child: Column(
-                  children: [
-                    for (int i = 0; i < timetable[tableIndex].length; i++) ...{
-                      if (i == timetable[8][tableIndex]["nextBusIndex"]) ...{
-                        OneRow(timetable: timetable, height: height, width: width, textStyle: const TextStyle(fontSize: 17), backgroundColor: wasedaColor, tableIndex: tableIndex, rowIndex: i),
-                      } else if (i < timetable[8][tableIndex]["nextBusIndex"]) ...{
-                        OneRow(timetable: timetable, height: height, width: width, textStyle: const TextStyle(fontSize: 17, color: Colors.grey), backgroundColor: Colors.black, tableIndex: tableIndex, rowIndex: i),
-                      } else ...{
-                        OneRow(timetable: timetable, height: height, width: width, textStyle: const TextStyle(fontSize: 17), backgroundColor: Colors.black, tableIndex: tableIndex, rowIndex: i)
-                      },
-                    },
-                    Container(
-                      alignment: Alignment.center,
-                      height: 50,
-                      child: Text(
-                        "${timetable[8]["tableSelected"]}ダイヤ   時刻表Ver: ${timetable[8]["tableVer"]}\n"
-                        "3/28の特別ダイヤにも対応しています",
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(color: Colors.grey),
-                      ),
+    return Dismissible(
+      direction: DismissDirection.vertical,
+      key: const Key("key"),
+      onDismissed: (_) => Navigator.of(context).pop(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(timetable[8][tableIndex]["title"]),
+          backgroundColor: Colors.black,
+        ),
+        body: SafeArea(
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    alignment: AlignmentDirectional.center,
+                    height: height * 0.05,
+                    width: width * 0.2,
+                    child: Text(
+                      timetable[8][tableIndex]["string0"],
+                      style: const TextStyle(fontSize: 17),
                     ),
-                  ],
+                  ),
+                  Container(
+                    alignment: AlignmentDirectional.center,
+                    height: height * 0.05,
+                    width: width * 0.4,
+                    child: Text(
+                      timetable[8][tableIndex]["string1"],
+                      style: const TextStyle(fontSize: 17),
+                    ),
+                  ),
+                  Container(
+                    alignment: AlignmentDirectional.center,
+                    height: height * 0.05,
+                    width: width * 0.2,
+                    child: Text(
+                      timetable[8][tableIndex]["string2"],
+                      style: const TextStyle(fontSize: 17),
+                    ),
+                  ),
+                  Container(
+                    alignment: AlignmentDirectional.center,
+                    height: height * 0.05,
+                    width: width * 0.16,
+                    child: Text(
+                      timetable[8][tableIndex]["string3"],
+                      style: const TextStyle(fontSize: 17),
+                    ),
+                  ),
+                ],
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  controller: ScrollController(
+                    initialScrollOffset: (timetable[8][tableIndex]["nextBusIndex"] - 1) * height * 0.05,
+                  ),
+                  child: Column(
+                    children: [
+                      for (int i = 0; i < timetable[tableIndex].length; i++) ...{
+                        if (i == timetable[8][tableIndex]["nextBusIndex"]) ...{
+                          OneRow(timetable: timetable, height: height, width: width, textStyle: const TextStyle(fontSize: 17), backgroundColor: wasedaColor, tableIndex: tableIndex, rowIndex: i),
+                        } else if (i < timetable[8][tableIndex]["nextBusIndex"]) ...{
+                          OneRow(timetable: timetable, height: height, width: width, textStyle: const TextStyle(fontSize: 17, color: Colors.grey), backgroundColor: Colors.black, tableIndex: tableIndex, rowIndex: i),
+                        } else ...{
+                          OneRow(timetable: timetable, height: height, width: width, textStyle: const TextStyle(fontSize: 17), backgroundColor: Colors.black, tableIndex: tableIndex, rowIndex: i)
+                        },
+                      },
+                      Container(
+                        alignment: Alignment.center,
+                        height: 50,
+                        child: Text(
+                          "${timetable[8]["tableSelected"]}ダイヤ   時刻表Ver: ${timetable[8]["tableVer"]}\n"
+                          "3/28の特別ダイヤにも対応しています",
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(color: Colors.grey),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
