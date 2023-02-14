@@ -44,7 +44,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List timetable = code();
+  Map timetable = code();
   int count = 0;
 
   Future<void> mainLoop() async {
@@ -89,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       alignment: Alignment.center,
                       height: 50,
                       child: Text(
-                        "${timetable[8]["tableSelected"]}ダイヤ   時刻表Ver: ${timetable[8]["tableVer"]}\n"
+                        "${timetable["tableInfo"]["selectedTables"]["japanese"]}ダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}\n"
                         "3/28の特別ダイヤにも対応しています",
                         textAlign: TextAlign.center,
                         style: const TextStyle(color: Colors.grey),
@@ -114,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       alignment: Alignment.center,
                       height: 50,
                       child: Text(
-                        "${timetable[8]["tableSelected"]}ダイヤ   時刻表Ver: ${timetable[8]["tableVer"]}\n"
+                        "${timetable["tableInfo"]["selectedTables"]["japanese"]}ダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}\n"
                         "3/28の特別ダイヤにも対応しています",
                         textAlign: TextAlign.center,
                         style: const TextStyle(color: Colors.grey),
@@ -152,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     alignment: Alignment.center,
                     height: 50,
                     child: Text(
-                      "${timetable[8]["tableSelected"]}ダイヤ   時刻表Ver: ${timetable[8]["tableVer"]}\n"
+                      "${timetable["tableInfo"]["selectedTables"]["japanese"]}ダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}\n"
                       "3/28の特別ダイヤにも対応しています",
                       textAlign: TextAlign.center,
                       style: const TextStyle(color: Colors.grey),

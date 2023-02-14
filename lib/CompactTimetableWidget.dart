@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'FullTimetableView.dart';
 
 class CompactTimetableWidget extends StatelessWidget {
-  final List timetable;
+  final Map timetable;
   final double height;
   final double width;
   final int tableIndex;
@@ -18,7 +18,7 @@ class CompactTimetableWidget extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => FullTimetableView(timetable: timetable, height: height, width: width, tableIndex: tableIndex),
+            builder: (context) => FullTimetableView(timetable: timetable, height: height, width: width, tableName: timetable["tableInfo"]["selectedTables"]["tableNames"][tableIndex]),
             fullscreenDialog: true,
           ),
         );
@@ -31,7 +31,7 @@ class CompactTimetableWidget extends StatelessWidget {
             height: height * 0.1,
             width: width * 0.9,
             child: Text(
-              timetable[8][tableIndex]["title"],
+              timetable["tableInfo"][tableIndex]["title"],
               style: const TextStyle(fontSize: 30),
               softWrap: false,
             ),
@@ -56,7 +56,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: height * 0.06,
                         width: width * 0.2,
                         child: Text(
-                          timetable[8][tableIndex]["string0"],
+                          timetable["tableInfo"][tableIndex]["string0"],
                           style: const TextStyle(fontSize: 17),
                           softWrap: false,
                         ),
@@ -67,7 +67,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: height * 0.06,
                         width: width * 0.35,
                         child: Text(
-                          timetable[8][tableIndex]["string1"],
+                          timetable["tableInfo"][tableIndex]["string1"],
                           style: const TextStyle(fontSize: 17),
                           softWrap: false,
                         ),
@@ -78,7 +78,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: height * 0.06,
                         width: width * 0.2,
                         child: Text(
-                          timetable[8][tableIndex]["string2"],
+                          timetable["tableInfo"][tableIndex]["string2"],
                           style: const TextStyle(fontSize: 17),
                           softWrap: false,
                         ),
@@ -89,7 +89,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: height * 0.06,
                         width: width * 0.16,
                         child: Text(
-                          timetable[8][tableIndex]["string3"],
+                          timetable["tableInfo"][tableIndex]["string3"],
                           style: const TextStyle(fontSize: 17),
                           softWrap: false,
                         ),
@@ -105,7 +105,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: height * 0.06,
                         width: width * 0.2,
                         child: Text(
-                          timetable[tableIndex + 4][0][0],
+                          timetable["compactTables"][tableIndex][0][0],
                           style: const TextStyle(fontSize: 17, color: Colors.grey),
                           softWrap: false,
                         ),
@@ -116,7 +116,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: height * 0.06,
                         width: width * 0.35,
                         child: Text(
-                          timetable[tableIndex + 4][0][1],
+                          timetable["compactTables"][tableIndex][0][1],
                           style: const TextStyle(fontSize: 17, color: Colors.grey),
                           softWrap: false,
                         ),
@@ -127,7 +127,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: height * 0.06,
                         width: width * 0.2,
                         child: Text(
-                          timetable[tableIndex + 4][0][2],
+                          timetable["compactTables"][tableIndex][0][2],
                           style: const TextStyle(fontSize: 17, color: Colors.grey),
                           softWrap: false,
                         ),
@@ -138,7 +138,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: height * 0.06,
                         width: width * 0.16,
                         child: Text(
-                          timetable[tableIndex + 4][0][3],
+                          timetable["compactTables"][tableIndex][0][3],
                           style: const TextStyle(fontSize: 17, color: Colors.grey),
                           softWrap: false,
                         ),
@@ -154,7 +154,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: height * 0.06,
                         width: width * 0.2,
                         child: Text(
-                          timetable[tableIndex + 4][1][0],
+                          timetable["compactTables"][tableIndex][1][0],
                           style: const TextStyle(fontSize: 17),
                           softWrap: false,
                         ),
@@ -165,7 +165,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: height * 0.06,
                         width: width * 0.35,
                         child: Text(
-                          timetable[tableIndex + 4][1][1],
+                          timetable["compactTables"][tableIndex][1][1],
                           style: const TextStyle(fontSize: 17),
                           softWrap: false,
                         ),
@@ -176,7 +176,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: height * 0.06,
                         width: width * 0.2,
                         child: Text(
-                          timetable[tableIndex + 4][1][2],
+                          timetable["compactTables"][tableIndex][1][2],
                           style: const TextStyle(fontSize: 17),
                           softWrap: false,
                         ),
@@ -187,7 +187,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: height * 0.06,
                         width: width * 0.16,
                         child: Text(
-                          timetable[tableIndex + 4][1][3],
+                          timetable["compactTables"][tableIndex][1][3],
                           style: const TextStyle(fontSize: 17),
                           softWrap: false,
                         ),
@@ -203,7 +203,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: height * 0.06,
                         width: width * 0.2,
                         child: Text(
-                          timetable[tableIndex + 4][2][0],
+                          timetable["compactTables"][tableIndex][2][0],
                           style: const TextStyle(fontSize: 17),
                           softWrap: false,
                         ),
@@ -214,7 +214,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: height * 0.06,
                         width: width * 0.35,
                         child: Text(
-                          timetable[tableIndex + 4][2][1],
+                          timetable["compactTables"][tableIndex][2][1],
                           style: const TextStyle(fontSize: 17),
                           softWrap: false,
                         ),
@@ -225,7 +225,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: height * 0.06,
                         width: width * 0.2,
                         child: Text(
-                          timetable[tableIndex + 4][2][2],
+                          timetable["compactTables"][tableIndex][2][2],
                           style: const TextStyle(fontSize: 17),
                           softWrap: false,
                         ),
@@ -236,7 +236,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: height * 0.06,
                         width: width * 0.16,
                         child: Text(
-                          timetable[tableIndex + 4][2][3],
+                          timetable["compactTables"][tableIndex][2][3],
                           style: const TextStyle(fontSize: 17),
                           softWrap: false,
                         ),

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'code.dart';
 
 class FullTimetableView extends StatefulWidget {
-  final List timetable;
+  final Map timetable;
   final double height;
   final double width;
-  final int tableIndex;
+  final String tableName;
 
-  const FullTimetableView({Key? key, required this.timetable, required this.height, required this.width, required this.tableIndex}) : super(key: key);
+  const FullTimetableView({Key? key, required this.timetable, required this.height, required this.width, required this.tableName}) : super(key: key);
 
   @override
   State<FullTimetableView> createState() => _FullTimetableViewState();
@@ -15,10 +15,10 @@ class FullTimetableView extends StatefulWidget {
 
 class _FullTimetableViewState extends State<FullTimetableView> {
   // 状態を管理する変数
-  late List timetable;
+  late Map timetable;
   late double height;
   late double width;
-  late int tableIndex;
+  late String tableName;
 
   @override
   void initState() {
@@ -27,7 +27,7 @@ class _FullTimetableViewState extends State<FullTimetableView> {
     timetable = widget.timetable;
     height = widget.height;
     width = widget.width;
-    tableIndex = widget.tableIndex;
+    tableName = widget.tableName;
     mainLoop();
   }
 
@@ -43,13 +43,14 @@ class _FullTimetableViewState extends State<FullTimetableView> {
   @override
   Widget build(BuildContext context) {
     Color wasedaColor = const Color.fromRGBO(142, 23, 40, 1);
+    final int tableFormat = timetable["fullTables"][tableName]["tableFormat"];
     return Dismissible(
       direction: DismissDirection.vertical,
       key: const Key("key"),
       onDismissed: (_) => Navigator.of(context).pop(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text(timetable[8][tableIndex]["title"]),
+          title: Text(timetable["tableInfo"][tableFormat]["title"]),
           backgroundColor: Colors.black,
         ),
         body: SafeArea(
@@ -63,7 +64,7 @@ class _FullTimetableViewState extends State<FullTimetableView> {
                     height: height * 0.05,
                     width: width * 0.2,
                     child: Text(
-                      timetable[8][tableIndex]["string0"],
+                      timetable["tableInfo"][tableFormat]["string0"],
                       style: const TextStyle(fontSize: 17),
                     ),
                   ),
@@ -72,7 +73,7 @@ class _FullTimetableViewState extends State<FullTimetableView> {
                     height: height * 0.05,
                     width: width * 0.4,
                     child: Text(
-                      timetable[8][tableIndex]["string1"],
+                      timetable["tableInfo"][tableFormat]["string1"],
                       style: const TextStyle(fontSize: 17),
                     ),
                   ),
@@ -81,7 +82,7 @@ class _FullTimetableViewState extends State<FullTimetableView> {
                     height: height * 0.05,
                     width: width * 0.2,
                     child: Text(
-                      timetable[8][tableIndex]["string2"],
+                      timetable["tableInfo"][tableFormat]["string2"],
                       style: const TextStyle(fontSize: 17),
                     ),
                   ),
@@ -90,7 +91,7 @@ class _FullTimetableViewState extends State<FullTimetableView> {
                     height: height * 0.05,
                     width: width * 0.16,
                     child: Text(
-                      timetable[8][tableIndex]["string3"],
+                      timetable["tableInfo"][tableFormat]["string3"],
                       style: const TextStyle(fontSize: 17),
                     ),
                   ),
@@ -99,24 +100,24 @@ class _FullTimetableViewState extends State<FullTimetableView> {
               Expanded(
                 child: SingleChildScrollView(
                   controller: ScrollController(
-                    initialScrollOffset: (timetable[8][tableIndex]["nextBusIndex"] - 1) * height * 0.05,
+                    initialScrollOffset: (timetable["fullTables"][tableName]["nextBusIndex"] - 1) * height * 0.05,
                   ),
                   child: Column(
                     children: [
-                      for (int i = 0; i < timetable[tableIndex].length; i++) ...{
-                        if (i == timetable[8][tableIndex]["nextBusIndex"]) ...{
-                          OneRow(timetable: timetable, height: height, width: width, textStyle: const TextStyle(fontSize: 17), backgroundColor: wasedaColor, tableIndex: tableIndex, rowIndex: i),
-                        } else if (i < timetable[8][tableIndex]["nextBusIndex"]) ...{
-                          OneRow(timetable: timetable, height: height, width: width, textStyle: const TextStyle(fontSize: 17, color: Colors.grey), backgroundColor: Colors.black, tableIndex: tableIndex, rowIndex: i),
+                      for (int i = 0; i < timetable["fullTables"][tableName]["table"].length; i++) ...{
+                        if (i == timetable["fullTables"][tableName]["nextBusIndex"]) ...{
+                          OneRow(timetable: timetable, height: height, width: width, textStyle: const TextStyle(fontSize: 17), backgroundColor: wasedaColor, tableName: tableName, rowIndex: i),
+                        } else if (i < timetable["fullTables"][tableName]["nextBusIndex"]) ...{
+                          OneRow(timetable: timetable, height: height, width: width, textStyle: const TextStyle(fontSize: 17, color: Colors.grey), backgroundColor: Colors.black, tableName: tableName, rowIndex: i),
                         } else ...{
-                          OneRow(timetable: timetable, height: height, width: width, textStyle: const TextStyle(fontSize: 17), backgroundColor: Colors.black, tableIndex: tableIndex, rowIndex: i)
+                          OneRow(timetable: timetable, height: height, width: width, textStyle: const TextStyle(fontSize: 17), backgroundColor: Colors.black, tableName: tableName, rowIndex: i)
                         },
                       },
                       Container(
                         alignment: Alignment.center,
                         height: 50,
                         child: Text(
-                          "${timetable[8]["tableSelected"]}ダイヤ   時刻表Ver: ${timetable[8]["tableVer"]}\n"
+                          "${timetable["tableInfo"]["selectedTable"]}ダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}\n"
                           "3/28の特別ダイヤにも対応しています",
                           textAlign: TextAlign.center,
                           style: const TextStyle(color: Colors.grey),
@@ -135,15 +136,15 @@ class _FullTimetableViewState extends State<FullTimetableView> {
 }
 
 class OneRow extends StatelessWidget {
-  final List timetable;
+  final Map timetable;
   final double height;
   final double width;
   final TextStyle textStyle;
   final Color backgroundColor;
-  final int tableIndex;
+  final String tableName;
   final int rowIndex;
 
-  const OneRow({Key? key, required this.timetable, required this.height, required this.width, required this.textStyle, required this.backgroundColor, required this.tableIndex, required this.rowIndex}) : super(key: key);
+  const OneRow({Key? key, required this.timetable, required this.height, required this.width, required this.textStyle, required this.backgroundColor, required this.tableName, required this.rowIndex}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -156,7 +157,7 @@ class OneRow extends StatelessWidget {
           width: width * 0.2,
           color: backgroundColor,
           child: Text(
-            timetable[tableIndex][rowIndex][4],
+            timetable["fullTables"][tableName]["table"][rowIndex][4],
             style: textStyle,
             softWrap: false,
           ),
@@ -167,7 +168,7 @@ class OneRow extends StatelessWidget {
           width: width * 0.4,
           color: backgroundColor,
           child: Text(
-            timetable[tableIndex][rowIndex][5],
+            timetable["fullTables"][tableName]["table"][rowIndex][5],
             style: textStyle,
             softWrap: false,
           ),
@@ -178,7 +179,7 @@ class OneRow extends StatelessWidget {
           width: width * 0.2,
           color: backgroundColor,
           child: Text(
-            timetable[tableIndex][rowIndex][6],
+            timetable["fullTables"][tableName]["table"][rowIndex][6],
             style: textStyle,
             softWrap: false,
           ),
@@ -189,7 +190,7 @@ class OneRow extends StatelessWidget {
           width: width * 0.16,
           color: backgroundColor,
           child: Text(
-            timetable[tableIndex][rowIndex][7],
+            timetable["fullTables"][tableName]["table"][rowIndex][7],
             style: textStyle,
             softWrap: false,
           ),
