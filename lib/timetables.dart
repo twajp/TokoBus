@@ -5,7 +5,12 @@ import 'package:nholiday_jp/nholiday_jp.dart';
 // timetable[4->7] == [[String 時:分, String 残り時間, String 場所, String 車椅子対応], * 3]
 // timetable[8] == 下のコード参照
 
-List timetables() {
+// timetable["full"]["stationCampusWeekdays" -> "frcCampusSaturday"]["table"] == [[int 時, int 分, DateTime 時刻, Duration 残り時間, String 時:分, String 残り時間, String 場所, String 車椅子対応], ...]
+// timetable["full"]["stationCampusWeekdays" -> "frcCampusSaturday"]["nextBusIndex"] == int
+// timetable["compact"]["table0" -> "table3"] == [[String 時:分, String 残り時間, String 場所, String 車椅子対応], * 3]
+// timetable["tableInfo"] == 下のコード参照
+
+Map timetables() {
   List stationCampusWeekdays = [
     [8, 15, "北口", "×"],
     [8, 25, "北口", "〇"],
@@ -40,7 +45,7 @@ List timetables() {
     [20, 15, "南口", "×"],
   ];
 
-  List stationCampusSaturdays = stationCampusWeekdays;
+  List stationCampusSaturdays = [for (var value in stationCampusWeekdays) List.from(value)];
 
   List stationCampusSundaysHolidays = [
     [8, 15, "北口", "×"],
@@ -94,7 +99,7 @@ List timetables() {
     [21, 40, "南口", "×"],
   ];
 
-  List campusStationSaturdays = campusStationWeekdays;
+  List campusStationSaturdays = [for (var value in campusStationWeekdays) List.from(value)];
 
   List campusStationSundaysHolidays = [
     [8, 35, "北口", "×"],
@@ -338,16 +343,106 @@ List timetables() {
     [21, 40, "南口", "×"],
   ];
 
-  Map tableInfo = {
-    0: {"title": "小手指駅 → キャンパス", "string0": "発車時刻", "string1": "残り時間", "string2": "乗車場所", "string3": "車椅子", "nextBusIndex": 1000},
-    1: {"title": "キャンパス → 小手指駅", "string0": "発車時刻", "string1": "残り時間", "string2": "降車場所", "string3": "車椅子", "nextBusIndex": 1000},
-    2: {"title": "キャンパス → FRC", "string0": "発車時刻", "string1": "残り時間", "string2": "乗車場所", "string3": "接続", "nextBusIndex": 1000},
-    3: {"title": "FRC → キャンパス", "string0": "発車時刻", "string1": "残り時間", "string2": "降車場所", "string3": "接続", "nextBusIndex": 1000},
-    "tableVer": "2023春季休業期間",
-    "tableSelected": "",
+  List initCompact = [
+    [
+      "-",
+      "-",
+      "-",
+      "-",
+    ],
+    [
+      "-",
+      "-",
+      "-",
+      "-",
+    ],
+    [
+      "-",
+      "-",
+      "-",
+      "-",
+    ]
+  ];
+
+  Map timetable = {
+    "fullTables": {
+      "stationCampusWeekdays": {
+        "table": stationCampusWeekdays,
+        "tableFormat": 0,
+        "nextBusIndex": 1000,
+      },
+      "stationCampusSaturdays": {
+        "table": stationCampusSaturdays,
+        "tableFormat": 0,
+        "nextBusIndex": 1000,
+      },
+      "stationCampusSundaysHolidays": {
+        "table": stationCampusSundaysHolidays,
+        "tableFormat": 0,
+        "nextBusIndex": 1000,
+      },
+      "stationCampusSpecial": {
+        "table": stationCampusSpecial,
+        "tableFormat": 0,
+        "nextBusIndex": 1000,
+      },
+      "campusStationWeekdays": {
+        "table": campusStationWeekdays,
+        "tableFormat": 1,
+        "nextBusIndex": 1000,
+      },
+      "campusStationSaturdays": {
+        "table": campusStationSaturdays,
+        "tableFormat": 1,
+        "nextBusIndex": 1000,
+      },
+      "campusStationSundaysHolidays": {
+        "table": campusStationSundaysHolidays,
+        "tableFormat": 1,
+        "nextBusIndex": 1000,
+      },
+      "campusStationSpecial": {
+        "table": campusStationSpecial,
+        "tableFormat": 1,
+        "nextBusIndex": 1000,
+      },
+      "campusFRCWeekdays": {
+        "table": campusFRCWeekdays,
+        "tableFormat": 2,
+        "nextBusIndex": 1000,
+      },
+      "campusFRCSaturdays": {
+        "table": campusFRCSaturdays,
+        "tableFormat": 2,
+        "nextBusIndex": 1000,
+      },
+      "frcCampusWeekdays": {
+        "table": frcCampusWeekdays,
+        "tableFormat": 3,
+        "nextBusIndex": 1000,
+      },
+      "frcCampusSaturdays": {
+        "table": frcCampusSaturdays,
+        "tableFormat": 3,
+        "nextBusIndex": 1000,
+      },
+    },
+    "compactTables": [
+      for (int i = 0; i <= 3; i++) [for (var value in initCompact) List.from(value)]
+    ],
+    "tableInfo": {
+      0: {"title": "小手指駅 → キャンパス", "string0": "発車時刻", "string1": "残り時間", "string2": "乗車場所", "string3": "車椅子"},
+      1: {"title": "キャンパス → 小手指駅", "string0": "発車時刻", "string1": "残り時間", "string2": "降車場所", "string3": "車椅子"},
+      2: {"title": "キャンパス → FRC", "string0": "発車時刻", "string1": "残り時間", "string2": "乗車場所", "string3": "接続"},
+      3: {"title": "FRC → キャンパス", "string0": "発車時刻", "string1": "残り時間", "string2": "降車場所", "string3": "接続"},
+      "tableVer": "2023春季休業期間",
+      "selectedTables": {
+        "japanese": "",
+        "tableNames": [],
+      },
+    }
   };
 
-  List timetable = [];
   var dt = DateTime.now();
   var holidaysOfMonth = NHolidayJp.getByMonth(dt.year, dt.month);
   List dateOfHolidaysOfMonth = [];
@@ -356,59 +451,33 @@ List timetables() {
   }
 
   if (dt.weekday == 7 || dateOfHolidaysOfMonth.contains(1) == true) {
-    //日曜日か祝日
-    timetable.add(stationCampusSundaysHolidays);
-    timetable.add(campusStationSundaysHolidays);
-    timetable.add([]);
-    timetable.add([]);
-    tableInfo["tableSelected"] = "日曜日/祝日";
+    // 日曜日か祝日
+    timetable["tableInfo"]["selectedTables"]["japanese"] = "日曜日/祝日";
+    timetable["tableInfo"]["selectedTables"]["tableNames"].add("stationCampusSundaysHolidays");
+    timetable["tableInfo"]["selectedTables"]["tableNames"].add("campusStationSundaysHolidays");
+    timetable["tableInfo"]["selectedTables"]["tableNames"].add("");
+    timetable["tableInfo"]["selectedTables"]["tableNames"].add("");
   } else if (dt.weekday >= 1 && dt.weekday <= 5) {
-    //平日
-    timetable.add(stationCampusWeekdays);
-    timetable.add(campusStationWeekdays);
-    timetable.add(campusFRCWeekdays);
-    timetable.add(frcCampusWeekdays);
-    tableInfo["tableSelected"] = "平日";
+    // 平日
+    timetable["tableInfo"]["selectedTables"]["japanese"] = "平日";
+    timetable["tableInfo"]["selectedTables"]["tableNames"].add("stationCampusWeekdays");
+    timetable["tableInfo"]["selectedTables"]["tableNames"].add("campusStationWeekdays");
+    timetable["tableInfo"]["selectedTables"]["tableNames"].add("campusFRCWeekdays");
+    timetable["tableInfo"]["selectedTables"]["tableNames"].add("frcCampusWeekdays");
   } else {
-    //土曜日
-    timetable.add(stationCampusSaturdays);
-    timetable.add(campusStationSaturdays);
-    timetable.add(campusFRCSaturdays);
-    timetable.add(frcCampusSaturdays);
-    tableInfo["tableSelected"] = "土曜日";
+    // 土曜日
+    timetable["tableInfo"]["selectedTables"]["japanese"] = "土曜日";
+    timetable["tableInfo"]["selectedTables"]["tableNames"].add("stationCampusSaturdays");
+    timetable["tableInfo"]["selectedTables"]["tableNames"].add("campusStationSaturdays");
+    timetable["tableInfo"]["selectedTables"]["tableNames"].add("campusFRCSaturdays");
+    timetable["tableInfo"]["selectedTables"]["tableNames"].add("frcCampusSaturdays");
   }
 
   // 3/28の特別ダイヤ
   if (dt.month == 3 && dt.day == 28) {
-    timetable[0] = stationCampusSpecial;
-    timetable[1] = campusStationSpecial;
-    tableInfo["tableSelected"] = "3/28特別";
+    timetable["tableInfo"]["selectedTables"]["japanese"] = "3/28特別";
+    timetable["tableInfo"]["selectedTables"]["tableNames"].add("stationCampusSpecial");
+    timetable["tableInfo"]["selectedTables"]["tableNames"].add("campusStationSpecial");
   }
-
-  for (int i = 0; i <= 3; i++) {
-    timetable.insert(i + 4, [
-      [
-        "-",
-        "-",
-        "-",
-        "-",
-      ],
-      [
-        "-",
-        "-",
-        "-",
-        "-",
-      ],
-      [
-        "-",
-        "-",
-        "-",
-        "-",
-      ]
-    ]);
-  }
-
-  timetable.insert(8, tableInfo);
-
   return timetable;
 }
