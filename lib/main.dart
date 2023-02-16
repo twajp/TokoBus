@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    // final tableNames = timetable["fullTables"].keys.toString();
+    final String dayOfWeek = timetable["fullTables"][timetable["tableInfo"]["selectedTableNames"][0]]["dayOfWeek"];
     final PageController controller = PageController();
     return Scaffold(
       body: SafeArea(
@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Container(
                       alignment: Alignment.center,
                       child: Text(
-                        "${timetable["tableInfo"]["selectedTables"]["japanese"]}ダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
+                        "$dayOfWeekダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
                         textAlign: TextAlign.center,
                         style: const TextStyle(color: Colors.grey),
                       ),
@@ -113,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Container(
                       alignment: Alignment.center,
                       child: Text(
-                        "${timetable["tableInfo"]["selectedTables"]["japanese"]}ダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
+                        "$dayOfWeekダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
                         textAlign: TextAlign.center,
                         style: const TextStyle(color: Colors.grey),
                       ),
@@ -147,16 +147,19 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     ),
                   ),
-                  Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "${timetable["tableInfo"]["selectedTables"]["japanese"]}ダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
-                      //textAlign: TextAlign.center,
-                      style: const TextStyle(color: Colors.grey),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "$dayOfWeekダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
+                        style: const TextStyle(color: Colors.grey),
+                      ),
                     ),
                   ),
                 ],
               ),
+              AllTableListView(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 2.2),
             }
           ],
         ),
