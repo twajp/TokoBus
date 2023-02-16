@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'code.dart';
 import 'CompactTimetableWidget.dart';
+import 'AllTablePage.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -65,6 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    // final tableNames = timetable["fullTables"].keys.toString();
     final PageController controller = PageController();
     return Scaffold(
       body: SafeArea(
@@ -77,20 +79,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   Expanded(
                     flex: 4, // 割合
-                    child: CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width, tableIndex: 0),
+                    child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 0),
                   ),
                   Expanded(
                     flex: 5, // 割合
-                    child: CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width, tableIndex: 1),
+                    child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 1),
                   ),
                   Expanded(
                     flex: 1,
                     child: Container(
                       alignment: Alignment.center,
-                      height: 50,
                       child: Text(
-                        "${timetable["tableInfo"]["selectedTables"]["japanese"]}ダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}\n"
-                        "3/28の特別ダイヤにも対応しています",
+                        "${timetable["tableInfo"]["selectedTables"]["japanese"]}ダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
                         textAlign: TextAlign.center,
                         style: const TextStyle(color: Colors.grey),
                       ),
@@ -102,20 +102,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   Expanded(
                     flex: 4, // 割合
-                    child: CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width, tableIndex: 2),
+                    child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 2),
                   ),
                   Expanded(
                     flex: 5, // 割合
-                    child: CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width, tableIndex: 3),
+                    child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 3),
                   ),
                   Expanded(
                     flex: 1,
                     child: Container(
                       alignment: Alignment.center,
-                      height: 50,
                       child: Text(
-                        "${timetable["tableInfo"]["selectedTables"]["japanese"]}ダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}\n"
-                        "3/28の特別ダイヤにも対応しています",
+                        "${timetable["tableInfo"]["selectedTables"]["japanese"]}ダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
                         textAlign: TextAlign.center,
                         style: const TextStyle(color: Colors.grey),
                       ),
@@ -123,6 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   )
                 ],
               ),
+              AllTableListView(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width)
             } else ...{
               // Web版やiPadなどの横長の画面の場合
               Column(
@@ -133,8 +132,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width / 2.2, tableIndex: 0),
-                        CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width / 2.2, tableIndex: 2),
+                        CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 2.2, tableIndex: 0),
+                        CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 2.2, tableIndex: 2),
                       ],
                     ),
                   ),
@@ -143,18 +142,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width / 2.2, tableIndex: 1),
-                        CompactTimetableWidget(timetable: timetable, height: size.height, width: size.width / 2.2, tableIndex: 3),
+                        CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 2.2, tableIndex: 1),
+                        CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 2.2, tableIndex: 3),
                       ],
                     ),
                   ),
                   Container(
                     alignment: Alignment.center,
-                    height: 50,
                     child: Text(
-                      "${timetable["tableInfo"]["selectedTables"]["japanese"]}ダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}\n"
-                      "3/28の特別ダイヤにも対応しています",
-                      textAlign: TextAlign.center,
+                      "${timetable["tableInfo"]["selectedTables"]["japanese"]}ダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
+                      //textAlign: TextAlign.center,
                       style: const TextStyle(color: Colors.grey),
                     ),
                   ),
