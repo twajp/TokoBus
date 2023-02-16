@@ -3,11 +3,11 @@ import 'code.dart';
 
 class FullTimetableView extends StatefulWidget {
   final Map timetable;
-  final double height;
-  final double width;
+  final double deviceHeight;
+  final double deviceWidth;
   final String tableName;
 
-  const FullTimetableView({Key? key, required this.timetable, required this.height, required this.width, required this.tableName}) : super(key: key);
+  const FullTimetableView({Key? key, required this.timetable, required this.deviceHeight, required this.deviceWidth, required this.tableName}) : super(key: key);
 
   @override
   State<FullTimetableView> createState() => _FullTimetableViewState();
@@ -16,8 +16,8 @@ class FullTimetableView extends StatefulWidget {
 class _FullTimetableViewState extends State<FullTimetableView> {
   // 状態を管理する変数
   late Map timetable;
-  late double height;
-  late double width;
+  late double deviceHeight;
+  late double deviceWidth;
   late String tableName;
 
   @override
@@ -25,8 +25,8 @@ class _FullTimetableViewState extends State<FullTimetableView> {
     super.initState();
     // 受け取ったデータを状態を管理する変数に格納
     timetable = widget.timetable;
-    height = widget.height;
-    width = widget.width;
+    deviceHeight = widget.deviceHeight;
+    deviceWidth = widget.deviceWidth;
     tableName = widget.tableName;
     mainLoop();
   }
@@ -61,8 +61,8 @@ class _FullTimetableViewState extends State<FullTimetableView> {
                 children: [
                   Container(
                     alignment: AlignmentDirectional.center,
-                    height: height * 0.05,
-                    width: width * 0.2,
+                    height: deviceHeight * 0.05,
+                    width: deviceWidth * 0.2,
                     child: Text(
                       timetable["tableInfo"][tableFormat]["string0"],
                       style: const TextStyle(fontSize: 17),
@@ -70,8 +70,8 @@ class _FullTimetableViewState extends State<FullTimetableView> {
                   ),
                   Container(
                     alignment: AlignmentDirectional.center,
-                    height: height * 0.05,
-                    width: width * 0.4,
+                    height: deviceHeight * 0.05,
+                    width: deviceWidth * 0.4,
                     child: Text(
                       timetable["tableInfo"][tableFormat]["string1"],
                       style: const TextStyle(fontSize: 17),
@@ -79,8 +79,8 @@ class _FullTimetableViewState extends State<FullTimetableView> {
                   ),
                   Container(
                     alignment: AlignmentDirectional.center,
-                    height: height * 0.05,
-                    width: width * 0.2,
+                    height: deviceHeight * 0.05,
+                    width: deviceWidth * 0.2,
                     child: Text(
                       timetable["tableInfo"][tableFormat]["string2"],
                       style: const TextStyle(fontSize: 17),
@@ -88,8 +88,8 @@ class _FullTimetableViewState extends State<FullTimetableView> {
                   ),
                   Container(
                     alignment: AlignmentDirectional.center,
-                    height: height * 0.05,
-                    width: width * 0.16,
+                    height: deviceHeight * 0.05,
+                    width: deviceWidth * 0.16,
                     child: Text(
                       timetable["tableInfo"][tableFormat]["string3"],
                       style: const TextStyle(fontSize: 17),
@@ -100,25 +100,24 @@ class _FullTimetableViewState extends State<FullTimetableView> {
               Expanded(
                 child: SingleChildScrollView(
                   controller: ScrollController(
-                    initialScrollOffset: (timetable["fullTables"][tableName]["nextBusIndex"] - 1) * height * 0.05,
+                    initialScrollOffset: (timetable["fullTables"][tableName]["nextBusIndex"] - 1) * deviceHeight * 0.05,
                   ),
                   child: Column(
                     children: [
                       for (int i = 0; i < timetable["fullTables"][tableName]["table"].length; i++) ...{
                         if (i == timetable["fullTables"][tableName]["nextBusIndex"]) ...{
-                          OneRow(timetable: timetable, height: height, width: width, textStyle: const TextStyle(fontSize: 17), backgroundColor: wasedaColor, tableName: tableName, rowIndex: i),
+                          OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: const TextStyle(fontSize: 17), backgroundColor: wasedaColor, tableName: tableName, rowIndex: i),
                         } else if (i < timetable["fullTables"][tableName]["nextBusIndex"]) ...{
-                          OneRow(timetable: timetable, height: height, width: width, textStyle: const TextStyle(fontSize: 17, color: Colors.grey), backgroundColor: Colors.black, tableName: tableName, rowIndex: i),
+                          OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: const TextStyle(fontSize: 17, color: Colors.grey), backgroundColor: Colors.black, tableName: tableName, rowIndex: i),
                         } else ...{
-                          OneRow(timetable: timetable, height: height, width: width, textStyle: const TextStyle(fontSize: 17), backgroundColor: Colors.black, tableName: tableName, rowIndex: i)
+                          OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: const TextStyle(fontSize: 17), backgroundColor: Colors.black, tableName: tableName, rowIndex: i)
                         },
                       },
                       Container(
                         alignment: Alignment.center,
                         height: 50,
                         child: Text(
-                          "${timetable["tableInfo"]["selectedTable"]}ダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}\n"
-                          "3/28の特別ダイヤにも対応しています",
+                          "${timetable["tableInfo"]["selectedTable"]}ダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
                           textAlign: TextAlign.center,
                           style: const TextStyle(color: Colors.grey),
                         ),
@@ -137,14 +136,14 @@ class _FullTimetableViewState extends State<FullTimetableView> {
 
 class OneRow extends StatelessWidget {
   final Map timetable;
-  final double height;
-  final double width;
+  final double deviceHeight;
+  final double deviceWidth;
   final TextStyle textStyle;
   final Color backgroundColor;
   final String tableName;
   final int rowIndex;
 
-  const OneRow({Key? key, required this.timetable, required this.height, required this.width, required this.textStyle, required this.backgroundColor, required this.tableName, required this.rowIndex}) : super(key: key);
+  const OneRow({Key? key, required this.timetable, required this.deviceHeight, required this.deviceWidth, required this.textStyle, required this.backgroundColor, required this.tableName, required this.rowIndex}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -153,8 +152,8 @@ class OneRow extends StatelessWidget {
       children: [
         Container(
           alignment: AlignmentDirectional.center,
-          height: height * 0.05,
-          width: width * 0.2,
+          height: deviceHeight * 0.05,
+          width: deviceWidth * 0.2,
           color: backgroundColor,
           child: Text(
             timetable["fullTables"][tableName]["table"][rowIndex][4],
@@ -164,8 +163,8 @@ class OneRow extends StatelessWidget {
         ),
         Container(
           alignment: AlignmentDirectional.center,
-          height: height * 0.05,
-          width: width * 0.4,
+          height: deviceHeight * 0.05,
+          width: deviceWidth * 0.4,
           color: backgroundColor,
           child: Text(
             timetable["fullTables"][tableName]["table"][rowIndex][5],
@@ -175,8 +174,8 @@ class OneRow extends StatelessWidget {
         ),
         Container(
           alignment: AlignmentDirectional.center,
-          height: height * 0.05,
-          width: width * 0.2,
+          height: deviceHeight * 0.05,
+          width: deviceWidth * 0.2,
           color: backgroundColor,
           child: Text(
             timetable["fullTables"][tableName]["table"][rowIndex][6],
@@ -186,8 +185,8 @@ class OneRow extends StatelessWidget {
         ),
         Container(
           alignment: AlignmentDirectional.center,
-          height: height * 0.05,
-          width: width * 0.16,
+          height: deviceHeight * 0.05,
+          width: deviceWidth * 0.16,
           color: backgroundColor,
           child: Text(
             timetable["fullTables"][tableName]["table"][rowIndex][7],

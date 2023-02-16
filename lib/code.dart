@@ -40,7 +40,6 @@ Map code() {
     }
   }
 
-
   for (var key in timetable["fullTables"].keys) {
     //時刻と残り時間をdatetime型でリストに追加
     for (int i = 0; i < timetable["fullTables"][key]["table"].length; i++) {

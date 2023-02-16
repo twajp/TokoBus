@@ -1,13 +1,9 @@
 import 'package:nholiday_jp/nholiday_jp.dart';
 
 // timetableの構造メモ
-// timetable[0->3] == [[int 時, int 分, DateTime 時刻, Duration 残り時間, String 時:分, String 残り時間, String 場所, String 車椅子対応], ...]
-// timetable[4->7] == [[String 時:分, String 残り時間, String 場所, String 車椅子対応], * 3]
-// timetable[8] == 下のコード参照
-
-// timetable["full"]["stationCampusWeekdays" -> "frcCampusSaturday"]["table"] == [[int 時, int 分, DateTime 時刻, Duration 残り時間, String 時:分, String 残り時間, String 場所, String 車椅子対応], ...]
-// timetable["full"]["stationCampusWeekdays" -> "frcCampusSaturday"]["nextBusIndex"] == int
-// timetable["compact"]["table0" -> "table3"] == [[String 時:分, String 残り時間, String 場所, String 車椅子対応], * 3]
+// timetable["fullTables"]["stationCampusWeekdays" -> "frcCampusSaturday"]["table"] == [[int 時, int 分, DateTime 時刻, Duration 残り時間, String 時:分, String 残り時間, String 場所, String 車椅子対応], ...]
+// timetable["fullTables"]["stationCampusWeekdays" -> "frcCampusSaturday"]["nextBusIndex"] == int
+// timetable["compactTables"][0 -> 3] == [[String 時:分, String 残り時間, String 場所, String 車椅子対応], * 3]
 // timetable["tableInfo"] == 下のコード参照
 
 Map timetables() {
