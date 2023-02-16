@@ -22,11 +22,12 @@ class AllTableListView extends StatelessWidget {
           child: Column(
             children: [
               // timetable["fullTables"].keys.map<Widget>((tableName) => TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, tableName: tableName)).toList(),
-              // const Spacer(),
+              const Spacer(),
+
               Container(
                 alignment: AlignmentDirectional.center,
-                // height: deviceHeight * 0.1,
-                // width: deviceWidth * 0.9,
+                height: deviceHeight * 0.07,
+                width: deviceWidth * 0.9,
                 child: const Text(
                   "平日ダイヤ",
                   style: TextStyle(fontSize: 30),
@@ -52,8 +53,8 @@ class AllTableListView extends StatelessWidget {
 
               Container(
                 alignment: AlignmentDirectional.center,
-                // height: deviceHeight * 0.1,
-                // width: deviceWidth * 0.9,
+                height: deviceHeight * 0.07,
+                width: deviceWidth * 0.9,
                 child: const Text(
                   "土曜日ダイヤ",
                   style: TextStyle(fontSize: 30),
@@ -61,7 +62,6 @@ class AllTableListView extends StatelessWidget {
                 ),
               ),
               Row(
-                //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth / 2, tableName: "stationCampusSaturdays"),
@@ -70,7 +70,6 @@ class AllTableListView extends StatelessWidget {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth / 2, tableName: "campusStationSaturdays"),
                   TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth / 2.4, tableName: "frcCampusSaturdays"),
@@ -81,31 +80,43 @@ class AllTableListView extends StatelessWidget {
 
               Container(
                 alignment: AlignmentDirectional.center,
-                // height: deviceHeight * 0.1,
-                // width: deviceWidth * 0.9,
+                height: deviceHeight * 0.07,
+                width: deviceWidth * 0.9,
                 child: const Text(
-                  "日曜日ダイヤ",
+                  "日曜日/祝日ダイヤ",
                   style: TextStyle(fontSize: 30),
                   softWrap: false,
                 ),
               ),
-              TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth - 8 * 2, tableName: "stationCampusSundaysHolidays"),
-              TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth - 8 * 2, tableName: "campusStationSundaysHolidays"),
+              TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth / 2 + deviceWidth / 2.4 + 4 * 2, tableName: "stationCampusSundaysHolidays"),
+              TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth / 2 + deviceWidth / 2.4 + 4 * 2, tableName: "campusStationSundaysHolidays"),
 
               const Spacer(),
 
               Container(
                 alignment: AlignmentDirectional.center,
-                // height: deviceHeight * 0.1,
-                // width: deviceWidth * 0.9,
+                height: deviceHeight * 0.07,
+                width: deviceWidth * 0.9,
                 child: const Text(
                   "3/28特別ダイヤ",
                   style: TextStyle(fontSize: 30),
                   softWrap: false,
                 ),
               ),
-              TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth - 8 * 2, tableName: "stationCampusSpecial"),
-              TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth - 8 * 2, tableName: "campusStationSpecial"),
+              TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth / 2 + deviceWidth / 2.4 + 4 * 2, tableName: "stationCampusSpecial"),
+              TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth / 2 + deviceWidth / 2.4 + 4 * 2, tableName: "campusStationSpecial"),
+
+              const Spacer(),
+
+              Container(
+                alignment: Alignment.bottomCenter,
+                height: 50,
+                child: Text(
+                  "時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(color: Colors.grey),
+                ),
+              ),
 
               const Spacer(),
             ],
@@ -147,11 +158,11 @@ class TableNameOneRowWidget extends StatelessWidget {
         );
       },
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(4.0),
         child: Container(
           alignment: AlignmentDirectional.center,
           height: deviceHeight * 0.05,
-          width: widgetWidth * (0.2 + 0.4 + 0.2 + 0.16),
+          width: widgetWidth,
           color: darkGrey,
           child: Text(
             timetable["tableInfo"][tableFormat]["title"],
