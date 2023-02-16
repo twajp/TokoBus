@@ -364,61 +364,73 @@ Map timetables() {
     "fullTables": {
       "stationCampusWeekdays": {
         "table": stationCampusWeekdays,
+        "dayOfWeek": "平日",
         "tableFormat": 0,
         "nextBusIndex": 1000,
       },
       "stationCampusSaturdays": {
         "table": stationCampusSaturdays,
+        "dayOfWeek": "土曜日",
         "tableFormat": 0,
         "nextBusIndex": 1000,
       },
       "stationCampusSundaysHolidays": {
         "table": stationCampusSundaysHolidays,
+        "dayOfWeek": "日曜日/祝日",
         "tableFormat": 0,
         "nextBusIndex": 1000,
       },
       "stationCampusSpecial": {
         "table": stationCampusSpecial,
+        "dayOfWeek": "3/28特別",
         "tableFormat": 0,
         "nextBusIndex": 1000,
       },
       "campusStationWeekdays": {
         "table": campusStationWeekdays,
+        "dayOfWeek": "平日",
         "tableFormat": 1,
         "nextBusIndex": 1000,
       },
       "campusStationSaturdays": {
         "table": campusStationSaturdays,
+        "dayOfWeek": "土曜日",
         "tableFormat": 1,
         "nextBusIndex": 1000,
       },
       "campusStationSundaysHolidays": {
         "table": campusStationSundaysHolidays,
+        "dayOfWeek": "日曜日/祝日",
         "tableFormat": 1,
         "nextBusIndex": 1000,
       },
       "campusStationSpecial": {
         "table": campusStationSpecial,
+        "dayOfWeek": "3/28特別",
         "tableFormat": 1,
         "nextBusIndex": 1000,
       },
       "campusFRCWeekdays": {
         "table": campusFRCWeekdays,
+        "dayOfWeek": "平日",
         "tableFormat": 2,
         "nextBusIndex": 1000,
       },
       "campusFRCSaturdays": {
         "table": campusFRCSaturdays,
+        "dayOfWeek": "土曜日",
         "tableFormat": 2,
         "nextBusIndex": 1000,
       },
       "frcCampusWeekdays": {
         "table": frcCampusWeekdays,
+        "dayOfWeek": "平日",
         "tableFormat": 3,
         "nextBusIndex": 1000,
       },
       "frcCampusSaturdays": {
         "table": frcCampusSaturdays,
+        "dayOfWeek": "土曜日",
         "tableFormat": 3,
         "nextBusIndex": 1000,
       },
@@ -432,10 +444,7 @@ Map timetables() {
       2: {"title": "キャンパス → FRC", "string0": "発車時刻", "string1": "残り時間", "string2": "乗車場所", "string3": "接続"},
       3: {"title": "FRC → キャンパス", "string0": "発車時刻", "string1": "残り時間", "string2": "降車場所", "string3": "接続"},
       "tableVer": "2023春季休業期間",
-      "selectedTables": {
-        "japanese": "",
-        "tableNames": [],
-      },
+      "selectedTableNames": [],
     }
   };
 
@@ -448,32 +457,28 @@ Map timetables() {
 
   if (dt.weekday == 7 || dateOfHolidaysOfMonth.contains(1) == true) {
     // 日曜日か祝日
-    timetable["tableInfo"]["selectedTables"]["japanese"] = "日曜日/祝日";
-    timetable["tableInfo"]["selectedTables"]["tableNames"].add("stationCampusSundaysHolidays");
-    timetable["tableInfo"]["selectedTables"]["tableNames"].add("campusStationSundaysHolidays");
-    timetable["tableInfo"]["selectedTables"]["tableNames"].add("");
-    timetable["tableInfo"]["selectedTables"]["tableNames"].add("");
+    timetable["tableInfo"]["selectedTableNames"].add("stationCampusSundaysHolidays");
+    timetable["tableInfo"]["selectedTableNames"].add("campusStationSundaysHolidays");
+    timetable["tableInfo"]["selectedTableNames"].add("");
+    timetable["tableInfo"]["selectedTableNames"].add("");
   } else if (dt.weekday >= 1 && dt.weekday <= 5) {
     // 平日
-    timetable["tableInfo"]["selectedTables"]["japanese"] = "平日";
-    timetable["tableInfo"]["selectedTables"]["tableNames"].add("stationCampusWeekdays");
-    timetable["tableInfo"]["selectedTables"]["tableNames"].add("campusStationWeekdays");
-    timetable["tableInfo"]["selectedTables"]["tableNames"].add("campusFRCWeekdays");
-    timetable["tableInfo"]["selectedTables"]["tableNames"].add("frcCampusWeekdays");
+    timetable["tableInfo"]["selectedTableNames"].add("stationCampusWeekdays");
+    timetable["tableInfo"]["selectedTableNames"].add("campusStationWeekdays");
+    timetable["tableInfo"]["selectedTableNames"].add("campusFRCWeekdays");
+    timetable["tableInfo"]["selectedTableNames"].add("frcCampusWeekdays");
   } else {
     // 土曜日
-    timetable["tableInfo"]["selectedTables"]["japanese"] = "土曜日";
-    timetable["tableInfo"]["selectedTables"]["tableNames"].add("stationCampusSaturdays");
-    timetable["tableInfo"]["selectedTables"]["tableNames"].add("campusStationSaturdays");
-    timetable["tableInfo"]["selectedTables"]["tableNames"].add("campusFRCSaturdays");
-    timetable["tableInfo"]["selectedTables"]["tableNames"].add("frcCampusSaturdays");
+    timetable["tableInfo"]["selectedTableNames"].add("stationCampusSaturdays");
+    timetable["tableInfo"]["selectedTableNames"].add("campusStationSaturdays");
+    timetable["tableInfo"]["selectedTableNames"].add("campusFRCSaturdays");
+    timetable["tableInfo"]["selectedTableNames"].add("frcCampusSaturdays");
   }
 
   // 3/28の特別ダイヤ
   if (dt.month == 3 && dt.day == 28) {
-    timetable["tableInfo"]["selectedTables"]["japanese"] = "3/28特別";
-    timetable["tableInfo"]["selectedTables"]["tableNames"].add("stationCampusSpecial");
-    timetable["tableInfo"]["selectedTables"]["tableNames"].add("campusStationSpecial");
+    timetable["tableInfo"]["selectedTableNames"].add("stationCampusSpecial");
+    timetable["tableInfo"]["selectedTableNames"].add("campusStationSpecial");
   }
   return timetable;
 }

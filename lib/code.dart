@@ -7,6 +7,7 @@ Map code() {
   //現在時刻と0時0分の取得
   var now = DateTime.now();
   var lastMidnight = DateTime(now.year, now.month, now.day);
+  const Duration zeroDuration = Duration(seconds: 0);
 
   String calcTimeRemaining(Duration time) {
     if (time.isNegative == false) {
@@ -40,33 +41,34 @@ Map code() {
     }
   }
 
-  for (var key in timetable["fullTables"].keys) {
+  for (var tableName in timetable["fullTables"].keys) {
+    bool flag = false;
     //時刻と残り時間をdatetime型でリストに追加
-    for (int i = 0; i < timetable["fullTables"][key]["table"].length; i++) {
-      var dtBus = lastMidnight.add(Duration(hours: timetable["fullTables"][key]["table"][i][0], minutes: timetable["fullTables"][key]["table"][i][1]));
+    for (int i = 0; i < timetable["fullTables"][tableName]["table"].length; i++) {
+      var dtBus = lastMidnight.add(Duration(hours: timetable["fullTables"][tableName]["table"][i][0], minutes: timetable["fullTables"][tableName]["table"][i][1]));
       final Duration duration = dtBus.difference(now);
-      timetable["fullTables"][key]["table"][i].insert(2, dtBus);
-      timetable["fullTables"][key]["table"][i].insert(3, duration);
-      timetable["fullTables"][key]["table"][i].insert(4, DateFormat('HH:mm').format(timetable["fullTables"][key]["table"][i][2]));
-      timetable["fullTables"][key]["table"][i].insert(5, calcTimeRemaining(timetable["fullTables"][key]["table"][i][3]));
+      timetable["fullTables"][tableName]["table"][i].insert(2, dtBus);
+      timetable["fullTables"][tableName]["table"][i].insert(3, duration);
+      timetable["fullTables"][tableName]["table"][i].insert(4, DateFormat('HH:mm').format(timetable["fullTables"][tableName]["table"][i][2]));
+      timetable["fullTables"][tableName]["table"][i].insert(5, calcTimeRemaining(timetable["fullTables"][tableName]["table"][i][3]));
+
+      if (duration > zeroDuration && flag == false) {
+        timetable["fullTables"][tableName]["nextBusIndex"] = i;
+        flag = true;
+      }
     }
   }
 
   int tableIndex = 0;
-  // for (int tableIndex = 0; tableIndex <= 3; tableIndex++) {
-  for (var tableName in timetable["tableInfo"]["selectedTables"]["tableNames"]) {
+  for (var tableName in timetable["tableInfo"]["selectedTableNames"]) {
     //日曜・祝日の場合何もせずreturn
-    // String tableName = timetable["tableInfo"]["selectedTables"]["tableNames"][tableIndex];
     if (tableName == "") {
       return timetable;
-      // break;
     }
 
-    const Duration zero = Duration(seconds: 0);
     for (int i = 0; i < timetable["fullTables"][tableName]["table"].length; i++) {
       //timetableの長さ分ループ
-      if (timetable["fullTables"][tableName]["table"][i][3] > zero) {
-        timetable["fullTables"][tableName]["nextBusIndex"] = i;
+      if (timetable["fullTables"][tableName]["table"][i][3] > zeroDuration) {
         if (i == 0) {
           //始発より前の時間の場合
           //時刻表示
@@ -88,9 +90,8 @@ Map code() {
           timetable["compactTables"][tableIndex][0][3] = "-";
           timetable["compactTables"][tableIndex][1][3] = timetable["fullTables"][tableName]["table"][i][7];
           timetable["compactTables"][tableIndex][2][3] = timetable["fullTables"][tableName]["table"][i + 1][7];
-
           break;
-        } else if (timetable["fullTables"][tableName]["table"][i][3] > zero && i < timetable["fullTables"][tableName]["table"].length - 1) {
+        } else if (timetable["fullTables"][tableName]["table"][i][3] > zeroDuration && i < timetable["fullTables"][tableName]["table"].length - 1) {
           //通常時
           for (int j = 0; j < 3; j++) {
             timetable["compactTables"][tableIndex][j][0] = timetable["fullTables"][tableName]["table"][i - 1 + j][4];
