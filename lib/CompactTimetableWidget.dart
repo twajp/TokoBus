@@ -15,13 +15,15 @@ class CompactTimetableWidget extends StatelessWidget {
     const Color darkGrey = Color.fromRGBO(44, 44, 46, 1);
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => FullTimetableView(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, tableName: timetable["tableInfo"]["selectedTableNames"][tableIndex]),
-            fullscreenDialog: true,
-          ),
-        );
+        if (timetable["tableInfo"]["selectedTableNames"][tableIndex] != "") {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => FullTimetableView(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, tableName: timetable["tableInfo"]["selectedTableNames"][tableIndex]),
+              fullscreenDialog: true,
+            ),
+          );
+        }
       },
       child: Column(
         children: [
