@@ -93,20 +93,20 @@ class AllTableListView extends StatelessWidget {
 
               const Spacer(),
 
-              Container(
-                alignment: AlignmentDirectional.center,
-                height: deviceHeight * 0.07,
-                width: deviceWidth * 0.9,
-                child: const Text(
-                  "3/28特別ダイヤ",
-                  style: TextStyle(fontSize: 30),
-                  softWrap: false,
-                ),
-              ),
-              TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth / 2 + deviceWidth / 2.4 + 4 * 2, tableName: "stationCampusSpecial"),
-              TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth / 2 + deviceWidth / 2.4 + 4 * 2, tableName: "campusStationSpecial"),
-
-              const Spacer(),
+              // Container(
+              //   alignment: AlignmentDirectional.center,
+              //   height: deviceHeight * 0.07,
+              //   width: deviceWidth * 0.9,
+              //   child: const Text(
+              //     "3/28特別ダイヤ",
+              //     style: TextStyle(fontSize: 30),
+              //     softWrap: false,
+              //   ),
+              // ),
+              // TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth / 2 + deviceWidth / 2.4 + 4 * 2, tableName: "stationCampusSpecial"),
+              // TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth / 2 + deviceWidth / 2.4 + 4 * 2, tableName: "campusStationSpecial"),
+              //
+              // const Spacer(),
 
               Container(
                 alignment: Alignment.bottomCenter,

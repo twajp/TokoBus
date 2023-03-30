@@ -1,13 +1,21 @@
 import 'package:intl/intl.dart';
-import 'timetables.dart';
+import 'CreateCurrentTimetable.dart';
+import 'CreateNextTimetable.dart';
 
 Map code() {
-  Map timetable = timetables();
-
   //現在時刻と0時0分の取得
   var now = DateTime.now();
   var lastMidnight = DateTime(now.year, now.month, now.day);
   const Duration zeroDuration = Duration(seconds: 0);
+
+  Map timetable;
+  var startDate = DateTime.parse("2023-04-04 00:00:00");
+  if (now.isBefore(startDate)) {
+    timetable = createCurrentTimetable();
+  } else {
+    timetable = createNextTimetable();
+  }
+
 
   String calcTimeRemaining(Duration time) {
     if (time.isNegative == false) {
