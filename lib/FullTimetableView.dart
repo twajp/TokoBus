@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'code.dart';
 
 class FullTimetableView extends StatefulWidget {
@@ -20,6 +21,9 @@ class _FullTimetableViewState extends State<FullTimetableView> {
   late double deviceWidth;
   late String tableName;
 
+  final _key = GlobalKey();
+  double scrollViewHeight = 0;
+
   @override
   void initState() {
     super.initState();
@@ -29,6 +33,12 @@ class _FullTimetableViewState extends State<FullTimetableView> {
     deviceWidth = widget.deviceWidth;
     tableName = widget.tableName;
     mainLoop();
+
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        scrollViewHeight = _key.currentContext!.size!.height;
+      });
+    });
   }
 
   Future<void> mainLoop() async {
@@ -40,9 +50,28 @@ class _FullTimetableViewState extends State<FullTimetableView> {
     }
   }
 
+  double setInitialScrollOffset({required Key key, required int nextBusIndex}) {
+    double initialScrollOffset = 0;
+    final numberOfBuses = timetable["fullTables"][tableName]["table"].length;
+    final rowHeight = deviceHeight * 0.05;
+    if ((nextBusIndex - 1) * deviceHeight * 0.05 < 0) {
+      //　始発前
+      initialScrollOffset = 0;
+      print("1 $initialScrollOffset");
+    } else if ((numberOfBuses - nextBusIndex) * rowHeight + 50 > scrollViewHeight) {
+      initialScrollOffset = (nextBusIndex - 1) * rowHeight;
+      print("2 $initialScrollOffset");
+    } else {
+      //last - nextBusIndex > key
+      initialScrollOffset = numberOfBuses * rowHeight - scrollViewHeight;
+      print("3 $initialScrollOffset");
+    }
+    return initialScrollOffset;
+  }
+
   @override
   Widget build(BuildContext context) {
-    Color wasedaColor = const Color.fromRGBO(142, 23, 40, 1);
+    const Color wasedaColor = Color.fromRGBO(142, 23, 40, 1);
     final int tableFormat = timetable["fullTables"][tableName]["tableFormat"];
     return Dismissible(
       direction: DismissDirection.vertical,
@@ -99,9 +128,8 @@ class _FullTimetableViewState extends State<FullTimetableView> {
               ),
               Expanded(
                 child: SingleChildScrollView(
-                  controller: ScrollController(
-                    initialScrollOffset: (timetable["fullTables"][tableName]["nextBusIndex"] - 1) * deviceHeight * 0.05,
-                  ),
+                  key: _key,
+                  controller: ScrollController(initialScrollOffset: setInitialScrollOffset(key: _key, nextBusIndex: timetable["fullTables"][tableName]["nextBusIndex"])),
                   child: Column(
                     children: [
                       for (int i = 0; i < timetable["fullTables"][tableName]["table"].length; i++) ...{
