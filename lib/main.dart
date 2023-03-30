@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Container(
                       alignment: Alignment.center,
                       child: Text(
-                        "$dayOfWeekダイヤ   (時刻表Ver: ${timetable["tableInfo"]["tableVer"]})",
+                        "$dayOfWeekダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
                         textAlign: TextAlign.center,
                         style: const TextStyle(color: Colors.grey),
                       ),
@@ -113,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Container(
                       alignment: Alignment.center,
                       child: Text(
-                        "$dayOfWeekダイヤ   (時刻表Ver: ${timetable["tableInfo"]["tableVer"]})",
+                        "$dayOfWeekダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
                         textAlign: TextAlign.center,
                         style: const TextStyle(color: Colors.grey),
                       ),
@@ -152,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Container(
                       alignment: Alignment.center,
                       child: Text(
-                        "$dayOfWeekダイヤ   (時刻表Ver: ${timetable["tableInfo"]["tableVer"]})",
+                        "$dayOfWeekダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
                         style: const TextStyle(color: Colors.grey),
                       ),
                     ),
