@@ -360,6 +360,21 @@ Map createCurrentTimetable() {
     ]
   ];
 
+  List sortTimetable (List table) {
+    table.sort(
+          (a, b) {
+        int result = a[0].compareTo(b[0]);
+        if (result != 0) return result;
+        return a[1].compareTo(b[1]);
+      },
+    );
+    return table;
+  }
+  campusFRCWeekdays=sortTimetable(campusFRCWeekdays);
+  campusFRCSaturdays=sortTimetable(campusFRCSaturdays);
+  frcCampusWeekdays=sortTimetable(frcCampusWeekdays);
+  frcCampusSaturdays=sortTimetable(frcCampusSaturdays);
+
   Map timetable = {
     "fullTables": {
       "stationCampusWeekdays": {
