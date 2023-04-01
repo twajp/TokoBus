@@ -118,7 +118,7 @@ class AllTableListView extends StatelessWidget {
                 ),
               ),
 
-              const Spacer(),
+              // const Spacer(),
             ],
           ),
         ),
