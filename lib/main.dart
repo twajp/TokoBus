@@ -67,6 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final String dayOfWeek = timetable["fullTables"][timetable["tableInfo"]["selectedTableNames"][0]]["dayOfWeek"];
+    final String timetableInfoString = "$dayOfWeekダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}";
     final PageController controller = PageController();
     return Scaffold(
       body: SafeArea(
@@ -90,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Container(
                       alignment: Alignment.center,
                       child: Text(
-                        "$dayOfWeekダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
+                        timetableInfoString,
                         textAlign: TextAlign.center,
                         style: const TextStyle(color: Colors.grey),
                       ),
@@ -113,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Container(
                       alignment: Alignment.center,
                       child: Text(
-                        "$dayOfWeekダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
+                        timetableInfoString,
                         textAlign: TextAlign.center,
                         style: const TextStyle(color: Colors.grey),
                       ),
@@ -152,7 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Container(
                       alignment: Alignment.center,
                       child: Text(
-                        "$dayOfWeekダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
+                        timetableInfoString,
                         style: const TextStyle(color: Colors.grey),
                       ),
                     ),
