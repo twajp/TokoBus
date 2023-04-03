@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:page_view_indicators/circle_page_indicator.dart';
 import 'code.dart';
 import 'CompactTimetableWidget.dart';
 import 'AllTablePage.dart';
@@ -47,6 +48,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   Map timetable = code();
   int count = 0;
+  final PageController controller = PageController(initialPage: 1);
+  final _currentPageNotifier = ValueNotifier<int>(1);
 
   Future<void> mainLoop() async {
     while (true) {
@@ -68,64 +71,91 @@ class _MyHomePageState extends State<MyHomePage> {
     final Size size = MediaQuery.of(context).size;
     final String dayOfWeek = timetable["fullTables"][timetable["tableInfo"]["selectedTableNames"][0]]["dayOfWeek"];
     final String timetableInfoString = "$dayOfWeekダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}";
-    final PageController controller = PageController();
+
+    if (MediaQuery.of(context).orientation == Orientation.portrait) {
+      return _buildVerticalLayout(size: size, timetable: timetable, timetableInfoString: timetableInfoString);
+    } else {
+      return _buildHorizontalLayout(size: size, timetable: timetable, timetableInfoString: timetableInfoString);
+    }
+  }
+
+  _buildVerticalLayout({required Size size, required timetable, required timetableInfoString}){
+    // 縦長の画面の場合
     return Scaffold(
       body: SafeArea(
-        child: PageView(
-          controller: controller,
-          children: <Widget>[
-            if (size.height > size.width) ...{
-              // 縦長の画面の場合
-              Column(
-                children: <Widget>[
-                  Expanded(
-                    flex: 4, // 割合
-                    child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 0),
-                  ),
-                  Expanded(
-                    flex: 5, // 割合
-                    child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 1),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: Text(
-                        timetableInfoString,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(color: Colors.grey),
-                      ),
+        child: Stack(
+          children: [
+            PageView(
+              controller: controller,
+              onPageChanged: (int index) {
+                _currentPageNotifier.value = index;
+              },
+              children: <Widget>[
+                AllTableListView(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, showTimetableInfo: true),
+                Column(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 4, // 割合
+                      child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 0),
                     ),
-                  )
-                ],
-              ),
-              Column(
-                children: <Widget>[
-                  Expanded(
-                    flex: 4, // 割合
-                    child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 2),
-                  ),
-                  Expanded(
-                    flex: 5, // 割合
-                    child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 3),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: Text(
-                        timetableInfoString,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(color: Colors.grey),
-                      ),
+                    Expanded(
+                      flex: 5, // 割合
+                      child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 1),
                     ),
-                  )
-                ],
-              ),
-              AllTableListView(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width)
-            } else ...{
-              // Web版やiPadなどの横長の画面の場合
-              Column(
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          timetableInfoString,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(color: Colors.grey),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                Column(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 4, // 割合
+                      child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 2),
+                    ),
+                    Expanded(
+                      flex: 5, // 割合
+                      child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 3),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          timetableInfoString,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(color: Colors.grey),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+            _buildCircleIndicator(size: size),
+          ],
+        ),
+      ),
+    );
+  }
+
+  _buildHorizontalLayout({required Size size, required timetable, required timetableInfoString}){
+    return Scaffold(
+      body: SafeArea(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Expanded(
+              flex: 6,
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
@@ -133,8 +163,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 2.2, tableIndex: 0),
-                        CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 2.2, tableIndex: 2),
+                        CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.2, tableIndex: 0),
+                        CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.2, tableIndex: 2),
                       ],
                     ),
                   ),
@@ -143,8 +173,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 2.2, tableIndex: 1),
-                        CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 2.2, tableIndex: 3),
+                        CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.2, tableIndex: 1),
+                        CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.2, tableIndex: 3),
                       ],
                     ),
                   ),
@@ -160,9 +190,30 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
-              AllTableListView(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 2.2),
-            }
+            ),
+            AllTableListView(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3, showTimetableInfo: false,),
           ],
+        ),
+      ),
+    );
+  }
+
+  _buildCircleIndicator({required Size size}) {
+    int itemCount;
+    if (size.height > size.width) {
+      itemCount = 3;
+    } else {
+      itemCount = 2;
+    }
+    return Positioned(
+      left: 0.0,
+      right: 0.0,
+      bottom: 0.0,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: CirclePageIndicator(
+          itemCount: itemCount,
+          currentPageNotifier: _currentPageNotifier,
         ),
       ),
     );

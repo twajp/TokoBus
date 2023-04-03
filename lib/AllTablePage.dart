@@ -5,20 +5,28 @@ class AllTableListView extends StatelessWidget {
   final Map timetable;
   final double deviceHeight;
   final double deviceWidth;
+  final bool showTimetableInfo;
 
   const AllTableListView({
     Key? key,
     required this.timetable,
     required this.deviceHeight,
     required this.deviceWidth,
+    required this.showTimetableInfo,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    int topPartFlex;
+    if (showTimetableInfo == true) {
+      topPartFlex = 9;
+    } else {
+      topPartFlex =10;
+    }
     return Column(
       children: <Widget>[
         Expanded(
-          flex: 9, // 割合
+          flex: topPartFlex, // 割合
           child: Column(
             children: [
               // timetable["fullTables"].keys.map<Widget>((tableName) => TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, tableName: tableName)).toList(),
@@ -110,17 +118,19 @@ class AllTableListView extends StatelessWidget {
             ],
           ),
         ),
-        Expanded(
-          flex: 1,
-          child: Container(
-            alignment: Alignment.center,
-            child: Text(
-              "時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
-              textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.grey),
+        if (showTimetableInfo == true)...{
+          Expanded(
+            flex: 1,
+            child: Container(
+              alignment: Alignment.center,
+              child: Text(
+                "時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.grey),
+              ),
             ),
-          ),
-        )
+          )
+        }
       ],
     );
   }
