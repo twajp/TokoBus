@@ -165,7 +165,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
-                            CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.2, tableIndex: 0),
+                            CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.1, tableIndex: 0),
                           ],
                         ),
                       ),
@@ -174,9 +174,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
-                            CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.2, tableIndex: 1),
+                            CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.1, tableIndex: 1),
                           ],
                         ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(),
                       ),
                     ],
                   ),
@@ -188,7 +192,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
-                            CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.2, tableIndex: 2),
+                            CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.1, tableIndex: 2),
                           ],
                         ),
                       ),
@@ -197,31 +201,47 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
-                            CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.2, tableIndex: 3),
+                            CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.1, tableIndex: 3),
                           ],
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            timetableInfoString,
+                            style: const TextStyle(color: Colors.grey),
+                          ),
                         ),
                       ),
                     ],
                   ),
-                  AllTableListView(
-                    timetable: timetable,
-                    deviceHeight: size.height,
-                    deviceWidth: size.width / 3,
-                    showTimetableInfo: false,
-                  ),
+                  Column(
+                    children: [
+                      Expanded(
+                          flex: 9,
+                          child: AllTableListView(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.1, showTimetableInfo: false)
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(),
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                alignment: Alignment.center,
-                child: Text(
-                  timetableInfoString,
-                  style: const TextStyle(color: Colors.grey),
-                ),
-              ),
-            ),
+            // Expanded(
+            //   flex: 1,
+            //   child: Container(
+            //     alignment: Alignment.center,
+            //     child: Text(
+            //       timetableInfoString,
+            //       style: const TextStyle(color: Colors.grey),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),
