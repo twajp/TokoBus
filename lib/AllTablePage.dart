@@ -18,7 +18,7 @@ class AllTableListView extends StatelessWidget {
     return Column(
       children: <Widget>[
         Expanded(
-          flex: 10, // 割合
+          flex: 9, // 割合
           child: Column(
             children: [
               // timetable["fullTables"].keys.map<Widget>((tableName) => TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, tableName: tableName)).toList(),
@@ -107,21 +107,20 @@ class AllTableListView extends StatelessWidget {
               // TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth / 2 + deviceWidth / 2.4 + 4 * 2, tableName: "campusStationSpecial"),
               //
               // const Spacer(),
-
-              Container(
-                alignment: Alignment.bottomCenter,
-                height: 50,
-                child: Text(
-                  "時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.grey),
-                ),
-              ),
-
-              // const Spacer(),
             ],
           ),
         ),
+        Expanded(
+          flex: 1,
+          child: Container(
+            alignment: Alignment.center,
+            child: Text(
+              "時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Colors.grey),
+            ),
+          ),
+        )
       ],
     );
   }
