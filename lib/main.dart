@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  _buildVerticalLayout({required Size size, required timetable, required timetableInfoString}){
+  _buildVerticalLayout({required Size size, required timetable, required timetableInfoString}) {
     // 縦長の画面の場合
     return Scaffold(
       body: SafeArea(
@@ -147,51 +147,81 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  _buildHorizontalLayout({required Size size, required timetable, required timetableInfoString}){
+  _buildHorizontalLayout({required Size size, required timetable, required timetableInfoString}) {
     return Scaffold(
       body: SafeArea(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: Column(
           children: [
             Expanded(
-              flex: 6,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              flex: 9,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Expanded(
-                    flex: 4,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.2, tableIndex: 0),
-                        CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.2, tableIndex: 2),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    flex: 5,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.2, tableIndex: 1),
-                        CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.2, tableIndex: 3),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: Text(
-                        timetableInfoString,
-                        style: const TextStyle(color: Colors.grey),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        flex: 4,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.2, tableIndex: 0),
+                          ],
+                        ),
                       ),
-                    ),
+                      Expanded(
+                        flex: 5,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.2, tableIndex: 1),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        flex: 4,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.2, tableIndex: 2),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        flex: 5,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.2, tableIndex: 3),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  AllTableListView(
+                    timetable: timetable,
+                    deviceHeight: size.height,
+                    deviceWidth: size.width / 3,
+                    showTimetableInfo: false,
                   ),
                 ],
               ),
             ),
-            AllTableListView(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3, showTimetableInfo: false,),
+            Expanded(
+              flex: 1,
+              child: Container(
+                alignment: Alignment.center,
+                child: Text(
+                  timetableInfoString,
+                  style: const TextStyle(color: Colors.grey),
+                ),
+              ),
+            ),
           ],
         ),
       ),
