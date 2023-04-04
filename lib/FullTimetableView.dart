@@ -74,7 +74,7 @@ class _FullTimetableViewState extends State<FullTimetableView> {
     const Color wasedaColor = Color.fromRGBO(142, 23, 40, 1);
     final int tableFormat = timetable["fullTables"][tableName]["tableFormat"];
     return Dismissible(
-      direction: DismissDirection.vertical,
+      direction: DismissDirection.down,
       key: const Key("key"),
       onDismissed: (_) => Navigator.of(context).pop(),
       child: Scaffold(
