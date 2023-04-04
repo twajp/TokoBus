@@ -80,7 +80,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _buildVerticalLayout({required Size size, required timetable, required timetableInfoString}) {
-    // 縦長の画面の場合
     return Scaffold(
       body: SafeArea(
         child: Stack(
