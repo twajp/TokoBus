@@ -262,6 +262,8 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(8.0),
         child: CirclePageIndicator(
           itemCount: itemCount,
+          dotColor: Colors.grey,
+          selectedDotColor: Colors.white,
           currentPageNotifier: _currentPageNotifier,
         ),
       ),
