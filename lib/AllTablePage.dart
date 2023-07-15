@@ -21,7 +21,7 @@ class AllTableListView extends StatelessWidget {
     if (showTimetableInfo == true) {
       topPartFlex = 9;
     } else {
-      topPartFlex =10;
+      topPartFlex = 10;
     }
     return Column(
       children: <Widget>[
@@ -58,6 +58,22 @@ class AllTableListView extends StatelessWidget {
               ),
 
               const Spacer(),
+
+              if (timetable["fullTables"]["stationCampusSpecial"] != null) ...{
+                Container(
+                  alignment: AlignmentDirectional.center,
+                  height: deviceHeight * 0.07,
+                  width: deviceWidth * 0.9,
+                  child: const Text(
+                    "平日(休講日)ダイヤ",
+                    style: TextStyle(fontSize: 30),
+                    softWrap: false,
+                  ),
+                ),
+                TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth / 2 + deviceWidth / 2.4 + 4 * 2, tableName: "stationCampusSpecial"),
+                TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth / 2 + deviceWidth / 2.4 + 4 * 2, tableName: "campusStationSpecial"),
+                const Spacer(),
+              },
 
               Container(
                 alignment: AlignmentDirectional.center,
@@ -100,25 +116,10 @@ class AllTableListView extends StatelessWidget {
               TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth / 2 + deviceWidth / 2.4 + 4 * 2, tableName: "campusStationSundaysHolidays"),
 
               const Spacer(),
-
-              // Container(
-              //   alignment: AlignmentDirectional.center,
-              //   height: deviceHeight * 0.07,
-              //   width: deviceWidth * 0.9,
-              //   child: const Text(
-              //     "3/28特別ダイヤ",
-              //     style: TextStyle(fontSize: 30),
-              //     softWrap: false,
-              //   ),
-              // ),
-              // TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth / 2 + deviceWidth / 2.4 + 4 * 2, tableName: "stationCampusSpecial"),
-              // TableNameOneRowWidget(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, widgetWidth: deviceWidth / 2 + deviceWidth / 2.4 + 4 * 2, tableName: "campusStationSpecial"),
-              //
-              // const Spacer(),
             ],
           ),
         ),
-        if (showTimetableInfo == true)...{
+        if (showTimetableInfo == true) ...{
           Expanded(
             flex: 1,
             child: Container(
