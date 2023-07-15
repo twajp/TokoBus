@@ -236,16 +236,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-            // Expanded(
-            //   flex: 1,
-            //   child: Container(
-            //     alignment: Alignment.center,
-            //     child: Text(
-            //       timetableInfoString,
-            //       style: const TextStyle(color: Colors.grey),
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ),
