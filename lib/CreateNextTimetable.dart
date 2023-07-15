@@ -485,28 +485,40 @@ Map createNextTimetable() {
     timetable["tableInfo"]["selectedTableNames"].add("frcCampusSaturdays");
   }
 
-  // 特別ダイヤ
-  if (dt.month == 8) {
-    if (dt.day >= 1 && dt.day <= 4) {
-      timetable["tableInfo"]["selectedTableNames"][0] = "stationCampusSpecial";
-      timetable["tableInfo"]["selectedTableNames"][1] = "campusStationSpecial";
-    } else if (dt.day >= 7 && dt.day <= 9) {
-      timetable["tableInfo"]["selectedTableNames"][0] = "stationCampusSpecial";
-      timetable["tableInfo"]["selectedTableNames"][1] = "campusStationSpecial";
-    }
-  } else if (dt.month == 9) {
-    if (dt.day >= 11 && dt.day <= 15) {
-      timetable["tableInfo"]["selectedTableNames"][0] = "stationCampusSpecial";
-      timetable["tableInfo"]["selectedTableNames"][1] = "campusStationSpecial";
-    } else if (dt.day >= 19 && dt.day <= 22) {
-      timetable["tableInfo"]["selectedTableNames"][0] = "stationCampusSpecial";
-      timetable["tableInfo"]["selectedTableNames"][1] = "campusStationSpecial";
-    } else if (dt.day >= 25 && dt.day <= 29) {
-      timetable["tableInfo"]["selectedTableNames"][0] = "stationCampusSpecial";
-      timetable["tableInfo"]["selectedTableNames"][1] = "campusStationSpecial";
-    }
-  } else if (dt.month == 10) {
-    if (dt.day >= 2 && dt.day <= 4) {
+  // 特別ダイヤに切り替える日
+  List specialDates = [
+    DateTime(2023, 08, 01),
+    DateTime(2023, 08, 02),
+    DateTime(2023, 08, 03),
+    DateTime(2023, 08, 04),
+
+    DateTime(2023, 08, 07),
+    DateTime(2023, 08, 08),
+    DateTime(2023, 08, 09),
+
+    DateTime(2023, 09, 11),
+    DateTime(2023, 09, 12),
+    DateTime(2023, 09, 13),
+    DateTime(2023, 09, 14),
+    DateTime(2023, 09, 15),
+
+    DateTime(2023, 09, 19),
+    DateTime(2023, 09, 20),
+    DateTime(2023, 09, 21),
+    DateTime(2023, 09, 22),
+
+    DateTime(2023, 09, 25),
+    DateTime(2023, 09, 26),
+    DateTime(2023, 09, 27),
+    DateTime(2023, 09, 28),
+    DateTime(2023, 09, 29),
+
+    DateTime(2023, 10, 02),
+    DateTime(2023, 10, 03),
+    DateTime(2023, 10, 04),
+  ];
+  for(int i = 0; i<specialDates.length; i++) {
+    if (dt.year == specialDates[i].year && dt.month == specialDates[i].month && dt.day == specialDates[i].day){
       timetable["tableInfo"]["selectedTableNames"][0] = "stationCampusSpecial";
       timetable["tableInfo"]["selectedTableNames"][1] = "campusStationSpecial";
     }
