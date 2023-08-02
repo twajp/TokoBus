@@ -464,7 +464,7 @@ Map createNextTimetable() {
   for (int i = 0; i < holidaysOfMonth.length; i++) {
     dateOfHolidaysOfMonth.add(holidaysOfMonth[i].date);
   }
-  if (dt.weekday == 7 || dateOfHolidaysOfMonth.contains(1) == true) {
+  if (dt.weekday == 7 || dateOfHolidaysOfMonth.contains(dt.day) == true) {
     // 日曜日か祝日
     timetable["tableInfo"]["selectedTableNames"].add("stationCampusSundaysHolidays");
     timetable["tableInfo"]["selectedTableNames"].add("campusStationSundaysHolidays");
