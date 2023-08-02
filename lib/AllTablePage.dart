@@ -37,7 +37,7 @@ class AllTableListView extends StatelessWidget {
                 height: deviceHeight * 0.07,
                 width: deviceWidth * 0.9,
                 child: const Text(
-                  "平日ダイヤ",
+                  "平日(休講日)ダイヤ",
                   style: TextStyle(fontSize: 30),
                   softWrap: false,
                 ),
@@ -65,7 +65,7 @@ class AllTableListView extends StatelessWidget {
                   height: deviceHeight * 0.07,
                   width: deviceWidth * 0.9,
                   child: const Text(
-                    "平日(休講日)ダイヤ",
+                    "平日(授業日)ダイヤ",
                     style: TextStyle(fontSize: 30),
                     softWrap: false,
                   ),
