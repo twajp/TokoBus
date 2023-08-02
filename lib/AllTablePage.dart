@@ -18,6 +18,10 @@ class AllTableListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int topPartFlex;
+    final String weekdaysTimetableName = timetable["fullTables"]["stationCampusWeekdays"]["dayOfWeek"] + "ダイヤ";
+    final String specialTimetableName = timetable["fullTables"]["stationCampusSpecial"]["dayOfWeek"] + "ダイヤ";
+    final String saturdaysTimetableName = timetable["fullTables"]["stationCampusSaturdays"]["dayOfWeek"] + "ダイヤ";
+    final String sundaysHolidaysTimetableName = timetable["fullTables"]["stationCampusSundaysHolidays"]["dayOfWeek"] + "ダイヤ";
     if (showTimetableInfo == true) {
       topPartFlex = 9;
     } else {
@@ -36,9 +40,9 @@ class AllTableListView extends StatelessWidget {
                 alignment: AlignmentDirectional.center,
                 height: deviceHeight * 0.07,
                 width: deviceWidth * 0.9,
-                child: const Text(
-                  "平日(休講日)ダイヤ",
-                  style: TextStyle(fontSize: 30),
+                child: Text(
+                  weekdaysTimetableName,
+                  style: const TextStyle(fontSize: 30),
                   softWrap: false,
                 ),
               ),
@@ -64,9 +68,9 @@ class AllTableListView extends StatelessWidget {
                   alignment: AlignmentDirectional.center,
                   height: deviceHeight * 0.07,
                   width: deviceWidth * 0.9,
-                  child: const Text(
-                    "平日(授業日)ダイヤ",
-                    style: TextStyle(fontSize: 30),
+                  child: Text(
+                    specialTimetableName,
+                    style: const TextStyle(fontSize: 30),
                     softWrap: false,
                   ),
                 ),
@@ -79,9 +83,9 @@ class AllTableListView extends StatelessWidget {
                 alignment: AlignmentDirectional.center,
                 height: deviceHeight * 0.07,
                 width: deviceWidth * 0.9,
-                child: const Text(
-                  "土曜日ダイヤ",
-                  style: TextStyle(fontSize: 30),
+                child: Text(
+                  saturdaysTimetableName,
+                  style: const TextStyle(fontSize: 30),
                   softWrap: false,
                 ),
               ),
@@ -106,9 +110,9 @@ class AllTableListView extends StatelessWidget {
                 alignment: AlignmentDirectional.center,
                 height: deviceHeight * 0.07,
                 width: deviceWidth * 0.9,
-                child: const Text(
-                  "日曜日/祝日ダイヤ",
-                  style: TextStyle(fontSize: 30),
+                child: Text(
+                  sundaysHolidaysTimetableName,
+                  style: const TextStyle(fontSize: 30),
                   softWrap: false,
                 ),
               ),
