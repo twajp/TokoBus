@@ -374,7 +374,7 @@ Map createNextTimetable() {
     "fullTables": {
       "stationCampusWeekdays": {
         "table": stationCampusWeekdays,
-        "dayOfWeek": "平日",
+        "dayOfWeek": "平日(授業日)",
         "tableFormat": 0,
         "nextBusIndex": 1000,
       },
@@ -398,7 +398,7 @@ Map createNextTimetable() {
       },
       "campusStationWeekdays": {
         "table": campusStationWeekdays,
-        "dayOfWeek": "平日",
+        "dayOfWeek": "平日(授業日)",
         "tableFormat": 1,
         "nextBusIndex": 1000,
       },
@@ -422,7 +422,7 @@ Map createNextTimetable() {
       },
       "campusFRCWeekdays": {
         "table": campusFRCWeekdays,
-        "dayOfWeek": "平日",
+        "dayOfWeek": "平日(授業日)",
         "tableFormat": 2,
         "nextBusIndex": 1000,
       },
@@ -434,7 +434,7 @@ Map createNextTimetable() {
       },
       "frcCampusWeekdays": {
         "table": frcCampusWeekdays,
-        "dayOfWeek": "平日",
+        "dayOfWeek": "平日(授業日)",
         "tableFormat": 3,
         "nextBusIndex": 1000,
       },
@@ -464,7 +464,6 @@ Map createNextTimetable() {
   for (int i = 0; i < holidaysOfMonth.length; i++) {
     dateOfHolidaysOfMonth.add(holidaysOfMonth[i].date);
   }
-
   if (dt.weekday == 7 || dateOfHolidaysOfMonth.contains(1) == true) {
     // 日曜日か祝日
     timetable["tableInfo"]["selectedTableNames"].add("stationCampusSundaysHolidays");
@@ -485,7 +484,29 @@ Map createNextTimetable() {
     timetable["tableInfo"]["selectedTableNames"].add("frcCampusSaturdays");
   }
 
-  // 特別ダイヤに切り替える日
+  // 追加で祝日扱いする日
+  List additionalHolidays = [
+    DateTime(2023, 08, 10),
+    DateTime(2023, 08, 11),
+    DateTime(2023, 08, 12),
+
+    DateTime(2023, 08, 14),
+    DateTime(2023, 08, 15),
+    DateTime(2023, 08, 16),
+    DateTime(2023, 08, 17),
+    DateTime(2023, 08, 18),
+    DateTime(2023, 08, 19),
+  ];
+  for(int i = 0; i<additionalHolidays.length; i++) {
+    if (dt.year == additionalHolidays[i].year && dt.month == additionalHolidays[i].month && dt.day == additionalHolidays[i].day){
+      timetable["tableInfo"]["selectedTableNames"][0] = "stationCampusSundaysHolidays";
+      timetable["tableInfo"]["selectedTableNames"][1] = "campusStationSundaysHolidays";
+      timetable["tableInfo"]["selectedTableNames"][2] = "";
+      timetable["tableInfo"]["selectedTableNames"][3] = "";
+    }
+  }
+
+  // 休講日ダイヤに切り替える日（特別ダイヤ）
   List specialDates = [
     DateTime(2023, 08, 01),
     DateTime(2023, 08, 02),
