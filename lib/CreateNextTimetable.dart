@@ -356,7 +356,7 @@ Map createNextTimetable() {
 
   List sortTimetable(List table) {
     table.sort(
-          (a, b) {
+      (a, b) {
         int result = a[0].compareTo(b[0]);
         if (result != 0) return result;
         return a[1].compareTo(b[1]);
@@ -455,7 +455,8 @@ Map createNextTimetable() {
       3: {"title": "FRC → キャンパス", "string0": "発車時刻", "string1": "残り時間", "string2": "降車場所", "string3": "接続"},
       "tableVer": "2023夏季休業期間",
       "selectedTableNames": [],
-    }
+    },
+    "pdf_url": "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Timetable_for_Summer_Vacation(from_1_August_2023_to_4_October_%202023).pdf",
   };
 
   var dt = DateTime.now();
@@ -487,9 +488,7 @@ Map createNextTimetable() {
   // 追加で祝日扱いする日
   List additionalHolidays = [
     DateTime(2023, 08, 10),
-    
     DateTime(2023, 08, 12),
-
     DateTime(2023, 08, 14),
     DateTime(2023, 08, 15),
     DateTime(2023, 08, 16),
@@ -497,8 +496,8 @@ Map createNextTimetable() {
     DateTime(2023, 08, 18),
     DateTime(2023, 08, 19),
   ];
-  for(int i = 0; i<additionalHolidays.length; i++) {
-    if (dt.year == additionalHolidays[i].year && dt.month == additionalHolidays[i].month && dt.day == additionalHolidays[i].day){
+  for (int i = 0; i < additionalHolidays.length; i++) {
+    if (dt.year == additionalHolidays[i].year && dt.month == additionalHolidays[i].month && dt.day == additionalHolidays[i].day) {
       timetable["tableInfo"]["selectedTableNames"][0] = "stationCampusSundaysHolidays";
       timetable["tableInfo"]["selectedTableNames"][1] = "campusStationSundaysHolidays";
       timetable["tableInfo"]["selectedTableNames"][2] = "";
@@ -527,8 +526,8 @@ Map createNextTimetable() {
     DateTime(2023, 09, 07),
     DateTime(2023, 09, 08),
   ];
-  for(int i = 0; i<specialDates.length; i++) {
-    if (dt.year == specialDates[i].year && dt.month == specialDates[i].month && dt.day == specialDates[i].day){
+  for (int i = 0; i < specialDates.length; i++) {
+    if (dt.year == specialDates[i].year && dt.month == specialDates[i].month && dt.day == specialDates[i].day) {
       timetable["tableInfo"]["selectedTableNames"][0] = "stationCampusSpecial";
       timetable["tableInfo"]["selectedTableNames"][1] = "campusStationSpecial";
     }

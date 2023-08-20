@@ -6,7 +6,7 @@ import 'package:page_view_indicators/circle_page_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'code.dart';
 import 'CompactTimetableWidget.dart';
-import 'AllTablePage.dart';
+import 'FullTimetableView.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,8 +50,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   Map timetable = code();
   int count = 0;
-  final PageController controller = PageController(initialPage: 1);
-  final _currentPageNotifier = ValueNotifier<int>(1);
+  final PageController controller = PageController(initialPage: 0);
+  final _currentPageNotifier = ValueNotifier<int>(0);
 
   Future<void> mainLoop() async {
     while (true) {
@@ -67,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     mainLoop();
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      showDateDialogIfNeeded(context);
+      showDateDialogIfNeeded(context, timetable: timetable);
     });
   }
 
@@ -78,14 +78,50 @@ class _MyHomePageState extends State<MyHomePage> {
     final String timetableInfoString = "$dayOfWeekダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}";
 
     if (MediaQuery.of(context).orientation == Orientation.portrait) {
-      return _buildVerticalLayout(size: size, timetable: timetable, timetableInfoString: timetableInfoString);
+      return _buildPortraitLayout(size: size, timetable: timetable, timetableInfoString: timetableInfoString);
     } else {
-      return _buildHorizontalLayout(size: size, timetable: timetable, timetableInfoString: timetableInfoString);
+      return _buildLandscapeLayout(size: size, timetable: timetable, timetableInfoString: timetableInfoString);
     }
   }
 
-  _buildVerticalLayout({required Size size, required timetable, required timetableInfoString}) {
+  _buildPortraitLayout({required Size size, required timetable, required timetableInfoString}) {
     return Scaffold(
+      appBar: AppBar(
+        title: Image.asset('assets/icon/icon_transparent.png', height: kToolbarHeight),
+        backgroundColor: Colors.black,
+        centerTitle: true,
+        actions: [
+          PopupMenuButton(
+            icon: const Icon(Icons.more_vert),
+            itemBuilder: (context) {
+              return [
+                const PopupMenuItem<int>(
+                  value: 0,
+                  child: Text("大学公式PDFを開く"),
+                ),
+                const PopupMenuItem<int>(
+                  value: 1,
+                  child: Text("時刻表の間違いを報告する"),
+                ),
+                const PopupMenuItem<int>(
+                  value: 2,
+                  child: Text("TokoBusについて"),
+                ),
+              ];
+            },
+            onSelected: (value) {
+              if (value == 0) {
+                openURL(url: timetable["pdf_url"]);
+              } else if (value == 1) {
+                openURL(url: "https://twajp.github.io/TokoBusWebsite/support");
+              } else if (value == 2) {
+                openURL(url: "https://twajp.github.io/TokoBusWebsite/");
+              }
+            },
+          ),
+        ],
+      ),
+      drawer: drawerWidget(timetable: timetable, height: size.height, width: size.width),
       body: SafeArea(
         child: Stack(
           children: [
@@ -95,15 +131,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 _currentPageNotifier.value = index;
               },
               children: <Widget>[
-                AllTableListView(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, showTimetableInfo: true),
                 Column(
                   children: <Widget>[
                     Expanded(
-                      flex: 4, // 割合
+                      flex: 4,
                       child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 0),
                     ),
                     Expanded(
-                      flex: 5, // 割合
+                      flex: 5,
                       child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 1),
                     ),
                     Expanded(
@@ -122,11 +157,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 Column(
                   children: <Widget>[
                     Expanded(
-                      flex: 4, // 割合
+                      flex: 4,
                       child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 2),
                     ),
                     Expanded(
-                      flex: 5, // 割合
+                      flex: 5,
                       child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 3),
                     ),
                     Expanded(
@@ -151,8 +186,44 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  _buildHorizontalLayout({required Size size, required timetable, required timetableInfoString}) {
+  _buildLandscapeLayout({required Size size, required timetable, required timetableInfoString}) {
     return Scaffold(
+      appBar: AppBar(
+        title: Image.asset('assets/icon/icon_transparent.png', height: kToolbarHeight),
+        backgroundColor: Colors.black,
+        centerTitle: true,
+        actions: [
+          PopupMenuButton(
+            icon: const Icon(Icons.more_vert),
+            itemBuilder: (context) {
+              return [
+                const PopupMenuItem<int>(
+                  value: 0,
+                  child: Text("大学公式PDFを開く"),
+                ),
+                const PopupMenuItem<int>(
+                  value: 1,
+                  child: Text("時刻表の間違いを報告する"),
+                ),
+                const PopupMenuItem<int>(
+                  value: 2,
+                  child: Text("TokoBusについて"),
+                ),
+              ];
+            },
+            onSelected: (value) {
+              if (value == 0) {
+                openURL(url: timetable["pdf_url"]);
+              } else if (value == 1) {
+                openURL(url: "https://twajp.github.io/TokoBusWebsite/support");
+              } else if (value == 2) {
+                openURL(url: "https://twajp.github.io/TokoBusWebsite/");
+              }
+            },
+          ),
+        ],
+      ),
+      drawer: drawerWidget(timetable: timetable, height: size.height, width: size.height),
       body: SafeArea(
         child: Column(
           children: [
@@ -162,93 +233,259 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: <Widget>[
                       Expanded(
                         flex: 4,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.1, tableIndex: 0),
-                          ],
-                        ),
+                        child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 0),
                       ),
                       Expanded(
                         flex: 5,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.1, tableIndex: 1),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Container(),
+                        child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 1),
                       ),
                     ],
                   ),
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: <Widget>[
                       Expanded(
                         flex: 4,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.1, tableIndex: 2),
-                          ],
-                        ),
+                        child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 2),
                       ),
                       Expanded(
                         flex: 5,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.1, tableIndex: 3),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Container(
-                          alignment: Alignment.center,
-                          child: Text(
-                            timetableInfoString,
-                            style: const TextStyle(color: Colors.grey),
-                          ),
-                        ),
+                        child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 3),
                       ),
                     ],
                   ),
-                  Column(
-                    children: [
-                      Expanded(
-                        flex: 9,
-                        child: AllTableListView(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width / 3.1, showTimetableInfo: false),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Container(),
-                      ),
-                    ],
-                  )
                 ],
               ),
             ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                alignment: Alignment.center,
+                child: Text(
+                  timetableInfoString,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(color: Colors.grey),
+                ),
+              ),
+            )
           ],
         ),
       ),
     );
   }
 
+  drawerWidget({required timetable, required height, required width}) {
+    final String weekdaysTimetableName = timetable["fullTables"]["stationCampusWeekdays"]["dayOfWeek"] + "ダイヤ";
+    final String specialTimetableName = timetable["fullTables"]["stationCampusSpecial"]["dayOfWeek"] + "ダイヤ";
+    final String saturdaysTimetableName = timetable["fullTables"]["stationCampusSaturdays"]["dayOfWeek"] + "ダイヤ";
+    final String sundaysHolidaysTimetableName = timetable["fullTables"]["stationCampusSundaysHolidays"]["dayOfWeek"] + "ダイヤ";
+    return Drawer(
+      backgroundColor: Colors.black,
+      child: SafeArea(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: <Widget>[
+              ExpansionTile(
+                title: Text(weekdaysTimetableName),
+                leading: const Icon(Icons.weekend),
+                textColor: Colors.white,
+                iconColor: Colors.white,
+                collapsedTextColor: Colors.white,
+                collapsedIconColor: Colors.white,
+                initiallyExpanded: true,
+                childrenPadding: const EdgeInsets.only(left: 56),
+                children: [
+                  ListTile(
+                    title: Text(timetable["tableInfo"][0]["title"]),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FullTimetableView(tableName: "stationCampusWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                          fullscreenDialog: true,
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: Text(timetable["tableInfo"][1]["title"]),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FullTimetableView(tableName: "campusStationWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                          fullscreenDialog: true,
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: Text(timetable["tableInfo"][2]["title"]),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FullTimetableView(tableName: "campusFRCWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                          fullscreenDialog: true,
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: Text(timetable["tableInfo"][3]["title"]),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FullTimetableView(tableName: "frcCampusWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                          fullscreenDialog: true,
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+              ExpansionTile(
+                title: Text(specialTimetableName),
+                leading: const Icon(Icons.school),
+                textColor: Colors.white,
+                iconColor: Colors.white,
+                collapsedTextColor: Colors.white,
+                collapsedIconColor: Colors.white,
+                childrenPadding: const EdgeInsets.only(left: 56),
+                children: [
+                  ListTile(
+                    title: Text(timetable["tableInfo"][0]["title"]),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FullTimetableView(tableName: "stationCampusSpecial", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                          fullscreenDialog: true,
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: Text(timetable["tableInfo"][1]["title"]),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FullTimetableView(tableName: "campusStationSpecial", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                          fullscreenDialog: true,
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+              ExpansionTile(
+                title: Text(saturdaysTimetableName),
+                leading: const Icon(Icons.weekend),
+                textColor: Colors.white,
+                iconColor: Colors.white,
+                collapsedTextColor: Colors.white,
+                collapsedIconColor: Colors.white,
+                childrenPadding: const EdgeInsets.only(left: 56),
+                children: [
+                  ListTile(
+                    title: Text(timetable["tableInfo"][0]["title"]),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FullTimetableView(tableName: "stationCampusSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                          fullscreenDialog: true,
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: Text(timetable["tableInfo"][1]["title"]),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FullTimetableView(tableName: "campusStationSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                          fullscreenDialog: true,
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: Text(timetable["tableInfo"][2]["title"]),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FullTimetableView(tableName: "campusFRCSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                          fullscreenDialog: true,
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: Text(timetable["tableInfo"][3]["title"]),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FullTimetableView(tableName: "frcCampusSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                          fullscreenDialog: true,
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+              ExpansionTile(
+                title: Text(sundaysHolidaysTimetableName),
+                leading: const Icon(Icons.weekend),
+                textColor: Colors.white,
+                iconColor: Colors.white,
+                collapsedTextColor: Colors.white,
+                collapsedIconColor: Colors.white,
+                childrenPadding: const EdgeInsets.only(left: 56),
+                children: [
+                  ListTile(
+                    title: Text(timetable["tableInfo"][0]["title"]),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FullTimetableView(tableName: "stationCampusSundaysHolidays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                          fullscreenDialog: true,
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: Text(timetable["tableInfo"][1]["title"]),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => FullTimetableView(tableName: "campusStationSundaysHolidays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                          fullscreenDialog: true,
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
   _buildCircleIndicator({required Size size}) {
-    int itemCount;
-    if (size.height > size.width) {
-      itemCount = 3;
-    } else {
-      itemCount = 2;
-    }
+    int itemCount = 2;
     return Positioned(
       left: 0.0,
       right: 0.0,
@@ -265,7 +502,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void showDateDialogIfNeeded(BuildContext context) {
+  void showDateDialogIfNeeded(BuildContext context, {required timetable}) {
     DateTime currentDate = DateTime.now();
     List specialDates = [
       DateTime(2023, 07, 22),
@@ -296,13 +533,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
+                  onPressed: openURL(url: timetable["pdf_url"]),
                   child: const Text("開く"),
-                  onPressed: () async {
-                    const url = "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Timetable_for_Summer_Vacation(from_1_August_2023_to_4_October_%202023).pdf";
-                    await launch(url);
-                    if (!mounted) return;
-                    Navigator.of(context).pop();
-                  },
                 ),
               ],
             );
@@ -310,5 +542,11 @@ class _MyHomePageState extends State<MyHomePage> {
         );
       }
     }
+  }
+
+  openURL({required url}) async {
+    await launch(url);
+    if (!mounted) return;
+    Navigator.of(context).pop();
   }
 }
