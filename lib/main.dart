@@ -518,6 +518,7 @@ class _MyHomePageState extends State<MyHomePage> {
       DateTime(2023, 08, 05),
       DateTime(2023, 08, 06),
       DateTime(2023, 08, 26),
+      DateTime(2023, 09, 01),
       DateTime(2023, 09, 02),
       DateTime(2023, 09, 03),
       DateTime(2023, 09, 09),
