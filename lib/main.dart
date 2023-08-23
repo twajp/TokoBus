@@ -284,201 +284,210 @@ class _MyHomePageState extends State<MyHomePage> {
     return Drawer(
       backgroundColor: Colors.black,
       child: SafeArea(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            children: <Widget>[
-              ExpansionTile(
-                title: Text(weekdaysTimetableName),
-                leading: const Icon(Icons.weekend),
-                textColor: Colors.white,
-                iconColor: Colors.white,
-                collapsedTextColor: Colors.white,
-                collapsedIconColor: Colors.white,
-                initiallyExpanded: true,
-                childrenPadding: const EdgeInsets.only(left: 56),
-                children: [
-                  ListTile(
-                    title: Text(timetable["tableInfo"][0]["title"]),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FullTimetableView(tableName: "stationCampusWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
-                          fullscreenDialog: true,
+        child: Column(
+          children: [
+            DrawerHeader(
+              child: Image.asset('assets/icon/icon_transparent.png'),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  children: <Widget>[
+                    ExpansionTile(
+                      title: Text(weekdaysTimetableName),
+                      leading: const Icon(Icons.weekend),
+                      textColor: Colors.white,
+                      iconColor: Colors.white,
+                      collapsedTextColor: Colors.white,
+                      collapsedIconColor: Colors.white,
+                      initiallyExpanded: true,
+                      childrenPadding: const EdgeInsets.only(left: 56),
+                      children: [
+                        ListTile(
+                          title: Text(timetable["tableInfo"][0]["title"]),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FullTimetableView(tableName: "stationCampusWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                                fullscreenDialog: true,
+                              ),
+                            );
+                          },
                         ),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: Text(timetable["tableInfo"][1]["title"]),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FullTimetableView(tableName: "campusStationWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
-                          fullscreenDialog: true,
+                        ListTile(
+                          title: Text(timetable["tableInfo"][1]["title"]),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FullTimetableView(tableName: "campusStationWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                                fullscreenDialog: true,
+                              ),
+                            );
+                          },
                         ),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: Text(timetable["tableInfo"][2]["title"]),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FullTimetableView(tableName: "campusFRCWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
-                          fullscreenDialog: true,
+                        ListTile(
+                          title: Text(timetable["tableInfo"][2]["title"]),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FullTimetableView(tableName: "campusFRCWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                                fullscreenDialog: true,
+                              ),
+                            );
+                          },
                         ),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: Text(timetable["tableInfo"][3]["title"]),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FullTimetableView(tableName: "frcCampusWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
-                          fullscreenDialog: true,
+                        ListTile(
+                          title: Text(timetable["tableInfo"][3]["title"]),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FullTimetableView(tableName: "frcCampusWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                                fullscreenDialog: true,
+                              ),
+                            );
+                          },
                         ),
-                      );
-                    },
-                  ),
-                ],
+                      ],
+                    ),
+                    ExpansionTile(
+                      title: Text(specialTimetableName),
+                      leading: const Icon(Icons.school),
+                      textColor: Colors.white,
+                      iconColor: Colors.white,
+                      collapsedTextColor: Colors.white,
+                      collapsedIconColor: Colors.white,
+                      childrenPadding: const EdgeInsets.only(left: 56),
+                      children: [
+                        ListTile(
+                          title: Text(timetable["tableInfo"][0]["title"]),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FullTimetableView(tableName: "stationCampusSpecial", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                                fullscreenDialog: true,
+                              ),
+                            );
+                          },
+                        ),
+                        ListTile(
+                          title: Text(timetable["tableInfo"][1]["title"]),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FullTimetableView(tableName: "campusStationSpecial", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                                fullscreenDialog: true,
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                    ExpansionTile(
+                      title: Text(saturdaysTimetableName),
+                      leading: const Icon(Icons.weekend),
+                      textColor: Colors.white,
+                      iconColor: Colors.white,
+                      collapsedTextColor: Colors.white,
+                      collapsedIconColor: Colors.white,
+                      childrenPadding: const EdgeInsets.only(left: 56),
+                      children: [
+                        ListTile(
+                          title: Text(timetable["tableInfo"][0]["title"]),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FullTimetableView(tableName: "stationCampusSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                                fullscreenDialog: true,
+                              ),
+                            );
+                          },
+                        ),
+                        ListTile(
+                          title: Text(timetable["tableInfo"][1]["title"]),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FullTimetableView(tableName: "campusStationSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                                fullscreenDialog: true,
+                              ),
+                            );
+                          },
+                        ),
+                        ListTile(
+                          title: Text(timetable["tableInfo"][2]["title"]),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FullTimetableView(tableName: "campusFRCSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                                fullscreenDialog: true,
+                              ),
+                            );
+                          },
+                        ),
+                        ListTile(
+                          title: Text(timetable["tableInfo"][3]["title"]),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FullTimetableView(tableName: "frcCampusSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                                fullscreenDialog: true,
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                    ExpansionTile(
+                      title: Text(sundaysHolidaysTimetableName),
+                      leading: const Icon(Icons.weekend),
+                      textColor: Colors.white,
+                      iconColor: Colors.white,
+                      collapsedTextColor: Colors.white,
+                      collapsedIconColor: Colors.white,
+                      childrenPadding: const EdgeInsets.only(left: 56),
+                      children: [
+                        ListTile(
+                          title: Text(timetable["tableInfo"][0]["title"]),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FullTimetableView(tableName: "stationCampusSundaysHolidays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                                fullscreenDialog: true,
+                              ),
+                            );
+                          },
+                        ),
+                        ListTile(
+                          title: Text(timetable["tableInfo"][1]["title"]),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => FullTimetableView(tableName: "campusStationSundaysHolidays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                                fullscreenDialog: true,
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-              ExpansionTile(
-                title: Text(specialTimetableName),
-                leading: const Icon(Icons.school),
-                textColor: Colors.white,
-                iconColor: Colors.white,
-                collapsedTextColor: Colors.white,
-                collapsedIconColor: Colors.white,
-                childrenPadding: const EdgeInsets.only(left: 56),
-                children: [
-                  ListTile(
-                    title: Text(timetable["tableInfo"][0]["title"]),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FullTimetableView(tableName: "stationCampusSpecial", timetable: timetable, deviceHeight: height, deviceWidth: width),
-                          fullscreenDialog: true,
-                        ),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: Text(timetable["tableInfo"][1]["title"]),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FullTimetableView(tableName: "campusStationSpecial", timetable: timetable, deviceHeight: height, deviceWidth: width),
-                          fullscreenDialog: true,
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-              ExpansionTile(
-                title: Text(saturdaysTimetableName),
-                leading: const Icon(Icons.weekend),
-                textColor: Colors.white,
-                iconColor: Colors.white,
-                collapsedTextColor: Colors.white,
-                collapsedIconColor: Colors.white,
-                childrenPadding: const EdgeInsets.only(left: 56),
-                children: [
-                  ListTile(
-                    title: Text(timetable["tableInfo"][0]["title"]),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FullTimetableView(tableName: "stationCampusSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
-                          fullscreenDialog: true,
-                        ),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: Text(timetable["tableInfo"][1]["title"]),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FullTimetableView(tableName: "campusStationSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
-                          fullscreenDialog: true,
-                        ),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: Text(timetable["tableInfo"][2]["title"]),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FullTimetableView(tableName: "campusFRCSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
-                          fullscreenDialog: true,
-                        ),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: Text(timetable["tableInfo"][3]["title"]),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FullTimetableView(tableName: "frcCampusSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
-                          fullscreenDialog: true,
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-              ExpansionTile(
-                title: Text(sundaysHolidaysTimetableName),
-                leading: const Icon(Icons.weekend),
-                textColor: Colors.white,
-                iconColor: Colors.white,
-                collapsedTextColor: Colors.white,
-                collapsedIconColor: Colors.white,
-                childrenPadding: const EdgeInsets.only(left: 56),
-                children: [
-                  ListTile(
-                    title: Text(timetable["tableInfo"][0]["title"]),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FullTimetableView(tableName: "stationCampusSundaysHolidays", timetable: timetable, deviceHeight: height, deviceWidth: width),
-                          fullscreenDialog: true,
-                        ),
-                      );
-                    },
-                  ),
-                  ListTile(
-                    title: Text(timetable["tableInfo"][1]["title"]),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FullTimetableView(tableName: "campusStationSundaysHolidays", timetable: timetable, deviceHeight: height, deviceWidth: width),
-                          fullscreenDialog: true,
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
