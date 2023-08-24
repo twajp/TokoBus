@@ -125,57 +125,41 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SafeArea(
         child: Stack(
           children: [
-            PageView(
-              controller: controller,
-              onPageChanged: (int index) {
-                _currentPageNotifier.value = index;
-              },
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Expanded(
-                      flex: 4,
-                      child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 0),
-                    ),
-                    Expanded(
-                      flex: 5,
-                      child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 1),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        alignment: Alignment.center,
-                        child: Text(
-                          timetableInfoString,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(color: Colors.grey),
-                        ),
+            Column(
+              children: [
+                Expanded(
+                  flex: 9,
+                  child: PageView(
+                    controller: controller,
+                    onPageChanged: (int index) {
+                      _currentPageNotifier.value = index;
+                    },
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          Expanded(child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 0)),
+                          Expanded(child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 1)),
+                        ],
                       ),
-                    )
-                  ],
+                      Column(
+                        children: <Widget>[
+                          Expanded(child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 2)),
+                          Expanded(child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 3)),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-                Column(
-                  children: <Widget>[
-                    Expanded(
-                      flex: 4,
-                      child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 2),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                      timetableInfoString,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(color: Colors.grey),
                     ),
-                    Expanded(
-                      flex: 5,
-                      child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 3),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        alignment: Alignment.center,
-                        child: Text(
-                          timetableInfoString,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(color: Colors.grey),
-                        ),
-                      ),
-                    )
-                  ],
+                  ),
                 ),
               ],
             ),
@@ -234,26 +218,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   Column(
                     children: <Widget>[
-                      Expanded(
-                        flex: 4,
-                        child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 0),
-                      ),
-                      Expanded(
-                        flex: 5,
-                        child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 1),
-                      ),
+                      Expanded(child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 0)),
+                      Expanded(child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 1)),
                     ],
                   ),
                   Column(
                     children: <Widget>[
-                      Expanded(
-                        flex: 4,
-                        child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 2),
-                      ),
-                      Expanded(
-                        flex: 5,
-                        child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 3),
-                      ),
+                      Expanded(child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 2)),
+                      Expanded(child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 3)),
                     ],
                   ),
                 ],
