@@ -111,11 +111,11 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             onSelected: (value) {
               if (value == 0) {
-                openURL(url: timetable["pdf_url"]["default"]);
+                launchUrl("https://www.waseda.jp/tokorozawa/kg/student-life/transportation.html");
               } else if (value == 1) {
-                openURL(url: "https://twajp.github.io/TokoBusWebsite/support");
+                launchUrl("https://twajp.github.io/TokoBusWebsite/support");
               } else if (value == 2) {
-                openURL(url: "https://twajp.github.io/TokoBusWebsite/");
+                launchUrl("https://twajp.github.io/TokoBusWebsite/");
               }
             },
           ),
@@ -213,11 +213,11 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             onSelected: (value) {
               if (value == 0) {
-                openURL(url: timetable["pdf_url"]["default"]);
+                launchUrl("https://www.waseda.jp/tokorozawa/kg/student-life/transportation.html");
               } else if (value == 1) {
-                openURL(url: "https://twajp.github.io/TokoBusWebsite/support");
+                launchUrl("https://twajp.github.io/TokoBusWebsite/support");
               } else if (value == 2) {
-                openURL(url: "https://twajp.github.io/TokoBusWebsite/");
+                launchUrl("https://twajp.github.io/TokoBusWebsite/");
               }
             },
           ),
@@ -514,7 +514,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void showDateDialogIfNeeded(BuildContext context, {required timetable}) {
     DateTime currentDate = DateTime.now();
     String url = timetable["pdf_url"]["default"];
-    if (timetable["pdf_url"]["special"].containsKey(DateTime(currentDate.year, currentDate.month, currentDate.day))){
+    if (timetable["pdf_url"]["special"].containsKey(DateTime(currentDate.year, currentDate.month, currentDate.day))) {
       url = timetable["pdf_url"]["special"][DateTime(currentDate.year, currentDate.month, currentDate.day)];
     }
     for (int i = 0; i < timetable["exceptionDates"].length; i++) {
@@ -549,9 +549,9 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  openURL({required url}) async {
-    await launch(url);
-    if (!mounted) return;
-    Navigator.of(context).pop();
+  Future<void> launchUrl(url) async {
+    if (!await launch(url)) {
+      throw Exception('Could not launch $url');
+    }
   }
 }
