@@ -111,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             onSelected: (value) {
               if (value == 0) {
-                launchUrl("https://www.waseda.jp/tokorozawa/kg/student-life/transportation.html");
+                launchUrl(timetable["pdf_url"]["default"]);
               } else if (value == 1) {
                 launchUrl("https://twajp.github.io/TokoBusWebsite/support");
               } else if (value == 2) {
@@ -213,7 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             onSelected: (value) {
               if (value == 0) {
-                launchUrl("https://www.waseda.jp/tokorozawa/kg/student-life/transportation.html");
+                launchUrl(timetable["pdf_url"]["default"]);
               } else if (value == 1) {
                 launchUrl("https://twajp.github.io/TokoBusWebsite/support");
               } else if (value == 2) {
