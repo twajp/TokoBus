@@ -128,7 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Column(
               children: [
                 Expanded(
-                  flex: 9,
+                  flex: 7,
                   child: PageView(
                     controller: controller,
                     onPageChanged: (int index) {
@@ -212,7 +212,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             Expanded(
-              flex: 9,
+              flex: 7,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
