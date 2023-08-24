@@ -111,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             onSelected: (value) {
               if (value == 0) {
-                openURL(url: timetable["pdf_url"]);
+                openURL(url: timetable["pdf_url"]["default"]);
               } else if (value == 1) {
                 openURL(url: "https://twajp.github.io/TokoBusWebsite/support");
               } else if (value == 2) {
@@ -213,7 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
             },
             onSelected: (value) {
               if (value == 0) {
-                openURL(url: timetable["pdf_url"]);
+                openURL(url: timetable["pdf_url"]["default"]);
               } else if (value == 1) {
                 openURL(url: "https://twajp.github.io/TokoBusWebsite/support");
               } else if (value == 2) {
@@ -513,21 +513,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void showDateDialogIfNeeded(BuildContext context, {required timetable}) {
     DateTime currentDate = DateTime.now();
-    List specialDates = [
-      DateTime(2023, 07, 22),
-      DateTime(2023, 08, 05),
-      DateTime(2023, 08, 06),
-      DateTime(2023, 08, 26),
-      DateTime(2023, 09, 01),
-      DateTime(2023, 09, 02),
-      DateTime(2023, 09, 03),
-      DateTime(2023, 09, 09),
-      DateTime(2023, 09, 23),
-      DateTime(2023, 09, 30),
-    ];
-
-    for (int i = 0; i < specialDates.length; i++) {
-      if (currentDate.year == specialDates[i].year && currentDate.month == specialDates[i].month && currentDate.day == specialDates[i].day) {
+    String url = timetable["pdf_url"]["default"];
+    if (timetable["pdf_url"]["special"].containsKey(DateTime(currentDate.year, currentDate.month, currentDate.day))){
+      url = timetable["pdf_url"]["special"][DateTime(currentDate.year, currentDate.month, currentDate.day)];
+    }
+    for (int i = 0; i < timetable["exceptionDates"].length; i++) {
+      if (currentDate.year == timetable["exceptionDates"][i].year && currentDate.month == timetable["exceptionDates"][i].month && currentDate.day == timetable["exceptionDates"][i].day) {
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -543,7 +534,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 TextButton(
-                  onPressed: openURL(url: timetable["pdf_url"]),
+                  onPressed: () async {
+                    await launch(url);
+                    if (!mounted) return;
+                    Navigator.of(context).pop();
+                  },
                   child: const Text("開く"),
                 ),
               ],
