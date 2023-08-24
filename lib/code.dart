@@ -10,7 +10,7 @@ Map code() {
 
   // 新ダイヤに切り替えるか
   Map timetable;
-  var startDate = DateTime.parse("2023-10-05 00:00:00");
+  var startDate = createNextTimetable()["startDate"];
   if (now.isBefore(startDate)) {
     timetable = createCurrentTimetable();
   } else {

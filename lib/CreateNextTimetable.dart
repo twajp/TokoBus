@@ -540,6 +540,7 @@ Map createNextTimetable() {
       "tableVer": "2023秋学期",
       "selectedTableNames": [],
     },
+    "startDate": DateTime(2023, 10, 05),
     "exceptionDates": [
       DateTime(2023, 10, 21),
       DateTime(2023, 10, 22),
