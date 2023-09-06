@@ -474,6 +474,8 @@ Map createCurrentTimetable() {
       "default": "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Timetable_for_Summer_Vacation(from_1_August_2023_to_4_October_%202023).pdf",
       "special": {
         DateTime(2023, 09, 01): "http://www.waseda.jp/tokorozawa/kg/doc/bus/Shuttle_Bus_Special_Schedule%20(Friday_1_September_2023).pdf",
+        DateTime(2023, 09, 23): "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Special_Schedule%20(Saturday_23rd_and_30th_September_2023).pdf",
+        DateTime(2023, 09, 30): "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Special_Schedule%20(Saturday_23rd_and_30th_September_2023).pdf",
       },
     },
   };
