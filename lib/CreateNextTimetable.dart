@@ -544,12 +544,14 @@ Map createNextTimetable() {
     "exceptionDates": [
       DateTime(2023, 10, 21),
       DateTime(2023, 10, 22),
+      DateTime(2023, 11, 04),
     ],
     "pdf_url": {
       "default": "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Timetable(Tokorozawa_Campus)AY2023_Fall_Semester.pdf",
       "special": {
         DateTime(2023, 10, 21): "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Special_Schedule(Saturday%2021st%20and%20Sunday%2022nd%20October2023).pdf",
         DateTime(2023, 10, 22): "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Special_Schedule(Saturday%2021st%20and%20Sunday%2022nd%20October2023).pdf",
+        DateTime(2023, 11, 04): "http://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Special_Schedule(Saturday_4th_November_2023).pdf",
       },
     },
   };
