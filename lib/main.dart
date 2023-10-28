@@ -533,7 +533,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> downloadJsonData() async {
-    final url = Uri.parse('https://raw.githubusercontent.com/twajp/TokoBus/main/data/dialog.json');
+    final url = Uri.parse("https://raw.githubusercontent.com/twajp/TokoBus/main/data/dialog.json");
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -541,11 +541,11 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() {
         jsonData = jsonBody;
       });
-      if (jsonData['flag'] == true){
+      if (jsonData["flag"] == true){
         _showJsonAlert();
       }
     } else {
-      throw Exception('Failed to load JSON data');
+      throw Exception("Failed to load JSON data");
     }
   }
 
@@ -554,8 +554,8 @@ class _MyHomePageState extends State<MyHomePage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(jsonData['title']),
-          content: Text(jsonData['content']),
+          title: Text(jsonData["title"]),
+          content: Text(jsonData["content"]),
           actions: [
             TextButton(
               child: const Text("閉じる"),
@@ -563,14 +563,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.of(context).pop();
               },
             ),
-            TextButton(
-              onPressed: () async {
-                await launch(jsonData['url']);
-                if (!mounted) return;
-                Navigator.of(context).pop();
-              },
-              child: const Text("開く"),
-            ),
+            if (jsonData["url"] != "") ...{
+              TextButton(
+                onPressed: () async {
+                  await launch(jsonData["url"]);
+                  if (!mounted) return;
+                  Navigator.of(context).pop();
+                },
+                child: const Text("開く"),
+              ),
+            },
           ],
         );
       },
@@ -579,7 +581,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> launchUrl(url) async {
     if (!await launch(url)) {
-      throw Exception('Could not launch $url');
+      throw Exception("Could not launch $url");
     }
   }
 }
