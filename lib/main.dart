@@ -4,6 +4,8 @@ import 'package:flutter/scheduler.dart' show SchedulerBinding;
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:page_view_indicators/circle_page_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 import 'code.dart';
 import 'CompactTimetableWidget.dart';
 import 'FullTimetableView.dart';
@@ -52,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int count = 0;
   final PageController controller = PageController(initialPage: 0);
   final _currentPageNotifier = ValueNotifier<int>(0);
+  Map<String, dynamic> jsonData = {};
 
   Future<void> mainLoop() async {
     while (true) {
@@ -69,6 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
     SchedulerBinding.instance.addPostFrameCallback((_) {
       showDateDialogIfNeeded(context, timetable: timetable);
     });
+    downloadJsonData();
   }
 
   @override
@@ -526,6 +530,51 @@ class _MyHomePageState extends State<MyHomePage> {
         );
       }
     }
+  }
+
+  Future<void> downloadJsonData() async {
+    final url = Uri.parse('https://raw.githubusercontent.com/twajp/TokoBus/main/data/dialog.json');
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      final jsonBody = json.decode(response.body);
+      setState(() {
+        jsonData = jsonBody;
+      });
+      if (jsonData['flag'] == true){
+        _showJsonAlert();
+      }
+    } else {
+      throw Exception('Failed to load JSON data');
+    }
+  }
+
+  void _showJsonAlert() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(jsonData['title']),
+          content: Text(jsonData['content']),
+          actions: [
+            TextButton(
+              child: const Text("閉じる"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              onPressed: () async {
+                await launch(jsonData['url']);
+                if (!mounted) return;
+                Navigator.of(context).pop();
+              },
+              child: const Text("開く"),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Future<void> launchUrl(url) async {
