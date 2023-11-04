@@ -548,6 +548,9 @@ Map createNextTimetable() {
       DateTime(2023, 10, 22),
       DateTime(2023, 11, 04),
       DateTime(2023, 11, 18),
+      DateTime(2023, 12, 03),
+      DateTime(2023, 12, 16),
+      DateTime(2023, 12, 17),
     ],
     "pdf_url": {
       "default": "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Timetable(Tokorozawa_Campus)AY2023_Fall_Semester.pdf",
@@ -558,6 +561,9 @@ Map createNextTimetable() {
         DateTime(2023, 10, 22): "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Special_Schedule(Saturday%2021st%20and%20Sunday%2022nd%20October2023).pdf",
         DateTime(2023, 11, 04): "http://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Special_Schedule(Saturday_4th_November_2023).pdf",
         DateTime(2023, 11, 18): "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Special_Schedule_(Saturday_18th_November_2023).pdf",
+        DateTime(2023, 12, 03): "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Special_Schedule_(Sunday_3rd_December_2023).pdf",
+        DateTime(2023, 12, 16): "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Special_Schedule_16th_&_17th_December_2023.pdf",
+        DateTime(2023, 12, 17): "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Special_Schedule_16th_&_17th_December_2023.pdf",
       },
     },
   };
