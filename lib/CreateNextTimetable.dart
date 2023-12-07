@@ -563,7 +563,7 @@ Map createNextTimetable() {
       DateTime(2024, 01, 04),
       DateTime(2024, 01, 05),
       DateTime(2024, 01, 06),
-
+      DateTime(2024, 01, 28),
     ],
     "pdf_url": {
       "default": "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Timetable(Tokorozawa_Campus)AY2023_Fall_Semester.pdf",
@@ -589,6 +589,7 @@ Map createNextTimetable() {
         DateTime(2024, 01, 04): "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Timetable_for_the_Winter%20Vacation_26th_28th_December_2023.pdf",
         DateTime(2024, 01, 05): "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Timetable_for_the_Winter%20Vacation_26th_28th_December_2023.pdf",
         DateTime(2024, 01, 06): "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Timetable_for_the_Winter%20Vacation_26th_28th_December_2023.pdf",
+        DateTime(2024, 01, 28): "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Special_Schedule(Sunday_28th_January_2024).pdf",
       },
     },
   };
