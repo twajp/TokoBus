@@ -12,7 +12,7 @@ Map code() {
   Map timetable;
   var startDate = createNextTimetable()["startDate"];
   if (now.isBefore(startDate)) {
-    timetable = createCurrentTimetable();
+    timetable = createSchoolDaysTimetable();
   } else {
     timetable = createNextTimetable();
   }
