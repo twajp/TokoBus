@@ -1,5 +1,5 @@
 import 'package:intl/intl.dart';
-import 'CreateCurrentTimetable.dart';
+import 'CreateSchoolDaysTimetable.dart';
 import 'CreateNextTimetable.dart';
 
 Map code() {
