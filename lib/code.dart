@@ -10,11 +10,11 @@ Map code() {
 
   // 新ダイヤに切り替えるか
   Map timetable;
-  var startDate = createNextTimetable()["startDate"];
+  var startDate = createVacationTimetable()["startDate"];
   if (now.isBefore(startDate)) {
     timetable = createSchoolDaysTimetable();
   } else {
-    timetable = createNextTimetable();
+    timetable = createVacationTimetable();
   }
 
   String calcTimeRemaining(Duration time) {
