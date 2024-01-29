@@ -366,7 +366,7 @@ Map createVacationTimetable() {
 
   List sortTimetable(List table) {
     table.sort(
-          (a, b) {
+      (a, b) {
         int result = a[0].compareTo(b[0]);
         if (result != 0) return result;
         return a[1].compareTo(b[1]);
@@ -506,8 +506,6 @@ Map createVacationTimetable() {
 
   // 追加で祝日扱いする日
   List additionalHolidays = [
-    DateTime(2024, 02, 12),
-    DateTime(2024, 03, 20),
   ];
   for (int i = 0; i < additionalHolidays.length; i++) {
     if (dt.year == additionalHolidays[i].year && dt.month == additionalHolidays[i].month && dt.day == additionalHolidays[i].day) {
