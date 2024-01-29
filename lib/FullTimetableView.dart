@@ -8,7 +8,7 @@ class FullTimetableView extends StatefulWidget {
   final double deviceWidth;
   final String tableName;
 
-  const FullTimetableView({Key? key, required this.timetable, required this.deviceHeight, required this.deviceWidth, required this.tableName}) : super(key: key);
+  const FullTimetableView({super.key, required this.timetable, required this.deviceHeight, required this.deviceWidth, required this.tableName});
 
   @override
   State<FullTimetableView> createState() => _FullTimetableViewState();
@@ -171,7 +171,7 @@ class OneRow extends StatelessWidget {
   final String tableName;
   final int rowIndex;
 
-  const OneRow({Key? key, required this.timetable, required this.deviceHeight, required this.deviceWidth, required this.textStyle, required this.backgroundColor, required this.tableName, required this.rowIndex}) : super(key: key);
+  const OneRow({super.key, required this.timetable, required this.deviceHeight, required this.deviceWidth, required this.textStyle, required this.backgroundColor, required this.tableName, required this.rowIndex});
 
   @override
   Widget build(BuildContext context) {

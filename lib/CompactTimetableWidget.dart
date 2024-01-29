@@ -7,9 +7,9 @@ class CompactTimetableWidget extends StatelessWidget {
   final double deviceWidth;
   final int tableIndex;
 
-  const CompactTimetableWidget({Key? key, required this.timetable, required this.deviceHeight, required this.deviceWidth, required this.tableIndex}) : super(key: key);
+  const CompactTimetableWidget({super.key, required this.timetable, required this.deviceHeight, required this.deviceWidth, required this.tableIndex});
 
-  Width() {
+  width1() {
     if (deviceHeight > deviceWidth) {
       return deviceWidth;
     } else {
@@ -17,7 +17,7 @@ class CompactTimetableWidget extends StatelessWidget {
     }
   }
 
-  Width2() {
+  width2() {
     if (deviceHeight > deviceWidth) {
       return deviceWidth;
     } else {
@@ -35,7 +35,7 @@ class CompactTimetableWidget extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => FullTimetableView(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: Width2(), tableName: timetable["tableInfo"]["selectedTableNames"][tableIndex]),
+              builder: (context) => FullTimetableView(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: width2(), tableName: timetable["tableInfo"]["selectedTableNames"][tableIndex]),
               fullscreenDialog: true,
             ),
           );
@@ -47,7 +47,7 @@ class CompactTimetableWidget extends StatelessWidget {
           Container(
             alignment: AlignmentDirectional.center,
             height: deviceHeight * 0.1,
-            width: Width() * 0.9,
+            width: width1() * 0.9,
             child: Text(
               timetable["tableInfo"][tableIndex]["title"],
               style: const TextStyle(fontSize: 30),
@@ -61,7 +61,7 @@ class CompactTimetableWidget extends StatelessWidget {
                 alignment: AlignmentDirectional.center,
                 color: darkGrey,
                 height: deviceHeight * 0.06 * 4,
-                width: Width() * (0.2 + 0.35 + 0.2 + 0.16) * 1.05,
+                width: width1() * (0.2 + 0.35 + 0.2 + 0.16) * 1.05,
               ),
               Column(
                 children: [
@@ -72,7 +72,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         alignment: AlignmentDirectional.center,
                         color: darkGrey,
                         height: deviceHeight * 0.06,
-                        width: Width() * 0.2,
+                        width: width1() * 0.2,
                         child: Text(
                           timetable["tableInfo"][tableIndex]["string0"],
                           style: const TextStyle(fontSize: 17),
@@ -83,7 +83,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         alignment: AlignmentDirectional.center,
                         color: darkGrey,
                         height: deviceHeight * 0.06,
-                        width: Width() * 0.35,
+                        width: width1() * 0.35,
                         child: Text(
                           timetable["tableInfo"][tableIndex]["string1"],
                           style: const TextStyle(fontSize: 17),
@@ -94,7 +94,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         alignment: AlignmentDirectional.center,
                         color: darkGrey,
                         height: deviceHeight * 0.06,
-                        width: Width() * 0.2,
+                        width: width1() * 0.2,
                         child: Text(
                           timetable["tableInfo"][tableIndex]["string2"],
                           style: const TextStyle(fontSize: 17),
@@ -105,7 +105,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         alignment: AlignmentDirectional.center,
                         color: darkGrey,
                         height: deviceHeight * 0.06,
-                        width: Width() * 0.16,
+                        width: width1() * 0.16,
                         child: Text(
                           timetable["tableInfo"][tableIndex]["string3"],
                           style: const TextStyle(fontSize: 17),
@@ -121,7 +121,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         alignment: AlignmentDirectional.center,
                         color: darkGrey,
                         height: deviceHeight * 0.06,
-                        width: Width() * 0.2,
+                        width: width1() * 0.2,
                         child: Text(
                           timetable["compactTables"][tableIndex][0][0],
                           style: const TextStyle(fontSize: 17, color: Colors.grey),
@@ -132,7 +132,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         alignment: AlignmentDirectional.center,
                         color: darkGrey,
                         height: deviceHeight * 0.06,
-                        width: Width() * 0.35,
+                        width: width1() * 0.35,
                         child: Text(
                           timetable["compactTables"][tableIndex][0][1],
                           style: const TextStyle(fontSize: 17, color: Colors.grey),
@@ -143,7 +143,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         alignment: AlignmentDirectional.center,
                         color: darkGrey,
                         height: deviceHeight * 0.06,
-                        width: Width() * 0.2,
+                        width: width1() * 0.2,
                         child: Text(
                           timetable["compactTables"][tableIndex][0][2],
                           style: const TextStyle(fontSize: 17, color: Colors.grey),
@@ -154,7 +154,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         alignment: AlignmentDirectional.center,
                         color: darkGrey,
                         height: deviceHeight * 0.06,
-                        width: Width() * 0.16,
+                        width: width1() * 0.16,
                         child: Text(
                           timetable["compactTables"][tableIndex][0][3],
                           style: const TextStyle(fontSize: 17, color: Colors.grey),
@@ -170,7 +170,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         alignment: AlignmentDirectional.center,
                         color: wasedaColor,
                         height: deviceHeight * 0.06,
-                        width: Width() * 0.2,
+                        width: width1() * 0.2,
                         child: Text(
                           timetable["compactTables"][tableIndex][1][0],
                           style: const TextStyle(fontSize: 17),
@@ -181,7 +181,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         alignment: AlignmentDirectional.center,
                         color: wasedaColor,
                         height: deviceHeight * 0.06,
-                        width: Width() * 0.35,
+                        width: width1() * 0.35,
                         child: Text(
                           timetable["compactTables"][tableIndex][1][1],
                           style: const TextStyle(fontSize: 17),
@@ -192,7 +192,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         alignment: AlignmentDirectional.center,
                         color: wasedaColor,
                         height: deviceHeight * 0.06,
-                        width: Width() * 0.2,
+                        width: width1() * 0.2,
                         child: Text(
                           timetable["compactTables"][tableIndex][1][2],
                           style: const TextStyle(fontSize: 17),
@@ -203,7 +203,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         alignment: AlignmentDirectional.center,
                         color: wasedaColor,
                         height: deviceHeight * 0.06,
-                        width: Width() * 0.16,
+                        width: width1() * 0.16,
                         child: Text(
                           timetable["compactTables"][tableIndex][1][3],
                           style: const TextStyle(fontSize: 17),
@@ -219,7 +219,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         alignment: AlignmentDirectional.center,
                         color: darkGrey,
                         height: deviceHeight * 0.06,
-                        width: Width() * 0.2,
+                        width: width1() * 0.2,
                         child: Text(
                           timetable["compactTables"][tableIndex][2][0],
                           style: const TextStyle(fontSize: 17),
@@ -230,7 +230,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         alignment: AlignmentDirectional.center,
                         color: darkGrey,
                         height: deviceHeight * 0.06,
-                        width: Width() * 0.35,
+                        width: width1() * 0.35,
                         child: Text(
                           timetable["compactTables"][tableIndex][2][1],
                           style: const TextStyle(fontSize: 17),
@@ -241,7 +241,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         alignment: AlignmentDirectional.center,
                         color: darkGrey,
                         height: deviceHeight * 0.06,
-                        width: Width() * 0.2,
+                        width: width1() * 0.2,
                         child: Text(
                           timetable["compactTables"][tableIndex][2][2],
                           style: const TextStyle(fontSize: 17),
@@ -252,7 +252,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         alignment: AlignmentDirectional.center,
                         color: darkGrey,
                         height: deviceHeight * 0.06,
-                        width: Width() * 0.16,
+                        width: width1() * 0.16,
                         child: Text(
                           timetable["compactTables"][tableIndex][2][3],
                           style: const TextStyle(fontSize: 17),
