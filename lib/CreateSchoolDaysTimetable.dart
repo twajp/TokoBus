@@ -440,7 +440,7 @@ Map createSchoolDaysTimetable() {
 
   List sortTimetable(List table) {
     table.sort(
-          (a, b) {
+      (a, b) {
         int result = a[0].compareTo(b[0]);
         if (result != 0) return result;
         return a[1].compareTo(b[1]);

@@ -541,7 +541,7 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() {
         jsonData = jsonBody;
       });
-      if (jsonData["flag"] == true){
+      if (jsonData["flag"] == true) {
         _showJsonAlert();
       }
     } else {
