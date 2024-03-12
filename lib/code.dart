@@ -10,11 +10,11 @@ Map code() {
 
   // 新ダイヤに切り替えるか
   Map timetable;
-  var startDate = createVacationTimetable()["startDate"];
+  var startDate = createSchoolDaysTimetable()["startDate"];
   if (now.isBefore(startDate)) {
-    timetable = createSchoolDaysTimetable();
-  } else {
     timetable = createVacationTimetable();
+  } else {
+    timetable = createSchoolDaysTimetable();
   }
 
   String calcTimeRemaining(Duration time) {
@@ -51,7 +51,7 @@ Map code() {
 
   for (var tableName in timetable["fullTables"].keys) {
     bool flag = false;
-    //時刻と残り時間をdatetime型でリストに追加
+    // 時刻と残り時間をdatetime型でリストに追加
     for (int i = 0; i < timetable["fullTables"][tableName]["table"].length; i++) {
       var dtBus = lastMidnight.add(Duration(hours: timetable["fullTables"][tableName]["table"][i][0], minutes: timetable["fullTables"][tableName]["table"][i][1]));
       final Duration duration = dtBus.difference(now);
@@ -69,38 +69,38 @@ Map code() {
 
   int tableIndex = 0;
   for (var tableName in timetable["tableInfo"]["selectedTableNames"]) {
-    //日曜・祝日の場合何もせずreturn
+    // 日曜・祝日の場合何もせずreturn
     if (tableName == "") {
       return timetable;
     }
 
     for (int i = 0; i < timetable["fullTables"][tableName]["table"].length; i++) {
-      //timetableの長さ分ループ
+      // timetableの長さ分ループ
       if (timetable["fullTables"][tableName]["table"][i][3] > zeroDuration) {
         if (i == 0) {
-          //始発より前の時間の場合
-          //時刻表示
+          // 始発より前の時間の場合
+          // 時刻表示
           timetable["compactTables"][tableIndex][0][0] = "-";
           timetable["compactTables"][tableIndex][1][0] = timetable["fullTables"][tableName]["table"][i][4];
           timetable["compactTables"][tableIndex][2][0] = timetable["fullTables"][tableName]["table"][i + 1][4];
 
-          //残り時間表示
+          // 残り時間表示
           timetable["compactTables"][tableIndex][0][1] = "-";
           timetable["compactTables"][tableIndex][1][1] = timetable["fullTables"][tableName]["table"][i][5];
           timetable["compactTables"][tableIndex][2][1] = timetable["fullTables"][tableName]["table"][i + 1][5];
 
-          //発車場所/降車場所
+          // 発車場所/降車場所
           timetable["compactTables"][tableIndex][0][2] = "-";
           timetable["compactTables"][tableIndex][1][2] = timetable["fullTables"][tableName]["table"][i][6];
           timetable["compactTables"][tableIndex][2][2] = timetable["fullTables"][tableName]["table"][i + 1][6];
 
-          //車椅子対応or接続
+          // 車椅子対応/接続
           timetable["compactTables"][tableIndex][0][3] = "-";
           timetable["compactTables"][tableIndex][1][3] = timetable["fullTables"][tableName]["table"][i][7];
           timetable["compactTables"][tableIndex][2][3] = timetable["fullTables"][tableName]["table"][i + 1][7];
           break;
         } else if (timetable["fullTables"][tableName]["table"][i][3] > zeroDuration && i < timetable["fullTables"][tableName]["table"].length - 1) {
-          //通常時
+          // 通常時
           for (int j = 0; j < 3; j++) {
             timetable["compactTables"][tableIndex][j][0] = timetable["fullTables"][tableName]["table"][i - 1 + j][4];
             timetable["compactTables"][tableIndex][j][1] = timetable["fullTables"][tableName]["table"][i - 1 + j][5];
@@ -110,45 +110,45 @@ Map code() {
           break;
         } else if (i == timetable["fullTables"][tableName]["table"].length - 1) {
           // 次が最終便の場合
-          //時刻表示
+          // 時刻表示
           timetable["compactTables"][tableIndex][0][0] = timetable["fullTables"][tableName]["table"][i - 1][4];
           timetable["compactTables"][tableIndex][1][0] = timetable["fullTables"][tableName]["table"][i][4];
           timetable["compactTables"][tableIndex][2][0] = "-";
 
-          //残り時間表示
+          // 残り時間表示
           timetable["compactTables"][tableIndex][0][1] = timetable["fullTables"][tableName]["table"][i - 1][5];
           timetable["compactTables"][tableIndex][1][1] = timetable["fullTables"][tableName]["table"][i][5];
           timetable["compactTables"][tableIndex][2][1] = "-";
 
-          //発車場所/降車場所
+          // 発車場所/降車場所
           timetable["compactTables"][tableIndex][0][2] = timetable["fullTables"][tableName]["table"][i - 1][6];
           timetable["compactTables"][tableIndex][1][2] = timetable["fullTables"][tableName]["table"][i][6];
           timetable["compactTables"][tableIndex][2][2] = "-";
 
-          //車椅子対応or接続
+          // 車椅子対応/接続
           timetable["compactTables"][tableIndex][0][3] = timetable["fullTables"][tableName]["table"][i - 1][7];
           timetable["compactTables"][tableIndex][1][3] = timetable["fullTables"][tableName]["table"][i][7];
           timetable["compactTables"][tableIndex][2][3] = "-";
           break;
         }
       } else {
-        //最終便の後の場合
-        //時刻表示
+        // 最終便の後の場合
+        // 時刻表示
         timetable["compactTables"][tableIndex][0][0] = timetable["fullTables"][tableName]["table"].last[4];
         timetable["compactTables"][tableIndex][1][0] = "-";
         timetable["compactTables"][tableIndex][2][0] = "-";
 
-        //残り時間表示
+        // 残り時間表示
         timetable["compactTables"][tableIndex][0][1] = timetable["fullTables"][tableName]["table"].last[5];
         timetable["compactTables"][tableIndex][1][1] = "-";
         timetable["compactTables"][tableIndex][2][1] = "-";
 
-        //発車場所/降車場所
+        // 発車場所/降車場所
         timetable["compactTables"][tableIndex][0][2] = timetable["fullTables"][tableName]["table"].last[6];
         timetable["compactTables"][tableIndex][1][2] = "-";
         timetable["compactTables"][tableIndex][2][2] = "-";
 
-        //車椅子対応or接続
+        // 車椅子対応/接続
         timetable["compactTables"][tableIndex][0][3] = timetable["fullTables"][tableName]["table"].last[7];
         timetable["compactTables"][tableIndex][1][3] = "-";
         timetable["compactTables"][tableIndex][2][3] = "-";
