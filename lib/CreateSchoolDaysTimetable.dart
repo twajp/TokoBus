@@ -545,10 +545,10 @@ Map createSchoolDaysTimetable() {
       DateTime(2024, 04, 05),
     ],
     "pdf_url": {
-      "default": "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Timetable(Tokorozawa_Campus)AY2024_Spring_Semester.pdf",
+      "default": "https://www.waseda.jp/fhum/hum/assets/uploads/2024/03/School_Bus_TimetableTokorozawa_CampusAY2024_Spring_Semester-1.pdf",
       "special": {
-        DateTime(2024, 04, 03): "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Timetable(Tokorozawa_Campus)Special_Schedule(3rd_and_5th_April_2024).pdf",
-        DateTime(2024, 04, 05): "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Timetable(Tokorozawa_Campus)Special_Schedule(3rd_and_5th_April_2024).pdf",
+        DateTime(2024, 04, 03): "https://www.waseda.jp/fhum/hum/assets/uploads/2024/03/School_Bus_TimetableTokorozawa_CampusSpecial_Schedule3rd_and_5th_April_2024.pdf",
+        DateTime(2024, 04, 05): "https://www.waseda.jp/fhum/hum/assets/uploads/2024/03/School_Bus_TimetableTokorozawa_CampusSpecial_Schedule3rd_and_5th_April_2024.pdf",
       },
     },
   };
