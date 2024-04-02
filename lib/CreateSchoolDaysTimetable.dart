@@ -540,12 +540,6 @@ Map createSchoolDaysTimetable() {
       "selectedTableNames": [],
     },
     "startDate": DateTime(2024, 04, 01),
-    "exceptionDates": [
-      DateTime(2024, 04, 03),
-      DateTime(2024, 04, 05),
-      DateTime(2024, 04, 20),
-      DateTime(2024, 04, 21),
-    ],
     "pdf_url": {
       "default": "https://www.waseda.jp/fhum/hum/assets/uploads/2024/03/School_Bus_TimetableTokorozawa_CampusAY2024_Spring_Semester-1.pdf",
       "special": {

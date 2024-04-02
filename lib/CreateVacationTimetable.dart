@@ -467,9 +467,6 @@ Map createVacationTimetable() {
       "selectedTableNames": [],
     },
     "startDate": DateTime(2024, 02, 03),
-    "exceptionDates": [
-      DateTime(2024, 03, 28),
-    ],
     "pdf_url": {
       "default": "https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Timetable_for_Spring_Vacation(from_3_February_to_31_March_2024).pdf",
       "special": {

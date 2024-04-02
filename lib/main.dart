@@ -499,36 +499,31 @@ class _MyHomePageState extends State<MyHomePage> {
     String url = timetable["pdf_url"]["default"];
     if (timetable["pdf_url"]["special"].containsKey(DateTime(currentDate.year, currentDate.month, currentDate.day))) {
       url = timetable["pdf_url"]["special"][DateTime(currentDate.year, currentDate.month, currentDate.day)];
-    }
-    for (int i = 0; i < timetable["exceptionDates"].length; i++) {
-      if (currentDate.year == timetable["exceptionDates"][i].year && currentDate.month == timetable["exceptionDates"][i].month && currentDate.day == timetable["exceptionDates"][i].day) {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: const Text("本日は特別ダイヤです"),
-              content: const Text("本日の特別ダイヤは未対応です。\n"
-                  "大学ウェブサイトのPDFを確認しますか？"),
-              actions: [
-                TextButton(
-                  child: const Text("閉じる"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-                TextButton(
-                  onPressed: () async {
-                    await launch(url);
-                    if (!mounted) return;
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text("開く"),
-                ),
-              ],
-            );
-          },
-        );
-      }
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text("本日は特別ダイヤです"),
+            content: const Text("本日の特別ダイヤは未対応です。\n大学ウェブサイトのPDFを確認しますか？"),
+            actions: [
+              TextButton(
+                child: const Text("閉じる"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              TextButton(
+                onPressed: () async {
+                  await launch(url);
+                  if (!mounted) return;
+                  Navigator.of(context).pop();
+                },
+                child: const Text("開く"),
+              ),
+            ],
+          );
+        },
+      );
     }
   }
 
