@@ -3,8 +3,8 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"index.html": "8518057ce9daecc4d87a5bc5b703dcf6",
-"/": "8518057ce9daecc4d87a5bc5b703dcf6",
+const RESOURCES = {"index.html": "a31d02c62c0987a19781fa156c4ca21d",
+"/": "a31d02c62c0987a19781fa156c4ca21d",
 "canvaskit/canvaskit.js": "c86fbd9e7b17accae76e5ad116583dc4",
 "canvaskit/skwasm.js": "445e9e400085faead4493be2224d95aa",
 "canvaskit/skwasm.wasm": "e42815763c5d05bba43f9d0337fa7d84",
@@ -15,12 +15,6 @@ const RESOURCES = {"index.html": "8518057ce9daecc4d87a5bc5b703dcf6",
 "canvaskit/skwasm.js.symbols": "741d50ffba71f89345996b0aa8426af8",
 "canvaskit/skwasm.worker.js": "bfb704a6c714a75da9ef320991e88b03",
 "canvaskit/canvaskit.js.symbols": "38cba9233b92472a36ff011dc21c2c9f",
-"doc/index.html": "c35fe7300d849e96415211c1be7c4432",
-"doc/images/Download_on_the_App_Store_Badge_JP_RGB_blk_100317.svg": "57272347647449ab686d88248fc9dc9e",
-"doc/images/icon.png": "bed8eca9ab4c364c00534e8c2ab7a08f",
-"doc/privacy.html": "b478fc4e41cf22d138df6f6cc3dd4a2e",
-"doc/style.css": "efd8bf5107f35e155d80985ed36f28c3",
-"doc/support.html": "c26b121a30f7edea3e736eea201d9d3c",
 "favicon.png": "e57f011ad7d39cf09db88445c9c4e297",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
 "assets/fonts/MaterialIcons-Regular.otf": "90f7324f8522efd63a77a55eb25952af",
