@@ -59,6 +59,12 @@ jobs:
         tag_name: ${{ env.TAG_NAME }}
         generate_release_notes: false
 
+    - name: Wait for push to complete
+      run: |
+        while [ $(git show --format='%H' --no-patch) -ne $(git ls-remote -h https://github.com/${{ github.repository }}.git) ]; do
+          sleep 1
+        done
+
   build_ios:
     needs: [build_all]
     uses: ./.github/workflows/build_ios.yml
