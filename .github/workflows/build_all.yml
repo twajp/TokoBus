@@ -1,0 +1,78 @@
+name: Build All
+
+on:
+  push:
+    tags: [ v* ]
+  workflow_dispatch:
+
+jobs:
+  build_all:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        channel: 'stable'
+        cache: true
+
+    - name: Set up cider
+      run: flutter pub global activate cider
+
+    - name: Import version and bump build
+      run: |
+        cider version
+        cider bump build
+        VERSION=$(git describe --tags --abbrev=0 | sed 's/v//')
+        BUILD_NUMBER=$(cider version | grep -oP '(?<=\+)\d+')
+        echo 'VERSION='$VERSION
+        echo 'BUILD_NUMBER='$BUILD_NUMBER
+        cider version $VERSION+$BUILD_NUMBER
+        echo "TAG_NAME=v$VERSION" >> $GITHUB_ENV
+
+    - name: Commit files
+      run: |
+        git config --local user.email 'github-actions[bot]@users.noreply.github.com'
+        git config --local user.name 'github-actions[bot]'
+        git diff-index --quiet HEAD || (git commit -a -m "バージョン番号を変更")
+
+    - name: Push changes
+      uses: ad-m/github-push-action@v0.8.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: main
+
+    - name: Push tag
+      run: |
+        git push origin --delete ${{ env.TAG_NAME }}
+        git tag -d ${{ env.TAG_NAME }}
+        git tag -a ${{ env.TAG_NAME }} -m ''
+        git push origin ${{ env.TAG_NAME }}
+
+    - name: Generate release note
+      uses: softprops/action-gh-release@v2
+      with:
+        name: ${{ env.TAG_NAME }}
+        tag_name: ${{ env.TAG_NAME }}
+        generate_release_notes: false
+
+  build_ios:
+    needs: [build_all]
+    uses: ./.github/workflows/build_ios.yml
+    secrets:
+      APPLE_API_AUTHKEY_P8_BASE64: ${{ secrets.APPLE_API_AUTHKEY_P8_BASE64 }}
+      APPLE_API_ISSUER_ID: ${{ secrets.APPLE_API_ISSUER_ID }}
+      APPLE_API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
+
+  build_appbundle:
+    needs: [build_all]
+    uses: ./.github/workflows/build_appbundle.yml
+    secrets:
+      ANDROID_ACCOUNT_KEY_JSON: ${{ secrets.ANDROID_ACCOUNT_KEY_JSON }}
+      ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+      ANDROID_KEY_JKS_BASE64: ${{ secrets.ANDROID_KEY_JKS_BASE64 }}
+      ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+      ANDROID_STORE_PASSWORD: ${{ secrets.ANDROID_STORE_PASSWORD }}

@@ -1,0 +1,60 @@
+name: Build AppBundle
+
+on:
+  workflow_dispatch:
+  workflow_call:
+    secrets:
+      ANDROID_ACCOUNT_KEY_JSON:
+        required: true
+      ANDROID_KEY_ALIAS:
+        required: true
+      ANDROID_KEY_JKS_BASE64:
+        required: true
+      ANDROID_KEY_PASSWORD:
+        required: true
+      ANDROID_STORE_PASSWORD:
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  build_appbundle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checks-out my repository
+        uses: actions/checkout@v4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          cache: true
+
+      - name: Download Flutter packages
+        run: flutter pub get
+
+      # Secrets からrelease.jks を生成
+      - name: Create release.jks
+        run: echo -n ${{ secrets.ANDROID_KEY_JKS_BASE64 }} | base64 -d > android/app/release.jks # -n で改行を消している
+
+      # Secrets から key.properties を生成
+      - name: Create key.properties
+        run: |
+          echo 'storeFile=release.jks' > android/key.properties
+          echo 'serviceAccountFile=service-account-ke.json' >> android/key.properties
+          echo 'storePassword=${{ secrets.ANDROID_STORE_PASSWORD }}' >> android/key.properties
+          echo 'keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}' >> android/key.properties
+          echo 'keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}' >> android/key.properties
+
+      - name: Building Android AppBundle
+        run: flutter build appbundle
+
+      - name: Upload artifact to Google Play
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.ANDROID_ACCOUNT_KEY_JSON }}
+          packageName: jp.twa.tokobus
+          releaseFiles: build/app/outputs/bundle/release/app-release.aab
+          track: production
+          status: draft
