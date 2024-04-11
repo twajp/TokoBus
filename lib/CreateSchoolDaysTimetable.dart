@@ -545,8 +545,10 @@ Map createSchoolDaysTimetable() {
       "special": {
         DateTime(2024, 04, 03): "https://www.waseda.jp/fhum/hum/assets/uploads/2024/03/School_Bus_TimetableTokorozawa_CampusSpecial_Schedule3rd_and_5th_April_2024.pdf",
         DateTime(2024, 04, 05): "https://www.waseda.jp/fhum/hum/assets/uploads/2024/03/School_Bus_TimetableTokorozawa_CampusSpecial_Schedule3rd_and_5th_April_2024.pdf",
-        DateTime(2024, 04, 20): "https://www.waseda.jp/fhum/hum/assets/uploads/2024/04/School_Bus_Special_Schedule20th_and_21st_April_2024.pdf",
-        DateTime(2024, 04, 21): "https://www.waseda.jp/fhum/hum/assets/uploads/2024/04/School_Bus_Special_Schedule20th_and_21st_April_2024.pdf",
+        DateTime(2024, 04, 20): "https://www.waseda.jp/fhum/hum/assets/uploads/2024/04/School_Bus_Special_Schedule20th_and_21st_April_2024-1.pdf",
+        DateTime(2024, 04, 21): "https://www.waseda.jp/fhum/hum/assets/uploads/2024/04/School_Bus_Special_Schedule20th_and_21st_April_2024-1.pdf",
+        DateTime(2024, 05, 11): "https://www.waseda.jp/fhum/hum/assets/uploads/2024/04/School_Bus_Schedule11th_and_12th_May_2024.pdf",
+        DateTime(2024, 05, 12): "https://www.waseda.jp/fhum/hum/assets/uploads/2024/04/School_Bus_Schedule11th_and_12th_May_2024.pdf",
       },
     },
   };
