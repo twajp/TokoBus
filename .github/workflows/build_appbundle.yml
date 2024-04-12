@@ -33,9 +33,11 @@ jobs:
         run: |
           echo "Input: ${{ inputs.COMMIT_ID }}"
           echo "Clone: $(git show --format='%H' --no-patch)"
-          while [ ${{ inputs.COMMIT_ID }} -ne $(git show --format='%H' --no-patch) ]; do
+          while [ ${{ inputs.COMMIT_ID }} != $(git show --format='%H' --no-patch) ]; do
             sleep 1
             git pull
+            echo "Input: ${{ inputs.COMMIT_ID }}"
+            echo "Clone: $(git show --format='%H' --no-patch)"
           done
 
       - name: Install Flutter

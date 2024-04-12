@@ -32,10 +32,10 @@ jobs:
           echo "Input: ${{ inputs.COMMIT_ID }}"
           echo "Clone: $(git show --format='%H' --no-patch)"
           while [ ${{ inputs.COMMIT_ID }} != $(git show --format='%H' --no-patch) ]; do
-            echo "Input: ${{ inputs.COMMIT_ID }}"
-            echo "Clone: $(git show --format='%H' --no-patch)"
             sleep 1
             git pull
+            echo "Input: ${{ inputs.COMMIT_ID }}"
+            echo "Clone: $(git show --format='%H' --no-patch)"
           done
 
       - name: Extract App Store Connect API Private Key in ./private_keys
