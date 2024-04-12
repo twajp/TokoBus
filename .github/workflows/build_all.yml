@@ -64,6 +64,7 @@ jobs:
     - name: Check commit ID
       id: commit_id
       run: |
+        git show --format='%H' --no-patch
         echo "COMMIT_ID=$(git show --format='%H' --no-patch)" >> $GITHUB_OUTPUT
 
   build_ios:
