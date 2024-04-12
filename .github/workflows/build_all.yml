@@ -5,13 +5,12 @@ on:
     tags: [ v* ]
   workflow_dispatch:
 
+env:
+  COMMIT_ID: ''
+
 jobs:
-  env:
-    COMMIT_ID: ''
   build_all:
     runs-on: ubuntu-latest
-    outputs:
-      commit_id: ${{ steps.commit_id.outputs.COMMIT_ID }}
     steps:
     - uses: actions/checkout@v4
       with:
