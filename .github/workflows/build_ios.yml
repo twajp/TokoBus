@@ -3,6 +3,10 @@ name: Build iOS
 on:
   workflow_dispatch:
   workflow_call:
+    inputs:
+      COMMIT_ID:
+        required: true
+        type: string
     secrets:
       APPLE_API_AUTHKEY_P8_BASE64:
         required: true
@@ -22,6 +26,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Wait for push to complete
+        run: |
+          while [ ${{ inputs.COMMIT_ID }} -ne $(git show --format='%H' --no-patch) ]; do
+            sleep 1
+            git pull
+          done
 
       - name: Extract App Store Connect API Private Key in ./private_keys
         env:

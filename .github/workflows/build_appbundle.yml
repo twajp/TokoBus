@@ -3,6 +3,10 @@ name: Build AppBundle
 on:
   workflow_dispatch:
   workflow_call:
+    inputs:
+      COMMIT_ID:
+        required: true
+        type: string
     secrets:
       ANDROID_ACCOUNT_KEY_JSON:
         required: true
@@ -24,6 +28,13 @@ jobs:
     steps:
       - name: Checks-out my repository
         uses: actions/checkout@v4
+
+      - name: Wait for push to complete
+        run: |
+          while [ ${{ inputs.COMMIT_ID }} -ne $(git show --format='%H' --no-patch) ]; do
+            sleep 1
+            git pull
+          done
 
       - name: Install Flutter
         uses: subosito/flutter-action@v2

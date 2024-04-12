@@ -8,6 +8,8 @@ on:
 jobs:
   build_all:
     runs-on: ubuntu-latest
+    outputs:
+      commit_id: ${{ steps.commit_id.outputs.COMMIT_ID }}
     steps:
     - uses: actions/checkout@v4
       with:
@@ -59,15 +61,16 @@ jobs:
         tag_name: ${{ env.TAG_NAME }}
         generate_release_notes: false
 
-    - name: Wait for push to complete
+    - name: Check commit ID
+      id: commit_id
       run: |
-        while [ $(git show --format='%H' --no-patch) -ne $(git ls-remote -h https://github.com/${{ github.repository }}.git) ]; do
-          sleep 1
-        done
+        echo "COMMIT_ID=$(git show --format='%H' --no-patch)" >> $GITHUB_ENV
 
   build_ios:
     needs: [build_all]
     uses: ./.github/workflows/build_ios.yml
+    with:
+      COMMIT_ID: ${{ env.COMMIT_ID }}
     secrets:
       APPLE_API_AUTHKEY_P8_BASE64: ${{ secrets.APPLE_API_AUTHKEY_P8_BASE64 }}
       APPLE_API_ISSUER_ID: ${{ secrets.APPLE_API_ISSUER_ID }}
@@ -77,6 +80,8 @@ jobs:
   build_appbundle:
     needs: [build_all]
     uses: ./.github/workflows/build_appbundle.yml
+    with:
+      COMMIT_ID: ${{ env.COMMIT_ID }}
     secrets:
       ANDROID_ACCOUNT_KEY_JSON: ${{ secrets.ANDROID_ACCOUNT_KEY_JSON }}
       ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
