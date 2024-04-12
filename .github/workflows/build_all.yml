@@ -5,12 +5,11 @@ on:
     tags: [ v* ]
   workflow_dispatch:
 
-env:
-  COMMIT_ID: ''
-
 jobs:
   build_all:
     runs-on: ubuntu-latest
+    outputs:
+      COMMIT_ID: ${{ steps.commit_id.outputs.COMMIT_ID }}
     steps:
     - uses: actions/checkout@v4
       with:
@@ -65,13 +64,13 @@ jobs:
     - name: Check commit ID
       id: commit_id
       run: |
-        echo "COMMIT_ID=$(git show --format='%H' --no-patch)" >> $GITHUB_ENV
+        echo "COMMIT_ID=$(git show --format='%H' --no-patch)" >> $GITHUB_OUTPUT
 
   build_ios:
-    needs: [build_all]
+    needs: [ build_all ]
     uses: ./.github/workflows/build_ios.yml
     with:
-      COMMIT_ID: ${{ env.COMMIT_ID }}
+      COMMIT_ID: ${{ needs.build_all.outputs.COMMIT_ID }}
     secrets:
       APPLE_API_AUTHKEY_P8_BASE64: ${{ secrets.APPLE_API_AUTHKEY_P8_BASE64 }}
       APPLE_API_ISSUER_ID: ${{ secrets.APPLE_API_ISSUER_ID }}
@@ -79,10 +78,10 @@ jobs:
       APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
 
   build_appbundle:
-    needs: [build_all]
+    needs: [ build_all ]
     uses: ./.github/workflows/build_appbundle.yml
     with:
-      COMMIT_ID: ${{ env.COMMIT_ID }}
+      COMMIT_ID: ${{ needs.build_all.outputs.COMMIT_ID }}
     secrets:
       ANDROID_ACCOUNT_KEY_JSON: ${{ secrets.ANDROID_ACCOUNT_KEY_JSON }}
       ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
