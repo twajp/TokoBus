@@ -6,6 +6,8 @@ on:
   workflow_dispatch:
 
 jobs:
+  env:
+    COMMIT_ID: ''
   build_all:
     runs-on: ubuntu-latest
     outputs:
