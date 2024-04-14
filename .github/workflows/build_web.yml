@@ -11,7 +11,7 @@ on:
         type: string
 
 jobs:
-  build:
+  build_web:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
