@@ -89,3 +89,9 @@ jobs:
       ANDROID_KEY_JKS_BASE64: ${{ secrets.ANDROID_KEY_JKS_BASE64 }}
       ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
       ANDROID_STORE_PASSWORD: ${{ secrets.ANDROID_STORE_PASSWORD }}
+
+  build_web:
+    needs: [ build_all ]
+    uses: ./.github/workflows/build_web.yml
+    with:
+      COMMIT_ID: ${{ needs.build_all.outputs.COMMIT_ID }}
