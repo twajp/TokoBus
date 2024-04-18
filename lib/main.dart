@@ -51,7 +51,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   Map timetable = code();
-  int count = 0;
   final PageController controller = PageController(initialPage: 0);
   final _currentPageNotifier = ValueNotifier<int>(0);
   Map<String, dynamic> jsonData = {};
