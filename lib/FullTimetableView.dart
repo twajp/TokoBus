@@ -71,7 +71,6 @@ class _FullTimetableViewState extends State<FullTimetableView> {
 
   @override
   Widget build(BuildContext context) {
-    const Color wasedaColor = Color.fromRGBO(142, 23, 40, 1);
     final int tableFormat = timetable["fullTables"][tableName]["tableFormat"];
     return Dismissible(
       direction: DismissDirection.down,
@@ -80,7 +79,7 @@ class _FullTimetableViewState extends State<FullTimetableView> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(timetable["tableInfo"][tableFormat]["title"]),
-          backgroundColor: Colors.black,
+          backgroundColor: Theme.of(context).colorScheme.background,
         ),
         body: SafeArea(
           child: Column(
@@ -94,7 +93,7 @@ class _FullTimetableViewState extends State<FullTimetableView> {
                     width: deviceWidth * 0.2,
                     child: Text(
                       timetable["tableInfo"][tableFormat]["string0"],
-                      style: const TextStyle(fontSize: 17),
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
                   Container(
@@ -103,7 +102,7 @@ class _FullTimetableViewState extends State<FullTimetableView> {
                     width: deviceWidth * 0.4,
                     child: Text(
                       timetable["tableInfo"][tableFormat]["string1"],
-                      style: const TextStyle(fontSize: 17),
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
                   Container(
@@ -112,7 +111,7 @@ class _FullTimetableViewState extends State<FullTimetableView> {
                     width: deviceWidth * 0.2,
                     child: Text(
                       timetable["tableInfo"][tableFormat]["string2"],
-                      style: const TextStyle(fontSize: 17),
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
                   Container(
@@ -121,7 +120,7 @@ class _FullTimetableViewState extends State<FullTimetableView> {
                     width: deviceWidth * 0.16,
                     child: Text(
                       timetable["tableInfo"][tableFormat]["string3"],
-                      style: const TextStyle(fontSize: 17),
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
                 ],
@@ -134,11 +133,11 @@ class _FullTimetableViewState extends State<FullTimetableView> {
                     children: [
                       for (int i = 0; i < timetable["fullTables"][tableName]["table"].length; i++) ...{
                         if (i == timetable["fullTables"][tableName]["nextBusIndex"]) ...{
-                          OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: const TextStyle(fontSize: 17), backgroundColor: wasedaColor, tableName: tableName, rowIndex: i),
+                          OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: Theme.of(context).textTheme.bodyLarge, backgroundColor: Theme.of(context).colorScheme.primary, tableName: tableName, rowIndex: i),
                         } else if (i < timetable["fullTables"][tableName]["nextBusIndex"]) ...{
-                          OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: const TextStyle(fontSize: 17, color: Colors.grey), backgroundColor: Colors.black, tableName: tableName, rowIndex: i),
+                          OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: Theme.of(context).primaryTextTheme.bodyLarge, backgroundColor: Theme.of(context).colorScheme.background, tableName: tableName, rowIndex: i),
                         } else ...{
-                          OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: const TextStyle(fontSize: 17), backgroundColor: Colors.black, tableName: tableName, rowIndex: i)
+                          OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: Theme.of(context).textTheme.bodyLarge, backgroundColor: Theme.of(context).colorScheme.background, tableName: tableName, rowIndex: i)
                         },
                       },
                       Container(
@@ -166,7 +165,7 @@ class OneRow extends StatelessWidget {
   final Map timetable;
   final double deviceHeight;
   final double deviceWidth;
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
   final Color backgroundColor;
   final String tableName;
   final int rowIndex;

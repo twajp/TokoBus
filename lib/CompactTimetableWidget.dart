@@ -27,8 +27,6 @@ class CompactTimetableWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const Color wasedaColor = Color.fromRGBO(142, 23, 40, 1);
-    const Color darkGrey = Color.fromRGBO(44, 44, 46, 1);
     return GestureDetector(
       onTap: () {
         if (timetable["tableInfo"]["selectedTableNames"][tableIndex] != "") {
@@ -50,7 +48,7 @@ class CompactTimetableWidget extends StatelessWidget {
             width: width1() * 0.9,
             child: Text(
               timetable["tableInfo"][tableIndex]["title"],
-              style: const TextStyle(fontSize: 30),
+              style: Theme.of(context).textTheme.headlineMedium,
               softWrap: false,
             ),
           ),
@@ -59,7 +57,7 @@ class CompactTimetableWidget extends StatelessWidget {
             children: [
               Container(
                 alignment: AlignmentDirectional.center,
-                color: darkGrey,
+                color: Theme.of(context).colorScheme.secondary,
                 height: deviceHeight * 0.06 * 4,
                 width: width1() * (0.2 + 0.35 + 0.2 + 0.16) * 1.05,
               ),
@@ -70,45 +68,45 @@ class CompactTimetableWidget extends StatelessWidget {
                     children: [
                       Container(
                         alignment: AlignmentDirectional.center,
-                        color: darkGrey,
+                        color: Theme.of(context).colorScheme.secondary,
                         height: deviceHeight * 0.06,
                         width: width1() * 0.2,
                         child: Text(
                           timetable["tableInfo"][tableIndex]["string0"],
-                          style: const TextStyle(fontSize: 17),
+                          style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
                       ),
                       Container(
                         alignment: AlignmentDirectional.center,
-                        color: darkGrey,
+                        color: Theme.of(context).colorScheme.secondary,
                         height: deviceHeight * 0.06,
                         width: width1() * 0.35,
                         child: Text(
                           timetable["tableInfo"][tableIndex]["string1"],
-                          style: const TextStyle(fontSize: 17),
+                          style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
                       ),
                       Container(
                         alignment: AlignmentDirectional.center,
-                        color: darkGrey,
+                        color: Theme.of(context).colorScheme.secondary,
                         height: deviceHeight * 0.06,
                         width: width1() * 0.2,
                         child: Text(
                           timetable["tableInfo"][tableIndex]["string2"],
-                          style: const TextStyle(fontSize: 17),
+                          style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
                       ),
                       Container(
                         alignment: AlignmentDirectional.center,
-                        color: darkGrey,
+                        color: Theme.of(context).colorScheme.secondary,
                         height: deviceHeight * 0.06,
                         width: width1() * 0.16,
                         child: Text(
                           timetable["tableInfo"][tableIndex]["string3"],
-                          style: const TextStyle(fontSize: 17),
+                          style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
                       ),
@@ -119,45 +117,45 @@ class CompactTimetableWidget extends StatelessWidget {
                     children: [
                       Container(
                         alignment: AlignmentDirectional.center,
-                        color: darkGrey,
+                        color: Theme.of(context).colorScheme.secondary,
                         height: deviceHeight * 0.06,
                         width: width1() * 0.2,
                         child: Text(
                           timetable["compactTables"][tableIndex][0][0],
-                          style: const TextStyle(fontSize: 17, color: Colors.grey),
+                          style: Theme.of(context).primaryTextTheme.bodyLarge,
                           softWrap: false,
                         ),
                       ),
                       Container(
                         alignment: AlignmentDirectional.center,
-                        color: darkGrey,
+                        color: Theme.of(context).colorScheme.secondary,
                         height: deviceHeight * 0.06,
                         width: width1() * 0.35,
                         child: Text(
                           timetable["compactTables"][tableIndex][0][1],
-                          style: const TextStyle(fontSize: 17, color: Colors.grey),
+                          style: Theme.of(context).primaryTextTheme.bodyLarge,
                           softWrap: false,
                         ),
                       ),
                       Container(
                         alignment: AlignmentDirectional.center,
-                        color: darkGrey,
+                        color: Theme.of(context).colorScheme.secondary,
                         height: deviceHeight * 0.06,
                         width: width1() * 0.2,
                         child: Text(
                           timetable["compactTables"][tableIndex][0][2],
-                          style: const TextStyle(fontSize: 17, color: Colors.grey),
+                          style: Theme.of(context).primaryTextTheme.bodyLarge,
                           softWrap: false,
                         ),
                       ),
                       Container(
                         alignment: AlignmentDirectional.center,
-                        color: darkGrey,
+                        color: Theme.of(context).colorScheme.secondary,
                         height: deviceHeight * 0.06,
                         width: width1() * 0.16,
                         child: Text(
                           timetable["compactTables"][tableIndex][0][3],
-                          style: const TextStyle(fontSize: 17, color: Colors.grey),
+                          style: Theme.of(context).primaryTextTheme.bodyLarge,
                           softWrap: false,
                         ),
                       ),
@@ -168,45 +166,45 @@ class CompactTimetableWidget extends StatelessWidget {
                     children: [
                       Container(
                         alignment: AlignmentDirectional.center,
-                        color: wasedaColor,
+                        color: Theme.of(context).colorScheme.primary,
                         height: deviceHeight * 0.06,
                         width: width1() * 0.2,
                         child: Text(
                           timetable["compactTables"][tableIndex][1][0],
-                          style: const TextStyle(fontSize: 17),
+                          style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
                       ),
                       Container(
                         alignment: AlignmentDirectional.center,
-                        color: wasedaColor,
+                        color: Theme.of(context).colorScheme.primary,
                         height: deviceHeight * 0.06,
                         width: width1() * 0.35,
                         child: Text(
                           timetable["compactTables"][tableIndex][1][1],
-                          style: const TextStyle(fontSize: 17),
+                          style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
                       ),
                       Container(
                         alignment: AlignmentDirectional.center,
-                        color: wasedaColor,
+                        color: Theme.of(context).colorScheme.primary,
                         height: deviceHeight * 0.06,
                         width: width1() * 0.2,
                         child: Text(
                           timetable["compactTables"][tableIndex][1][2],
-                          style: const TextStyle(fontSize: 17),
+                          style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
                       ),
                       Container(
                         alignment: AlignmentDirectional.center,
-                        color: wasedaColor,
+                        color: Theme.of(context).colorScheme.primary,
                         height: deviceHeight * 0.06,
                         width: width1() * 0.16,
                         child: Text(
                           timetable["compactTables"][tableIndex][1][3],
-                          style: const TextStyle(fontSize: 17),
+                          style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
                       ),
@@ -217,45 +215,45 @@ class CompactTimetableWidget extends StatelessWidget {
                     children: [
                       Container(
                         alignment: AlignmentDirectional.center,
-                        color: darkGrey,
+                        color: Theme.of(context).colorScheme.secondary,
                         height: deviceHeight * 0.06,
                         width: width1() * 0.2,
                         child: Text(
                           timetable["compactTables"][tableIndex][2][0],
-                          style: const TextStyle(fontSize: 17),
+                          style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
                       ),
                       Container(
                         alignment: AlignmentDirectional.center,
-                        color: darkGrey,
+                        color: Theme.of(context).colorScheme.secondary,
                         height: deviceHeight * 0.06,
                         width: width1() * 0.35,
                         child: Text(
                           timetable["compactTables"][tableIndex][2][1],
-                          style: const TextStyle(fontSize: 17),
+                          style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
                       ),
                       Container(
                         alignment: AlignmentDirectional.center,
-                        color: darkGrey,
+                        color: Theme.of(context).colorScheme.secondary,
                         height: deviceHeight * 0.06,
                         width: width1() * 0.2,
                         child: Text(
                           timetable["compactTables"][tableIndex][2][2],
-                          style: const TextStyle(fontSize: 17),
+                          style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
                       ),
                       Container(
                         alignment: AlignmentDirectional.center,
-                        color: darkGrey,
+                        color: Theme.of(context).colorScheme.secondary,
                         height: deviceHeight * 0.06,
                         width: width1() * 0.16,
                         child: Text(
                           timetable["compactTables"][tableIndex][2][3],
-                          style: const TextStyle(fontSize: 17),
+                          style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
                       ),

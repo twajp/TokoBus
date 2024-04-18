@@ -31,8 +31,25 @@ class MyApp extends StatelessWidget {
       title: 'TokoBus',
       theme: FlexThemeData.light(scheme: FlexScheme.hippieBlue),
       darkTheme: FlexThemeData.dark(
-        scheme: FlexScheme.hippieBlue,
+        // scheme: FlexScheme.hippieBlue,
         darkIsTrueBlack: true,
+        background: Colors.black, // 背景
+        primary: const Color.fromRGBO(142, 23, 40, 1), // 早稲田色
+        secondary: const Color.fromRGBO(44, 44, 46, 1), // Containerの色
+        tertiary: Colors.white24, // 非アクティブなドット色
+        onBackground: Colors.white, // 背景色の上に書く文字・アイコン色
+        // surface: const Color.fromRGBO(44, 44, 46, 1),// 勝手に色が変わるから使えない
+        // useMaterial3: false,
+        // surfaceTint: Colors.transparent,
+        // applyElevationOverlayColor: false,
+        textTheme: const TextTheme(
+          headlineMedium: TextStyle(fontSize: 30.0, color: Colors.white), // 時刻表名
+          bodyLarge: TextStyle(fontSize: 17.0, color: Colors.white), // これから来るバス
+        ),
+        primaryTextTheme: const TextTheme(
+          bodyLarge: TextStyle(fontSize: 17.0, color: Colors.grey), // 過ぎたバス
+          bodyMedium: TextStyle(fontSize: 14.0, color: Colors.grey), // 時刻表Ver
+        ),
       ),
       themeMode: ThemeMode.dark,
       home: const MyHomePage(title: 'TokoBus'),
@@ -91,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Image.asset('assets/icon/icon_transparent.png', height: kToolbarHeight),
-        backgroundColor: Colors.black,
+        backgroundColor: Theme.of(context).colorScheme.background,
         centerTitle: true,
         actions: [
           PopupMenuButton(
@@ -160,7 +177,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Text(
                       timetableInfoString,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(color: Colors.grey),
+                      style: Theme.of(context).primaryTextTheme.bodyMedium,
                     ),
                   ),
                 ),
@@ -177,7 +194,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Image.asset('assets/icon/icon_transparent.png', height: kToolbarHeight),
-        backgroundColor: Colors.black,
+        backgroundColor: Theme.of(context).colorScheme.background,
         centerTitle: true,
         actions: [
           PopupMenuButton(
@@ -241,7 +258,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text(
                   timetableInfoString,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(color: Colors.grey),
+                  style: Theme.of(context).primaryTextTheme.bodyMedium,
                 ),
               ),
             )
@@ -262,7 +279,7 @@ class _MyHomePageState extends State<MyHomePage> {
       specialTimetableName = "";
     }
     return Drawer(
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).colorScheme.background,
       child: SafeArea(
         child: Column(
           children: [
@@ -277,10 +294,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     ExpansionTile(
                       title: Text(weekdaysTimetableName),
                       leading: const Icon(Icons.school),
-                      textColor: Colors.white,
-                      iconColor: Colors.white,
-                      collapsedTextColor: Colors.white,
-                      collapsedIconColor: Colors.white,
+                      textColor: Theme.of(context).colorScheme.onBackground,
+                      iconColor: Theme.of(context).colorScheme.onBackground,
+                      collapsedTextColor: Theme.of(context).colorScheme.onBackground,
+                      collapsedIconColor: Theme.of(context).colorScheme.onBackground,
                       initiallyExpanded: true,
                       childrenPadding: const EdgeInsets.only(left: 56),
                       children: [
@@ -338,10 +355,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       ExpansionTile(
                         title: Text(specialTimetableName),
                         leading: const Icon(Icons.school),
-                        textColor: Colors.white,
-                        iconColor: Colors.white,
-                        collapsedTextColor: Colors.white,
-                        collapsedIconColor: Colors.white,
+                        textColor: Theme.of(context).colorScheme.onBackground,
+                        iconColor: Theme.of(context).colorScheme.onBackground,
+                        collapsedTextColor: Theme.of(context).colorScheme.onBackground,
+                        collapsedIconColor: Theme.of(context).colorScheme.onBackground,
                         childrenPadding: const EdgeInsets.only(left: 56),
                         children: [
                           ListTile(
@@ -374,10 +391,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     ExpansionTile(
                       title: Text(saturdaysTimetableName),
                       leading: const Icon(Icons.weekend),
-                      textColor: Colors.white,
-                      iconColor: Colors.white,
-                      collapsedTextColor: Colors.white,
-                      collapsedIconColor: Colors.white,
+                      textColor: Theme.of(context).colorScheme.onBackground,
+                      iconColor: Theme.of(context).colorScheme.onBackground,
+                      collapsedTextColor: Theme.of(context).colorScheme.onBackground,
+                      collapsedIconColor: Theme.of(context).colorScheme.onBackground,
                       childrenPadding: const EdgeInsets.only(left: 56),
                       children: [
                         ListTile(
@@ -433,10 +450,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     ExpansionTile(
                       title: Text(sundaysHolidaysTimetableName),
                       leading: const Icon(Icons.weekend),
-                      textColor: Colors.white,
-                      iconColor: Colors.white,
-                      collapsedTextColor: Colors.white,
-                      collapsedIconColor: Colors.white,
+                      textColor: Theme.of(context).colorScheme.onBackground,
+                      iconColor: Theme.of(context).colorScheme.onBackground,
+                      collapsedTextColor: Theme.of(context).colorScheme.onBackground,
+                      collapsedIconColor: Theme.of(context).colorScheme.onBackground,
                       childrenPadding: const EdgeInsets.only(left: 56),
                       children: [
                         ListTile(
@@ -485,8 +502,8 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(8.0),
         child: CirclePageIndicator(
           itemCount: itemCount,
-          dotColor: Colors.white24,
-          selectedDotColor: Colors.white,
+          dotColor: Theme.of(context).colorScheme.tertiary,
+          selectedDotColor: Theme.of(context).colorScheme.onBackground,
           currentPageNotifier: _currentPageNotifier,
         ),
       ),
