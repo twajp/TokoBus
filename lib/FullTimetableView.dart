@@ -146,7 +146,7 @@ class _FullTimetableViewState extends State<FullTimetableView> {
                         child: Text(
                           "${timetable["fullTables"][tableName]["dayOfWeek"]}ダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
                           textAlign: TextAlign.center,
-                          style: const TextStyle(color: Colors.grey),
+                          style: Theme.of(context).primaryTextTheme.bodyMedium,
                         ),
                       ),
                     ],
