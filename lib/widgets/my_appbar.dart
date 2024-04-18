@@ -9,6 +9,7 @@ myAppBar({required BuildContext context, required timetable}) {
     actions: [
       PopupMenuButton(
         icon: const Icon(Icons.more_vert),
+        color: Theme.of(context).colorScheme.secondary,
         itemBuilder: (context) {
           return [
             const PopupMenuItem<int>(
