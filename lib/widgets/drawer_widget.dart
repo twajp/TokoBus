@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'FullTimetableView.dart';
+import '../pages/full_timetable_page.dart';
 
 Widget drawerWidget({required BuildContext context, required timetable, required height, required width}) {
   final String weekdaysTimetableName = timetable["fullTables"]["stationCampusWeekdays"]["dayOfWeek"] + "ダイヤ";

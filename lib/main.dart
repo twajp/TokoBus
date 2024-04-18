@@ -6,9 +6,9 @@ import 'package:page_view_indicators/circle_page_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'code.dart';
-import 'CompactTimetableWidget.dart';
-import 'drawer_widget.dart';
+import 'services/code.dart';
+import 'widgets/compact_timetable_widget.dart';
+import 'widgets/drawer_widget.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

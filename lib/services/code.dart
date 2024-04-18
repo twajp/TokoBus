@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
-import 'CreateSchoolDaysTimetable.dart';
-import 'CreateVacationTimetable.dart';
+import 'create_school_term_timetable.dart';
+import 'create_vacation_timetable.dart';
 
 Map code() {
   // 現在時刻と0時0分の取得

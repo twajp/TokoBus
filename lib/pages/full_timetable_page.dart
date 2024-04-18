@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'code.dart';
+import '../services/code.dart';
 
 class FullTimetableView extends StatefulWidget {
   final Map timetable;

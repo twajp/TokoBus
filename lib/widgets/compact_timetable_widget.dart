@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'FullTimetableView.dart';
+import '../pages/full_timetable_page.dart';
 
 class CompactTimetableWidget extends StatelessWidget {
   final Map timetable;
