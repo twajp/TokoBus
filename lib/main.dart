@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart' show SchedulerBinding;
 import 'package:flex_color_scheme/flex_color_scheme.dart';
-import 'package:page_view_indicators/circle_page_indicator.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'services/code.dart';
-import 'widgets/compact_timetable_widget.dart';
-import 'widgets/drawer_widget.dart';
+import 'services/show_dialog_on_special_date.dart';
+import 'services/json_alart_handler.dart';
+import 'pages/build_portrait_layout.dart';
+import 'pages/build_landscape_layout.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -68,9 +66,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   Map timetable = code();
-  final PageController controller = PageController(initialPage: 0);
-  final _currentPageNotifier = ValueNotifier<int>(0);
-  Map<String, dynamic> jsonData = {};
 
   Future<void> mainLoop() async {
     while (true) {
@@ -86,9 +81,9 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     mainLoop();
     SchedulerBinding.instance.addPostFrameCallback((_) {
-      showDateDialogIfNeeded(context, timetable: timetable);
+      showDialogOnSpecialDate(context: context, timetable: timetable);
     });
-    downloadJsonData();
+    jsonAlertHandler(context: context);
   }
 
   @override
@@ -98,277 +93,9 @@ class _MyHomePageState extends State<MyHomePage> {
     final String timetableInfoString = "$dayOfWeekダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}";
 
     if (MediaQuery.of(context).orientation == Orientation.portrait) {
-      return _buildPortraitLayout(size: size, timetable: timetable, timetableInfoString: timetableInfoString);
+      return buildPortraitLayout(context: context, size: size, timetable: timetable, timetableInfoString: timetableInfoString);
     } else {
-      return _buildLandscapeLayout(size: size, timetable: timetable, timetableInfoString: timetableInfoString);
-    }
-  }
-
-  _buildPortraitLayout({required Size size, required timetable, required timetableInfoString}) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Image.asset('assets/icon/icon_transparent.png', height: kToolbarHeight),
-        backgroundColor: Theme.of(context).colorScheme.background,
-        centerTitle: true,
-        actions: [
-          PopupMenuButton(
-            icon: const Icon(Icons.more_vert),
-            itemBuilder: (context) {
-              return [
-                const PopupMenuItem<int>(
-                  value: 0,
-                  child: Text("大学公式PDFを開く"),
-                ),
-                const PopupMenuItem<int>(
-                  value: 1,
-                  child: Text("時刻表の間違いを報告する"),
-                ),
-                const PopupMenuItem<int>(
-                  value: 2,
-                  child: Text("TokoBusについて"),
-                ),
-              ];
-            },
-            onSelected: (value) {
-              if (value == 0) {
-                launchUrl(timetable["pdf_url"]["default"]);
-              } else if (value == 1) {
-                launchUrl("https://twajp.github.io/TokoBusWebsite/support");
-              } else if (value == 2) {
-                launchUrl("https://twajp.github.io/TokoBusWebsite/");
-              }
-            },
-          ),
-        ],
-      ),
-      drawer: drawerWidget(context: context, timetable: timetable, height: size.height, width: size.width),
-      body: SafeArea(
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                Expanded(
-                  flex: 7,
-                  child: PageView(
-                    controller: controller,
-                    onPageChanged: (int index) {
-                      _currentPageNotifier.value = index;
-                    },
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Expanded(child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 0)),
-                          Expanded(child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 1)),
-                        ],
-                      ),
-                      Column(
-                        children: <Widget>[
-                          Expanded(child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 2)),
-                          Expanded(child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 3)),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      timetableInfoString,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).primaryTextTheme.bodyMedium,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            _buildCircleIndicator(size: size),
-          ],
-        ),
-      ),
-    );
-  }
-
-  _buildLandscapeLayout({required Size size, required timetable, required timetableInfoString}) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Image.asset('assets/icon/icon_transparent.png', height: kToolbarHeight),
-        backgroundColor: Theme.of(context).colorScheme.background,
-        centerTitle: true,
-        actions: [
-          PopupMenuButton(
-            icon: const Icon(Icons.more_vert),
-            itemBuilder: (context) {
-              return [
-                const PopupMenuItem<int>(
-                  value: 0,
-                  child: Text("大学公式PDFを開く"),
-                ),
-                const PopupMenuItem<int>(
-                  value: 1,
-                  child: Text("時刻表の間違いを報告する"),
-                ),
-                const PopupMenuItem<int>(
-                  value: 2,
-                  child: Text("TokoBusについて"),
-                ),
-              ];
-            },
-            onSelected: (value) {
-              if (value == 0) {
-                launchUrl(timetable["pdf_url"]["default"]);
-              } else if (value == 1) {
-                launchUrl("https://twajp.github.io/TokoBusWebsite/support");
-              } else if (value == 2) {
-                launchUrl("https://twajp.github.io/TokoBusWebsite/");
-              }
-            },
-          ),
-        ],
-      ),
-      drawer: drawerWidget(context: context, timetable: timetable, height: size.height, width: size.height),
-      body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              flex: 7,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: <Widget>[
-                      Expanded(child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 0)),
-                      Expanded(child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 1)),
-                    ],
-                  ),
-                  Column(
-                    children: <Widget>[
-                      Expanded(child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 2)),
-                      Expanded(child: CompactTimetableWidget(timetable: timetable, deviceHeight: size.height, deviceWidth: size.width, tableIndex: 3)),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(
-                alignment: Alignment.center,
-                child: Text(
-                  timetableInfoString,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).primaryTextTheme.bodyMedium,
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
-  _buildCircleIndicator({required Size size}) {
-    int itemCount = 2;
-    return Positioned(
-      left: 0.0,
-      right: 0.0,
-      bottom: 0.0,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: CirclePageIndicator(
-          itemCount: itemCount,
-          dotColor: Theme.of(context).colorScheme.tertiary,
-          selectedDotColor: Theme.of(context).colorScheme.onBackground,
-          currentPageNotifier: _currentPageNotifier,
-        ),
-      ),
-    );
-  }
-
-  void showDateDialogIfNeeded(BuildContext context, {required timetable}) {
-    DateTime currentDate = DateTime.now();
-    String url = timetable["pdf_url"]["default"];
-    if (timetable["pdf_url"]["special"].containsKey(DateTime(currentDate.year, currentDate.month, currentDate.day))) {
-      url = timetable["pdf_url"]["special"][DateTime(currentDate.year, currentDate.month, currentDate.day)];
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text("本日は特別ダイヤです"),
-            content: const Text("本日の特別ダイヤは未対応です。\n大学ウェブサイトのPDFを確認しますか？"),
-            actions: [
-              TextButton(
-                child: const Text("閉じる"),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-              TextButton(
-                onPressed: () async {
-                  await launch(url);
-                  if (!mounted) return;
-                  Navigator.of(context).pop();
-                },
-                child: const Text("開く"),
-              ),
-            ],
-          );
-        },
-      );
-    }
-  }
-
-  Future<void> downloadJsonData() async {
-    final url = Uri.parse("https://raw.githubusercontent.com/twajp/TokoBus/main/data/dialog.json");
-    final response = await http.get(url);
-
-    if (response.statusCode == 200) {
-      final jsonBody = json.decode(response.body);
-      setState(() {
-        jsonData = jsonBody;
-      });
-      if (jsonData["flag"] == true) {
-        _showJsonAlert();
-      }
-    } else {
-      throw Exception("Failed to load JSON data");
-    }
-  }
-
-  void _showJsonAlert() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(jsonData["title"]),
-          content: Text(jsonData["content"]),
-          actions: [
-            TextButton(
-              child: const Text("閉じる"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            if (jsonData["url"] != "") ...{
-              TextButton(
-                onPressed: () async {
-                  await launch(jsonData["url"]);
-                  if (!mounted) return;
-                  Navigator.of(context).pop();
-                },
-                child: const Text("開く"),
-              ),
-            },
-          ],
-        );
-      },
-    );
-  }
-
-  Future<void> launchUrl(url) async {
-    if (!await launch(url)) {
-      throw Exception("Could not launch $url");
+      return buildLandscapeLayout(context: context, size: size, timetable: timetable, timetableInfoString: timetableInfoString);
     }
   }
 }
