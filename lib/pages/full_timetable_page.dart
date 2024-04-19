@@ -25,6 +25,9 @@ class _FullTimetableViewState extends State<FullTimetableView> {
   final _key = GlobalKey();
   double scrollViewHeight = 0;
 
+  // メインループを制御するためのフラグ
+  bool _isRunning = true;
+
   @override
   void initState() {
     super.initState();
@@ -43,11 +46,13 @@ class _FullTimetableViewState extends State<FullTimetableView> {
   }
 
   Future<void> mainLoop() async {
-    while (true) {
+    while (_isRunning) {
       await Future<void>.delayed(const Duration(seconds: 1));
-      setState(() {
-        timetable = code();
-      });
+      if (mounted) {
+        setState(() {
+          timetable = code();
+        });
+      }
     }
   }
 
@@ -167,6 +172,12 @@ class _FullTimetableViewState extends State<FullTimetableView> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {// フラグをfalseに設定してメインループを停止
+    _isRunning = false;
+    super.dispose();
   }
 }
 
