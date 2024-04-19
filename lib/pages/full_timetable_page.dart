@@ -3,19 +3,19 @@ import 'package:flutter/scheduler.dart';
 import '../services/code.dart';
 import '../services/statusbar_color_switcher.dart';
 
-class FullTimetableView extends StatefulWidget {
+class FullTimetablePage extends StatefulWidget {
   final Map timetable;
   final double deviceHeight;
   final double deviceWidth;
   final String tableName;
 
-  const FullTimetableView({super.key, required this.timetable, required this.deviceHeight, required this.deviceWidth, required this.tableName});
+  const FullTimetablePage({super.key, required this.timetable, required this.deviceHeight, required this.deviceWidth, required this.tableName});
 
   @override
-  State<FullTimetableView> createState() => _FullTimetableViewState();
+  State<FullTimetablePage> createState() => _FullTimetablePageState();
 }
 
-class _FullTimetableViewState extends State<FullTimetableView> {
+class _FullTimetablePageState extends State<FullTimetablePage> {
   // 状態を管理する変数
   late Map timetable;
   late double deviceHeight;

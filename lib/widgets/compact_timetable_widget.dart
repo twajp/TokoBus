@@ -33,7 +33,7 @@ class CompactTimetableWidget extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => FullTimetableView(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: width2(), tableName: timetable["tableInfo"]["selectedTableNames"][tableIndex]),
+              builder: (context) => FullTimetablePage(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: width2(), tableName: timetable["tableInfo"]["selectedTableNames"][tableIndex]),
               fullscreenDialog: true,
             ),
           );

@@ -46,7 +46,7 @@ Widget homeDrawer({required BuildContext context, required timetable, required h
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FullTimetableView(tableName: "stationCampusWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                              builder: (context) => FullTimetablePage(tableName: "stationCampusWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
                               fullscreenDialog: true,
                             ),
                           );
@@ -58,7 +58,7 @@ Widget homeDrawer({required BuildContext context, required timetable, required h
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FullTimetableView(tableName: "campusStationWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                              builder: (context) => FullTimetablePage(tableName: "campusStationWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
                               fullscreenDialog: true,
                             ),
                           );
@@ -70,7 +70,7 @@ Widget homeDrawer({required BuildContext context, required timetable, required h
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FullTimetableView(tableName: "campusFRCWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                              builder: (context) => FullTimetablePage(tableName: "campusFRCWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
                               fullscreenDialog: true,
                             ),
                           );
@@ -82,7 +82,7 @@ Widget homeDrawer({required BuildContext context, required timetable, required h
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FullTimetableView(tableName: "frcCampusWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                              builder: (context) => FullTimetablePage(tableName: "frcCampusWeekdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
                               fullscreenDialog: true,
                             ),
                           );
@@ -106,7 +106,7 @@ Widget homeDrawer({required BuildContext context, required timetable, required h
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => FullTimetableView(tableName: "stationCampusSpecial", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                                builder: (context) => FullTimetablePage(tableName: "stationCampusSpecial", timetable: timetable, deviceHeight: height, deviceWidth: width),
                                 fullscreenDialog: true,
                               ),
                             );
@@ -118,7 +118,7 @@ Widget homeDrawer({required BuildContext context, required timetable, required h
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => FullTimetableView(tableName: "campusStationSpecial", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                                builder: (context) => FullTimetablePage(tableName: "campusStationSpecial", timetable: timetable, deviceHeight: height, deviceWidth: width),
                                 fullscreenDialog: true,
                               ),
                             );
@@ -142,7 +142,7 @@ Widget homeDrawer({required BuildContext context, required timetable, required h
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FullTimetableView(tableName: "stationCampusSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                              builder: (context) => FullTimetablePage(tableName: "stationCampusSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
                               fullscreenDialog: true,
                             ),
                           );
@@ -154,7 +154,7 @@ Widget homeDrawer({required BuildContext context, required timetable, required h
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FullTimetableView(tableName: "campusStationSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                              builder: (context) => FullTimetablePage(tableName: "campusStationSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
                               fullscreenDialog: true,
                             ),
                           );
@@ -166,7 +166,7 @@ Widget homeDrawer({required BuildContext context, required timetable, required h
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FullTimetableView(tableName: "campusFRCSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                              builder: (context) => FullTimetablePage(tableName: "campusFRCSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
                               fullscreenDialog: true,
                             ),
                           );
@@ -178,7 +178,7 @@ Widget homeDrawer({required BuildContext context, required timetable, required h
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FullTimetableView(tableName: "frcCampusSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                              builder: (context) => FullTimetablePage(tableName: "frcCampusSaturdays", timetable: timetable, deviceHeight: height, deviceWidth: width),
                               fullscreenDialog: true,
                             ),
                           );
@@ -201,7 +201,7 @@ Widget homeDrawer({required BuildContext context, required timetable, required h
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FullTimetableView(tableName: "stationCampusSundaysHolidays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                              builder: (context) => FullTimetablePage(tableName: "stationCampusSundaysHolidays", timetable: timetable, deviceHeight: height, deviceWidth: width),
                               fullscreenDialog: true,
                             ),
                           );
@@ -213,7 +213,7 @@ Widget homeDrawer({required BuildContext context, required timetable, required h
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FullTimetableView(tableName: "campusStationSundaysHolidays", timetable: timetable, deviceHeight: height, deviceWidth: width),
+                              builder: (context) => FullTimetablePage(tableName: "campusStationSundaysHolidays", timetable: timetable, deviceHeight: height, deviceWidth: width),
                               fullscreenDialog: true,
                             ),
                           );
