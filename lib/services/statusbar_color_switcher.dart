@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-statusBarColorSwitcher({required BuildContext context}) {
+SystemUiOverlayStyle statusBarColorSwitcher({required BuildContext context}) {
   switch (Theme.of(context).brightness) {
     case Brightness.light:
       return SystemUiOverlayStyle(
