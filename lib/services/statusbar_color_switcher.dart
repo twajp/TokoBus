@@ -4,14 +4,16 @@ import 'package:flutter/services.dart';
 statusBarColorSwitcher({required BuildContext context}) {
   switch (Theme.of(context).brightness) {
     case Brightness.light:
-      return const SystemUiOverlayStyle(
+      return SystemUiOverlayStyle(
         statusBarBrightness: Brightness.light, // for iOS
         statusBarIconBrightness: Brightness.dark, // for Android
+        systemNavigationBarColor: Theme.of(context).colorScheme.background,
       );
     case Brightness.dark:
-      return const SystemUiOverlayStyle(
+      return SystemUiOverlayStyle(
         statusBarBrightness: Brightness.dark, // for iOS
         statusBarIconBrightness: Brightness.light, // for Android
+        systemNavigationBarColor: Theme.of(context).colorScheme.background,
       );
   }
 }
