@@ -4,10 +4,7 @@ import '../widgets/home_appbar.dart';
 import '../widgets/compact_timetable_widget.dart';
 import '../widgets/home_drawer.dart';
 
-final PageController controller = PageController(initialPage: 0);
-final currentPageNotifier = ValueNotifier<int>(0);
-
-buildPortraitLayout({required BuildContext context, required Size size, required timetable, required timetableInfoString}) {
+buildPortraitLayout({required BuildContext context, required Size size, required timetable, required timetableInfoString, required PageController controller, required currentPageNotifier}) {
   return Scaffold(
     appBar: homeAppBar(context: context, timetable: timetable),
     drawer: homeDrawer(context: context, timetable: timetable, height: size.height, width: size.width),
@@ -53,14 +50,14 @@ buildPortraitLayout({required BuildContext context, required Size size, required
               ),
             ],
           ),
-          buildCircleIndicator(context: context, size: size),
+          buildCircleIndicator(context: context, size: size, currentPageNotifier: currentPageNotifier),
         ],
       ),
     ),
   );
 }
 
-buildCircleIndicator({required BuildContext context, required Size size}) {
+buildCircleIndicator({required BuildContext context, required Size size, required currentPageNotifier}) {
   int itemCount = 2;
   return Positioned(
     left: 0.0,
