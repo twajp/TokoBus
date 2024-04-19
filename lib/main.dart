@@ -27,15 +27,33 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'TokoBus',
-      theme: FlexThemeData.light(scheme: FlexScheme.hippieBlue),
+      theme: FlexThemeData.light(
+        background: const Color.fromRGBO(243, 243, 243, 1), // 背景
+        primary: const Color.fromRGBO(142, 23, 40, 0.25), // 早稲田色
+        secondary: Colors.white, // Container,PopupMenuButton,AlertDialogの色
+        tertiary: const Color.fromRGBO(107, 107, 107, 1), // 非アクティブなドット色
+        onBackground: Colors.black, // 背景色の上に書く文字・アイコン色
+        onSecondary: Colors.black, // secondary色の上に書く文字・アイコン色
+        onTertiary: const Color.fromRGBO(190, 190, 190, 1), // アクティブなドット色
+        textTheme: const TextTheme(
+          headlineMedium: TextStyle(fontSize: 30.0, color: Colors.black), // 時刻表名
+          bodyLarge: TextStyle(fontSize: 17.0, color: Colors.black), // これから来るバス
+        ),
+        primaryTextTheme: const TextTheme(
+          bodyLarge: TextStyle(fontSize: 17.0, color: Colors.grey), // 過ぎたバス
+          bodyMedium: TextStyle(fontSize: 14.0, color: Colors.grey), // 時刻表Ver
+        ),
+      ),
       darkTheme: FlexThemeData.dark(
         // scheme: FlexScheme.hippieBlue,
         darkIsTrueBlack: true,
         background: Colors.black, // 背景
         primary: const Color.fromRGBO(142, 23, 40, 1), // 早稲田色
-        secondary: const Color.fromRGBO(44, 44, 46, 1), // Containerの色
-        tertiary: Colors.white24, // 非アクティブなドット色
+        secondary: const Color.fromRGBO(44, 44, 46, 1), // Container,PopupMenuButton,AlertDialogの色
+        tertiary: const Color.fromRGBO(107, 107, 107, 1), // 非アクティブなドット色
         onBackground: Colors.white, // 背景色の上に書く文字・アイコン色
+        onSecondary: Colors.white, // secondary色の上に書く文字・アイコン色
+        onTertiary: Colors.white, // アクティブなドット色
         // surface: const Color.fromRGBO(44, 44, 46, 1),// 勝手に色が変わるから使えない
         // useMaterial3: false,
         // surfaceTint: Colors.transparent,

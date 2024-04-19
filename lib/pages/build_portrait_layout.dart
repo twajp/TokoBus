@@ -9,8 +9,9 @@ final currentPageNotifier = ValueNotifier<int>(0);
 
 buildPortraitLayout({required BuildContext context, required Size size, required timetable, required timetableInfoString}) {
   return Scaffold(
-    appBar: myAppBar(context: context, timetable: timetable),
-    drawer: drawerWidget(context: context, timetable: timetable, height: size.height, width: size.width),
+    appBar: homeAppBar(context: context, timetable: timetable),
+    drawer: homeDrawer(context: context, timetable: timetable, height: size.height, width: size.width),
+    backgroundColor: Theme.of(context).colorScheme.background,
     body: SafeArea(
       child: Stack(
         children: [
@@ -70,7 +71,7 @@ buildCircleIndicator({required BuildContext context, required Size size}) {
       child: CirclePageIndicator(
         itemCount: itemCount,
         dotColor: Theme.of(context).colorScheme.tertiary,
-        selectedDotColor: Theme.of(context).colorScheme.onBackground,
+        selectedDotColor: Theme.of(context).colorScheme.onTertiary,
         currentPageNotifier: currentPageNotifier,
       ),
     ),

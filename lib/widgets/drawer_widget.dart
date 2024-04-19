@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../pages/full_timetable_page.dart';
 
-Widget drawerWidget({required BuildContext context, required timetable, required height, required width}) {
+Widget homeDrawer({required BuildContext context, required timetable, required height, required width}) {
   final String weekdaysTimetableName = timetable["fullTables"]["stationCampusWeekdays"]["dayOfWeek"] + "ダイヤ";
   final String saturdaysTimetableName = timetable["fullTables"]["stationCampusSaturdays"]["dayOfWeek"] + "ダイヤ";
   final String sundaysHolidaysTimetableName = timetable["fullTables"]["stationCampusSundaysHolidays"]["dayOfWeek"] + "ダイヤ";
@@ -17,7 +17,13 @@ Widget drawerWidget({required BuildContext context, required timetable, required
       child: Column(
         children: [
           DrawerHeader(
-            child: Image.asset('assets/icon/icon_transparent.png'),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.background,
+              border: const Border(bottom: BorderSide.none),
+            ),
+            child: Center(
+              child: Image.asset('assets/icon/icon_transparent.png'),
+            ),
           ),
           Expanded(
             child: SingleChildScrollView(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import '../services/code.dart';
+import '../services/statusbar_color_switcher.dart';
 
 class FullTimetableView extends StatefulWidget {
   final Map timetable;
@@ -62,7 +63,7 @@ class _FullTimetableViewState extends State<FullTimetableView> {
       initialScrollOffset = (nextBusIndex - 1) * rowHeight;
       print("2 $initialScrollOffset");
     } else {
-      //last - nextBusIndex > key
+      // last - nextBusIndex > key
       initialScrollOffset = numberOfBuses * rowHeight - scrollViewHeight;
       print("3 $initialScrollOffset");
     }
@@ -78,82 +79,90 @@ class _FullTimetableViewState extends State<FullTimetableView> {
       onDismissed: (_) => Navigator.of(context).pop(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text(timetable["tableInfo"][tableFormat]["title"]),
+          title: Text(
+            timetable["tableInfo"][tableFormat]["title"],
+            style: TextStyle(color: Theme.of(context).colorScheme.onBackground),
+          ),
           backgroundColor: Theme.of(context).colorScheme.background,
+          systemOverlayStyle: statusBarColorSwitcher(context: context),
+          iconTheme: IconThemeData(color: Theme.of(context).colorScheme.onBackground),
         ),
         body: SafeArea(
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    alignment: AlignmentDirectional.center,
-                    height: deviceHeight * 0.05,
-                    width: deviceWidth * 0.2,
-                    child: Text(
-                      timetable["tableInfo"][tableFormat]["string0"],
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                  ),
-                  Container(
-                    alignment: AlignmentDirectional.center,
-                    height: deviceHeight * 0.05,
-                    width: deviceWidth * 0.4,
-                    child: Text(
-                      timetable["tableInfo"][tableFormat]["string1"],
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                  ),
-                  Container(
-                    alignment: AlignmentDirectional.center,
-                    height: deviceHeight * 0.05,
-                    width: deviceWidth * 0.2,
-                    child: Text(
-                      timetable["tableInfo"][tableFormat]["string2"],
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                  ),
-                  Container(
-                    alignment: AlignmentDirectional.center,
-                    height: deviceHeight * 0.05,
-                    width: deviceWidth * 0.16,
-                    child: Text(
-                      timetable["tableInfo"][tableFormat]["string3"],
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                  ),
-                ],
-              ),
-              Expanded(
-                child: SingleChildScrollView(
-                  key: _key,
-                  controller: ScrollController(initialScrollOffset: setInitialScrollOffset(key: _key, nextBusIndex: timetable["fullTables"][tableName]["nextBusIndex"])),
-                  child: Column(
-                    children: [
-                      for (int i = 0; i < timetable["fullTables"][tableName]["table"].length; i++) ...{
-                        if (i == timetable["fullTables"][tableName]["nextBusIndex"]) ...{
-                          OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: Theme.of(context).textTheme.bodyLarge, backgroundColor: Theme.of(context).colorScheme.primary, tableName: tableName, rowIndex: i),
-                        } else if (i < timetable["fullTables"][tableName]["nextBusIndex"]) ...{
-                          OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: Theme.of(context).primaryTextTheme.bodyLarge, backgroundColor: Theme.of(context).colorScheme.background, tableName: tableName, rowIndex: i),
-                        } else ...{
-                          OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: Theme.of(context).textTheme.bodyLarge, backgroundColor: Theme.of(context).colorScheme.background, tableName: tableName, rowIndex: i)
-                        },
-                      },
-                      Container(
-                        alignment: Alignment.center,
-                        height: 50,
-                        child: Text(
-                          "${timetable["fullTables"][tableName]["dayOfWeek"]}ダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).primaryTextTheme.bodyMedium,
-                        ),
+          child: Container(
+            color: Theme.of(context).colorScheme.background,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      alignment: AlignmentDirectional.center,
+                      height: deviceHeight * 0.05,
+                      width: deviceWidth * 0.2,
+                      child: Text(
+                        timetable["tableInfo"][tableFormat]["string0"],
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
-                    ],
+                    ),
+                    Container(
+                      alignment: AlignmentDirectional.center,
+                      height: deviceHeight * 0.05,
+                      width: deviceWidth * 0.4,
+                      child: Text(
+                        timetable["tableInfo"][tableFormat]["string1"],
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
+                    ),
+                    Container(
+                      alignment: AlignmentDirectional.center,
+                      height: deviceHeight * 0.05,
+                      width: deviceWidth * 0.2,
+                      child: Text(
+                        timetable["tableInfo"][tableFormat]["string2"],
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
+                    ),
+                    Container(
+                      alignment: AlignmentDirectional.center,
+                      height: deviceHeight * 0.05,
+                      width: deviceWidth * 0.16,
+                      child: Text(
+                        timetable["tableInfo"][tableFormat]["string3"],
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: SingleChildScrollView(
+                    key: _key,
+                    controller: ScrollController(initialScrollOffset: setInitialScrollOffset(key: _key, nextBusIndex: timetable["fullTables"][tableName]["nextBusIndex"])),
+                    child: Column(
+                      children: [
+                        for (int i = 0; i < timetable["fullTables"][tableName]["table"].length; i++) ...{
+                          if (i == timetable["fullTables"][tableName]["nextBusIndex"]) ...{
+                            OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: Theme.of(context).textTheme.bodyLarge, backgroundColor: Theme.of(context).colorScheme.primary, tableName: tableName, rowIndex: i),
+                          } else if (i < timetable["fullTables"][tableName]["nextBusIndex"]) ...{
+                            OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: Theme.of(context).primaryTextTheme.bodyLarge, backgroundColor: Theme.of(context).colorScheme.background, tableName: tableName, rowIndex: i),
+                          } else ...{
+                            OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: Theme.of(context).textTheme.bodyLarge, backgroundColor: Theme.of(context).colorScheme.background, tableName: tableName, rowIndex: i)
+                          },
+                        },
+                        Container(
+                          alignment: Alignment.center,
+                          height: 50,
+                          child: Text(
+                            "${timetable["fullTables"][tableName]["dayOfWeek"]}ダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).primaryTextTheme.bodyMedium,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

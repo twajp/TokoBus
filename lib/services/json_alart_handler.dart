@@ -7,6 +7,7 @@ Future<void> jsonAlertHandler({required BuildContext context}) async {
   Map<String, dynamic> jsonData = {};
 
   final url = Uri.parse("https://raw.githubusercontent.com/twajp/TokoBus/main/data/dialog.json");
+  // final url = Uri.parse("https://gist.githubusercontent.com/twajp/5effe414d9a1f1f711c5a1075d195646/raw/a8166965bf1266433e42b12f42b13adf6c01e138/dialog.json");
   final response = await http.get(url);
 
   if (response.statusCode == 200) {
@@ -29,7 +30,10 @@ void _showJsonAlert({required BuildContext context, required Map<String, dynamic
         content: Text(jsonData["content"]),
         actions: [
           TextButton(
-            child: const Text("閉じる"),
+            child: Text(
+              "閉じる",
+              style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
+            ),
             onPressed: () {
               Navigator.of(context).pop();
             },
@@ -42,7 +46,10 @@ void _showJsonAlert({required BuildContext context, required Map<String, dynamic
                   Navigator.of(context).pop();
                 }
               },
-              child: const Text("開く"),
+              child: Text(
+                "開く",
+                style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
+              ),
             ),
           },
         ],
