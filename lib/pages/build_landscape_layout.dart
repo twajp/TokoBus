@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../widgets/my_appbar.dart';
+import '../widgets/home_appbar.dart';
 import '../widgets/compact_timetable_widget.dart';
-import '../widgets/drawer_widget.dart';
+import '../widgets/home_drawer.dart';
 
 buildLandscapeLayout({required BuildContext context, required Size size, required timetable, required timetableInfoString}) {
   return Scaffold(

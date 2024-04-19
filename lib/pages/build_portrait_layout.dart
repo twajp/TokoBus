@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:page_view_indicators/circle_page_indicator.dart';
-import '../widgets/my_appbar.dart';
+import '../widgets/home_appbar.dart';
 import '../widgets/compact_timetable_widget.dart';
-import '../widgets/drawer_widget.dart';
+import '../widgets/home_drawer.dart';
 
 final PageController controller = PageController(initialPage: 0);
 final currentPageNotifier = ValueNotifier<int>(0);
