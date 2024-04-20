@@ -14,7 +14,10 @@ void showDialogOnSpecialDate({required BuildContext context, required timetable}
           content: const Text("本日の特別ダイヤは未対応です。\n大学ウェブサイトのPDFを確認しますか？"),
           actions: [
             TextButton(
-              child: const Text("閉じる"),
+              child: Text(
+                "閉じる",
+                style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
+              ),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -26,7 +29,10 @@ void showDialogOnSpecialDate({required BuildContext context, required timetable}
                   Navigator.of(context).pop();
                 }
               },
-              child: const Text("開く"),
+              child: Text(
+                "開く",
+                style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
+              ),
             ),
           ],
         );
