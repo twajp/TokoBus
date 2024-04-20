@@ -7,12 +7,14 @@ SystemUiOverlayStyle statusBarColorSwitcher({required BuildContext context}) {
       return SystemUiOverlayStyle(
         statusBarBrightness: Brightness.light, // for iOS
         statusBarIconBrightness: Brightness.dark, // for Android
+        statusBarColor: Theme.of(context).colorScheme.background,
         systemNavigationBarColor: Theme.of(context).colorScheme.background,
       );
     case Brightness.dark:
       return SystemUiOverlayStyle(
         statusBarBrightness: Brightness.dark, // for iOS
         statusBarIconBrightness: Brightness.light, // for Android
+        statusBarColor: Theme.of(context).colorScheme.background,
         systemNavigationBarColor: Theme.of(context).colorScheme.background,
       );
   }
