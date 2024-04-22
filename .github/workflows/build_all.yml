@@ -1,9 +1,16 @@
 name: Build All
 
 on:
-  push:
-    tags: [ v* ]
   workflow_dispatch:
+    inputs:
+      bump:
+        type: choice
+        description: Choose Bump Target
+        options:
+          - build
+          - patch
+          - minor
+          - major
 
 jobs:
   build_all:
@@ -11,61 +18,70 @@ jobs:
     outputs:
       COMMIT_ID: ${{ steps.commit_id.outputs.COMMIT_ID }}
     steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: Set up Flutter
-      uses: subosito/flutter-action@v2
-      with:
-        channel: 'stable'
-        cache: true
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
 
-    - name: Set up cider
-      run: flutter pub global activate cider
+      - name: Run flutter version
+        run: flutter --version
 
-    - name: Import version and bump build
-      run: |
-        cider version
-        cider bump build
-        VERSION=$(git describe --tags --abbrev=0 | sed 's/v//')
-        BUILD_NUMBER=$(cider version | grep -oP '(?<=\+)\d+')
-        echo 'VERSION='$VERSION
-        echo 'BUILD_NUMBER='$BUILD_NUMBER
-        cider version $VERSION+$BUILD_NUMBER
-        echo "TAG_NAME=v$VERSION" >> $GITHUB_ENV
+      - name: Run flutter pub get
+        run: flutter pub get
 
-    - name: Commit files
-      run: |
-        git config --local user.email 'github-actions[bot]@users.noreply.github.com'
-        git config --local user.name 'github-actions[bot]'
-        git diff-index --quiet HEAD || (git commit -a -m "バージョン番号を変更")
+      - name: Set up cider
+        run: flutter pub global activate cider
 
-    - name: Push changes
-      uses: ad-m/github-push-action@v0.8.0
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: main
+      - name: Init git config
+        run: |
+          git config --local user.name 'github-actions[bot]'
+          git config --local user.email 'github-actions[bot]@users.noreply.github.com'
 
-    - name: Push tag
-      run: |
-        git push origin --delete ${{ env.TAG_NAME }}
-        git tag -d ${{ env.TAG_NAME }}
-        git tag -a ${{ env.TAG_NAME }} -m ''
-        git push origin ${{ env.TAG_NAME }}
+      - name: Bump up version
+        run: |
+          echo choice: ${{ github.event.inputs.bump }}
+          cider bump ${{ github.event.inputs.bump }} --bump-build
+          echo "VERSION_NAME=$(cider version | grep -o -E "([0-9]+\.){1}[0-9]+(\.[0-9]+)?")" >> $GITHUB_ENV
+          echo "VERSION_FULL=$(cider version)" >> $GITHUB_ENV
 
-    - name: Generate release note
-      uses: softprops/action-gh-release@v2
-      with:
-        name: ${{ env.TAG_NAME }}
-        tag_name: ${{ env.TAG_NAME }}
-        generate_release_notes: false
+      - name: Commit and push pubspec.yaml
+        run: |
+          git add -u pubspec.yaml
+          echo "バージョン番号を$VERSION_FULLに変更" | git commit --file=-
+          git push
 
-    - name: Check commit ID
-      id: commit_id
-      run: |
-        git show --format='%H' --no-patch
-        echo "COMMIT_ID=$(git show --format='%H' --no-patch)" >> $GITHUB_OUTPUT
+      - name: Check previous release version name
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release list --limit 1 | grep -o -E "([0-9]+\.){1}[0-9]+(\.[0-9]+)?" | head -n1
+          echo "PREV_VERSION_NAME=$(gh release list --limit 1 | grep -o -E "([0-9]+\.){1}[0-9]+(\.[0-9]+)?" | head -n1)" >> $GITHUB_ENV
+
+      - name: Delete previous release if version number is same
+        if: env.VERSION_NAME == env.PREV_VERSION_NAME
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete v$PREV_VERSION_NAME
+          git push origin --delete v$PREV_VERSION_NAME
+          git tag -d v$PREV_VERSION_NAME
+
+      - name: Create tag and release note
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create v$VERSION_NAME --generate-notes
+
+      - name: Check commit ID
+        id: commit_id
+        run: |
+          git show --format='%H' --no-patch
+          echo "COMMIT_ID=$(git show --format='%H' --no-patch)" >> $GITHUB_OUTPUT
 
   build_ios:
     needs: [ build_all ]
