@@ -2,7 +2,7 @@ name: Build Web
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   workflow_dispatch:
   workflow_call:
     inputs:
