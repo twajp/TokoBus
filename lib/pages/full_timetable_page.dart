@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import '../services/code.dart';
-import '../services/statusbar_color_switcher.dart';
 
 class FullTimetablePage extends StatefulWidget {
   final Map timetable;
@@ -88,9 +87,6 @@ class _FullTimetablePageState extends State<FullTimetablePage> {
             timetable["tableInfo"][tableFormat]["title"],
             style: TextStyle(color: Theme.of(context).colorScheme.onBackground),
           ),
-          backgroundColor: Theme.of(context).colorScheme.background,
-          systemOverlayStyle: statusBarColorSwitcher(context: context),
-          iconTheme: IconThemeData(color: Theme.of(context).colorScheme.onBackground),
         ),
         body: SafeArea(
           child: Container(
@@ -175,7 +171,8 @@ class _FullTimetablePageState extends State<FullTimetablePage> {
   }
 
   @override
-  void dispose() {// フラグをfalseに設定してメインループを停止
+  void dispose() {
+    // フラグをfalseに設定してメインループを停止
     _isRunning = false;
     super.dispose();
   }

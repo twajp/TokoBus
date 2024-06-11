@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../services/statusbar_color_switcher.dart';
 
 homeAppBar({required BuildContext context, required timetable}) {
   return AppBar(
     title: Image.asset('assets/icon/icon_transparent.png', height: kToolbarHeight),
-    backgroundColor: Theme.of(context).colorScheme.background,
-    systemOverlayStyle: statusBarColorSwitcher(context: context),
     centerTitle: true,
-    iconTheme: IconThemeData(color: Theme.of(context).colorScheme.onBackground),
     actions: [
       PopupMenuButton(
         icon: Icon(

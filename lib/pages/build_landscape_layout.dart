@@ -6,7 +6,7 @@ import '../widgets/home_drawer.dart';
 buildLandscapeLayout({required BuildContext context, required Size size, required timetable, required timetableInfoString}) {
   return Scaffold(
     appBar: homeAppBar(context: context, timetable: timetable),
-    drawer: homeDrawer(context: context, timetable: timetable, height: size.height, width: size.height),
+    drawer: HomeDrawer(context: context, timetable: timetable, height: size.height, width: size.height),
     backgroundColor: Theme.of(context).colorScheme.background,
     body: SafeArea(
       child: Column(

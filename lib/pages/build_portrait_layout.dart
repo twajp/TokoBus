@@ -7,7 +7,7 @@ import '../widgets/home_drawer.dart';
 buildPortraitLayout({required BuildContext context, required Size size, required timetable, required timetableInfoString, required PageController controller, required currentPageNotifier}) {
   return Scaffold(
     appBar: homeAppBar(context: context, timetable: timetable),
-    drawer: homeDrawer(context: context, timetable: timetable, height: size.height, width: size.width),
+    drawer: HomeDrawer(context: context, timetable: timetable, height: size.height, width: size.width),
     backgroundColor: Theme.of(context).colorScheme.background,
     body: SafeArea(
       child: Stack(
