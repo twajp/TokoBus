@@ -243,6 +243,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
               textColor: Theme.of(context).colorScheme.onBackground,
               iconColor: Theme.of(context).colorScheme.onBackground,
               onTap: () {
+                Navigator.of(context).pop();
                 Navigator.pushNamed(context, '/settings');
               },
             ),
