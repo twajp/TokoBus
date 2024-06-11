@@ -78,8 +78,8 @@ final darkTheme = FlexThemeData.dark(
     backgroundColor: Colors.black,
     shadowColor: Colors.transparent,
     systemOverlayStyle: SystemUiOverlayStyle(
-      statusBarBrightness: Brightness.light, // for iOS
-      statusBarIconBrightness: Brightness.dark, // for Android
+      statusBarBrightness: Brightness.dark, // for iOS
+      statusBarIconBrightness: Brightness.light, // for Android
       statusBarColor: Colors.black,
       systemNavigationBarColor: Colors.black,
     ),
