@@ -53,13 +53,13 @@ final darkTheme = FlexThemeData.dark(
   // scheme: FlexScheme.hippieBlue,
   darkIsTrueBlack: true,
   background: Colors.black, // 背景
-  primary: const Color.fromRGBO(142, 23, 40, 1), // 早稲田色
+  primary: wasedaColor,
   secondary: const Color.fromRGBO(44, 44, 46, 1), // Container,PopupMenuButton,AlertDialogの色
   tertiary: const Color.fromRGBO(107, 107, 107, 1), // 非アクティブなドット色
   onBackground: Colors.white, // 背景色の上に書く文字・アイコン色
   onSecondary: Colors.white, // secondary色の上に書く文字・アイコン色
   onTertiary: Colors.white, // アクティブなドット色
-  surface: const Color.fromRGBO(142, 23, 40, 1),
+  surface: wasedaColor,
   // surface: const Color.fromRGBO(44, 44, 46, 1),// 勝手に色が変わるから使えない
   // useMaterial3: false,
   // surfaceTint: Colors.transparent,
