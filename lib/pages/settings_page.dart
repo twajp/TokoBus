@@ -58,7 +58,7 @@ class SettingsPage extends StatelessWidget {
         return 'ダーク';
       case ThemeModeOption.system:
       default:
-        return '端末の設定に合わせる';
+        return '端末の設定';
     }
   }
 
@@ -71,6 +71,7 @@ class SettingsPage extends StatelessWidget {
             'テーマ',
             style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
           ),
+          actionsPadding: const EdgeInsets.only(bottom: 15, right: 15),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: ThemeModeOption.values.map((mode) {
