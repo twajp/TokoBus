@@ -58,7 +58,7 @@ class SettingsPage extends StatelessWidget {
         return 'ダーク';
       case ThemeModeOption.system:
       default:
-        return 'システムに合わせる';
+        return '端末の設定に合わせる';
     }
   }
 
