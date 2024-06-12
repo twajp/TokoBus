@@ -39818,10 +39818,10 @@ n=A.afh(p,p,A.aT("\u8a2d\u5b9a",p,A.cF(p,p,m==null?s.k3:m,p,p,p,p,p,p,p,p,p,p,p,
 m=A.u(a).ax
 s=m.ap
 m=s==null?m.k2:s
-s=new A.Hr(B.D7,B.R_,new A.a2M(this,o),A.aT(this.KJ(o.a),p,p,p),p)
+s=new A.Hr(B.D7,B.QZ,new A.a2M(this,o),A.aT(this.KJ(o.a),p,p,p),p)
 s.x=s.as=s.z=null
 s.Q=B.jA
-return A.a1w(n,m,new A.Hp(q,q,A.a([new A.Hq(A.a([s],t.jD),B.QZ,p)],t.m0),p),p)},
+return A.a1w(n,m,new A.Hp(q,q,A.a([new A.Hq(A.a([s],t.jD),B.QY,p)],t.m0),p),p)},
 KJ(a){switch(a.a){case 0:return"\u30e9\u30a4\u30c8"
 case 1:return"\u30c0\u30fc\u30af"
 case 2:default:return"\u7aef\u672b\u306e\u8a2d\u5b9a"}},
@@ -39903,7 +39903,7 @@ return A.V($async$$0,r)},
 $S:39}
 A.aeR.prototype={
 $1(a){var s=null
-return A.afe(A.a([A.Id(A.aT("\u9589\u3058\u308b",s,A.cF(s,s,A.u(a).ax.z,s,s,s,s,s,s,s,s,s,s,s,s,s,s,!0,s,s,s,s,s,s,s,s),s),new A.aeP(a)),A.Id(A.aT("\u958b\u304f",s,A.cF(s,s,A.u(a).ax.z,s,s,s,s,s,s,s,s,s,s,s,s,s,s,!0,s,s,s,s,s,s,s,s),s),new A.aeQ(this.a,a))],t.p),s,B.QY,B.QX)},
+return A.afe(A.a([A.Id(A.aT("\u9589\u3058\u308b",s,A.cF(s,s,A.u(a).ax.z,s,s,s,s,s,s,s,s,s,s,s,s,s,s,!0,s,s,s,s,s,s,s,s),s),new A.aeP(a)),A.Id(A.aT("\u958b\u304f",s,A.cF(s,s,A.u(a).ax.z,s,s,s,s,s,s,s,s,s,s,s,s,s,s,!0,s,s,s,s,s,s,s,s),s),new A.aeQ(this.a,a))],t.p),s,B.QX,B.QW)},
 $S:88}
 A.aeP.prototype={
 $0(){A.bT(this.a,!1).dG()},
@@ -40018,7 +40018,7 @@ $1(a){var s=this.a,r=s.c
 return new A.dp(r,s.d,s.adA(),J.f(J.f(r.h(0,"tableInfo"),"selectedTableNames"),s.f),null)},
 $S:11}
 A.aeo.prototype={
-$1(a){return A.a([B.Ix,B.Iw,B.Iy],t.BD)},
+$1(a){return A.a([B.Iw,B.Iy,B.Ix],t.BD)},
 $S:265}
 A.aep.prototype={
 $1(a){if(a===0)A.Bu(J.f(this.a.h(0,"pdf_url"),"default"))
@@ -79820,12 +79820,12 @@ B.fp=new A.pz(0,"none")
 B.It=new A.pz(1,"scroll")
 B.Iu=new A.pz(3,"scale")
 B.Iv=new A.pz(4,"unknown")
-B.QW=new A.fp("\u6642\u523b\u8868\u306e\u9593\u9055\u3044\u3092\u5831\u544a\u3059\u308b",null,null,null,null,null)
-B.Iw=new A.ij(1,B.QW,null,t.nE)
 B.QU=new A.fp("\u5927\u5b66\u516c\u5f0fPDF\u3092\u958b\u304f",null,null,null,null,null)
-B.Ix=new A.ij(0,B.QU,null,t.nE)
+B.Iw=new A.ij(0,B.QU,null,t.nE)
 B.QV=new A.fp("TokoBus\u306b\u3064\u3044\u3066",null,null,null,null,null)
-B.Iy=new A.ij(2,B.QV,null,t.nE)
+B.Ix=new A.ij(2,B.QV,null,t.nE)
+B.R_=new A.fp("\u554f\u3044\u5408\u308f\u305b / \u4e0d\u5177\u5408\u5831\u544a",null,null,null,null,null)
+B.Iy=new A.ij(1,B.R_,null,t.nE)
 B.Iz=new A.pD(null,null,null,null,null,null,null,null,null,null,null,null)
 B.TD=new A.a_H(0,"platformDefault")
 B.wv=new A.fL(0,"incrementable")
@@ -80499,10 +80499,10 @@ B.OY=new A.j(!1,null,null,null,null,null,12,B.L,null,0.5,null,B.l,1.33,B.y,null,
 B.MP=new A.j(!1,null,null,null,null,null,11,B.L,null,0.5,null,B.l,1.45,B.y,null,null,null,null,null,null,null,"tall labelSmall 2021",null,null,null,null)
 B.QS=new A.cm(B.Pi,B.N7,B.Pu,B.Mk,B.Qe,B.MS,B.M0,B.MT,B.Ne,B.NV,B.ON,B.Ng,B.Nk,B.OY,B.MP)
 B.QT=new A.fp("\u8a2d\u5b9a",null,null,null,null,null)
-B.QX=new A.fp("\u672c\u65e5\u306f\u7279\u5225\u30c0\u30a4\u30e4\u3067\u3059",null,null,null,null,null)
-B.QY=new A.fp("\u672c\u65e5\u306e\u7279\u5225\u30c0\u30a4\u30e4\u306f\u672a\u5bfe\u5fdc\u3067\u3059\u3002\n\u5927\u5b66\u30a6\u30a7\u30d6\u30b5\u30a4\u30c8\u306ePDF\u3092\u78ba\u8a8d\u3057\u307e\u3059\u304b\uff1f",null,null,null,null,null)
-B.QZ=new A.fp("\u5916\u89b3",null,null,null,null,null)
-B.R_=new A.fp("\u30c6\u30fc\u30de",null,null,null,null,null)
+B.QW=new A.fp("\u672c\u65e5\u306f\u7279\u5225\u30c0\u30a4\u30e4\u3067\u3059",null,null,null,null,null)
+B.QX=new A.fp("\u672c\u65e5\u306e\u7279\u5225\u30c0\u30a4\u30e4\u306f\u672a\u5bfe\u5fdc\u3067\u3059\u3002\n\u5927\u5b66\u30a6\u30a7\u30d6\u30b5\u30a4\u30c8\u306ePDF\u3092\u78ba\u8a8d\u3057\u307e\u3059\u304b\uff1f",null,null,null,null,null)
+B.QY=new A.fp("\u5916\u89b3",null,null,null,null,null)
+B.QZ=new A.fp("\u30c6\u30fc\u30de",null,null,null,null,null)
 B.xI=new A.xF(0,"system")
 B.R2=new A.xF(1,"light")
 B.xJ=new A.xF(2,"dark")
