@@ -59,6 +59,9 @@ jobs:
           channel: "stable"
           cache: true
 
+      - name: Run Flutter doctor
+        run: flutter doctor
+
       - name: Run flutter pub get
         run: flutter pub get
 

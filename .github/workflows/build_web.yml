@@ -37,6 +37,9 @@ jobs:
           channel: 'stable'
           cache: true
 
+      - name: Run Flutter doctor
+        run: flutter doctor
+
       - name: Build
         run: |
           flutter --version
