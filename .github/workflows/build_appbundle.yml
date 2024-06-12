@@ -76,5 +76,5 @@ jobs:
           serviceAccountJsonPlainText: ${{ secrets.ANDROID_ACCOUNT_KEY_JSON }}
           packageName: jp.twa.tokobus
           releaseFiles: build/app/outputs/bundle/release/app-release.aab
-          track: production
-          status: draft
+          track: internal
+#          status: draft
