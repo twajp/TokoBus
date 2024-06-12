@@ -20,7 +20,7 @@ homeAppBar({required BuildContext context, required timetable}) {
             ),
             const PopupMenuItem<int>(
               value: 1,
-              child: Text("時刻表の間違いを報告する"),
+              child: Text("問い合わせ / 不具合報告"),
             ),
             const PopupMenuItem<int>(
               value: 2,
