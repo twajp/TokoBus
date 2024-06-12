@@ -46,8 +46,8 @@ jobs:
           channel: "stable"
           cache: true
 
-      - name: Run Flutter doctor
-        run: flutter doctor
+      - name: Run flutter doctor
+        run: flutter doctor -v
 
       - name: Download Flutter packages
         run: flutter pub get

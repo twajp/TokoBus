@@ -28,8 +28,8 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - name: Run flutter version
-        run: flutter --version
+      - name: Run flutter doctor
+        run: flutter doctor -v
 
       - name: Run flutter pub get
         run: flutter pub get
