@@ -11,6 +11,13 @@ on:
           - patch
           - minor
           - major
+      target:
+        type: choice
+        description: Choose Build Target
+        options:
+          - all
+          - ios
+          - appbundle
 
 jobs:
   build_all:
