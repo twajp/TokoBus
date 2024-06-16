@@ -19,11 +19,9 @@ on:
           - ios
           - appbundle
       tag_and_release_note:
-        type: choice
-        description: Need a tag and release note?
-        options:
-          - yes
-          - no
+        type: boolean
+        default: true
+        description: Create a Tag and Release Note
 
 jobs:
   build_all:
@@ -69,7 +67,7 @@ jobs:
           git push
 
       - name: Check previous release version name
-        if: github.event.inputs.tag_and_release_note == 'yes'
+        if: github.event.inputs.tag_and_release_note == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -78,7 +76,7 @@ jobs:
 
       - name: Delete previous release if version number is same
         if: |
-          github.event.inputs.tag_and_release_note == 'yes' &&
+          github.event.inputs.tag_and_release_note == 'true' &&
           env.VERSION_NAME == env.PREV_VERSION_NAME
         env:
           GH_TOKEN: ${{ github.token }}
@@ -88,7 +86,7 @@ jobs:
           git tag -d v$PREV_VERSION_NAME
 
       - name: Create tag and release note
-        if: github.event.inputs.tag_and_release_note == 'yes'
+        if: github.event.inputs.tag_and_release_note == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
