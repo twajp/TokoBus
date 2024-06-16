@@ -18,6 +18,12 @@ on:
           - all
           - ios
           - appbundle
+      tag_and_release_note:
+        type: choice
+        description: Need a tag and release note?
+        options:
+          - yes
+          - no
 
 jobs:
   build_all:
@@ -63,6 +69,7 @@ jobs:
           git push
 
       - name: Check previous release version name
+        if: github.event.inputs.tag_and_release_note == 'yes'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -70,7 +77,9 @@ jobs:
           echo "PREV_VERSION_NAME=$(gh release list --limit 1 | grep -o -E "([0-9]+\.){1}[0-9]+(\.[0-9]+)?" | head -n1)" >> $GITHUB_ENV
 
       - name: Delete previous release if version number is same
-        if: env.VERSION_NAME == env.PREV_VERSION_NAME
+        if: |
+          github.event.inputs.tag_and_release_note == 'yes' &&
+          env.VERSION_NAME == env.PREV_VERSION_NAME
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -79,6 +88,7 @@ jobs:
           git tag -d v$PREV_VERSION_NAME
 
       - name: Create tag and release note
+        if: github.event.inputs.tag_and_release_note == 'yes'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -92,6 +102,9 @@ jobs:
 
   build_ios:
     needs: [ build_all ]
+    if: |
+      github.event.inputs.target == 'all' ||
+      github.event.inputs.target == 'ios'
     uses: ./.github/workflows/build_ios.yml
     with:
       COMMIT_ID: ${{ needs.build_all.outputs.COMMIT_ID }}
@@ -103,6 +116,9 @@ jobs:
 
   build_appbundle:
     needs: [ build_all ]
+    if: |
+      github.event.inputs.target == 'all' ||
+      github.event.inputs.target == 'appbundle'
     uses: ./.github/workflows/build_appbundle.yml
     with:
       COMMIT_ID: ${{ needs.build_all.outputs.COMMIT_ID }}
