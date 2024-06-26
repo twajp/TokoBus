@@ -8081,7 +8081,7 @@ c5=A.bZ(a8,6,30,0,0,0,0,!1)
 if(!A.bA(c5))A.J(A.bv(c5))
 c6=A.bZ(a8,7,13,0,0,0,0,!1)
 if(!A.bA(c6))A.J(A.bv(c6))
-j=A.K(["fullTables",ab1,"compactTables",ab0,"tableInfo",b5,"startDate",new A.b0(b6,!1),"pdf_url",A.K(["default","https://www.waseda.jp/fhum/hum/assets/uploads/2024/03/School_Bus_TimetableTokorozawa_CampusAY2024_Spring_Semester-1.pdf","special",A.K([new A.b0(b7,!1),a9,new A.b0(b8,!1),a9,new A.b0(b9,!1),b0,new A.b0(c0,!1),b0,new A.b0(c1,!1),b1,new A.b0(c2,!1),b1,new A.b0(c3,!1),"https://www.waseda.jp/fhum/hum/assets/uploads/2024/05/School_Bus_Special_ScheduleSaturday_15th_June_2024.pdf",new A.b0(c4,!1),b2,new A.b0(c5,!1),b2,new A.b0(c6,!1),"https://www.waseda.jp/fhum/hum/assets/uploads/2024/06/School_Bus_Special_ScheduleSaturday_13th_July_2024.pdf"],t.CG,b3)],b3,am4)],b4,b4)
+j=A.K(["fullTables",ab1,"compactTables",ab0,"tableInfo",b5,"startDate",new A.b0(b6,!1),"pdf_url",A.K(["default","https://www.waseda.jp/fhum/hum/assets/uploads/2024/03/School_Bus_TimetableTokorozawa_CampusAY2024_Spring_Semester-1.pdf","special",A.K([new A.b0(b7,!1),a9,new A.b0(b8,!1),a9,new A.b0(b9,!1),b0,new A.b0(c0,!1),b0,new A.b0(c1,!1),b1,new A.b0(c2,!1),b1,new A.b0(c3,!1),"https://www.waseda.jp/fhum/hum/assets/uploads/2024/05/School_Bus_Special_ScheduleSaturday_15th_June_2024.pdf",new A.b0(c4,!1),b2,new A.b0(c5,!1),b2,new A.b0(c6,!1),"https://www.waseda.jp/fhum/hum/assets/uploads/2024/05/School_Bus_Special_ScheduleSaturday_13th_July_2024.pdf"],t.CG,b3)],b3,am4)],b4,b4)
 i=new A.b0(Date.now(),!1)
 h=A.akT(A.ik(i),A.cD(i))
 g=[]
