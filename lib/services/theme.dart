@@ -31,22 +31,10 @@ final lightTheme = FlexThemeData.light(
       systemNavigationBarColor: Color.fromRGBO(243, 243, 243, 1),
     ),
     iconTheme: IconThemeData(color: Colors.black),
-    // titleTextStyle:TextStyle(color: Colors.black)
   ),
   dialogTheme: const DialogTheme(
     backgroundColor: Colors.white,
   ),
-  // iconTheme: const IconThemeData(color: Colors.black),
-  // radioTheme: RadioThemeData(
-  //   fillColor: WidgetStateProperty.resolveWith<Color>(
-  //     (Set<WidgetState> states) {
-  //       if (states.contains(WidgetState.disabled)) {
-  //         return Colors.black.withOpacity(.32);
-  //       }
-  //       return Colors.black;
-  //     },
-  //   ),
-  // ),
 );
 
 final darkTheme = FlexThemeData.dark(
@@ -59,7 +47,6 @@ final darkTheme = FlexThemeData.dark(
   onBackground: Colors.white, // 背景色の上に書く文字・アイコン色
   onSecondary: Colors.white, // secondary色の上に書く文字・アイコン色
   onTertiary: Colors.white, // アクティブなドット色
-  surface: wasedaColor,
   // surface: const Color.fromRGBO(44, 44, 46, 1),// 勝手に色が変わるから使えない
   // useMaterial3: false,
   // surfaceTint: Colors.transparent,
@@ -72,7 +59,6 @@ final darkTheme = FlexThemeData.dark(
     bodyLarge: TextStyle(fontSize: 17.0, color: Colors.grey), // 過ぎたバス
     bodyMedium: TextStyle(fontSize: 14.0, color: Colors.grey), // 時刻表Ver
   ),
-  appBarBackground: Colors.black,
 ).copyWith(
   appBarTheme: const AppBarTheme(
     backgroundColor: Colors.black,
@@ -88,4 +74,15 @@ final darkTheme = FlexThemeData.dark(
   dialogTheme: const DialogTheme(
     backgroundColor: Color.fromRGBO(44, 44, 46, 1),
   ),
+  // iconTheme: const IconThemeData(color: Colors.black),
+  // radioTheme: RadioThemeData(
+  //   fillColor: WidgetStateProperty.resolveWith<Color>(
+  //     (Set<WidgetState> states) {
+  //       if (states.contains(WidgetState.disabled)) {
+  //         return Colors.black.withOpacity(.32);
+  //       }
+  //       return Colors.black;
+  //     },
+  //   ),
+  // ),
 );
