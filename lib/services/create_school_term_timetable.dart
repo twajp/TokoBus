@@ -552,7 +552,7 @@ Map createSchoolTermTimetable() {
         DateTime(2024, 06, 15): "https://www.waseda.jp/fhum/hum/assets/uploads/2024/05/School_Bus_Special_ScheduleSaturday_15th_June_2024.pdf",
         DateTime(2024, 06, 29): "https://www.waseda.jp/fhum/hum/assets/uploads/2024/06/School_Bus_Schedule29th_and_30th_June_2024.pdf",
         DateTime(2024, 06, 30): "https://www.waseda.jp/fhum/hum/assets/uploads/2024/06/School_Bus_Schedule29th_and_30th_June_2024.pdf",
-        DateTime(2024, 07, 13): "https://www.waseda.jp/fhum/hum/assets/uploads/2024/06/School_Bus_Special_ScheduleSaturday_13th_July_2024.pdf",
+        DateTime(2024, 07, 13): "https://www.waseda.jp/fhum/hum/assets/uploads/2024/05/School_Bus_Special_ScheduleSaturday_13th_July_2024.pdf",
       },
     },
   };
