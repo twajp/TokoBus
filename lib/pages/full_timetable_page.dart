@@ -57,34 +57,34 @@ class _FullTimetablePageState extends State<FullTimetablePage> {
 
   double setInitialScrollOffset({required Key key, required int nextBusIndex}) {
     double initialScrollOffset = 0;
-    final numberOfBuses = timetable["fullTables"][tableName]["table"].length;
+    final numberOfBuses = timetable['fullTables'][tableName]['table'].length;
     final rowHeight = deviceHeight * 0.05;
     if ((nextBusIndex - 1) * deviceHeight * 0.05 < 0) {
       //　始発前
       initialScrollOffset = 0;
-      print("1 $initialScrollOffset");
+      print('1 $initialScrollOffset');
     } else if ((numberOfBuses - nextBusIndex) * rowHeight + 50 > scrollViewHeight) {
       initialScrollOffset = (nextBusIndex - 1) * rowHeight;
-      print("2 $initialScrollOffset");
+      print('2 $initialScrollOffset');
     } else {
       // last - nextBusIndex > key
       initialScrollOffset = numberOfBuses * rowHeight - scrollViewHeight;
-      print("3 $initialScrollOffset");
+      print('3 $initialScrollOffset');
     }
     return initialScrollOffset;
   }
 
   @override
   Widget build(BuildContext context) {
-    final int tableFormat = timetable["fullTables"][tableName]["tableFormat"];
+    final int tableFormat = timetable['fullTables'][tableName]['tableFormat'];
     return Dismissible(
       direction: DismissDirection.down,
-      key: const Key("key"),
+      key: const Key('key'),
       onDismissed: (_) => Navigator.of(context).pop(),
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            timetable["tableInfo"][tableFormat]["title"],
+            timetable['tableInfo'][tableFormat]['title'],
             style: TextStyle(color: Theme.of(context).colorScheme.onBackground),
           ),
         ),
@@ -101,7 +101,7 @@ class _FullTimetablePageState extends State<FullTimetablePage> {
                       height: deviceHeight * 0.05,
                       width: deviceWidth * 0.2,
                       child: Text(
-                        timetable["tableInfo"][tableFormat]["string0"],
+                        timetable['tableInfo'][tableFormat]['string0'],
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ),
@@ -110,7 +110,7 @@ class _FullTimetablePageState extends State<FullTimetablePage> {
                       height: deviceHeight * 0.05,
                       width: deviceWidth * 0.4,
                       child: Text(
-                        timetable["tableInfo"][tableFormat]["string1"],
+                        timetable['tableInfo'][tableFormat]['string1'],
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ),
@@ -119,7 +119,7 @@ class _FullTimetablePageState extends State<FullTimetablePage> {
                       height: deviceHeight * 0.05,
                       width: deviceWidth * 0.2,
                       child: Text(
-                        timetable["tableInfo"][tableFormat]["string2"],
+                        timetable['tableInfo'][tableFormat]['string2'],
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ),
@@ -128,7 +128,7 @@ class _FullTimetablePageState extends State<FullTimetablePage> {
                       height: deviceHeight * 0.05,
                       width: deviceWidth * 0.16,
                       child: Text(
-                        timetable["tableInfo"][tableFormat]["string3"],
+                        timetable['tableInfo'][tableFormat]['string3'],
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ),
@@ -137,13 +137,13 @@ class _FullTimetablePageState extends State<FullTimetablePage> {
                 Expanded(
                   child: SingleChildScrollView(
                     key: _key,
-                    controller: ScrollController(initialScrollOffset: setInitialScrollOffset(key: _key, nextBusIndex: timetable["fullTables"][tableName]["nextBusIndex"])),
+                    controller: ScrollController(initialScrollOffset: setInitialScrollOffset(key: _key, nextBusIndex: timetable['fullTables'][tableName]['nextBusIndex'])),
                     child: Column(
                       children: [
-                        for (int i = 0; i < timetable["fullTables"][tableName]["table"].length; i++) ...{
-                          if (i == timetable["fullTables"][tableName]["nextBusIndex"]) ...{
+                        for (int i = 0; i < timetable['fullTables'][tableName]['table'].length; i++) ...{
+                          if (i == timetable['fullTables'][tableName]['nextBusIndex']) ...{
                             OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: Theme.of(context).textTheme.bodyLarge, backgroundColor: Theme.of(context).colorScheme.primary, tableName: tableName, rowIndex: i),
-                          } else if (i < timetable["fullTables"][tableName]["nextBusIndex"]) ...{
+                          } else if (i < timetable['fullTables'][tableName]['nextBusIndex']) ...{
                             OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: Theme.of(context).primaryTextTheme.bodyLarge, backgroundColor: Theme.of(context).colorScheme.background, tableName: tableName, rowIndex: i),
                           } else ...{
                             OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: Theme.of(context).textTheme.bodyLarge, backgroundColor: Theme.of(context).colorScheme.background, tableName: tableName, rowIndex: i)
@@ -153,7 +153,7 @@ class _FullTimetablePageState extends State<FullTimetablePage> {
                           alignment: Alignment.center,
                           height: 50,
                           child: Text(
-                            "${timetable["fullTables"][tableName]["dayOfWeek"]}ダイヤ   時刻表Ver: ${timetable["tableInfo"]["tableVer"]}",
+                            '${timetable['fullTables'][tableName]['dayOfWeek']}ダイヤ   時刻表Ver: ${timetable['tableInfo']['tableVer']}',
                             textAlign: TextAlign.center,
                             style: Theme.of(context).primaryTextTheme.bodyMedium,
                           ),
@@ -200,7 +200,7 @@ class OneRow extends StatelessWidget {
           width: deviceWidth * 0.2,
           color: backgroundColor,
           child: Text(
-            timetable["fullTables"][tableName]["table"][rowIndex][4],
+            timetable['fullTables'][tableName]['table'][rowIndex][4],
             style: textStyle,
             softWrap: false,
           ),
@@ -211,7 +211,7 @@ class OneRow extends StatelessWidget {
           width: deviceWidth * 0.4,
           color: backgroundColor,
           child: Text(
-            timetable["fullTables"][tableName]["table"][rowIndex][5],
+            timetable['fullTables'][tableName]['table'][rowIndex][5],
             style: textStyle,
             softWrap: false,
           ),
@@ -222,7 +222,7 @@ class OneRow extends StatelessWidget {
           width: deviceWidth * 0.2,
           color: backgroundColor,
           child: Text(
-            timetable["fullTables"][tableName]["table"][rowIndex][6],
+            timetable['fullTables'][tableName]['table'][rowIndex][6],
             style: textStyle,
             softWrap: false,
           ),
@@ -233,7 +233,7 @@ class OneRow extends StatelessWidget {
           width: deviceWidth * 0.16,
           color: backgroundColor,
           child: Text(
-            timetable["fullTables"][tableName]["table"][rowIndex][7],
+            timetable['fullTables'][tableName]['table'][rowIndex][7],
             style: textStyle,
             softWrap: false,
           ),

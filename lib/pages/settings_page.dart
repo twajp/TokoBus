@@ -90,7 +90,7 @@ class SettingsPage extends StatelessWidget {
           actions: [
             TextButton(
               child: Text(
-                "キャンセル",
+                'キャンセル',
                 style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
               ),
               onPressed: () {

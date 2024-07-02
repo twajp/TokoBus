@@ -3,19 +3,19 @@ import 'package:url_launcher/url_launcher.dart';
 
 void showDialogOnSpecialDate({required BuildContext context, required timetable}) {
   DateTime currentDate = DateTime.now();
-  String url = timetable["pdf_url"]["default"];
-  if (timetable["pdf_url"]["special"].containsKey(DateTime(currentDate.year, currentDate.month, currentDate.day))) {
-    url = timetable["pdf_url"]["special"][DateTime(currentDate.year, currentDate.month, currentDate.day)];
+  String url = timetable['pdf_url']['default'];
+  if (timetable['pdf_url']['special'].containsKey(DateTime(currentDate.year, currentDate.month, currentDate.day))) {
+    url = timetable['pdf_url']['special'][DateTime(currentDate.year, currentDate.month, currentDate.day)];
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text("本日は特別ダイヤです"),
-          content: const Text("本日の特別ダイヤは未対応です。\n大学ウェブサイトのPDFを確認しますか？"),
+          title: const Text('本日は特別ダイヤです'),
+          content: const Text('本日の特別ダイヤは未対応です。\n大学ウェブサイトのPDFを確認しますか？'),
           actions: [
             TextButton(
               child: Text(
-                "閉じる",
+                '閉じる',
                 style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
               ),
               onPressed: () {
@@ -30,7 +30,7 @@ void showDialogOnSpecialDate({required BuildContext context, required timetable}
                 }
               },
               child: Text(
-                "開く",
+                '開く',
                 style: TextStyle(color: Theme.of(context).colorScheme.onSecondary),
               ),
             ),

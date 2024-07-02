@@ -14,14 +14,14 @@ class HomeDrawer extends StatefulWidget {
 class _HomeDrawerState extends State<HomeDrawer> {
   @override
   Widget build(BuildContext context) {
-    final String weekdaysTimetableName = widget.timetable["fullTables"]["stationCampusWeekdays"]["dayOfWeek"] + "ダイヤ";
-    final String saturdaysTimetableName = widget.timetable["fullTables"]["stationCampusSaturdays"]["dayOfWeek"] + "ダイヤ";
-    final String sundaysHolidaysTimetableName = widget.timetable["fullTables"]["stationCampusSundaysHolidays"]["dayOfWeek"] + "ダイヤ";
+    final String weekdaysTimetableName = widget.timetable['fullTables']['stationCampusWeekdays']['dayOfWeek'] + 'ダイヤ';
+    final String saturdaysTimetableName = widget.timetable['fullTables']['stationCampusSaturdays']['dayOfWeek'] + 'ダイヤ';
+    final String sundaysHolidaysTimetableName = widget.timetable['fullTables']['stationCampusSundaysHolidays']['dayOfWeek'] + 'ダイヤ';
     String specialTimetableName;
-    if (widget.timetable["fullTables"].containsKey("stationCampusSpecial")) {
-      specialTimetableName = widget.timetable["fullTables"]["stationCampusSpecial"]["dayOfWeek"] + "ダイヤ";
+    if (widget.timetable['fullTables'].containsKey('stationCampusSpecial')) {
+      specialTimetableName = widget.timetable['fullTables']['stationCampusSpecial']['dayOfWeek'] + 'ダイヤ';
     } else {
-      specialTimetableName = "";
+      specialTimetableName = '';
     }
     return Drawer(
       backgroundColor: Theme.of(context).colorScheme.background,
@@ -53,48 +53,48 @@ class _HomeDrawerState extends State<HomeDrawer> {
                       childrenPadding: const EdgeInsets.only(left: 56),
                       children: [
                         ListTile(
-                          title: Text(widget.timetable["tableInfo"][0]["title"]),
+                          title: Text(widget.timetable['tableInfo'][0]['title']),
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => FullTimetablePage(tableName: "stationCampusWeekdays", timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
+                                builder: (context) => FullTimetablePage(tableName: 'stationCampusWeekdays', timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
                                 fullscreenDialog: true,
                               ),
                             );
                           },
                         ),
                         ListTile(
-                          title: Text(widget.timetable["tableInfo"][1]["title"]),
+                          title: Text(widget.timetable['tableInfo'][1]['title']),
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => FullTimetablePage(tableName: "campusStationWeekdays", timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
+                                builder: (context) => FullTimetablePage(tableName: 'campusStationWeekdays', timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
                                 fullscreenDialog: true,
                               ),
                             );
                           },
                         ),
                         ListTile(
-                          title: Text(widget.timetable["tableInfo"][2]["title"]),
+                          title: Text(widget.timetable['tableInfo'][2]['title']),
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => FullTimetablePage(tableName: "campusFRCWeekdays", timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
+                                builder: (context) => FullTimetablePage(tableName: 'campusFRCWeekdays', timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
                                 fullscreenDialog: true,
                               ),
                             );
                           },
                         ),
                         ListTile(
-                          title: Text(widget.timetable["tableInfo"][3]["title"]),
+                          title: Text(widget.timetable['tableInfo'][3]['title']),
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => FullTimetablePage(tableName: "frcCampusWeekdays", timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
+                                builder: (context) => FullTimetablePage(tableName: 'frcCampusWeekdays', timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
                                 fullscreenDialog: true,
                               ),
                             );
@@ -102,7 +102,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                         ),
                       ],
                     ),
-                    if (specialTimetableName != "") ...{
+                    if (specialTimetableName != '') ...{
                       ExpansionTile(
                         title: Text(specialTimetableName),
                         leading: const Icon(Icons.school),
@@ -113,24 +113,24 @@ class _HomeDrawerState extends State<HomeDrawer> {
                         childrenPadding: const EdgeInsets.only(left: 56),
                         children: [
                           ListTile(
-                            title: Text(widget.timetable["tableInfo"][0]["title"]),
+                            title: Text(widget.timetable['tableInfo'][0]['title']),
                             onTap: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => FullTimetablePage(tableName: "stationCampusSpecial", timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
+                                  builder: (context) => FullTimetablePage(tableName: 'stationCampusSpecial', timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
                                   fullscreenDialog: true,
                                 ),
                               );
                             },
                           ),
                           ListTile(
-                            title: Text(widget.timetable["tableInfo"][1]["title"]),
+                            title: Text(widget.timetable['tableInfo'][1]['title']),
                             onTap: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => FullTimetablePage(tableName: "campusStationSpecial", timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
+                                  builder: (context) => FullTimetablePage(tableName: 'campusStationSpecial', timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
                                   fullscreenDialog: true,
                                 ),
                               );
@@ -149,48 +149,48 @@ class _HomeDrawerState extends State<HomeDrawer> {
                       childrenPadding: const EdgeInsets.only(left: 56),
                       children: [
                         ListTile(
-                          title: Text(widget.timetable["tableInfo"][0]["title"]),
+                          title: Text(widget.timetable['tableInfo'][0]['title']),
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => FullTimetablePage(tableName: "stationCampusSaturdays", timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
+                                builder: (context) => FullTimetablePage(tableName: 'stationCampusSaturdays', timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
                                 fullscreenDialog: true,
                               ),
                             );
                           },
                         ),
                         ListTile(
-                          title: Text(widget.timetable["tableInfo"][1]["title"]),
+                          title: Text(widget.timetable['tableInfo'][1]['title']),
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => FullTimetablePage(tableName: "campusStationSaturdays", timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
+                                builder: (context) => FullTimetablePage(tableName: 'campusStationSaturdays', timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
                                 fullscreenDialog: true,
                               ),
                             );
                           },
                         ),
                         ListTile(
-                          title: Text(widget.timetable["tableInfo"][2]["title"]),
+                          title: Text(widget.timetable['tableInfo'][2]['title']),
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => FullTimetablePage(tableName: "campusFRCSaturdays", timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
+                                builder: (context) => FullTimetablePage(tableName: 'campusFRCSaturdays', timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
                                 fullscreenDialog: true,
                               ),
                             );
                           },
                         ),
                         ListTile(
-                          title: Text(widget.timetable["tableInfo"][3]["title"]),
+                          title: Text(widget.timetable['tableInfo'][3]['title']),
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => FullTimetablePage(tableName: "frcCampusSaturdays", timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
+                                builder: (context) => FullTimetablePage(tableName: 'frcCampusSaturdays', timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
                                 fullscreenDialog: true,
                               ),
                             );
@@ -208,24 +208,24 @@ class _HomeDrawerState extends State<HomeDrawer> {
                       childrenPadding: const EdgeInsets.only(left: 56),
                       children: [
                         ListTile(
-                          title: Text(widget.timetable["tableInfo"][0]["title"]),
+                          title: Text(widget.timetable['tableInfo'][0]['title']),
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => FullTimetablePage(tableName: "stationCampusSundaysHolidays", timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
+                                builder: (context) => FullTimetablePage(tableName: 'stationCampusSundaysHolidays', timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
                                 fullscreenDialog: true,
                               ),
                             );
                           },
                         ),
                         ListTile(
-                          title: Text(widget.timetable["tableInfo"][1]["title"]),
+                          title: Text(widget.timetable['tableInfo'][1]['title']),
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => FullTimetablePage(tableName: "campusStationSundaysHolidays", timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
+                                builder: (context) => FullTimetablePage(tableName: 'campusStationSundaysHolidays', timetable: widget.timetable, deviceHeight: widget.height, deviceWidth: widget.width),
                                 fullscreenDialog: true,
                               ),
                             );
@@ -238,7 +238,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
               ),
             ),
             ListTile(
-              title: const Text("設定"),
+              title: const Text('設定'),
               leading: const Icon(Icons.settings),
               textColor: Theme.of(context).colorScheme.onBackground,
               iconColor: Theme.of(context).colorScheme.onBackground,

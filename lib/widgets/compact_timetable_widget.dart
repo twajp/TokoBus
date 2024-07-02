@@ -29,11 +29,11 @@ class CompactTimetableWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (timetable["tableInfo"]["selectedTableNames"][tableIndex] != "") {
+        if (timetable['tableInfo']['selectedTableNames'][tableIndex] != '') {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => FullTimetablePage(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: width2(), tableName: timetable["tableInfo"]["selectedTableNames"][tableIndex]),
+              builder: (context) => FullTimetablePage(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: width2(), tableName: timetable['tableInfo']['selectedTableNames'][tableIndex]),
               fullscreenDialog: true,
             ),
           );
@@ -47,7 +47,7 @@ class CompactTimetableWidget extends StatelessWidget {
             height: deviceHeight * 0.1,
             width: width1() * 0.9,
             child: Text(
-              timetable["tableInfo"][tableIndex]["title"],
+              timetable['tableInfo'][tableIndex]['title'],
               style: Theme.of(context).textTheme.headlineMedium,
               softWrap: false,
             ),
@@ -72,7 +72,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: deviceHeight * 0.06,
                         width: width1() * 0.2,
                         child: Text(
-                          timetable["tableInfo"][tableIndex]["string0"],
+                          timetable['tableInfo'][tableIndex]['string0'],
                           style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
@@ -83,7 +83,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: deviceHeight * 0.06,
                         width: width1() * 0.35,
                         child: Text(
-                          timetable["tableInfo"][tableIndex]["string1"],
+                          timetable['tableInfo'][tableIndex]['string1'],
                           style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
@@ -94,7 +94,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: deviceHeight * 0.06,
                         width: width1() * 0.2,
                         child: Text(
-                          timetable["tableInfo"][tableIndex]["string2"],
+                          timetable['tableInfo'][tableIndex]['string2'],
                           style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
@@ -105,7 +105,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: deviceHeight * 0.06,
                         width: width1() * 0.16,
                         child: Text(
-                          timetable["tableInfo"][tableIndex]["string3"],
+                          timetable['tableInfo'][tableIndex]['string3'],
                           style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
@@ -121,7 +121,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: deviceHeight * 0.06,
                         width: width1() * 0.2,
                         child: Text(
-                          timetable["compactTables"][tableIndex][0][0],
+                          timetable['compactTables'][tableIndex][0][0],
                           style: Theme.of(context).primaryTextTheme.bodyLarge,
                           softWrap: false,
                         ),
@@ -132,7 +132,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: deviceHeight * 0.06,
                         width: width1() * 0.35,
                         child: Text(
-                          timetable["compactTables"][tableIndex][0][1],
+                          timetable['compactTables'][tableIndex][0][1],
                           style: Theme.of(context).primaryTextTheme.bodyLarge,
                           softWrap: false,
                         ),
@@ -143,7 +143,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: deviceHeight * 0.06,
                         width: width1() * 0.2,
                         child: Text(
-                          timetable["compactTables"][tableIndex][0][2],
+                          timetable['compactTables'][tableIndex][0][2],
                           style: Theme.of(context).primaryTextTheme.bodyLarge,
                           softWrap: false,
                         ),
@@ -154,7 +154,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: deviceHeight * 0.06,
                         width: width1() * 0.16,
                         child: Text(
-                          timetable["compactTables"][tableIndex][0][3],
+                          timetable['compactTables'][tableIndex][0][3],
                           style: Theme.of(context).primaryTextTheme.bodyLarge,
                           softWrap: false,
                         ),
@@ -170,7 +170,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: deviceHeight * 0.06,
                         width: width1() * 0.2,
                         child: Text(
-                          timetable["compactTables"][tableIndex][1][0],
+                          timetable['compactTables'][tableIndex][1][0],
                           style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
@@ -181,7 +181,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: deviceHeight * 0.06,
                         width: width1() * 0.35,
                         child: Text(
-                          timetable["compactTables"][tableIndex][1][1],
+                          timetable['compactTables'][tableIndex][1][1],
                           style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
@@ -192,7 +192,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: deviceHeight * 0.06,
                         width: width1() * 0.2,
                         child: Text(
-                          timetable["compactTables"][tableIndex][1][2],
+                          timetable['compactTables'][tableIndex][1][2],
                           style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
@@ -203,7 +203,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: deviceHeight * 0.06,
                         width: width1() * 0.16,
                         child: Text(
-                          timetable["compactTables"][tableIndex][1][3],
+                          timetable['compactTables'][tableIndex][1][3],
                           style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
@@ -219,7 +219,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: deviceHeight * 0.06,
                         width: width1() * 0.2,
                         child: Text(
-                          timetable["compactTables"][tableIndex][2][0],
+                          timetable['compactTables'][tableIndex][2][0],
                           style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
@@ -230,7 +230,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: deviceHeight * 0.06,
                         width: width1() * 0.35,
                         child: Text(
-                          timetable["compactTables"][tableIndex][2][1],
+                          timetable['compactTables'][tableIndex][2][1],
                           style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
@@ -241,7 +241,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: deviceHeight * 0.06,
                         width: width1() * 0.2,
                         child: Text(
-                          timetable["compactTables"][tableIndex][2][2],
+                          timetable['compactTables'][tableIndex][2][2],
                           style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
@@ -252,7 +252,7 @@ class CompactTimetableWidget extends StatelessWidget {
                         height: deviceHeight * 0.06,
                         width: width1() * 0.16,
                         child: Text(
-                          timetable["compactTables"][tableIndex][2][3],
+                          timetable['compactTables'][tableIndex][2][3],
                           style: Theme.of(context).textTheme.bodyLarge,
                           softWrap: false,
                         ),
