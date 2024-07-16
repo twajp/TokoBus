@@ -8,7 +8,7 @@ import 'package:nholiday_jp/nholiday_jp.dart';
 // timetable['pdf_url']['default']: 'https://.../通常ダイヤ.pdf'
 // timetable['pdf_url']['special']: {DateTime(year, month, day): 'https://.../特別ダイヤ.pdf', ...}
 
-Map createVacationTimetable() {
+Map timetableProviderWinterVacation() {
   // 平日(休講日)
   List stationCampusWeekdays = [
     [07, 45, '北口', '×'],

@@ -1,6 +1,7 @@
 import 'package:intl/intl.dart';
 import 'timetable_provider_1_semester.dart';
 import 'timetable_provider_2_summer_vacation.dart';
+import 'timetable_provider_4_winter_vacation.dart';
 
 Map code() {
   // 現在時刻と0時0分の取得
@@ -10,11 +11,11 @@ Map code() {
 
   // 新ダイヤに切り替えるか
   Map timetable;
-  var startDate = createSchoolTermTimetable()['startDate'];
+  var startDate = timetableProviderSummerVacation()['startDate'];
   if (now.isBefore(startDate)) {
-    timetable = createVacationTimetable();
+    timetable = timetableProviderSemester();
   } else {
-    timetable = createSchoolTermTimetable();
+    timetable = timetableProviderSummerVacation();
   }
 
   String calcTimeRemaining(Duration time) {
