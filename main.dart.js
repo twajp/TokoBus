@@ -7943,7 +7943,7 @@ ahs:function ahs(){},
 ai0(a){var s=0,r=A.S(t.H),q,p
 var $async$ai0=A.T(function(b,c){if(b===1)return A.P(c,r)
 while(true)switch(s){case 0:s=2
-return A.a0(A.aG5(A.h6("https://raw.githubusercontent.com/twajp/TokoBus/main/data/dialog.json",0,null)),$async$ai0)
+return A.a0(A.aG5(A.h6("https://raw.githubusercontent.com/twajp/TokoBus/master/data/dialog.json",0,null)),$async$ai0)
 case 2:p=c
 if(p.b===200){q=B.bz.es(A.aFU(A.aDN(p.e).c.a.h(0,"charset")).es(p.w))
 if(J.c(q.h(0,"flag"),!0))A.aEQ(a,q)}else throw A.e(A.cd("Failed to load JSON data"))
