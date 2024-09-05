@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 Future<void> jsonAlertHandler({required BuildContext context}) async {
   Map<String, dynamic> jsonData = {};
 
-  final url = Uri.parse('https://raw.githubusercontent.com/twajp/TokoBus/main/data/dialog.json');
+  final url = Uri.parse('https://raw.githubusercontent.com/twajp/TokoBus/master/data/dialog.json');
   // final url = Uri.parse('https://gist.githubusercontent.com/twajp/5effe414d9a1f1f711c5a1075d195646/raw/a8166965bf1266433e42b12f42b13adf6c01e138/dialog.json');
   final response = await http.get(url);
 
