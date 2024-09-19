@@ -11,11 +11,12 @@ Map code() {
 
   // 新ダイヤに切り替えるか
   Map timetable;
-  var startDate = timetableProviderSummerVacation()['startDate'];
-  if (now.isBefore(startDate)) {
-    timetable = timetableProviderSemester();
+  Map timetableBefore = timetableProviderSummerVacation(); // =以降を変更する
+  Map timetableAfter = timetableProviderSemester(); // =以降を変更する
+  if (now.isBefore(timetableAfter['startDate'])) {
+    timetable = timetableBefore;
   } else {
-    timetable = timetableProviderSummerVacation();
+    timetable = timetableAfter;
   }
 
   String calcTimeRemaining(Duration time) {
