@@ -543,6 +543,8 @@ Map timetableProviderSemester() {
     'pdf_url': {
       'default': 'https://www.waseda.jp/fhum/hum/assets/uploads/2024/09/School_Bus_TimetableTokorozawa_CampusAY2024_Fall_Semester-1.pdf',
       'special': {
+        DateTime(2024, 10, 05): 'https://www.waseda.jp/fhum/hum/assets/uploads/2024/09/School_Bus_Special_Schedule5th_and_12th_October_2024.pdf',
+        DateTime(2024, 10, 12): 'https://www.waseda.jp/fhum/hum/assets/uploads/2024/09/School_Bus_Special_Schedule5th_and_12th_October_2024.pdf',
       },
     },
   };
