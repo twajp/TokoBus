@@ -13,4 +13,5 @@
 * [Google Play Store](https://play.google.com/store/apps/details?id=jp.twa.tokobus)
 
 ## 関連リンク
+* [TokoBus公式サイト](https://twajp.github.io/TokoBusWebsite/)
 * [大学公式サイト/スクールバス時刻表ページ](https://www.waseda.jp/fhum/hum/facility/bus-parking/)
