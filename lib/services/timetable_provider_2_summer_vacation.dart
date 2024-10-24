@@ -466,9 +466,10 @@ Map timetableProviderSummerVacation() {
       'selectedTableNames': [],
     },
     'startDate': DateTime(2024, 07, 30),
-    'pdf_url': {
-      'default': 'https://www.waseda.jp/fhum/hum/assets/uploads/2024/07/School_Bus_Timetable_for_Summer_Vacation_from_30_July_2024_to_3_October_2024.pdf',
-      'special': {
+    'url': {
+      'waseda_bus_page': 'https://www.waseda.jp/fhum/hum/facility/bus-parking/',
+      'default_pdf': 'https://www.waseda.jp/fhum/hum/assets/uploads/2024/07/School_Bus_Timetable_for_Summer_Vacation_from_30_July_2024_to_3_October_2024.pdf',
+      'special_pdf': {
         DateTime(2024, 08, 03): 'https://www.waseda.jp/fhum/hum/assets/uploads/2024/07/School_Bus_Timetable_for_Summer_Vacation_from_30_July_2024_to_3_October_2024.pdf',
         DateTime(2024, 08, 04): 'https://www.waseda.jp/fhum/hum/assets/uploads/2024/07/School_Bus_Timetable_for_Summer_Vacation_from_30_July_2024_to_3_October_2024.pdf',
         DateTime(2024, 08, 24): 'https://www.waseda.jp/fhum/hum/assets/uploads/2024/07/School_Bus_Timetable_for_Summer_Vacation_from_30_July_2024_to_3_October_2024.pdf',

@@ -3,9 +3,9 @@ import 'package:url_launcher/url_launcher.dart';
 
 void showDialogOnSpecialDate({required BuildContext context, required timetable}) {
   DateTime currentDate = DateTime.now();
-  String url = timetable['pdf_url']['default'];
-  if (timetable['pdf_url']['special'].containsKey(DateTime(currentDate.year, currentDate.month, currentDate.day))) {
-    url = timetable['pdf_url']['special'][DateTime(currentDate.year, currentDate.month, currentDate.day)];
+  String url = timetable['url']['default_pdf'];
+  if (timetable['url']['special_pdf'].containsKey(DateTime(currentDate.year, currentDate.month, currentDate.day))) {
+    url = timetable['url']['special_pdf'][DateTime(currentDate.year, currentDate.month, currentDate.day)];
     showDialog(
       context: context,
       builder: (BuildContext context) {

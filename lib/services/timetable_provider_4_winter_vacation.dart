@@ -471,9 +471,10 @@ Map timetableProviderWinterVacation() {
       'selectedTableNames': [],
     },
     'startDate': DateTime(2024, 02, 03),
-    'pdf_url': {
-      'default': 'https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Timetable_for_Spring_Vacation(from_3_February_to_31_March_2024).pdf',
-      'special': {
+    'url': {
+      'waseda_bus_page': 'https://www.waseda.jp/fhum/hum/facility/bus-parking/',
+      'default_pdf': 'https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Timetable_for_Spring_Vacation(from_3_February_to_31_March_2024).pdf',
+      'special_pdf': {
         DateTime(2024, 03, 28): 'https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Special_Schedule(Thursday_28th_March_2024).pdf',
       },
     },

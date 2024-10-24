@@ -16,24 +16,30 @@ homeAppBar({required BuildContext context, required timetable}) {
           return [
             const PopupMenuItem<int>(
               value: 0,
-              child: Text('大学公式PDFを開く'),
+              child: Text('大学公式サイトを開く'),
             ),
             const PopupMenuItem<int>(
               value: 1,
-              child: Text('問い合わせ / 不具合報告'),
+              child: Text('大学公式PDFを開く'),
             ),
             const PopupMenuItem<int>(
               value: 2,
+              child: Text('問い合わせ / 不具合報告'),
+            ),
+            const PopupMenuItem<int>(
+              value: 3,
               child: Text('TokoBusについて'),
             ),
           ];
         },
         onSelected: (value) {
           if (value == 0) {
-            myLaunchUrl(timetable['pdf_url']['default']);
+            myLaunchUrl(timetable['url']['waseda_bus_page']);
           } else if (value == 1) {
-            myLaunchUrl('https://twajp.github.io/TokoBusWebsite/support');
+            myLaunchUrl(timetable['url']['default_pdf']);
           } else if (value == 2) {
+            myLaunchUrl('https://twajp.github.io/TokoBusWebsite/support');
+          } else if (value == 3) {
             myLaunchUrl('https://twajp.github.io/TokoBusWebsite/');
           }
         },
