@@ -1,12 +1,25 @@
 import 'package:nholiday_jp/nholiday_jp.dart';
 
 // timetableの構造メモ
-// timetable['fullTables']['stationCampusWeekdays' -> 'frcCampusSaturday']['table'] == [[int 時, int 分, DateTime 時刻, Duration 残り時間, String 時:分, String 残り時間, String 場所, String 車椅子対応], ...]
-// timetable['fullTables']['stationCampusWeekdays' -> 'frcCampusSaturday']['nextBusIndex'] == int
-// timetable['compactTables'][0 -> 3] == [[String 時:分, String 残り時間, String 場所, String 車椅子対応], * 3]
-// timetable['tableInfo'] == 下のコード参照
-// timetable['pdf_url']['default']: 'https://.../通常ダイヤ.pdf'
-// timetable['pdf_url']['special']: {DateTime(year, month, day): 'https://.../特別ダイヤ.pdf', ...}
+//   timetable['fullTables']['stationCampusWeekdays' -> 'frcCampusSaturday']['table'] == [[int 時, int 分, DateTime 時刻, Duration 残り時間, String 時:分, String 残り時間, String 場所, String 車椅子対応], ...]
+//   timetable['fullTables']['stationCampusWeekdays' -> 'frcCampusSaturday']['nextBusIndex'] == int
+//   timetable['compactTables'][0 -> 3] == [[String 時:分, String 残り時間, String 場所, String 車椅子対応], * 3]
+//   timetable['tableInfo'] == 下のコード参照
+//   timetable['startDate'] == DateTime(year, month, day)
+//   timetable['url']['waseda_bus_page']: 'https://.../バスページ/'
+//   timetable['url']['default_pdf']: 'https://.../通常ダイヤ.pdf'
+//   timetable['url']['special_pdf']: {DateTime(year, month, day): 'https://.../特別ダイヤ.pdf', ...}
+
+// 時刻表更新時のチェックリスト
+//   tableVer
+//   startDate, code.dart
+//   default_pdf
+//   special_pdf
+//   exceptionalHolidays
+//   additionalHolidays
+//   specialDates
+//   exceptionalHolidays, additionalHolidaysは学部暦ではなく大学暦によって決定される
+//     https://www.waseda.jp/top/about/work/organizations/academic-affairs-division/academic-calendar
 
 Map timetableProviderWinterVacation() {
   // 平日(休講日)
@@ -506,7 +519,18 @@ Map timetableProviderWinterVacation() {
     timetable['tableInfo']['selectedTableNames'].add('frcCampusSaturdays');
   }
 
-  // 追加で祝日扱いする日
+  // 授業を行う祝日
+  List exceptionalHolidays = [];
+  for (int i = 0; i < exceptionalHolidays.length; i++) {
+    if (dt.year == exceptionalHolidays[i].year && dt.month == exceptionalHolidays[i].month && dt.day == exceptionalHolidays[i].day) {
+      timetable['tableInfo']['selectedTableNames'][0] = 'stationCampusWeekdays';
+      timetable['tableInfo']['selectedTableNames'][1] = 'campusStationWeekdays';
+      timetable['tableInfo']['selectedTableNames'][2] = 'campusFRCWeekdays';
+      timetable['tableInfo']['selectedTableNames'][3] = 'frcCampusWeekdays';
+    }
+  }
+
+  // 臨時の休業日, 追加で祝日扱いする日
   List additionalHolidays = [
   ];
   for (int i = 0; i < additionalHolidays.length; i++) {
