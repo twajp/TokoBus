@@ -95,7 +95,9 @@ jobs:
       - name: Get commit logs and add to the release note
         run: |
           COMMIT_LOGS=$(git log v$PREV_VERSION_NAME..HEAD --pretty=format:"* %s")
-          gh release edit v$VERSION_NAME --add-body '### Commit Logs\n$COMMIT_LOGS'
+          gh release view v$VERSION_NAME --json body --jq .body > release_note.md
+          echo '### Commit Logs\n$COMMIT_LOGS' >> release_note.md
+          gh release edit v$VERSION_NAME --notes-file release_note.md
 
       - name: Check and save commit ID
         id: commit_id
