@@ -2,7 +2,7 @@ name: TokoBus
 description: 早稲田大学所沢キャンパスのスクールバス時刻表アプリです。
 publish_to: 'none'
 
-version: 2.8.9+99
+version: 2.8.9+100
 
 environment:
   sdk: ^3.5.3
