@@ -71,7 +71,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release list --limit 1 | grep -o -E "([0-9]+\.){1}[0-9]+(\.[0-9]+)?" | head -n1
           echo "PREV_VERSION_NAME=$(gh release list --limit 1 | grep -o -E "([0-9]+\.){1}[0-9]+(\.[0-9]+)?" | head -n1)" >> $GITHUB_ENV
 
       - name: Delete previous release if version number is same
@@ -84,6 +83,7 @@ jobs:
           gh release delete v$PREV_VERSION_NAME
           git push origin --delete v$PREV_VERSION_NAME
           git tag -d v$PREV_VERSION_NAME
+          echo "PREV_VERSION_NAME=$(gh release list --limit 1 | grep -o -E "([0-9]+\.){1}[0-9]+(\.[0-9]+)?" | head -n1)" >> $GITHUB_ENV
 
       - name: Create tag and release note
         if: github.event.inputs.tag_and_release_note == 'true'
