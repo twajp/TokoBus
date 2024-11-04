@@ -26,6 +26,8 @@ on:
 jobs:
   build_all:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     outputs:
       COMMIT_ID: ${{ steps.commit_id.outputs.COMMIT_ID }}
     steps:
