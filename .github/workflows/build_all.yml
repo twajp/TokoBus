@@ -97,9 +97,9 @@ jobs:
       - name: Get commit logs and add to the release note
         if: github.event.inputs.tag_and_release_note == 'true'
         run: |
+          echo "## What's Changed" > release_note.md
           git log v$PREV_VERSION_NAME..HEAD --reverse --pretty=format:'* %s' > release_note.md
           gh release view v$VERSION_NAME --json body --jq .body >> release_note.md
-          sed -i '1s/^/## What's Changed\n/' release_note.md
           gh release edit v$VERSION_NAME --notes-file release_note.md
 
       - name: Check and save commit ID
