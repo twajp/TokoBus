@@ -29,11 +29,18 @@ class _HomeDrawerState extends State<HomeDrawer> {
       child: SafeArea(
         child: Column(
           children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.background,
-                border: const Border(bottom: BorderSide.none),
-              ),
+            // DrawerHeader(
+            //   decoration: BoxDecoration(
+            //     color: Theme.of(context).colorScheme.background,
+            //     border: const Border(bottom: BorderSide.none),
+            //   ),
+            //   child: Center(
+            //     child: Image.asset('assets/icon/icon_transparent.png'),
+            //   ),
+            // ),
+            Container( // DrawerHeaderは変な線が入り消せないのでContainerで代替した
+              height: 170,
+              padding: const EdgeInsets.only(top: 16, bottom: 16),
               child: Center(
                 child: Image.asset('assets/icon/icon_transparent.png'),
               ),
