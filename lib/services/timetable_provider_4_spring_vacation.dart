@@ -21,7 +21,7 @@ import 'package:nholiday_jp/nholiday_jp.dart';
 //   exceptionalHolidays, additionalHolidaysは学部暦ではなく大学暦によって決定される
 //     https://www.waseda.jp/top/about/work/organizations/academic-affairs-division/academic-calendar
 
-Map timetableProviderWinterVacation() {
+Map timetableProviderSpringVacation() {
   // 平日(休講日)
   List stationCampusWeekdays = [
     [07, 45, '北口', '×'],
