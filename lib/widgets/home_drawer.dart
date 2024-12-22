@@ -14,7 +14,6 @@ class HomeDrawer extends StatefulWidget {
 class _HomeDrawerState extends State<HomeDrawer> {
   @override
   Widget build(BuildContext context) {
-    const EdgeInsets childrenPaddingEdgeInsets = EdgeInsets.only(left: 36);
     final String weekdaysTimetableName = widget.timetable['fullTables']['stationCampusWeekdays']['dayOfWeek'] + 'ダイヤ';
     final String saturdaysTimetableName = widget.timetable['fullTables']['stationCampusSaturdays']['dayOfWeek'] + 'ダイヤ';
     final String sundaysHolidaysTimetableName = widget.timetable['fullTables']['stationCampusSundaysHolidays']['dayOfWeek'] + 'ダイヤ';
@@ -58,10 +57,11 @@ class _HomeDrawerState extends State<HomeDrawer> {
                       collapsedTextColor: Theme.of(context).colorScheme.onBackground,
                       collapsedIconColor: Theme.of(context).colorScheme.onBackground,
                       initiallyExpanded: true,
-                      childrenPadding: childrenPaddingEdgeInsets,
                       children: [
                         ListTile(
                           title: Text(widget.timetable['tableInfo'][0]['title']),
+                          leading: const Icon(Icons.school),
+                          iconColor: Colors.transparent,
                           onTap: () {
                             Navigator.push(
                               context,
@@ -74,6 +74,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                         ),
                         ListTile(
                           title: Text(widget.timetable['tableInfo'][1]['title']),
+                          leading: const Icon(Icons.school),
+                          iconColor: Colors.transparent,
                           onTap: () {
                             Navigator.push(
                               context,
@@ -86,6 +88,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                         ),
                         ListTile(
                           title: Text(widget.timetable['tableInfo'][2]['title']),
+                          leading: const Icon(Icons.school),
+                          iconColor: Colors.transparent,
                           onTap: () {
                             Navigator.push(
                               context,
@@ -98,6 +102,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                         ),
                         ListTile(
                           title: Text(widget.timetable['tableInfo'][3]['title']),
+                          leading: const Icon(Icons.school),
+                          iconColor: Colors.transparent,
                           onTap: () {
                             Navigator.push(
                               context,
@@ -118,10 +124,12 @@ class _HomeDrawerState extends State<HomeDrawer> {
                         iconColor: Theme.of(context).colorScheme.onBackground,
                         collapsedTextColor: Theme.of(context).colorScheme.onBackground,
                         collapsedIconColor: Theme.of(context).colorScheme.onBackground,
-                        childrenPadding: childrenPaddingEdgeInsets,
                         children: [
                           ListTile(
                             title: Text(widget.timetable['tableInfo'][0]['title']),
+
+                          leading: const Icon(Icons.school),
+                          iconColor: Colors.transparent,
                             onTap: () {
                               Navigator.push(
                                 context,
@@ -134,6 +142,9 @@ class _HomeDrawerState extends State<HomeDrawer> {
                           ),
                           ListTile(
                             title: Text(widget.timetable['tableInfo'][1]['title']),
+
+                          leading: const Icon(Icons.school),
+                          iconColor: Colors.transparent,
                             onTap: () {
                               Navigator.push(
                                 context,
@@ -154,10 +165,11 @@ class _HomeDrawerState extends State<HomeDrawer> {
                       iconColor: Theme.of(context).colorScheme.onBackground,
                       collapsedTextColor: Theme.of(context).colorScheme.onBackground,
                       collapsedIconColor: Theme.of(context).colorScheme.onBackground,
-                      childrenPadding: childrenPaddingEdgeInsets,
                       children: [
                         ListTile(
                           title: Text(widget.timetable['tableInfo'][0]['title']),
+                          leading: const Icon(Icons.weekend),
+                          iconColor: Colors.transparent,
                           onTap: () {
                             Navigator.push(
                               context,
@@ -170,6 +182,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                         ),
                         ListTile(
                           title: Text(widget.timetable['tableInfo'][1]['title']),
+                          leading: const Icon(Icons.weekend),
+                          iconColor: Colors.transparent,
                           onTap: () {
                             Navigator.push(
                               context,
@@ -182,6 +196,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                         ),
                         ListTile(
                           title: Text(widget.timetable['tableInfo'][2]['title']),
+                          leading: const Icon(Icons.weekend),
+                          iconColor: Colors.transparent,
                           onTap: () {
                             Navigator.push(
                               context,
@@ -194,6 +210,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                         ),
                         ListTile(
                           title: Text(widget.timetable['tableInfo'][3]['title']),
+                          leading: const Icon(Icons.weekend),
+                          iconColor: Colors.transparent,
                           onTap: () {
                             Navigator.push(
                               context,
@@ -213,10 +231,11 @@ class _HomeDrawerState extends State<HomeDrawer> {
                       iconColor: Theme.of(context).colorScheme.onBackground,
                       collapsedTextColor: Theme.of(context).colorScheme.onBackground,
                       collapsedIconColor: Theme.of(context).colorScheme.onBackground,
-                      childrenPadding: childrenPaddingEdgeInsets,
                       children: [
                         ListTile(
                           title: Text(widget.timetable['tableInfo'][0]['title']),
+                          leading: const Icon(Icons.weekend),
+                          iconColor: Colors.transparent,
                           onTap: () {
                             Navigator.push(
                               context,
@@ -229,6 +248,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                         ),
                         ListTile(
                           title: Text(widget.timetable['tableInfo'][1]['title']),
+                          leading: const Icon(Icons.weekend),
+                          iconColor: Colors.transparent,
                           onTap: () {
                             Navigator.push(
                               context,
