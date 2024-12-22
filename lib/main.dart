@@ -83,14 +83,12 @@ class MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    final String dayOfWeek = timetable['fullTables'][timetable['tableInfo']['selectedTableNames'][0]]['dayOfWeek'];
-    final String timetableInfoString = '$dayOfWeekダイヤ   時刻表Ver: ${timetable['tableInfo']['tableVer']}';
 
     if (MediaQuery.of(context).orientation == Orientation.portrait) {
-      return buildPortraitLayout(context: context, size: size, timetable: timetable, timetableInfoString: timetableInfoString, controller: controller, currentPageNotifier: currentPageNotifier);
+      return buildPortraitLayout(context: context, size: size, timetable: timetable, controller: controller, currentPageNotifier: currentPageNotifier);
     } else {
       currentPageNotifier.value = 0;
-      return buildLandscapeLayout(context: context, size: size, timetable: timetable, timetableInfoString: timetableInfoString);
+      return buildLandscapeLayout(context: context, size: size, timetable: timetable);
     }
   }
 }

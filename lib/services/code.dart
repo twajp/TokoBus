@@ -1,7 +1,8 @@
 import 'package:intl/intl.dart';
 import 'timetable_provider_1_semester.dart';
 import 'timetable_provider_2_summer_vacation.dart';
-import 'timetable_provider_4_winter_vacation.dart';
+import 'timetable_provider_3_winter_vacation.dart';
+import 'timetable_provider_4_spring_vacation.dart';
 
 Map code() {
   // 現在時刻と0時0分の取得
@@ -11,8 +12,8 @@ Map code() {
 
   // 新ダイヤに切り替えるか
   Map timetable;
-  Map timetableBefore = timetableProviderSummerVacation(); // =以降を変更する
-  Map timetableAfter = timetableProviderSemester(); // =以降を変更する
+  Map timetableBefore = timetableProviderSemester(); // =以降を変更する
+  Map timetableAfter = timetableProviderWinterVacation(); // =以降を変更する
   if (now.isBefore(timetableAfter['startDate'])) {
     timetable = timetableBefore;
   } else {
@@ -71,7 +72,7 @@ Map code() {
 
   int tableIndex = 0;
   for (var tableName in timetable['tableInfo']['selectedTableNames']) {
-    // 日曜・祝日の場合何もせずreturn
+    // 日曜・祝日/運休の場合何もせずreturn
     if (tableName == '') {
       return timetable;
     }

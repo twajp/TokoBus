@@ -3,7 +3,7 @@ import '../widgets/home_appbar.dart';
 import '../widgets/compact_timetable_widget.dart';
 import '../widgets/home_drawer.dart';
 
-buildLandscapeLayout({required BuildContext context, required Size size, required timetable, required timetableInfoString}) {
+buildLandscapeLayout({required BuildContext context, required Size size, required timetable}) {
   return Scaffold(
     appBar: homeAppBar(context: context, timetable: timetable),
     drawer: HomeDrawer(context: context, timetable: timetable, height: size.height, width: size.height),
@@ -36,7 +36,7 @@ buildLandscapeLayout({required BuildContext context, required Size size, require
             child: Container(
               alignment: Alignment.center,
               child: Text(
-                timetableInfoString,
+                '${timetable['tableInfo']['dayOfWeek']}   時刻表Ver: ${timetable['tableInfo']['tableVer']}',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).primaryTextTheme.bodyMedium,
               ),

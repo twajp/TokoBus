@@ -483,6 +483,7 @@ Map timetableProviderSummerVacation() {
       2: {'title': 'キャンパス → FRC', 'string0': '発車時刻', 'string1': '残り時間', 'string2': '乗車場所', 'string3': '接続'},
       3: {'title': 'FRC → キャンパス', 'string0': '発車時刻', 'string1': '残り時間', 'string2': '降車場所', 'string3': '接続'},
       'tableVer': '2024年度夏季休業期間',
+      'dayOfWeek': '',
       'selectedTableNames': [],
     },
     'startDate': DateTime(2024, 07, 30),
@@ -511,18 +512,21 @@ Map timetableProviderSummerVacation() {
     timetable['tableInfo']['selectedTableNames'].add('campusStationSundaysHolidays');
     timetable['tableInfo']['selectedTableNames'].add('');
     timetable['tableInfo']['selectedTableNames'].add('');
+    timetable['tableInfo']['dayOfWeek'] = '日曜日/祝日ダイヤ';
   } else if (dt.weekday >= 1 && dt.weekday <= 5) {
     // 平日
     timetable['tableInfo']['selectedTableNames'].add('stationCampusWeekdays');
     timetable['tableInfo']['selectedTableNames'].add('campusStationWeekdays');
     timetable['tableInfo']['selectedTableNames'].add('campusFRCWeekdays');
     timetable['tableInfo']['selectedTableNames'].add('frcCampusWeekdays');
+    timetable['tableInfo']['dayOfWeek'] = '平日ダイヤ';
   } else {
     // 土曜日
     timetable['tableInfo']['selectedTableNames'].add('stationCampusSaturdays');
     timetable['tableInfo']['selectedTableNames'].add('campusStationSaturdays');
     timetable['tableInfo']['selectedTableNames'].add('campusFRCSaturdays');
     timetable['tableInfo']['selectedTableNames'].add('frcCampusSaturdays');
+    timetable['tableInfo']['dayOfWeek'] = '土曜日ダイヤ';
   }
 
   // 授業を行う祝日
@@ -533,6 +537,7 @@ Map timetableProviderSummerVacation() {
       timetable['tableInfo']['selectedTableNames'][1] = 'campusStationWeekdays';
       timetable['tableInfo']['selectedTableNames'][2] = 'campusFRCWeekdays';
       timetable['tableInfo']['selectedTableNames'][3] = 'frcCampusWeekdays';
+      timetable['tableInfo']['dayOfWeek'] = '平日ダイヤ';
     }
   }
 
@@ -558,6 +563,7 @@ Map timetableProviderSummerVacation() {
       timetable['tableInfo']['selectedTableNames'][1] = 'campusStationSundaysHolidays';
       timetable['tableInfo']['selectedTableNames'][2] = '';
       timetable['tableInfo']['selectedTableNames'][3] = '';
+      timetable['tableInfo']['dayOfWeek'] = '日曜日/祝日ダイヤ';
     }
   }
 
@@ -584,6 +590,7 @@ Map timetableProviderSummerVacation() {
     if (dt.year == specialDates[i].year && dt.month == specialDates[i].month && dt.day == specialDates[i].day) {
       timetable['tableInfo']['selectedTableNames'][0] = 'stationCampusSpecial';
       timetable['tableInfo']['selectedTableNames'][1] = 'campusStationSpecial';
+      timetable['tableInfo']['dayOfWeek'] = '平日(授業日)ダイヤ';
     }
   }
 
@@ -595,6 +602,7 @@ Map timetableProviderSummerVacation() {
       timetable['tableInfo']['selectedTableNames'][1] = '';
       timetable['tableInfo']['selectedTableNames'][2] = '';
       timetable['tableInfo']['selectedTableNames'][3] = '';
+      timetable['tableInfo']['dayOfWeek'] = 'バス運休日';
     }
   }
 

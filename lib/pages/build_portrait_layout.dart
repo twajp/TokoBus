@@ -4,7 +4,7 @@ import '../widgets/home_appbar.dart';
 import '../widgets/compact_timetable_widget.dart';
 import '../widgets/home_drawer.dart';
 
-buildPortraitLayout({required BuildContext context, required Size size, required timetable, required timetableInfoString, required PageController controller, required currentPageNotifier}) {
+buildPortraitLayout({required BuildContext context, required Size size, required timetable, required PageController controller, required currentPageNotifier}) {
   return Scaffold(
     appBar: homeAppBar(context: context, timetable: timetable),
     drawer: HomeDrawer(context: context, timetable: timetable, height: size.height, width: size.width),
@@ -42,7 +42,7 @@ buildPortraitLayout({required BuildContext context, required Size size, required
                 child: Container(
                   alignment: Alignment.center,
                   child: Text(
-                    timetableInfoString,
+                    '${timetable['tableInfo']['dayOfWeek']}   時刻表Ver: ${timetable['tableInfo']['tableVer']}',
                     textAlign: TextAlign.center,
                     style: Theme.of(context).primaryTextTheme.bodyMedium,
                   ),
