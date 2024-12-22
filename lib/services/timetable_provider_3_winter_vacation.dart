@@ -20,14 +20,14 @@ import 'package:nholiday_jp/nholiday_jp.dart';
 //   specialDates
 //   exceptionalHolidays, additionalHolidaysは学部暦ではなく大学暦によって決定される
 //     https://www.waseda.jp/top/about/work/organizations/academic-affairs-division/academic-calendar
+//   noBusDates
 
 Map timetableProviderWinterVacation() {
-  // 平日(休講日)
   List stationCampusWeekdays = [
     [07, 45, '北口', '×'],
     [08, 00, '北口', '○'],
-    [08, 15, '北口', '×'],
-    [08, 25, '北口', '×'],
+    [08, 10, '北口', '×'],
+    [08, 20, '北口', '×'],
     [08, 30, '北口', '×'],
     [08, 55, '北口', '×'],
     [09, 10, '北口', '×'],
@@ -37,7 +37,6 @@ Map timetableProviderWinterVacation() {
     [10, 25, '北口', '×'],
     [10, 55, '北口', '×'],
     [11, 35, '北口', '○'],
-    [11, 50, '北口', '×'],
     [12, 05, '北口', '×'],
     [12, 25, '南口', '×'],
     [12, 45, '南口', '×'],
@@ -53,7 +52,7 @@ Map timetableProviderWinterVacation() {
     [16, 35, '南口', '×'],
     [17, 20, '南口', '×'],
     [18, 05, '北口', '○'],
-    [18, 25, '南口', '×'],
+    [18, 15, '南口', '×'],
     [18, 55, '南口', '×'],
     [20, 05, '南口', '×'],
     [21, 05, '南口', '×'],
@@ -76,54 +75,11 @@ Map timetableProviderWinterVacation() {
     [19, 45, '南口', '×'],
   ];
 
-  // 平日(授業日)
-  List stationCampusSpecial = [
-    [07, 45, '北口', '×'],
-    [08, 00, '北口', '○'],
-    [08, 05, '北口', '×'],
-    [08, 10, '北口', '×'],
-    [08, 15, '北口', '×'],
-    [08, 20, '北口', '×'],
-    [08, 25, '北口', '×'],
-    [08, 30, '北口', '×'],
-    [08, 55, '北口', '×'],
-    [09, 10, '北口', '×'],
-    [09, 25, '北口', '×'],
-    [09, 45, '北口', '×'],
-    [10, 00, '北口', '×'],
-    [10, 05, '北口', '○'],
-    [10, 10, '北口', '×'],
-    [10, 15, '北口', '×'],
-    [10, 25, '北口', '×'],
-    [10, 55, '北口', '×'],
-    [11, 35, '北口', '○'],
-    [11, 50, '北口', '×'],
-    [12, 05, '北口', '×'],
-    [12, 25, '南口', '×'],
-    [12, 35, '南口', '×'],
-    [12, 45, '南口', '×'],
-    [13, 05, '南口', '×'],
-    [13, 25, '南口', '×'],
-    [13, 45, '北口', '○'],
-    [14, 15, '南口', '×'],
-    [14, 35, '南口', '×'],
-    [14, 55, '南口', '×'],
-    [15, 15, '南口', '×'],
-    [15, 35, '南口', '×'],
-    [16, 10, '北口', '○'],
-    [16, 35, '南口', '×'],
-    [17, 20, '南口', '×'],
-    [18, 05, '北口', '○'],
-    [18, 25, '南口', '×'],
-    [18, 55, '南口', '×'],
-    [20, 05, '南口', '×'],
-    [21, 05, '南口', '×'],
-  ];
+  List stationCampusSpecial = [];
 
-  // 平日(休講日)
   List campusStationWeekdays = [
     [08, 35, '北口', '×'],
-    [09, 40, '北口', '×'],
+    [09, 35, '北口', '×'],
     [10, 05, '北口', '×'],
     [10, 35, '北口', '×'],
     [11, 05, '北口', '○'],
@@ -141,20 +97,18 @@ Map timetableProviderWinterVacation() {
     [15, 40, '北口', '○'],
     [16, 20, '南口', '×'],
     [16, 45, '南口', '×'],
-    [17, 00, '南口', '×'],
+    [17, 05, '南口', '×'],
     [17, 30, '北口', '○'],
     [17, 45, '南口', '×'],
-    [18, 05, '南口', '×'],
+    [18, 00, '南口', '×'],
     [18, 25, '南口', '×'],
     [18, 40, '南口', '×'],
     [19, 00, '北口', '○'],
     [19, 30, '南口', '×'],
     [19, 50, '南口', '×'],
-    [20, 15, '南口', '×'],
-    [20, 35, '南口', '×'],
+    [20, 20, '南口', '×'],
     [20, 50, '南口', '×'],
-    [21, 15, '南口', '×'],
-    [21, 45, '南口', '×'],
+    [21, 30, '南口', '×'],
     [22, 00, '南口', '×'],
   ];
 
@@ -175,90 +129,35 @@ Map timetableProviderWinterVacation() {
     [21, 00, '南口', '×'],
   ];
 
-  // 平日(授業日)
-  List campusStationSpecial = [
-    [08, 35, '北口', '×'],
-    [09, 35, '北口', '×'],
-    [10, 05, '北口', '×'],
-    [10, 35, '北口', '×'],
-    [11, 05, '北口', '○'],
-    [11, 35, '北口', '×'],
-    [12, 10, '南口', '×'],
-    [12, 30, '南口', '×'],
-    [12, 40, '南口', '×'],
-    [12, 50, '南口', '×'],
-    [13, 10, '南口', '×'],
-    [13, 15, '北口', '○'],
-    [13, 50, '南口', '×'],
-    [14, 20, '南口', '×'],
-    [14, 40, '南口', '×'],
-    [15, 00, '南口', '×'],
-    [15, 10, '南口', '×'],
-    [15, 20, '南口', '×'],
-    [15, 30, '南口', '×'],
-    [15, 40, '北口', '○'],
-    [16, 20, '南口', '×'],
-    [16, 45, '南口', '×'],
-    [17, 00, '南口', '×'],
-    [17, 05, '南口', '×'],
-    [17, 10, '南口', '×'],
-    [17, 15, '南口', '×'],
-    [17, 20, '南口', '×'],
-    [17, 30, '北口', '○'],
-    [17, 45, '南口', '×'],
-    [18, 05, '南口', '×'],
-    [18, 25, '南口', '×'],
-    [18, 40, '南口', '×'],
-    [19, 00, '北口', '○'],
-    [19, 30, '南口', '×'],
-    [19, 50, '南口', '×'],
-    [20, 15, '南口', '×'],
-    [20, 35, '南口', '×'],
-    [20, 50, '南口', '×'],
-    [21, 15, '南口', '×'],
-    [21, 45, '南口', '×'],
-    [22, 00, '南口', '×'],
-  ];
+  List campusStationSpecial = [];
 
   List campusFRCWeekdays = [
     [08, 25, '正門', '×'],
-    [08, 35, '正門', '×'],
     [09, 00, '正門', '×'],
-    [09, 50, '正門', '×'],
     [10, 30, '正門', '×'],
-    [12, 05, '正門', '×'],
-    [12, 50, '正門', '×'],
-    [13, 30, '正門', '×'],
-    [14, 10, '正門', '×'],
+    [12, 20, '正門', '×'],
+    [12, 40, '正門', '×'],
     [14, 45, '正門', '×'],
-    [16, 15, '正門', '×'],
-    [16, 40, '正門', '×'],
-    [17, 00, '正門', '×'],
-    [17, 20, '正門', '×'],
-    [18, 10, '正門', '×'],
+    [16, 30, '正門', '×'],
     [18, 35, '正門', '×'],
-    [19, 05, '正門', '×'],
-    [20, 30, '正門', '×'],
-    [21, 00, '正門', '×'],
+    [20, 25, '正門', '×'],
+    [20, 50, '正門', '×'],
 
-    [08, 45, '南門', '×'],
+    [08, 40, '南門', '×'],
     [09, 10, '南門', '×'],
-    [10, 20, '南門', '×'],
-    [10, 40, '南門', '×'],
+    [10, 15, '南門', '×'],
     [10, 50, '南門', '×'],
-    [12, 25, '南門', '×'],
-    [12, 35, '南門', '×'],
-    [13, 00, '南門', '×'],
-    [13, 10, '南門', '×'],
-    [14, 00, '南門', '×'],
+    [12, 30, '南門', '×'],
+    [12, 55, '南門', '×'],
+    [13, 05, '南門', '×'],
     [14, 55, '南門', '×'],
     [15, 05, '南門', '×'],
-    [16, 25, '南門', '×'],
     [16, 50, '南門', '×'],
     [17, 10, '南門', '×'],
     [18, 45, '南門', '×'],
-    [18, 55, '南門', '×'],
+    [19, 05, '南門', '×'],
     [20, 40, '南門', '×'],
+    [21, 15, '南門', '×'],
   ];
 
   List campusFRCSaturdays = [
@@ -291,44 +190,32 @@ Map timetableProviderWinterVacation() {
   ];
 
   List frcCampusWeekdays = [
-    [08, 30, '正門', '○'],
-    [08, 50, '正門', '×'],
+    [08, 45, '正門', '×'],
     [09, 15, '正門', '×'],
-    [10, 25, '正門', '○'],
-    [10, 55, '正門', '○'],
-    [12, 40, '正門', '○'],
-    [13, 15, '正門', '×'],
-    [14, 05, '正門', '×'],
-    [14, 40, '正門', '×'],
-    [15, 10, '正門', '○'],
-    [16, 30, '正門', '○'],
+    [10, 20, '正門', '×'],
+    [10, 55, '正門', '×'],
+    [12, 35, '正門', '×'],
+    [13, 10, '正門', '○'],
+    [15, 10, '正門', '×'],
     [17, 15, '正門', '×'],
-    [17, 25, '正門', '○'],
-    [18, 20, '正門', '○'],
-    [19, 00, '正門', '×'],
-    [19, 15, '正門', '○'],
+    [19, 10, '正門', '×'],
     [20, 45, '正門', '○'],
-    [21, 05, '正門', '○'],
-    [21, 40, '正門', '○'],
+    [21, 20, '正門', '○'],
 
-    [08, 40, '南門', '×'],
+    [08, 30, '南門', '×'],
     [09, 05, '南門', '×'],
-    [09, 55, '南門', '×'],
     [10, 35, '南門', '×'],
-    [10, 45, '南門', '×'],
-    [12, 10, '南門', '×'],
-    [12, 30, '南門', '×'],
-    [12, 55, '南門', '×'],
-    [13, 05, '南門', '×'],
-    [13, 35, '南門', '×'],
+    [12, 25, '南門', '×'],
+    [12, 45, '南門', '×'],
+    [13, 00, '南門', '×'],
     [14, 50, '南門', '×'],
     [15, 00, '南門', '×'],
-    [16, 20, '南門', '×'],
-    [16, 45, '南門', '×'],
+    [16, 35, '南門', '×'],
     [17, 05, '南門', '×'],
     [18, 40, '南門', '×'],
     [18, 50, '南門', '×'],
     [20, 35, '南門', '×'],
+    [20, 50, '南門', '×'],
   ];
 
   List frcCampusSaturdays = [
@@ -401,7 +288,7 @@ Map timetableProviderWinterVacation() {
     'fullTables': {
       'stationCampusWeekdays': {
         'table': stationCampusWeekdays,
-        'dayOfWeek': '平日(休講日)',
+        'dayOfWeek': '平日',
         'tableFormat': 0,
         'nextBusIndex': 1000,
       },
@@ -417,15 +304,15 @@ Map timetableProviderWinterVacation() {
         'tableFormat': 0,
         'nextBusIndex': 1000,
       },
-      'stationCampusSpecial': {
-        'table': stationCampusSpecial,
-        'dayOfWeek': '平日(授業日)',
-        'tableFormat': 0,
-        'nextBusIndex': 1000,
-      },
+      // 'stationCampusSpecial': {
+      //   'table': stationCampusSpecial,
+      //   'dayOfWeek': '平日(授業日)',
+      //   'tableFormat': 0,
+      //   'nextBusIndex': 1000,
+      // },
       'campusStationWeekdays': {
         'table': campusStationWeekdays,
-        'dayOfWeek': '平日(休講日)',
+        'dayOfWeek': '平日',
         'tableFormat': 1,
         'nextBusIndex': 1000,
       },
@@ -441,15 +328,15 @@ Map timetableProviderWinterVacation() {
         'tableFormat': 1,
         'nextBusIndex': 1000,
       },
-      'campusStationSpecial': {
-        'table': campusStationSpecial,
-        'dayOfWeek': '平日(授業日)',
-        'tableFormat': 1,
-        'nextBusIndex': 1000,
-      },
+      // 'campusStationSpecial': {
+      //   'table': campusStationSpecial,
+      //   'dayOfWeek': '平日(授業日)',
+      //   'tableFormat': 1,
+      //   'nextBusIndex': 1000,
+      // },
       'campusFRCWeekdays': {
         'table': campusFRCWeekdays,
-        'dayOfWeek': '平日(休講日)',
+        'dayOfWeek': '平日',
         'tableFormat': 2,
         'nextBusIndex': 1000,
       },
@@ -461,7 +348,7 @@ Map timetableProviderWinterVacation() {
       },
       'frcCampusWeekdays': {
         'table': frcCampusWeekdays,
-        'dayOfWeek': '平日(休講日)',
+        'dayOfWeek': '平日',
         'tableFormat': 3,
         'nextBusIndex': 1000,
       },
@@ -469,6 +356,12 @@ Map timetableProviderWinterVacation() {
         'table': frcCampusSaturdays,
         'dayOfWeek': '土曜日',
         'tableFormat': 3,
+        'nextBusIndex': 1000,
+      },
+      '': {
+        'table': [],
+        'dayOfWeek': '運休',
+        'tableFormat': 0,
         'nextBusIndex': 1000,
       },
     },
@@ -480,15 +373,15 @@ Map timetableProviderWinterVacation() {
       1: {'title': 'キャンパス → 小手指駅', 'string0': '発車時刻', 'string1': '残り時間', 'string2': '降車場所', 'string3': '車椅子'},
       2: {'title': 'キャンパス → FRC', 'string0': '発車時刻', 'string1': '残り時間', 'string2': '乗車場所', 'string3': '接続'},
       3: {'title': 'FRC → キャンパス', 'string0': '発車時刻', 'string1': '残り時間', 'string2': '降車場所', 'string3': '接続'},
-      'tableVer': '2023年度春季休業期間',
+      'tableVer': '2024年度冬季休業期間',
       'selectedTableNames': [],
     },
-    'startDate': DateTime(2024, 02, 03),
+    'startDate': DateTime(2024, 12, 24),
     'url': {
       'waseda_bus_page': 'https://www.waseda.jp/fhum/hum/facility/bus-parking/',
-      'default_pdf': 'https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Timetable_for_Spring_Vacation(from_3_February_to_31_March_2024).pdf',
+      'default_pdf': 'https://www.waseda.jp/fhum/hum/assets/uploads/2024/11/School_Bus_Schedule_for_Winter_Vacation_from_24th_December_2024_to_5th_January_2025.pdf',
       'special_pdf': {
-        DateTime(2024, 03, 28): 'https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Special_Schedule(Thursday_28th_March_2024).pdf',
+        DateTime(2025, 01, 18): 'https://www.waseda.jp/fhum/hum/assets/uploads/2024/12/School_Bus_Special_Schedule_18th_January_2025.pdf',
       },
     },
   };
@@ -531,8 +424,7 @@ Map timetableProviderWinterVacation() {
   }
 
   // 臨時の休業日, 追加で祝日扱いする日
-  List additionalHolidays = [
-  ];
+  List additionalHolidays = [];
   for (int i = 0; i < additionalHolidays.length; i++) {
     if (dt.year == additionalHolidays[i].year && dt.month == additionalHolidays[i].month && dt.day == additionalHolidays[i].day) {
       timetable['tableInfo']['selectedTableNames'][0] = 'stationCampusSundaysHolidays';
@@ -543,22 +435,31 @@ Map timetableProviderWinterVacation() {
   }
 
   // 授業日ダイヤに切り替える日(特別ダイヤ)
-  List specialDates = [
-    DateTime(2024, 02, 03),
-
-    DateTime(2024, 02, 05),
-    DateTime(2024, 02, 06),
-    DateTime(2024, 02, 07),
-    DateTime(2024, 02, 08),
-    DateTime(2024, 02, 09),
-
-    DateTime(2024, 02, 13),
-    DateTime(2024, 02, 14),
-  ];
+  List specialDates = [];
   for (int i = 0; i < specialDates.length; i++) {
     if (dt.year == specialDates[i].year && dt.month == specialDates[i].month && dt.day == specialDates[i].day) {
       timetable['tableInfo']['selectedTableNames'][0] = 'stationCampusSpecial';
       timetable['tableInfo']['selectedTableNames'][1] = 'campusStationSpecial';
+    }
+  }
+
+  // バス運休日(年末年始など)
+  List noBusDates = [
+    DateTime(2024, 12, 29),
+    DateTime(2024, 12, 30),
+    DateTime(2024, 12, 31),
+    DateTime(2025, 01, 01),
+    DateTime(2025, 01, 02),
+    DateTime(2025, 01, 03),
+    DateTime(2025, 01, 04),
+    DateTime(2025, 01, 05),
+  ];
+  for (int i = 0; i < noBusDates.length; i++) {
+    if (dt.year == noBusDates[i].year && dt.month == noBusDates[i].month && dt.day == noBusDates[i].day) {
+      timetable['tableInfo']['selectedTableNames'][0] = '';
+      timetable['tableInfo']['selectedTableNames'][1] = '';
+      timetable['tableInfo']['selectedTableNames'][2] = '';
+      timetable['tableInfo']['selectedTableNames'][3] = '';
     }
   }
 

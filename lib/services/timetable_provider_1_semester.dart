@@ -20,6 +20,7 @@ import 'package:nholiday_jp/nholiday_jp.dart';
 //   specialDates
 //   exceptionalHolidays, additionalHolidaysは学部暦ではなく大学暦によって決定される
 //     https://www.waseda.jp/top/about/work/organizations/academic-affairs-division/academic-calendar
+//   noBusDates
 
 Map timetableProviderSemester() {
   List stationCampusWeekdays = [
@@ -540,6 +541,12 @@ Map timetableProviderSemester() {
         'tableFormat': 3,
         'nextBusIndex': 1000,
       },
+      '': {
+        'table': [],
+        'dayOfWeek': '運休',
+        'tableFormat': 0,
+        'nextBusIndex': 1000,
+      },
     },
     'compactTables': [
       for (int i = 0; i <= 3; i++) [for (var value in initCompact) List.from(value)]
@@ -639,6 +646,17 @@ Map timetableProviderSemester() {
     if (dt.year == specialDates[i].year && dt.month == specialDates[i].month && dt.day == specialDates[i].day) {
       timetable['tableInfo']['selectedTableNames'][0] = 'stationCampusSpecial';
       timetable['tableInfo']['selectedTableNames'][1] = 'campusStationSpecial';
+    }
+  }
+
+  // バス運休日(年末年始など)
+  List noBusDates = [];
+  for (int i = 0; i < noBusDates.length; i++) {
+    if (dt.year == noBusDates[i].year && dt.month == noBusDates[i].month && dt.day == noBusDates[i].day) {
+      timetable['tableInfo']['selectedTableNames'][0] = '';
+      timetable['tableInfo']['selectedTableNames'][1] = '';
+      timetable['tableInfo']['selectedTableNames'][2] = '';
+      timetable['tableInfo']['selectedTableNames'][3] = '';
     }
   }
 
