@@ -560,7 +560,7 @@ Map timetableProviderSemester() {
       'dayOfWeek': '',
       'selectedTableNames': [],
     },
-    'startDate': DateTime(2024, 01, 06),
+    'startDate': DateTime(2025, 01, 06),
     'url': {
       'waseda_bus_page': 'https://www.waseda.jp/fhum/hum/facility/bus-parking/',
       'default_pdf': 'https://www.waseda.jp/fhum/hum/assets/uploads/2024/09/School_Bus_TimetableTokorozawa_CampusAY2024_Fall_Semester-1.pdf',
