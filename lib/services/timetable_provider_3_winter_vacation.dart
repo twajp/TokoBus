@@ -429,7 +429,10 @@ Map timetableProviderWinterVacation() {
   }
 
   // 臨時の休業日, 追加で祝日扱いする日
-  List additionalHolidays = [];
+  List additionalHolidays = [
+    DateTime(2024, 12, 26),
+    DateTime(2024, 12, 27),
+  ];
   for (int i = 0; i < additionalHolidays.length; i++) {
     if (dt.year == additionalHolidays[i].year && dt.month == additionalHolidays[i].month && dt.day == additionalHolidays[i].day) {
       timetable['tableInfo']['selectedTableNames'][0] = 'stationCampusSundaysHolidays';

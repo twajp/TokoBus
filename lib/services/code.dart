@@ -12,8 +12,8 @@ Map code() {
 
   // 新ダイヤに切り替えるか
   Map timetable;
-  Map timetableBefore = timetableProviderSemester(); // =以降を変更する
-  Map timetableAfter = timetableProviderWinterVacation(); // =以降を変更する
+  Map timetableBefore = timetableProviderWinterVacation(); // =以降を変更する
+  Map timetableAfter = timetableProviderSemester(); // =以降を変更する
   if (now.isBefore(timetableAfter['startDate'])) {
     timetable = timetableBefore;
   } else {
