@@ -42,8 +42,11 @@ final darkTheme = FlexThemeData.dark(
   darkIsTrueBlack: true,
   background: Colors.black, // 背景
   primary: wasedaColor,
+  primaryLightRef: wasedaColor, // エラーが出るので追加
   secondary: const Color.fromRGBO(44, 44, 46, 1), // Container,PopupMenuButton,AlertDialogの色
+  secondaryLightRef: const Color.fromRGBO(44, 44, 46, 1), // エラーが出るので追加
   tertiary: const Color.fromRGBO(107, 107, 107, 1), // 非アクティブなドット色
+  tertiaryLightRef: const Color.fromRGBO(107, 107, 107, 1), // エラーが出るので追加
   onBackground: Colors.white, // 背景色の上に書く文字・アイコン色
   onSecondary: Colors.white, // secondary色の上に書く文字・アイコン色
   onTertiary: Colors.white, // アクティブなドット色
