@@ -75,7 +75,7 @@ Map timetableProviderWinterVacation() {
     [19, 45, '南口', '×'],
   ];
 
-  List stationCampusSpecial = [];
+  // List stationCampusSpecial = [];
 
   List campusStationWeekdays = [
     [08, 35, '北口', '×'],
@@ -129,9 +129,10 @@ Map timetableProviderWinterVacation() {
     [21, 00, '南口', '×'],
   ];
 
-  List campusStationSpecial = [];
+  // List campusStationSpecial = [];
 
   List campusFRCWeekdays = [
+    // 正門発
     [08, 25, '正門', '×'],
     [09, 00, '正門', '×'],
     [10, 30, '正門', '×'],
@@ -142,7 +143,7 @@ Map timetableProviderWinterVacation() {
     [18, 35, '正門', '×'],
     [20, 25, '正門', '×'],
     [20, 50, '正門', '×'],
-
+    // 南門発
     [08, 40, '南門', '×'],
     [09, 10, '南門', '×'],
     [10, 15, '南門', '×'],
@@ -161,6 +162,7 @@ Map timetableProviderWinterVacation() {
   ];
 
   List campusFRCSaturdays = [
+    // 正門発
     [08, 35, '正門', '×'],
     [09, 00, '正門', '×'],
     [10, 30, '正門', '×'],
@@ -171,7 +173,7 @@ Map timetableProviderWinterVacation() {
     [18, 35, '正門', '×'],
     [20, 30, '正門', '×'],
     [20, 50, '正門', '×'],
-
+    // 南門発
     [08, 45, '南門', '×'],
     [09, 10, '南門', '×'],
     [10, 15, '南門', '×'],
@@ -190,6 +192,7 @@ Map timetableProviderWinterVacation() {
   ];
 
   List frcCampusWeekdays = [
+    // 正門着
     [08, 45, '正門', '×'],
     [09, 15, '正門', '×'],
     [10, 20, '正門', '×'],
@@ -201,7 +204,7 @@ Map timetableProviderWinterVacation() {
     [19, 10, '正門', '×'],
     [20, 45, '正門', '○'],
     [21, 20, '正門', '○'],
-
+    // 南門着
     [08, 30, '南門', '×'],
     [09, 05, '南門', '×'],
     [10, 35, '南門', '×'],
@@ -219,6 +222,7 @@ Map timetableProviderWinterVacation() {
   ];
 
   List frcCampusSaturdays = [
+    // 正門着
     [08, 50, '正門', '×'],
     [09, 15, '正門', '×'],
     [10, 25, '正門', '○'],
@@ -230,7 +234,7 @@ Map timetableProviderWinterVacation() {
     [19, 15, '正門', '○'],
     [20, 45, '正門', '○'],
     [21, 05, '正門', '○'],
-
+    // 南門着
     [08, 40, '南門', '×'],
     [09, 05, '南門', '×'],
     [10, 35, '南門', '×'],
@@ -248,24 +252,9 @@ Map timetableProviderWinterVacation() {
   ];
 
   List initCompact = [
-    [
-      '-',
-      '-',
-      '-',
-      '-',
-    ],
-    [
-      '-',
-      '-',
-      '-',
-      '-',
-    ],
-    [
-      '-',
-      '-',
-      '-',
-      '-',
-    ]
+    ['-', '-', '-', '-'],
+    ['-', '-', '-', '-'],
+    ['-', '-', '-', '-'],
   ];
 
   List sortTimetable(List table) {

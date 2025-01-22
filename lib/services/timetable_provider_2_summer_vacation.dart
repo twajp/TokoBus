@@ -225,6 +225,7 @@ Map timetableProviderSummerVacation() {
   ];
 
   List campusFRCWeekdays = [
+    // 正門発
     [08, 35, '正門', '×'],
     [08, 45, '正門', '×'],
     [08, 55, '正門', '×'],
@@ -248,7 +249,7 @@ Map timetableProviderSummerVacation() {
     [20, 05, '正門', '×'],
     [20, 25, '正門', '×'],
     [21, 20, '正門', '×'],
-
+    // 南門発
     [09, 15, '南門', '×'],
     [10, 15, '南門', '×'],
     [11, 55, '南門', '×'],
@@ -263,6 +264,7 @@ Map timetableProviderSummerVacation() {
   ];
 
   List campusFRCSaturdays = [
+    // 正門発
     [08, 40, '正門', '×'],
     [09, 15, '正門', '×'],
     [09, 55, '正門', '×'],
@@ -275,7 +277,7 @@ Map timetableProviderSummerVacation() {
     [17, 10, '正門', '×'],
     [19, 05, '正門', '×'],
     [20, 05, '正門', '×'],
-
+    // 南門発
     [09, 00, '南門', '×'],
     [09, 40, '南門', '×'],
     [10, 50, '南門', '×'],
@@ -291,6 +293,7 @@ Map timetableProviderSummerVacation() {
   ];
 
   List frcCampusWeekdays = [
+    // 正門着
     [08, 40, '正門', '×'],
     [08, 50, '正門', '×'],
     [09, 20, '正門', '×'],
@@ -314,7 +317,7 @@ Map timetableProviderSummerVacation() {
     [20, 10, '正門', '×'],
     [20, 30, '正門', '×'],
     [21, 25, '正門', '×'],
-
+    // 南門着
     [09, 00, '南門', '×'],
     [09, 50, '南門', '×'],
     [11, 50, '南門', '×'],
@@ -329,6 +332,7 @@ Map timetableProviderSummerVacation() {
   ];
 
   List frcCampusSaturdays = [
+    // 正門着
     [09, 05, '正門', '×'],
     [09, 45, '正門', '×'],
     [10, 55, '正門', '×'],
@@ -342,7 +346,7 @@ Map timetableProviderSummerVacation() {
     [17, 55, '正門', '×'],
     [19, 25, '正門', '×'],
     [20, 45, '正門', '×'],
-
+    // 南門着
     [08, 45, '南門', '×'],
     [09, 20, '南門', '×'],
     [10, 00, '南門', '×'],
@@ -357,24 +361,9 @@ Map timetableProviderSummerVacation() {
   ];
 
   List initCompact = [
-    [
-      '-',
-      '-',
-      '-',
-      '-',
-    ],
-    [
-      '-',
-      '-',
-      '-',
-      '-',
-    ],
-    [
-      '-',
-      '-',
-      '-',
-      '-',
-    ]
+    ['-', '-', '-', '-'],
+    ['-', '-', '-', '-'],
+    ['-', '-', '-', '-'],
   ];
 
   List sortTimetable(List table) {
@@ -544,17 +533,13 @@ Map timetableProviderSummerVacation() {
   // 臨時の休業日, 追加で祝日扱いする日
   List additionalHolidays = [
     DateTime(2024, 08, 09),
-
     DateTime(2024, 08, 12),
     DateTime(2024, 08, 13),
     DateTime(2024, 08, 14),
     DateTime(2024, 08, 15),
     DateTime(2024, 08, 16),
-
     DateTime(2024, 08, 19),
-
     DateTime(2024, 09, 16),
-
     DateTime(2024, 09, 23),
   ];
   for (int i = 0; i < additionalHolidays.length; i++) {
@@ -573,13 +558,11 @@ Map timetableProviderSummerVacation() {
     DateTime(2024, 08, 21),
     DateTime(2024, 08, 22),
     DateTime(2024, 08, 23),
-
     DateTime(2024, 08, 26),
     DateTime(2024, 08, 27),
     DateTime(2024, 08, 28),
     DateTime(2024, 08, 29),
     DateTime(2024, 08, 30),
-
     DateTime(2024, 09, 02),
     DateTime(2024, 09, 03),
     DateTime(2024, 09, 04),

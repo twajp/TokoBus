@@ -222,6 +222,7 @@ Map timetableProviderSpringVacation() {
   ];
 
   List campusFRCWeekdays = [
+    // 正門発
     [08, 25, '正門', '×'],
     [08, 35, '正門', '×'],
     [09, 00, '正門', '×'],
@@ -241,7 +242,7 @@ Map timetableProviderSpringVacation() {
     [19, 05, '正門', '×'],
     [20, 30, '正門', '×'],
     [21, 00, '正門', '×'],
-
+    // 南門発
     [08, 45, '南門', '×'],
     [09, 10, '南門', '×'],
     [10, 20, '南門', '×'],
@@ -263,6 +264,7 @@ Map timetableProviderSpringVacation() {
   ];
 
   List campusFRCSaturdays = [
+    // 正門発
     [08, 35, '正門', '×'],
     [09, 00, '正門', '×'],
     [10, 30, '正門', '×'],
@@ -273,7 +275,7 @@ Map timetableProviderSpringVacation() {
     [18, 35, '正門', '×'],
     [20, 30, '正門', '×'],
     [20, 50, '正門', '×'],
-
+    // 南門発
     [08, 45, '南門', '×'],
     [09, 10, '南門', '×'],
     [10, 15, '南門', '×'],
@@ -292,6 +294,7 @@ Map timetableProviderSpringVacation() {
   ];
 
   List frcCampusWeekdays = [
+    // 正門着
     [08, 30, '正門', '○'],
     [08, 50, '正門', '×'],
     [09, 15, '正門', '×'],
@@ -311,7 +314,7 @@ Map timetableProviderSpringVacation() {
     [20, 45, '正門', '○'],
     [21, 05, '正門', '○'],
     [21, 40, '正門', '○'],
-
+    // 南門着
     [08, 40, '南門', '×'],
     [09, 05, '南門', '×'],
     [09, 55, '南門', '×'],
@@ -333,6 +336,7 @@ Map timetableProviderSpringVacation() {
   ];
 
   List frcCampusSaturdays = [
+    // 正門着
     [08, 50, '正門', '×'],
     [09, 15, '正門', '×'],
     [10, 25, '正門', '○'],
@@ -344,7 +348,7 @@ Map timetableProviderSpringVacation() {
     [19, 15, '正門', '○'],
     [20, 45, '正門', '○'],
     [21, 05, '正門', '○'],
-
+    // 南門着
     [08, 40, '南門', '×'],
     [09, 05, '南門', '×'],
     [10, 35, '南門', '×'],
@@ -362,29 +366,14 @@ Map timetableProviderSpringVacation() {
   ];
 
   List initCompact = [
-    [
-      '-',
-      '-',
-      '-',
-      '-',
-    ],
-    [
-      '-',
-      '-',
-      '-',
-      '-',
-    ],
-    [
-      '-',
-      '-',
-      '-',
-      '-',
-    ]
+    ['-', '-', '-', '-'],
+    ['-', '-', '-', '-'],
+    ['-', '-', '-', '-'],
   ];
 
   List sortTimetable(List table) {
     table.sort(
-          (a, b) {
+      (a, b) {
         int result = a[0].compareTo(b[0]);
         if (result != 0) return result;
         return a[1].compareTo(b[1]);
@@ -565,11 +554,9 @@ Map timetableProviderSpringVacation() {
     DateTime(2025, 02, 06),
     DateTime(2025, 02, 07),
     DateTime(2025, 02, 08),
-
     DateTime(2025, 02, 12),
     DateTime(2025, 02, 13),
     DateTime(2025, 02, 14),
-
     DateTime(2025, 02, 17),
   ];
   for (int i = 0; i < specialDates.length; i++) {
