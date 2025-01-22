@@ -179,7 +179,7 @@ Map timetableProviderSpringVacation() {
   // 平日(授業日)
   List campusStationSpecial = [
     [08, 35, '北口', '×'],
-    [09, 35, '北口', '×'],
+    [09, 40, '北口', '×'],
     [10, 05, '北口', '×'],
     [10, 35, '北口', '×'],
     [11, 05, '北口', '○'],
@@ -487,16 +487,17 @@ Map timetableProviderSpringVacation() {
       1: {'title': 'キャンパス → 小手指駅', 'string0': '発車時刻', 'string1': '残り時間', 'string2': '降車場所', 'string3': '車椅子'},
       2: {'title': 'キャンパス → FRC', 'string0': '発車時刻', 'string1': '残り時間', 'string2': '乗車場所', 'string3': '接続'},
       3: {'title': 'FRC → キャンパス', 'string0': '発車時刻', 'string1': '残り時間', 'string2': '降車場所', 'string3': '接続'},
-      'tableVer': '2023年度春季休業期間',
+      'tableVer': '2024年度春季休業期間',
       'dayOfWeek': '',
       'selectedTableNames': [],
     },
-    'startDate': DateTime(2024, 02, 03),
+    'startDate': DateTime(2025, 02, 04),
     'url': {
       'waseda_bus_page': 'https://www.waseda.jp/fhum/hum/facility/bus-parking/',
-      'default_pdf': 'https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Timetable_for_Spring_Vacation(from_3_February_to_31_March_2024).pdf',
+      'default_pdf': 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/01/School_Bus_Schedule_for_Spring_Vacation_from_4th_February_2025_to_31st_March_2025.pdf',
       'special_pdf': {
-        DateTime(2024, 03, 28): 'https://www.waseda.jp/tokorozawa/kg/doc/bus/School_Bus_Special_Schedule(Thursday_28th_March_2024).pdf',
+        DateTime(2025, 02, 09): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/01/School_Bus_Schedule_for_Spring_Vacation_from_4th_February_2025_to_31st_March_2025.pdf',
+        DateTime(2025, 03, 27): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/01/School_Bus_Schedule_for_Spring_Vacation_from_4th_February_2025_to_31st_March_2025.pdf',
       },
     },
   };
@@ -543,7 +544,11 @@ Map timetableProviderSpringVacation() {
   }
 
   // 臨時の休業日, 追加で祝日扱いする日
-  List additionalHolidays = [];
+  List additionalHolidays = [
+    DateTime(2025, 02, 11),
+    DateTime(2025, 02, 24),
+    DateTime(2025, 03, 20),
+  ];
   for (int i = 0; i < additionalHolidays.length; i++) {
     if (dt.year == additionalHolidays[i].year && dt.month == additionalHolidays[i].month && dt.day == additionalHolidays[i].day) {
       timetable['tableInfo']['selectedTableNames'][0] = 'stationCampusSundaysHolidays';
@@ -556,16 +561,16 @@ Map timetableProviderSpringVacation() {
 
   // 授業日ダイヤに切り替える日(特別ダイヤ)
   List specialDates = [
-    DateTime(2024, 02, 03),
+    DateTime(2025, 02, 05),
+    DateTime(2025, 02, 06),
+    DateTime(2025, 02, 07),
+    DateTime(2025, 02, 08),
 
-    DateTime(2024, 02, 05),
-    DateTime(2024, 02, 06),
-    DateTime(2024, 02, 07),
-    DateTime(2024, 02, 08),
-    DateTime(2024, 02, 09),
+    DateTime(2025, 02, 12),
+    DateTime(2025, 02, 13),
+    DateTime(2025, 02, 14),
 
-    DateTime(2024, 02, 13),
-    DateTime(2024, 02, 14),
+    DateTime(2025, 02, 17),
   ];
   for (int i = 0; i < specialDates.length; i++) {
     if (dt.year == specialDates[i].year && dt.month == specialDates[i].month && dt.day == specialDates[i].day) {
