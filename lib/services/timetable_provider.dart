@@ -1,8 +1,8 @@
 import 'package:nholiday_jp/nholiday_jp.dart';
-import 'timetable_provider_1_semester.dart';
-import 'timetable_provider_2_summer_vacation.dart';
-import 'timetable_provider_3_winter_vacation.dart';
-import 'timetable_provider_4_spring_vacation.dart';
+import 'timetable_data_1_semester.dart';
+import 'timetable_data_2_summer_vacation.dart';
+import 'timetable_data_3_winter_vacation.dart';
+import 'timetable_data_4_spring_vacation.dart';
 import 'holiday_config.dart';
 
 Map timetableProvider() {
