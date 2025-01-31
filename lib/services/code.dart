@@ -1,8 +1,5 @@
 import 'package:intl/intl.dart';
-import 'timetable_provider_1_semester.dart';
-import 'timetable_provider_2_summer_vacation.dart';
-import 'timetable_provider_3_winter_vacation.dart';
-import 'timetable_provider_4_spring_vacation.dart';
+import '/services/timetable_provider.dart';
 
 Map code() {
   // 現在時刻と0時0分の取得
@@ -10,15 +7,7 @@ Map code() {
   var lastMidnight = DateTime(now.year, now.month, now.day);
   const Duration zeroDuration = Duration(seconds: 0);
 
-  // 新ダイヤに切り替えるか
-  Map timetable;
-  Map timetableBefore = timetableProviderWinterVacation(); // =以降を変更する
-  Map timetableAfter = timetableProviderSemester(); // =以降を変更する
-  if (now.isBefore(timetableAfter['startDate'])) {
-    timetable = timetableBefore;
-  } else {
-    timetable = timetableAfter;
-  }
+  Map timetable = timetableProvider();
 
   String calcTimeRemaining(Duration time) {
     if (time.isNegative == false) {

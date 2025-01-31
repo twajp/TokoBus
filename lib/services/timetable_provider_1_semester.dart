@@ -1,5 +1,3 @@
-import 'package:nholiday_jp/nholiday_jp.dart';
-
 // timetableの構造メモ
 //   timetable['fullTables']['stationCampusWeekdays' -> 'frcCampusSaturday']['table'] == [[int 時, int 分, DateTime 時刻, Duration 残り時間, String 時:分, String 残り時間, String 場所, String 車椅子対応], ...]
 //   timetable['fullTables']['stationCampusWeekdays' -> 'frcCampusSaturday']['nextBusIndex'] == int
@@ -22,7 +20,7 @@ import 'package:nholiday_jp/nholiday_jp.dart';
 //     https://www.waseda.jp/top/about/work/organizations/academic-affairs-division/academic-calendar
 //   noBusDates
 
-Map timetableProviderSemester() {
+Map timetableDataSemester() {
   List stationCampusWeekdays = [
     [07, 45, '北口', '×'],
     [07, 55, '北口', '×'],
@@ -550,6 +548,11 @@ Map timetableProviderSemester() {
       'selectedTableNames': [],
     },
     'startDate': DateTime(2025, 01, 06),
+    // 特別ダイヤに切り替える日
+    'specialDates': [],
+    'specialDateName': '特別ダイヤ',
+    // バス運休日(年末年始など)
+    'noBusDates': [],
     'url': {
       'waseda_bus_page': 'https://www.waseda.jp/fhum/hum/facility/bus-parking/',
       'default_pdf': 'https://www.waseda.jp/fhum/hum/assets/uploads/2024/09/School_Bus_TimetableTokorozawa_CampusAY2024_Fall_Semester-1.pdf',
@@ -576,91 +579,5 @@ Map timetableProviderSemester() {
       },
     },
   };
-
-  var dt = DateTime.now();
-  var holidaysOfMonth = NHolidayJp.getByMonth(dt.year, dt.month);
-  List dateOfHolidaysOfMonth = [];
-  for (int i = 0; i < holidaysOfMonth.length; i++) {
-    dateOfHolidaysOfMonth.add(holidaysOfMonth[i].date);
-  }
-  if (dt.weekday == 7 || dateOfHolidaysOfMonth.contains(dt.day) == true) {
-    // 日曜日か祝日
-    timetable['tableInfo']['selectedTableNames'].add('stationCampusSundaysHolidays');
-    timetable['tableInfo']['selectedTableNames'].add('campusStationSundaysHolidays');
-    timetable['tableInfo']['selectedTableNames'].add('');
-    timetable['tableInfo']['selectedTableNames'].add('');
-    timetable['tableInfo']['dayOfWeek'] = '日曜日/祝日ダイヤ';
-  } else if (dt.weekday >= 1 && dt.weekday <= 5) {
-    // 平日
-    timetable['tableInfo']['selectedTableNames'].add('stationCampusWeekdays');
-    timetable['tableInfo']['selectedTableNames'].add('campusStationWeekdays');
-    timetable['tableInfo']['selectedTableNames'].add('campusFRCWeekdays');
-    timetable['tableInfo']['selectedTableNames'].add('frcCampusWeekdays');
-    timetable['tableInfo']['dayOfWeek'] = '平日ダイヤ';
-  } else {
-    // 土曜日
-    timetable['tableInfo']['selectedTableNames'].add('stationCampusSaturdays');
-    timetable['tableInfo']['selectedTableNames'].add('campusStationSaturdays');
-    timetable['tableInfo']['selectedTableNames'].add('campusFRCSaturdays');
-    timetable['tableInfo']['selectedTableNames'].add('frcCampusSaturdays');
-    timetable['tableInfo']['dayOfWeek'] = '土曜日ダイヤ';
-  }
-
-  // 授業を行う祝日
-  List exceptionalHolidays = [
-    DateTime(2024, 04, 29),
-    DateTime(2024, 07, 15),
-    DateTime(2024, 10, 14),
-    DateTime(2024, 11, 23),
-  ];
-  for (int i = 0; i < exceptionalHolidays.length; i++) {
-    if (dt.year == exceptionalHolidays[i].year && dt.month == exceptionalHolidays[i].month && dt.day == exceptionalHolidays[i].day) {
-      timetable['tableInfo']['selectedTableNames'][0] = 'stationCampusWeekdays';
-      timetable['tableInfo']['selectedTableNames'][1] = 'campusStationWeekdays';
-      timetable['tableInfo']['selectedTableNames'][2] = 'campusFRCWeekdays';
-      timetable['tableInfo']['selectedTableNames'][3] = 'frcCampusWeekdays';
-      timetable['tableInfo']['dayOfWeek'] = '平日ダイヤ';
-    }
-  }
-
-  // 臨時の休業日, 追加で祝日扱いする日
-  List additionalHolidays = [
-    DateTime(2024, 08, 09),
-    DateTime(2024, 11, 01),
-    DateTime(2024, 12, 26),
-    DateTime(2024, 12, 27),
-  ];
-  for (int i = 0; i < additionalHolidays.length; i++) {
-    if (dt.year == additionalHolidays[i].year && dt.month == additionalHolidays[i].month && dt.day == additionalHolidays[i].day) {
-      timetable['tableInfo']['selectedTableNames'][0] = 'stationCampusSundaysHolidays';
-      timetable['tableInfo']['selectedTableNames'][1] = 'campusStationSundaysHolidays';
-      timetable['tableInfo']['selectedTableNames'][2] = '';
-      timetable['tableInfo']['selectedTableNames'][3] = '';
-      timetable['tableInfo']['dayOfWeek'] = '日曜日/祝日ダイヤ';
-    }
-  }
-
-  // 特別ダイヤに切り替える日
-  List specialDates = [];
-  for (int i = 0; i < specialDates.length; i++) {
-    if (dt.year == specialDates[i].year && dt.month == specialDates[i].month && dt.day == specialDates[i].day) {
-      timetable['tableInfo']['selectedTableNames'][0] = 'stationCampusSpecial';
-      timetable['tableInfo']['selectedTableNames'][1] = 'campusStationSpecial';
-      timetable['tableInfo']['dayOfWeek'] = '特別ダイヤ';
-    }
-  }
-
-  // バス運休日(年末年始など)
-  List noBusDates = [];
-  for (int i = 0; i < noBusDates.length; i++) {
-    if (dt.year == noBusDates[i].year && dt.month == noBusDates[i].month && dt.day == noBusDates[i].day) {
-      timetable['tableInfo']['selectedTableNames'][0] = '';
-      timetable['tableInfo']['selectedTableNames'][1] = '';
-      timetable['tableInfo']['selectedTableNames'][2] = '';
-      timetable['tableInfo']['selectedTableNames'][3] = '';
-      timetable['tableInfo']['dayOfWeek'] = 'バス運休日';
-    }
-  }
-
   return timetable;
 }
