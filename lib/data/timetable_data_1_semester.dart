@@ -157,6 +157,8 @@ Map timetableDataSemester() {
     [19, 45, '南口', '×'],
   ];
 
+  // List stationCampusSpecial = [];
+
   List campusStationWeekdays = [
     [08, 55, '北口', '×'],
     [09, 00, '北口', '×'],
@@ -297,6 +299,8 @@ Map timetableDataSemester() {
     [19, 30, '南口', '×'],
     [21, 00, '南口', '×'],
   ];
+
+  // List campusStationSpecial = [];
 
   List campusFRCWeekdays = [
     // 正門発
