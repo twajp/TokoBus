@@ -479,7 +479,7 @@ Map timetableDataSpringVacation() {
       'selectedTableNames': [],
     },
     'startDate': DateTime(2025, 02, 04),
-    // 特別ダイヤに切り替える日
+    // 授業日ダイヤに切り替える日(特別ダイヤ)
     'specialDates': [],
     'specialDateName': '平日(授業日)',
     // バス運休日(年末年始など)

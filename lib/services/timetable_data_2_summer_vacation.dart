@@ -474,8 +474,23 @@ Map timetableDataSummerVacation() {
       'selectedTableNames': [],
     },
     'startDate': DateTime(2024, 07, 30),
-    // 特別ダイヤに切り替える日
-    'specialDates': [],
+    // 授業日ダイヤに切り替える日(特別ダイヤ)
+    'specialDates': [
+      DateTime(2024, 08, 20),
+      DateTime(2024, 08, 21),
+      DateTime(2024, 08, 22),
+      DateTime(2024, 08, 23),
+      DateTime(2024, 08, 26),
+      DateTime(2024, 08, 27),
+      DateTime(2024, 08, 28),
+      DateTime(2024, 08, 29),
+      DateTime(2024, 08, 30),
+      DateTime(2024, 09, 02),
+      DateTime(2024, 09, 03),
+      DateTime(2024, 09, 04),
+      DateTime(2024, 09, 05),
+      DateTime(2024, 09, 06),
+    ],
     'specialDateName': '平日(授業日)',
     // バス運休日(年末年始など)
     'noBusDates': [],

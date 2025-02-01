@@ -365,11 +365,20 @@ Map timetableDataWinterVacation() {
       'selectedTableNames': [],
     },
     'startDate': DateTime(2024, 12, 24),
-    // 特別ダイヤに切り替える日
+    // 授業日ダイヤに切り替える日(特別ダイヤ)
     'specialDates': [],
     'specialDateName': '平日(授業日)',
     // バス運休日(年末年始など)
-    'noBusDates': [],
+    'noBusDates': [
+      DateTime(2024, 12, 29),
+      DateTime(2024, 12, 30),
+      DateTime(2024, 12, 31),
+      DateTime(2025, 01, 01),
+      DateTime(2025, 01, 02),
+      DateTime(2025, 01, 03),
+      DateTime(2025, 01, 04),
+      DateTime(2025, 01, 05),
+    ],
     'url': {
       'waseda_bus_page': 'https://www.waseda.jp/fhum/hum/facility/bus-parking/',
       'default_pdf': 'https://www.waseda.jp/fhum/hum/assets/uploads/2024/11/School_Bus_Schedule_for_Winter_Vacation_from_24th_December_2024_to_5th_January_2025.pdf',
