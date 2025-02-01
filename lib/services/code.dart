@@ -1,5 +1,5 @@
 import 'package:intl/intl.dart';
-import '/services/timetable_provider.dart';
+import 'timetable_provider.dart';
 
 Map code() {
   // 現在時刻と0時0分の取得
