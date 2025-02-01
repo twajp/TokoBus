@@ -69,19 +69,22 @@ Map timetableProvider() {
       timetable['tableInfo']['selectedTableNames'][3] = 'frcCampusSaturdays';
       timetable['tableInfo']['dayOfWeek'] = '土曜日ダイヤ';
     }
-  } else if (additionalHolidays.contains(DateTime(now.year, now.month, now.day))) {
+  }
+  if (additionalHolidays.contains(DateTime(now.year, now.month, now.day))) {
     // 臨時の休業日、追加で祝日扱いする日
     timetable['tableInfo']['selectedTableNames'][0] = 'stationCampusSundaysHolidays';
     timetable['tableInfo']['selectedTableNames'][1] = 'campusStationSundaysHolidays';
     timetable['tableInfo']['selectedTableNames'][2] = '';
     timetable['tableInfo']['selectedTableNames'][3] = '';
     timetable['tableInfo']['dayOfWeek'] = '日曜日/祝日ダイヤ';
-  } else if (timetable['specialDates'].contains(DateTime(now.year, now.month, now.day))) {
+  }
+  if (timetable['specialDates'].contains(DateTime(now.year, now.month, now.day))) {
     // 特別ダイヤに切り替える日
     timetable['tableInfo']['selectedTableNames'][0] = 'stationCampusSpecial';
     timetable['tableInfo']['selectedTableNames'][1] = 'campusStationSpecial';
     timetable['tableInfo']['dayOfWeek'] = timetable['specialDateName'];
-  } else if (timetable['noBusDates'].contains(DateTime(now.year, now.month, now.day))) {
+  }
+  if (timetable['noBusDates'].contains(DateTime(now.year, now.month, now.day))) {
     // バス運休日(年末年始など)
     timetable['tableInfo']['selectedTableNames'][0] = '';
     timetable['tableInfo']['selectedTableNames'][1] = '';
