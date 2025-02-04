@@ -377,7 +377,16 @@ Map timetableDataWinterVacation() {
       'specialDates': [],
 
       // バス運休日(年末年始など)
-      'noBusDates': [],
+      'noBusDates': [
+        DateTime(2024, 12, 29),
+        DateTime(2024, 12, 30),
+        DateTime(2024, 12, 31),
+        DateTime(2025, 01, 01),
+        DateTime(2025, 01, 02),
+        DateTime(2025, 01, 03),
+        DateTime(2025, 01, 04),
+        DateTime(2025, 01, 05),
+      ],
     },
     'url': {
       'waseda_bus_page': 'https://www.waseda.jp/fhum/hum/facility/bus-parking/',
