@@ -53,7 +53,7 @@ Map timetableProvider() {
     timetable['tableInfo']['dayOfWeek'] = '土曜日ダイヤ';
   }
 
-  if (exceptionalHolidays.contains(DateTime(now.year, now.month, now.day))) {
+  if (exceptionalHolidays.contains(DateTime(now.year, now.month, now.day)) || timetable['exceptions']['exceptionalHolidays'].contains(DateTime(now.year, now.month, now.day))) {
     if (now.weekday >= DateTime.monday && now.weekday <= DateTime.friday) {
       // 授業を行う祝日(平日)
       timetable['tableInfo']['selectedTableNames'][0] = 'stationCampusWeekdays';
@@ -70,7 +70,7 @@ Map timetableProvider() {
       timetable['tableInfo']['dayOfWeek'] = '土曜日ダイヤ';
     }
   }
-  if (additionalHolidays.contains(DateTime(now.year, now.month, now.day))) {
+  if (additionalHolidays.contains(DateTime(now.year, now.month, now.day)) || timetable['exceptions']['additionalHolidays'].contains(DateTime(now.year, now.month, now.day))) {
     // 臨時の休業日、追加で祝日扱いする日
     timetable['tableInfo']['selectedTableNames'][0] = 'stationCampusSundaysHolidays';
     timetable['tableInfo']['selectedTableNames'][1] = 'campusStationSundaysHolidays';
@@ -78,13 +78,13 @@ Map timetableProvider() {
     timetable['tableInfo']['selectedTableNames'][3] = '';
     timetable['tableInfo']['dayOfWeek'] = '日曜日/祝日ダイヤ';
   }
-  if (timetable['specialDates'].contains(DateTime(now.year, now.month, now.day))) {
+  if (timetable['exceptions']['specialDates'].contains(DateTime(now.year, now.month, now.day))) {
     // 特別ダイヤに切り替える日
     timetable['tableInfo']['selectedTableNames'][0] = 'stationCampusSpecial';
     timetable['tableInfo']['selectedTableNames'][1] = 'campusStationSpecial';
-    timetable['tableInfo']['dayOfWeek'] = timetable['specialDateName'];
+    timetable['tableInfo']['dayOfWeek'] = timetable['exceptions']['specialDateName'];
   }
-  if (timetable['noBusDates'].contains(DateTime(now.year, now.month, now.day))) {
+  if (timetable['exceptions']['noBusDates'].contains(DateTime(now.year, now.month, now.day))) {
     // バス運休日(年末年始など)
     timetable['tableInfo']['selectedTableNames'][0] = '';
     timetable['tableInfo']['selectedTableNames'][1] = '';

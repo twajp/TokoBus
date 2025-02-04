@@ -552,11 +552,20 @@ Map timetableDataSemester() {
       'selectedTableNames': [],
     },
     'startDate': DateTime(2025, 01, 06),
-    // 特別ダイヤに切り替える日
-    'specialDates': [],
-    'specialDateName': '特別ダイヤ',
-    // バス運休日(年末年始など)
-    'noBusDates': [],
+    'exceptions': {
+      // 授業を行う祝日(時刻表PDFに大学暦に載っていない日があった場合)
+      'exceptionalHolidays': [],
+
+      // 追加で祝日扱いする日(時刻表PDFに大学暦に載っていない日があった場合)
+      'additionalHolidays': [],
+
+      // 特別ダイヤに切り替える日
+      'specialDateName': '特別ダイヤ',
+      'specialDates': [],
+
+      // バス運休日(年末年始など)
+      'noBusDates': [],
+    },
     'url': {
       'waseda_bus_page': 'https://www.waseda.jp/fhum/hum/facility/bus-parking/',
       'default_pdf': 'https://www.waseda.jp/fhum/hum/assets/uploads/2024/09/School_Bus_TimetableTokorozawa_CampusAY2024_Fall_Semester-1.pdf',

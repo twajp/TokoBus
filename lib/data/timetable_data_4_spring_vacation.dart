@@ -479,11 +479,29 @@ Map timetableDataSpringVacation() {
       'selectedTableNames': [],
     },
     'startDate': DateTime(2025, 02, 04),
-    // 授業日ダイヤに切り替える日(特別ダイヤ)
-    'specialDates': [],
-    'specialDateName': '平日(授業日)',
-    // バス運休日(年末年始など)
-    'noBusDates': [],
+    'exceptions': {
+      // 授業を行う祝日(時刻表PDFに大学暦に載っていない日があった場合)
+      'exceptionalHolidays': [],
+
+      // 追加で祝日扱いする日(時刻表PDFに大学暦に載っていない日があった場合)
+      'additionalHolidays': [],
+
+      // 授業日ダイヤに切り替える日(特別ダイヤ)
+      'specialDateName': '平日(授業日)',
+      'specialDates': [
+        DateTime(2025, 02, 05),
+        DateTime(2025, 02, 06),
+        DateTime(2025, 02, 07),
+        DateTime(2025, 02, 08),
+        DateTime(2025, 02, 12),
+        DateTime(2025, 02, 13),
+        DateTime(2025, 02, 14),
+        DateTime(2025, 02, 17),
+      ],
+
+      // バス運休日(年末年始など)
+      'noBusDates': [],
+    },
     'url': {
       'waseda_bus_page': 'https://www.waseda.jp/fhum/hum/facility/bus-parking/',
       'default_pdf': 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/01/School_Bus_Schedule_for_Spring_Vacation_from_4th_February_2025_to_31st_March_2025.pdf',
