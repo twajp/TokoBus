@@ -100,6 +100,7 @@ jobs:
           echo "## What's Changed" > release_note.md
           git log v$PREV_VERSION_NAME..HEAD --reverse --pretty=format:'* %s' >> release_note.md
           echo '' >>  release_note.md
+          echo '' >>  release_note.md
           gh release view v$VERSION_NAME --json body --jq .body >> release_note.md
           gh release edit v$VERSION_NAME --notes-file release_note.md
 
