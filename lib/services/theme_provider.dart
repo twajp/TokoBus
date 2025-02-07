@@ -19,7 +19,6 @@ class ThemeProvider with ChangeNotifier {
       case ThemeModeOption.dark:
         return ThemeMode.dark;
       case ThemeModeOption.system:
-      default:
         return ThemeMode.system;
     }
   }
