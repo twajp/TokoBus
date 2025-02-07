@@ -24,9 +24,13 @@ void showDialogOnSpecialDate({required BuildContext context, required timetable}
             ),
             TextButton(
               onPressed: () async {
-                await launch(url);
-                if (Navigator.of(context).canPop()) {
-                  Navigator.of(context).pop();
+                final navigator = Navigator.of(context);
+                final uri = Uri.parse(url);
+                if (!await launchUrl(uri)) {
+                  throw Exception('Could not launch $url');
+                }
+                if (navigator.canPop()) {
+                  navigator.pop();
                 }
               },
               child: Text(

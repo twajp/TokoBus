@@ -48,8 +48,9 @@ homeAppBar({required BuildContext context, required timetable}) {
   );
 }
 
-Future<void> myLaunchUrl(url) async {
-  if (!await launch(url)) {
+Future<void> myLaunchUrl(String url) async {
+  final uri = Uri.parse(url);
+  if (!await launchUrl(uri)) {
     throw Exception('Could not launch $url');
   }
 }
