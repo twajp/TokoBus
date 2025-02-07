@@ -38,9 +38,9 @@ homeAppBar({required BuildContext context, required timetable}) {
           } else if (value == 1) {
             myLaunchUrl(timetable['url']['default_pdf']);
           } else if (value == 2) {
-            myLaunchUrl('https://twajp.github.io/TokoBusWebsite/support');
+            myLaunchUrl('https://twajp.github.io/TokoBus/support');
           } else if (value == 3) {
-            myLaunchUrl('https://twajp.github.io/TokoBusWebsite/');
+            myLaunchUrl('https://twajp.github.io/TokoBus/');
           }
         },
       ),
