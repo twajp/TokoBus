@@ -85,12 +85,12 @@ class _FullTimetablePageState extends State<FullTimetablePage> {
         appBar: AppBar(
           title: Text(
             timetable['tableInfo'][tableFormat]['title'],
-            style: TextStyle(color: Theme.of(context).colorScheme.onBackground),
+            style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
           ),
         ),
         body: SafeArea(
           child: Container(
-            color: Theme.of(context).colorScheme.background,
+            color: Theme.of(context).colorScheme.surface,
             child: Column(
               children: [
                 Row(
@@ -144,9 +144,9 @@ class _FullTimetablePageState extends State<FullTimetablePage> {
                           if (i == timetable['fullTables'][tableName]['nextBusIndex']) ...{
                             OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: Theme.of(context).textTheme.bodyLarge, backgroundColor: Theme.of(context).colorScheme.primary, tableName: tableName, rowIndex: i),
                           } else if (i < timetable['fullTables'][tableName]['nextBusIndex']) ...{
-                            OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: Theme.of(context).primaryTextTheme.bodyLarge, backgroundColor: Theme.of(context).colorScheme.background, tableName: tableName, rowIndex: i),
+                            OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: Theme.of(context).primaryTextTheme.bodyLarge, backgroundColor: Theme.of(context).colorScheme.surface, tableName: tableName, rowIndex: i),
                           } else ...{
-                            OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: Theme.of(context).textTheme.bodyLarge, backgroundColor: Theme.of(context).colorScheme.background, tableName: tableName, rowIndex: i)
+                            OneRow(timetable: timetable, deviceHeight: deviceHeight, deviceWidth: deviceWidth, textStyle: Theme.of(context).textTheme.bodyLarge, backgroundColor: Theme.of(context).colorScheme.surface, tableName: tableName, rowIndex: i)
                           },
                         },
                         Container(

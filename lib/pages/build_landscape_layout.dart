@@ -7,7 +7,7 @@ buildLandscapeLayout({required BuildContext context, required Size size, require
   return Scaffold(
     appBar: homeAppBar(context: context, timetable: timetable),
     drawer: HomeDrawer(context: context, timetable: timetable, height: size.height, width: size.height),
-    backgroundColor: Theme.of(context).colorScheme.background,
+    backgroundColor: Theme.of(context).colorScheme.surface,
     body: SafeArea(
       child: Column(
         children: [

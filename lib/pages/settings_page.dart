@@ -11,9 +11,9 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final settingsTheme = SettingsThemeData(
-      settingsListBackground: Theme.of(context).colorScheme.background,
+      settingsListBackground: Theme.of(context).colorScheme.surface,
       settingsSectionBackground: Theme.of(context).colorScheme.secondary,
-      titleTextColor: Theme.of(context).colorScheme.onBackground, // 外観
+      titleTextColor: Theme.of(context).colorScheme.onSurface, // 外観
       leadingIconsColor: Theme.of(context).colorScheme.onSecondary, // アイコン
       settingsTileTextColor: Theme.of(context).colorScheme.onSecondary, // テーマ
       // tileDescriptionTextColor: Colors.yellow,
@@ -23,11 +23,11 @@ class SettingsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           '設定',
-          style: TextStyle(color: Theme.of(context).colorScheme.onBackground),
+          style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
         ),
         // centerTitle: true,
       ),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: SettingsList(
         lightTheme: settingsTheme,
         darkTheme: settingsTheme,

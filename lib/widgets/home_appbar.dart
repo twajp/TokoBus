@@ -9,7 +9,7 @@ homeAppBar({required BuildContext context, required timetable}) {
       PopupMenuButton(
         icon: Icon(
           Icons.more_vert,
-          color: Theme.of(context).colorScheme.onBackground,
+          color: Theme.of(context).colorScheme.onSurface,
         ),
         color: Theme.of(context).colorScheme.secondary,
         itemBuilder: (context) {

@@ -8,7 +8,7 @@ buildPortraitLayout({required BuildContext context, required Size size, required
   return Scaffold(
     appBar: homeAppBar(context: context, timetable: timetable),
     drawer: HomeDrawer(context: context, timetable: timetable, height: size.height, width: size.width),
-    backgroundColor: Theme.of(context).colorScheme.background,
+    backgroundColor: Theme.of(context).colorScheme.surface,
     body: SafeArea(
       child: Stack(
         children: [

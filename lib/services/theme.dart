@@ -5,11 +5,11 @@ import 'package:flutter/services.dart';
 const wasedaColor = Color.fromRGBO(142, 23, 40, 1);
 
 final lightTheme = FlexThemeData.light(
-  background: const Color.fromRGBO(243, 243, 243, 1), // 背景
+  surface: const Color.fromRGBO(243, 243, 243, 1), // 背景
   primary: const Color.fromRGBO(142, 23, 40, 0.25), // 早稲田色
   secondary: Colors.white, // Container,PopupMenuButton,AlertDialogの色
   tertiary: const Color.fromRGBO(190, 190, 190, 1), // 非アクティブなドット色
-  onBackground: Colors.black, // 背景色の上に書く文字・アイコン色
+  onSurface: Colors.black, // 背景色の上に書く文字・アイコン色
   onSecondary: Colors.black, // secondary色の上に書く文字・アイコン色
   onTertiary: const Color.fromRGBO(107, 107, 107, 1), // アクティブなドット色
   textTheme: const TextTheme(
@@ -22,8 +22,8 @@ final lightTheme = FlexThemeData.light(
   ),
 ).copyWith(
   appBarTheme: const AppBarTheme(
-    backgroundColor: Color.fromRGBO(243, 243, 243, 1),
-    shadowColor: Colors.transparent,
+    // backgroundColor: Color.fromRGBO(243, 243, 243, 1),
+    // shadowColor: Colors.transparent,
     systemOverlayStyle: SystemUiOverlayStyle(
       statusBarBrightness: Brightness.light, // for iOS
       statusBarIconBrightness: Brightness.dark, // for Android
@@ -40,17 +40,16 @@ final lightTheme = FlexThemeData.light(
 final darkTheme = FlexThemeData.dark(
   // scheme: FlexScheme.hippieBlue,
   darkIsTrueBlack: true,
-  background: Colors.black, // 背景
+  surface: Colors.black, // 背景
   primary: wasedaColor,
   primaryLightRef: wasedaColor, // エラーが出るので追加
   secondary: const Color.fromRGBO(44, 44, 46, 1), // Container,PopupMenuButton,AlertDialogの色
   secondaryLightRef: const Color.fromRGBO(44, 44, 46, 1), // エラーが出るので追加
   tertiary: const Color.fromRGBO(107, 107, 107, 1), // 非アクティブなドット色
   tertiaryLightRef: const Color.fromRGBO(107, 107, 107, 1), // エラーが出るので追加
-  onBackground: Colors.white, // 背景色の上に書く文字・アイコン色
+  onSurface: Colors.white, // 背景色の上に書く文字・アイコン色
   onSecondary: Colors.white, // secondary色の上に書く文字・アイコン色
   onTertiary: Colors.white, // アクティブなドット色
-  // surface: const Color.fromRGBO(44, 44, 46, 1),// 勝手に色が変わるから使えない
   // useMaterial3: false,
   // surfaceTint: Colors.transparent,
   // applyElevationOverlayColor: false,
@@ -64,8 +63,8 @@ final darkTheme = FlexThemeData.dark(
   ),
 ).copyWith(
   appBarTheme: const AppBarTheme(
-    backgroundColor: Colors.black,
-    shadowColor: Colors.transparent,
+    // backgroundColor: Colors.black,
+    // shadowColor: Colors.transparent,
     systemOverlayStyle: SystemUiOverlayStyle(
       statusBarBrightness: Brightness.dark, // for iOS
       statusBarIconBrightness: Brightness.light, // for Android

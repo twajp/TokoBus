@@ -24,7 +24,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
       specialTimetableName = '';
     }
     return Drawer(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       child: SafeArea(
         child: Column(
           children: [
@@ -52,10 +52,10 @@ class _HomeDrawerState extends State<HomeDrawer> {
                     ExpansionTile(
                       title: Text(weekdaysTimetableName),
                       leading: const Icon(Icons.school),
-                      textColor: Theme.of(context).colorScheme.onBackground,
-                      iconColor: Theme.of(context).colorScheme.onBackground,
-                      collapsedTextColor: Theme.of(context).colorScheme.onBackground,
-                      collapsedIconColor: Theme.of(context).colorScheme.onBackground,
+                      textColor: Theme.of(context).colorScheme.onSurface,
+                      iconColor: Theme.of(context).colorScheme.onSurface,
+                      collapsedTextColor: Theme.of(context).colorScheme.onSurface,
+                      collapsedIconColor: Theme.of(context).colorScheme.onSurface,
                       initiallyExpanded: true,
                       children: [
                         ListTile(
@@ -120,10 +120,10 @@ class _HomeDrawerState extends State<HomeDrawer> {
                       ExpansionTile(
                         title: Text(specialTimetableName),
                         leading: const Icon(Icons.school),
-                        textColor: Theme.of(context).colorScheme.onBackground,
-                        iconColor: Theme.of(context).colorScheme.onBackground,
-                        collapsedTextColor: Theme.of(context).colorScheme.onBackground,
-                        collapsedIconColor: Theme.of(context).colorScheme.onBackground,
+                        textColor: Theme.of(context).colorScheme.onSurface,
+                        iconColor: Theme.of(context).colorScheme.onSurface,
+                        collapsedTextColor: Theme.of(context).colorScheme.onSurface,
+                        collapsedIconColor: Theme.of(context).colorScheme.onSurface,
                         children: [
                           ListTile(
                             title: Text(widget.timetable['tableInfo'][0]['title']),
@@ -161,10 +161,10 @@ class _HomeDrawerState extends State<HomeDrawer> {
                     ExpansionTile(
                       title: Text(saturdaysTimetableName),
                       leading: const Icon(Icons.weekend),
-                      textColor: Theme.of(context).colorScheme.onBackground,
-                      iconColor: Theme.of(context).colorScheme.onBackground,
-                      collapsedTextColor: Theme.of(context).colorScheme.onBackground,
-                      collapsedIconColor: Theme.of(context).colorScheme.onBackground,
+                      textColor: Theme.of(context).colorScheme.onSurface,
+                      iconColor: Theme.of(context).colorScheme.onSurface,
+                      collapsedTextColor: Theme.of(context).colorScheme.onSurface,
+                      collapsedIconColor: Theme.of(context).colorScheme.onSurface,
                       children: [
                         ListTile(
                           title: Text(widget.timetable['tableInfo'][0]['title']),
@@ -227,10 +227,10 @@ class _HomeDrawerState extends State<HomeDrawer> {
                     ExpansionTile(
                       title: Text(sundaysHolidaysTimetableName),
                       leading: const Icon(Icons.weekend),
-                      textColor: Theme.of(context).colorScheme.onBackground,
-                      iconColor: Theme.of(context).colorScheme.onBackground,
-                      collapsedTextColor: Theme.of(context).colorScheme.onBackground,
-                      collapsedIconColor: Theme.of(context).colorScheme.onBackground,
+                      textColor: Theme.of(context).colorScheme.onSurface,
+                      iconColor: Theme.of(context).colorScheme.onSurface,
+                      collapsedTextColor: Theme.of(context).colorScheme.onSurface,
+                      collapsedIconColor: Theme.of(context).colorScheme.onSurface,
                       children: [
                         ListTile(
                           title: Text(widget.timetable['tableInfo'][0]['title']),
@@ -269,8 +269,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
             ListTile(
               title: const Text('設定'),
               leading: const Icon(Icons.settings),
-              textColor: Theme.of(context).colorScheme.onBackground,
-              iconColor: Theme.of(context).colorScheme.onBackground,
+              textColor: Theme.of(context).colorScheme.onSurface,
+              iconColor: Theme.of(context).colorScheme.onSurface,
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.pushNamed(context, '/settings');
