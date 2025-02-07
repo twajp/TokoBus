@@ -62,14 +62,14 @@ class _FullTimetablePageState extends State<FullTimetablePage> {
     if ((nextBusIndex - 1) * deviceHeight * 0.05 < 0) {
       //　始発前
       initialScrollOffset = 0;
-      print('1 $initialScrollOffset');
+      // print('1 $initialScrollOffset');
     } else if ((numberOfBuses - nextBusIndex) * rowHeight + 50 > scrollViewHeight) {
       initialScrollOffset = (nextBusIndex - 1) * rowHeight;
-      print('2 $initialScrollOffset');
+      // print('2 $initialScrollOffset');
     } else {
       // last - nextBusIndex > key
       initialScrollOffset = numberOfBuses * rowHeight - scrollViewHeight;
-      print('3 $initialScrollOffset');
+      // print('3 $initialScrollOffset');
     }
     return initialScrollOffset;
   }
