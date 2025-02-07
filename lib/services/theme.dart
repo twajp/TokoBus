@@ -12,6 +12,9 @@ final lightTheme = FlexThemeData.light(
   onSurface: Colors.black, // 背景色の上に書く文字・アイコン色
   onSecondary: Colors.black, // secondary色の上に書く文字・アイコン色
   onTertiary: const Color.fromRGBO(107, 107, 107, 1), // アクティブなドット色
+  // useMaterial3: false,
+  surfaceTint: Colors.transparent, // Appbarの色が透けないようにする
+  // applyElevationOverlayColor: false,
   textTheme: const TextTheme(
     headlineMedium: TextStyle(fontSize: 30.0, color: Colors.black), // 時刻表名
     bodyLarge: TextStyle(fontSize: 17.0, color: Colors.black), // これから来るバス
@@ -51,7 +54,7 @@ final darkTheme = FlexThemeData.dark(
   onSecondary: Colors.white, // secondary色の上に書く文字・アイコン色
   onTertiary: Colors.white, // アクティブなドット色
   // useMaterial3: false,
-  // surfaceTint: Colors.transparent,
+  surfaceTint: Colors.transparent, // Appbarの色が透けないようにする
   // applyElevationOverlayColor: false,
   textTheme: const TextTheme(
     headlineMedium: TextStyle(fontSize: 30.0, color: Colors.white), // 時刻表名
