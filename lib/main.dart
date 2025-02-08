@@ -60,8 +60,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class MyHomePageState extends State<MyHomePage> {
-  final PageController controller = PageController(initialPage: 0);
-  final currentPageNotifier = ValueNotifier<int>(0);
   Map timetable = code();
 
   Future<void> mainLoop() async {
@@ -108,10 +106,9 @@ class MyHomePageState extends State<MyHomePage> {
     final Size size = MediaQuery.of(context).size;
 
     if (MediaQuery.of(context).orientation == Orientation.portrait) {
-      return buildPortraitLayout(context: context, size: size, timetable: timetable, controller: controller, currentPageNotifier: currentPageNotifier);
+      return PortraitLayout(size: size, timetable: timetable);
     } else {
-      currentPageNotifier.value = 0;
-      return buildLandscapeLayout(context: context, size: size, timetable: timetable);
+      return LandscapeLayout(size: size, timetable: timetable);
     }
   }
 }

@@ -69,6 +69,7 @@ class IntroScreenPage extends StatelessWidget {
         color: Theme.of(context).colorScheme.tertiary,
         activeSize: const Size(12.0, 12.0),
         size: const Size(8.0, 8.0),
+        spacing: const EdgeInsets.all(4.0),
       ),
     );
   }
