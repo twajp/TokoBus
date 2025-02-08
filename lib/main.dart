@@ -9,8 +9,8 @@ import 'services/code.dart';
 import 'services/show_dialog_on_special_date.dart';
 import 'services/json_alart_handler.dart';
 import 'services/theme_provider.dart';
-import 'pages/build_portrait_layout.dart';
-import 'pages/build_landscape_layout.dart';
+import 'pages/portrait_layout.dart';
+import 'pages/landscape_layout.dart';
 import 'pages/settings_page.dart';
 import 'pages/intro_screen.dart';
 
