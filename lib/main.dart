@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/scheduler.dart' show SchedulerBinding;
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'services/theme.dart';
 import 'services/code.dart';
 import 'services/show_dialog_on_special_date.dart';
@@ -10,6 +12,7 @@ import 'services/theme_provider.dart';
 import 'pages/build_portrait_layout.dart';
 import 'pages/build_landscape_layout.dart';
 import 'pages/settings_page.dart';
+import 'pages/intro_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -74,6 +77,26 @@ class MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     mainLoop();
+
+    // 初回起動時のイントロ画面の表示
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      // ウィジェットがまだマウントされているか確認
+      if (!mounted) return;
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      bool seen = prefs.getBool('haveSeenIntro') ?? false;
+      if (!seen) {
+        // 非同期処理の後にも mounted をチェック
+        if (!mounted) return;
+        await Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => const IntroScreenPage(),
+          ),
+        );
+      }
+    });
+
+    // 他の初期化処理
     SchedulerBinding.instance.addPostFrameCallback((_) {
       showDialogOnSpecialDate(context: context, timetable: timetable);
     });
