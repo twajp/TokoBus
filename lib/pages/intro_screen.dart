@@ -11,65 +11,80 @@ class IntroScreenPage extends StatelessWidget {
       titleTextStyle: Theme.of(context).textTheme.headlineMedium!,
       bodyTextStyle: Theme.of(context).textTheme.bodyLarge!,
       titlePadding: const EdgeInsets.only(top: 80.0, bottom: 30.0),
-      bodyPadding: const EdgeInsets.symmetric(horizontal: 24.0),
+      bodyPadding: const EdgeInsets.symmetric(horizontal: 12.0),
       imagePadding: const EdgeInsets.all(16.0),
-      contentMargin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
+      // contentMargin: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
     );
 
-    return IntroductionScreen(
-      pages: [
-        PageViewModel(
-          title: "TokoBusへようこそ",
-          body: "早稲田大学所沢キャンパスの非公式スクールバス時刻表アプリです。",
-          // image: Center(child: Image.asset("assets/icon/icon_transparent.png", height: 170)),
-          decoration: pageDecoration,
-        ),
-        PageViewModel(
-          title: "ご注意",
-          body: "本アプリは学生が趣味で開発している非公式なものです。\n"
-              "テストなど重要な日には、公式サイトも併用することを推奨します。\n"
-              "本アプリの不具合等によるいかなる損害についても一切の責任を負いかねます。",
-          decoration: pageDecoration,
-        ),
-        PageViewModel(
-          title: "お願い",
-          body: "時刻表の間違いやアプリの不具合がございましたら、右上のメニューからご報告ください。\n",
-          decoration: pageDecoration,
-        ),
-      ],
-      onDone: () async {
-        final navigator = Navigator.of(context);
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        await prefs.setBool('haveSeenIntro', true);
-        navigator.pop();
-      },
-
-      // back: Icon(Icons.arrow_back, color: Theme.of(context).colorScheme.onSurface),
-      // next: Icon(Icons.arrow_forward, color: Theme.of(context).colorScheme.onSurface),
-      // done: Icon(Icons.done, color: Theme.of(context).colorScheme.onSurface),
-
-      showBackButton: true,
-      back: _buildCircularButton(
-        context,
-        Icons.arrow_back,
-        Theme.of(context).colorScheme.secondary,
+    return Scaffold(
+      appBar: AppBar(
+        title: Image.asset('assets/icon/icon_transparent.png', height: kToolbarHeight),
+        centerTitle: true,
+        automaticallyImplyLeading: false, // 戻るボタンを削除
       ),
-      next: _buildCircularButton(
-        context,
-        Icons.arrow_forward,
-        Theme.of(context).colorScheme.primary,
-      ),
-      done: _buildCircularButton(
-        context,
-        Icons.done,
-        Theme.of(context).colorScheme.primary,
-      ),
-      dotsDecorator: DotsDecorator(
-        activeColor: Theme.of(context).colorScheme.onTertiary,
-        color: Theme.of(context).colorScheme.tertiary,
-        activeSize: const Size(12.0, 12.0),
-        size: const Size(8.0, 8.0),
-        spacing: const EdgeInsets.all(4.0),
+      body: SafeArea(
+        child: IntroductionScreen(
+          globalBackgroundColor: Theme.of(context).colorScheme.surface,
+          pages: [
+            PageViewModel(
+              title: 'TokoBusへようこそ',
+              bodyWidget: _buildBulletList(context, [
+                '早稲田大学所沢キャンパスの非公式スクールバス時刻表アプリです。',
+                // '時刻表と発車までの残り時間を共に表示するため、乗車可能なバスが簡単に確認できます。',
+                '曜日や祝日に応じた適切なダイヤを自動で表示します。',
+                '授業を行う祝日と臨時の休業日にも対応しています。',
+                '特別ダイヤがある場合には画面上に通知します。',
+                'フロンティアリサーチセンターへのシャトルバスにも対応しています。',
+              ]),
+              decoration: pageDecoration,
+            ),
+            PageViewModel(
+              title: 'ご注意',
+              bodyWidget: _buildBulletList(context, [
+                '本アプリは学生が趣味で開発している非公式なものです。',
+                '試験日等の重要な日には、公式サイトを併用することを推奨します。',
+                '本アプリの不具合等によるいかなる損害についても一切の責任を負いかねます。',
+              ]),
+              decoration: pageDecoration,
+            ),
+            PageViewModel(
+              title: 'お願い',
+              bodyWidget: _buildBulletList(context, [
+                '時刻表の間違いやアプリの不具合がございましたら、右上のメニューからご報告いただけますと大変ありがたいです。',
+              ]),
+              decoration: pageDecoration,
+            ),
+          ],
+          onDone: () async {
+            final navigator = Navigator.of(context);
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+            await prefs.setBool('haveSeenIntro', true);
+            navigator.pop();
+          },
+          showBackButton: true,
+          back: _buildCircularButton(
+            context,
+            Icons.arrow_back,
+            Theme.of(context).colorScheme.secondary,
+          ),
+          next: _buildCircularButton(
+            context,
+            Icons.arrow_forward,
+            Theme.of(context).colorScheme.primary,
+          ),
+          done: _buildCircularButton(
+            context,
+            Icons.done,
+            Theme.of(context).colorScheme.primary,
+          ),
+          dotsDecorator: DotsDecorator(
+            activeColor: Theme.of(context).colorScheme.onTertiary,
+            color: Theme.of(context).colorScheme.tertiary,
+            activeSize: const Size(12.0, 12.0),
+            size: const Size(8.0, 8.0),
+            spacing: const EdgeInsets.all(4.0),
+          ),
+        ),
       ),
     );
   }
@@ -83,8 +98,34 @@ class IntroScreenPage extends StatelessWidget {
       padding: const EdgeInsets.all(14.0),
       child: Icon(
         icon,
-        color: Theme.of(context).colorScheme.onPrimary,
+        color: Theme.of(context).colorScheme.onSecondary,
         size: 28,
+      ),
+    );
+  }
+
+  Widget _buildBulletList(BuildContext context, List<String> items) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: items.map((item) => _buildBulletPoint(context, item)).toList(),
+    );
+  }
+
+  Widget _buildBulletPoint(BuildContext context, String text) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('・', style: TextStyle(fontSize: 20)),
+          Flexible(
+            child: Text(
+              text,
+              style: Theme.of(context).textTheme.bodyLarge,
+              softWrap: true,
+            ),
+          ),
+        ],
       ),
     );
   }
