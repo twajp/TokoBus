@@ -37,7 +37,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
             //     child: Image.asset('assets/icon/icon_transparent.png'),
             //   ),
             // ),
-            Container( // DrawerHeaderは変な線が入り消せないのでContainerで代替した
+            // DrawerHeaderは変な線が入り消せないのでContainerで代替した
+            Container(
               height: 170,
               padding: const EdgeInsets.only(top: 16, bottom: 16),
               child: Center(
@@ -127,9 +128,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                         children: [
                           ListTile(
                             title: Text(widget.timetable['tableInfo'][0]['title']),
-
-                          leading: const Icon(Icons.school),
-                          iconColor: Colors.transparent,
+                            leading: const Icon(Icons.school),
+                            iconColor: Colors.transparent,
                             onTap: () {
                               Navigator.push(
                                 context,
@@ -142,9 +142,8 @@ class _HomeDrawerState extends State<HomeDrawer> {
                           ),
                           ListTile(
                             title: Text(widget.timetable['tableInfo'][1]['title']),
-
-                          leading: const Icon(Icons.school),
-                          iconColor: Colors.transparent,
+                            leading: const Icon(Icons.school),
+                            iconColor: Colors.transparent,
                             onTap: () {
                               Navigator.push(
                                 context,
