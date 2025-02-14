@@ -19,14 +19,19 @@ dependencies:
   shared_preferences: ^2.5.2
   settings_ui: ^2.0.2
   provider: ^6.1.2
-  dots_indicator: ^2.1.2
-  introduction_screen: ^3.1.14
+#  dots_indicator: ^2.1.2
+#  introduction_screen: ^3.1.16
+  dots_indicator: ^4.0.0
+  introduction_screen:
+    git:
+      url: https://github.com/Pyozer/introduction_screen.git
+      ref: 2d05d7f859442a1adff9edb00428f6cfe53fd71e
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-# flutter_launcher_icons: ^0.11.0
+#  flutter_launcher_icons: ^0.11.0
 
 flutter_icons:
   android: 'launcher_icon'

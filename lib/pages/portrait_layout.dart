@@ -129,7 +129,7 @@ class _PortraitLayoutState extends State<PortraitLayout> {
               size: const Size(8.0, 8.0),
               spacing: const EdgeInsets.all(4.0),
             ),
-            onTap: widget.isProgressTap && !widget.freeze ? (pos) => _updatePosition(pos) : null,
+            onTap: widget.isProgressTap && !widget.freeze ? (pos) => _updatePosition(pos as double) : null,
           ),
         ),
       ),
