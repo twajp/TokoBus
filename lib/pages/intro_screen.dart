@@ -19,7 +19,6 @@ class IntroScreenPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Image.asset('assets/icon/icon_transparent.png', height: kToolbarHeight),
-        centerTitle: true,
         automaticallyImplyLeading: false, // 戻るボタンを削除
       ),
       body: SafeArea(

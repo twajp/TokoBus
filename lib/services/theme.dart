@@ -34,6 +34,7 @@ final lightTheme = FlexThemeData.light(
       systemNavigationBarColor: Color.fromRGBO(243, 243, 243, 1),
     ),
     iconTheme: IconThemeData(color: Colors.black),
+    centerTitle: true,
   ),
   dialogTheme: const DialogTheme(
     backgroundColor: Colors.white,
@@ -75,6 +76,7 @@ final darkTheme = FlexThemeData.dark(
       systemNavigationBarColor: Colors.black,
     ),
     iconTheme: IconThemeData(color: Colors.white),
+    centerTitle: true,
   ),
   dialogTheme: const DialogTheme(
     backgroundColor: Color.fromRGBO(44, 44, 46, 1),
