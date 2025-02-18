@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 class IntroScreenPage extends StatelessWidget {
@@ -56,8 +55,8 @@ class IntroScreenPage extends StatelessWidget {
           ],
           onDone: () async {
             final navigator = Navigator.of(context);
-            SharedPreferences prefs = await SharedPreferences.getInstance();
-            await prefs.setBool('haveSeenIntro', true);
+            // SharedPreferences prefs = await SharedPreferences.getInstance();
+            // await prefs.setBool('haveSeenIntro', true);
             navigator.pop();
           },
           showBackButton: true,
