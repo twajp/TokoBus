@@ -1,5 +1,8 @@
 {
+    "id": 0,
     "flag": false,
+    "defaultCheckbox": true,
+    "allowDoNotShowAgain": true,
     "title": "時刻表に誤りがあります",
     "content": "授業日ダイヤの19時15分小手指駅南口発大学行は、19時20分小手指駅北口発大学行の誤りです。\nご迷惑をお掛けし申し訳ございません。\n報告してくださった方ありがとうございます。",
     "url": ""
