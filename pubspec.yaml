@@ -19,13 +19,8 @@ dependencies:
   shared_preferences: ^2.5.2
   settings_ui: ^2.0.2
   provider: ^6.1.2
-#  dots_indicator: ^2.1.2
-#  introduction_screen: ^3.1.16
   dots_indicator: ^4.0.1
-  introduction_screen:
-    git:
-      url: https://github.com/Pyozer/introduction_screen.git
-      ref: 2d05d7f859442a1adff9edb00428f6cfe53fd71e
+  introduction_screen: ^3.1.17
   package_info_plus: ^8.2.1
 
 dev_dependencies:
