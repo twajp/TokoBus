@@ -21,7 +21,7 @@ dependencies:
   provider: ^6.1.2
   dots_indicator: ^4.0.1
   introduction_screen: ^3.1.17
-  package_info_plus: ^8.2.1
+  package_info_plus: ^8.3.0
 
 dev_dependencies:
   flutter_test:
