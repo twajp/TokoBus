@@ -67,7 +67,7 @@ final darkTheme = FlexThemeData.dark(
   ),
 ).copyWith(
   appBarTheme: const AppBarTheme(
-    // backgroundColor: Colors.black,
+    backgroundColor: Colors.black, // ダークモードの方では指定しないとfull_timetable_pageで色がずれる
     // shadowColor: Colors.transparent,
     systemOverlayStyle: SystemUiOverlayStyle(
       statusBarBrightness: Brightness.dark, // for iOS
