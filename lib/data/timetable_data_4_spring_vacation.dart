@@ -507,7 +507,7 @@ Map timetableDataSpringVacation() {
       'default_pdf': 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/01/School_Bus_Schedule_for_Spring_Vacation_from_4th_February_2025_to_31st_March_2025.pdf',
       'special_pdf': {
         DateTime(2025, 02, 09): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/01/School_Bus_Schedule_for_Spring_Vacation_from_4th_February_2025_to_31st_March_2025.pdf',
-        DateTime(2025, 03, 27): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/01/School_Bus_Schedule_for_Spring_Vacation_from_4th_February_2025_to_31st_March_2025.pdf',
+        DateTime(2025, 03, 27): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/03/School_Bus_Special_Schedule_27th_March_2025.pdf',
       },
     },
   };

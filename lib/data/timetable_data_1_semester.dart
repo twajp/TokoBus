@@ -569,7 +569,13 @@ Map timetableDataSemester() {
     'url': {
       'waseda_bus_page': 'https://www.waseda.jp/fhum/hum/facility/bus-parking/',
       'default_pdf': 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/03/Shuttle-Bus-Timetable-Tokorozawa-Campus-AY2025-Spring-Semester.pdf',
-      'special_pdf': {},
+      'special_pdf': {
+        DateTime(2025, 04, 02): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/03/School_Bus_Special_Schedule_2nd_3rd_4th_April_2025.pdf',
+        DateTime(2025, 04, 03): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/03/School_Bus_Special_Schedule_2nd_3rd_4th_April_2025.pdf',
+        DateTime(2025, 04, 04): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/03/School_Bus_Special_Schedule_2nd_3rd_4th_April_2025.pdf',
+        DateTime(2025, 04, 19): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/03/School_Bus_Special_Schedule_19th_20th_April_2025.pdf',
+        DateTime(2025, 04, 20): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/03/School_Bus_Special_Schedule_19th_20th_April_2025.pdf',
+      },
     },
   };
   return timetable;
