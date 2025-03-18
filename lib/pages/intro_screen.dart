@@ -39,8 +39,9 @@ class IntroScreenPage extends StatelessWidget {
             PageViewModel(
               title: 'ご注意',
               bodyWidget: _buildBulletList(context, [
-                '本アプリは学生が趣味で開発している非公式なものです。',
-                '試験日等の重要な日には、公式サイトを併用することを推奨します。',
+                '本アプリは卒業生が趣味で開発している非公式なものです。',
+                '時刻表はPDFを見ながら手入力しているため、間違いを含む可能性があります。',
+                '特に試験日等の重要な日には、公式サイトを併用することを推奨します。',
                 '本アプリの不具合等によるいかなる損害についても一切の責任を負いかねます。',
               ]),
               decoration: pageDecoration,
