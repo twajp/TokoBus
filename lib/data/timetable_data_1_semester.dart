@@ -575,6 +575,8 @@ Map timetableDataSemester() {
         DateTime(2025, 04, 04): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/03/School_Bus_Special_Schedule_2nd_3rd_4th_April_2025.pdf',
         DateTime(2025, 04, 19): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/03/School_Bus_Special_Schedule_19th_20th_April_2025.pdf',
         DateTime(2025, 04, 20): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/03/School_Bus_Special_Schedule_19th_20th_April_2025.pdf',
+        DateTime(2025, 05, 10): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/04/School_Bus_Special_Schedule_10th_11st_May_2025.pdf',
+        DateTime(2025, 05, 11): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/04/School_Bus_Special_Schedule_10th_11st_May_2025.pdf',
       },
     },
   };
