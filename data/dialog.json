@@ -1,9 +1,9 @@
 {
     "id": 0,
     "flag": false,
-    "defaultCheckbox": true,
+    "defaultCheckbox": false,
     "allowDoNotShowAgain": true,
-    "title": "時刻表に誤りがあります",
-    "content": "授業日ダイヤの19時15分小手指駅南口発大学行は、19時20分小手指駅北口発大学行の誤りです。\nご迷惑をお掛けし申し訳ございません。\n報告してくださった方ありがとうございます。",
-    "url": ""
+    "title": "本日は特別ダイヤです",
+    "content": "本日の特別ダイヤは未対応です。\n大学ウェブサイトのPDFを確認しますか？",
+    "url": "https://www.waseda.jp/fhum/hum/assets/uploads/2025/04/School_Bus_Special_Schedule_10th_11st_May_2025-1.pdf"
 }
