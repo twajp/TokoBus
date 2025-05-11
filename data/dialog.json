@@ -1,6 +1,6 @@
 {
     "id": 1,
-    "flag": true,
+    "flag": false,
     "defaultCheckbox": false,
     "allowDoNotShowAgain": true,
     "title": "本日は特別ダイヤです",
