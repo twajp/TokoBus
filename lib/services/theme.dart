@@ -36,7 +36,7 @@ final lightTheme = FlexThemeData.light(
     iconTheme: IconThemeData(color: Colors.black),
     centerTitle: true,
   ),
-  dialogTheme: const DialogTheme(
+  dialogTheme: const DialogThemeData(
     backgroundColor: Colors.white,
   ),
 );
@@ -78,7 +78,7 @@ final darkTheme = FlexThemeData.dark(
     iconTheme: IconThemeData(color: Colors.white),
     centerTitle: true,
   ),
-  dialogTheme: const DialogTheme(
+  dialogTheme: const DialogThemeData(
     backgroundColor: Color.fromRGBO(44, 44, 46, 1),
   ),
   // iconTheme: const IconThemeData(color: Colors.black),
