@@ -492,7 +492,6 @@ Map timetableDataSummerVacation() {
       ],
 
       // 授業日ダイヤに切り替える日(特別ダイヤ)
-      'specialDateName': '平日(授業日)',
       'specialDates': [
         DateTime(2025, 08, 18),
         DateTime(2025, 08, 19),
