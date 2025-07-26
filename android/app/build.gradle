@@ -30,7 +30,8 @@ if (flutterVersionName == null) {
 
 android {
     compileSdkVersion flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+//    ndkVersion flutter.ndkVersion
+    ndkVersion = "27.0.12077973"
 
     namespace "jp.twa.tokobus"
 
