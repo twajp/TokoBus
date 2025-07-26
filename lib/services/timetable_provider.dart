@@ -82,7 +82,7 @@ Map timetableProvider() {
     // 特別ダイヤに切り替える日
     timetable['tableInfo']['selectedTableNames'][0] = 'stationCampusSpecial';
     timetable['tableInfo']['selectedTableNames'][1] = 'campusStationSpecial';
-    timetable['tableInfo']['dayOfWeek'] = '${timetable['fullTables']['stationCampusSundaysHolidays']['dayOfWeek']}ダイヤ';
+    timetable['tableInfo']['dayOfWeek'] = '${timetable['fullTables']['stationCampusSpecial']['dayOfWeek']}ダイヤ';
   }
   if (timetable['exceptions']['noBusDates'].contains(DateTime(now.year, now.month, now.day))) {
     // バス運休日(年末年始など)
