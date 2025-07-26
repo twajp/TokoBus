@@ -90,7 +90,7 @@ Map timetableProvider() {
     timetable['tableInfo']['selectedTableNames'][1] = '';
     timetable['tableInfo']['selectedTableNames'][2] = '';
     timetable['tableInfo']['selectedTableNames'][3] = '';
-    timetable['tableInfo']['dayOfWeek'] = '${timetable['fullTables']['']['dayOfWeek']}ダイヤ';
+    timetable['tableInfo']['dayOfWeek'] = '${timetable['fullTables']['']['dayOfWeek']}';
   }
   return timetable;
 }
