@@ -457,7 +457,7 @@ Map timetableDataSummerVacation() {
       },
       '': {
         'table': [],
-        'dayOfWeek': '運休',
+        'dayOfWeek': 'バス運休日',
         'tableFormat': 0,
         'nextBusIndex': 1000,
       },

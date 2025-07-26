@@ -534,7 +534,7 @@ Map timetableDataSemester() {
       },
       '': {
         'table': [],
-        'dayOfWeek': '運休',
+        'dayOfWeek': 'バス運休日',
         'tableFormat': 0,
         'nextBusIndex': 1000,
       },
@@ -560,7 +560,6 @@ Map timetableDataSemester() {
       'additionalHolidays': [],
 
       // 特別ダイヤに切り替える日
-      'specialDateName': '特別ダイヤ',
       'specialDates': [],
 
       // バス運休日(年末年始など)

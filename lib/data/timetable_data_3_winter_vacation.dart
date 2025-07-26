@@ -347,7 +347,7 @@ Map timetableDataWinterVacation() {
       },
       '': {
         'table': [],
-        'dayOfWeek': '運休',
+        'dayOfWeek': 'バス運休日',
         'tableFormat': 0,
         'nextBusIndex': 1000,
       },
@@ -373,7 +373,6 @@ Map timetableDataWinterVacation() {
       'additionalHolidays': [],
 
       // 授業日ダイヤに切り替える日(特別ダイヤ)
-      'specialDateName': '平日(授業日)',
       'specialDates': [],
 
       // バス運休日(年末年始など)
