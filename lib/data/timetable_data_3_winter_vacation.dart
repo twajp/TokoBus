@@ -364,7 +364,7 @@ Map timetableDataWinterVacation() {
       'dayOfWeek': '',
       'selectedTableNames': [],
     },
-    'startDate': DateTime(2024, 12, 24),
+    'startDate': DateTime(2025, 12, 23),
     'exceptions': {
       // 授業を行う祝日(時刻表PDFに大学暦に載っていない日があった場合)
       'exceptionalHolidays': [],
@@ -377,21 +377,21 @@ Map timetableDataWinterVacation() {
 
       // バス運休日(年末年始など)
       'noBusDates': [
-        DateTime(2024, 12, 29),
-        DateTime(2024, 12, 30),
-        DateTime(2024, 12, 31),
-        DateTime(2025, 01, 01),
-        DateTime(2025, 01, 02),
-        DateTime(2025, 01, 03),
-        DateTime(2025, 01, 04),
-        DateTime(2025, 01, 05),
+        DateTime(2025, 12, 28),
+        DateTime(2025, 12, 29),
+        DateTime(2025, 12, 30),
+        DateTime(2025, 12, 31),
+        DateTime(2026, 01, 01),
+        DateTime(2026, 01, 02),
+        DateTime(2026, 01, 03),
+        DateTime(2026, 01, 04),
+        DateTime(2026, 01, 05),
       ],
     },
     'url': {
       'waseda_bus_page': 'https://www.waseda.jp/fhum/hum/facility/bus-parking/',
-      'default_pdf': 'https://www.waseda.jp/fhum/hum/assets/uploads/2024/11/School_Bus_Schedule_for_Winter_Vacation_from_24th_December_2024_to_5th_January_2025.pdf',
+      'default_pdf': 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/11/School-Bus-Schedule-for-Winter-Vacationfrom-23th-December-2025-to-6th-January-2026.pdf',
       'special_pdf': {
-        DateTime(2025, 01, 18): 'https://www.waseda.jp/fhum/hum/assets/uploads/2024/12/School_Bus_Special_Schedule_18th_January_2025.pdf',
       },
     },
   };
