@@ -551,7 +551,7 @@ Map timetableDataSemester() {
       'dayOfWeek': '',
       'selectedTableNames': [],
     },
-    'startDate': DateTime(2026, 01, 06),
+    'startDate': DateTime(2026, 01, 07),
     'exceptions': {
       // 授業を行う祝日(時刻表PDFに大学暦に載っていない日があった場合)
       'exceptionalHolidays': [],
