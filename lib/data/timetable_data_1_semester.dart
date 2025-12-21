@@ -551,7 +551,7 @@ Map timetableDataSemester() {
       'dayOfWeek': '',
       'selectedTableNames': [],
     },
-    'startDate': DateTime(2025, 10, 02),
+    'startDate': DateTime(2026, 01, 06),
     'exceptions': {
       // 授業を行う祝日(時刻表PDFに大学暦に載っていない日があった場合)
       'exceptionalHolidays': [],
@@ -576,6 +576,9 @@ Map timetableDataSemester() {
         DateTime(2025, 11, 15): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/09/School_Bus_Special_Schedule_15th_November_2025.pdf',
         DateTime(2025, 12, 13): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/10/School_Bus_Special_Schedule_13th_14th_December_2025.pdf',
         DateTime(2025, 12, 14): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/10/School_Bus_Special_Schedule_13th_14th_December_2025.pdf',
+        DateTime(2026, 01, 24): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/12/School_Bus_Special_Schedule_24th_January_2026.pdf',
+        DateTime(2026, 01, 25): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/12/School_Bus_Special_Schedule_25th_January_2026.pdf',
+        DateTime(2026, 02, 01): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/12/School_Bus_Special_Schedule_1st_February_2026.pdf',
       },
     },
   };
