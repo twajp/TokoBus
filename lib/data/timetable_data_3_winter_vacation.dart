@@ -360,7 +360,7 @@ Map timetableDataWinterVacation() {
       1: {'title': 'キャンパス → 小手指駅', 'string0': '発車時刻', 'string1': '残り時間', 'string2': '降車場所', 'string3': '車椅子'},
       2: {'title': 'キャンパス → FRC', 'string0': '発車時刻', 'string1': '残り時間', 'string2': '乗車場所', 'string3': '接続'},
       3: {'title': 'FRC → キャンパス', 'string0': '発車時刻', 'string1': '残り時間', 'string2': '降車場所', 'string3': '接続'},
-      'tableVer': '2024年度冬季休業期間',
+      'tableVer': '2025年度冬季休業期間',
       'dayOfWeek': '',
       'selectedTableNames': [],
     },
