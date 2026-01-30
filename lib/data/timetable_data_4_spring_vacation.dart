@@ -474,28 +474,36 @@ Map timetableDataSpringVacation() {
       1: {'title': 'キャンパス → 小手指駅', 'string0': '発車時刻', 'string1': '残り時間', 'string2': '降車場所', 'string3': '車椅子'},
       2: {'title': 'キャンパス → FRC', 'string0': '発車時刻', 'string1': '残り時間', 'string2': '乗車場所', 'string3': '接続'},
       3: {'title': 'FRC → キャンパス', 'string0': '発車時刻', 'string1': '残り時間', 'string2': '降車場所', 'string3': '接続'},
-      'tableVer': '2024年度春季休業期間',
+      'tableVer': '2025年度春季休業期間',
       'dayOfWeek': '',
       'selectedTableNames': [],
     },
-    'startDate': DateTime(2025, 02, 04),
+    'startDate': DateTime(2026, 02, 04),
     'exceptions': {
       // 授業を行う祝日(時刻表PDFに大学暦に載っていない日があった場合)
       'exceptionalHolidays': [],
 
       // 追加で祝日扱いする日(時刻表PDFに大学暦に載っていない日があった場合)
-      'additionalHolidays': [],
+      'additionalHolidays': [
+        DateTime(2026, 02, 11),
+        DateTime(2026, 02, 23),
+        DateTime(2026, 03, 20),
+      ],
 
       // 授業日ダイヤに切り替える日(特別ダイヤ)
       'specialDates': [
-        DateTime(2025, 02, 05),
-        DateTime(2025, 02, 06),
-        DateTime(2025, 02, 07),
-        DateTime(2025, 02, 08),
-        DateTime(2025, 02, 12),
-        DateTime(2025, 02, 13),
-        DateTime(2025, 02, 14),
-        DateTime(2025, 02, 17),
+        DateTime(2026, 02, 04),
+        DateTime(2026, 02, 05),
+        DateTime(2026, 02, 06),
+        DateTime(2026, 02, 07),
+        DateTime(2026, 02, 09),
+        DateTime(2026, 02, 10),
+        DateTime(2026, 02, 12),
+        DateTime(2026, 02, 13),
+        DateTime(2026, 02, 16),
+        DateTime(2026, 02, 17),
+        DateTime(2026, 02, 19),
+        DateTime(2026, 02, 20),
       ],
 
       // バス運休日(年末年始など)
@@ -503,10 +511,10 @@ Map timetableDataSpringVacation() {
     },
     'url': {
       'waseda_bus_page': 'https://www.waseda.jp/fhum/hum/facility/bus-parking/',
-      'default_pdf': 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/01/School_Bus_Schedule_for_Spring_Vacation_from_4th_February_2025_to_31st_March_2025.pdf',
+      'default_pdf': 'https://www.waseda.jp/fhum/hum/assets/uploads/2026/01/School-Bus-Schedule-for-Spring-Vacationfrom-4th-February-2026-to-31st-March-2026.pdf',
       'special_pdf': {
-        DateTime(2025, 02, 09): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/01/School_Bus_Schedule_for_Spring_Vacation_from_4th_February_2025_to_31st_March_2025.pdf',
-        DateTime(2025, 03, 27): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/03/School_Bus_Special_Schedule_27th_March_2025.pdf',
+        DateTime(2026, 03, 27): 'https://www.waseda.jp/fhum/hum/assets/uploads/2026/01/School-Bus-Schedule-for-Spring-Vacationfrom-4th-February-2026-to-31st-March-2026.pdf',
+        DateTime(2026, 03, 30): 'https://www.waseda.jp/fhum/hum/assets/uploads/2026/01/School-Bus-Schedule-for-Spring-Vacationfrom-4th-February-2026-to-31st-March-2026.pdf',
       },
     },
   };
