@@ -3,19 +3,19 @@
 
 // 授業を行う祝日
 List<DateTime> exceptionalHolidays = [
-  DateTime(2025, 04, 29),
-  DateTime(2025, 07, 21),
-  DateTime(2025, 10, 13),
-  DateTime(2025, 11, 03),
-  DateTime(2025, 11, 24),
+  DateTime(2026, 04, 29),
+  DateTime(2026, 07, 20),
+  DateTime(2026, 10, 12),
+  DateTime(2026, 11, 03),
+  DateTime(2026, 11, 23),
 ];
 
 // 臨時の休業日
 List<DateTime> additionalHolidays = [
-  DateTime(2025, 08, 07),
-  DateTime(2025, 08, 08),
-  DateTime(2025, 10, 30),
-  DateTime(2025, 10, 31),
-  DateTime(2025, 12, 26),
-  DateTime(2026, 01, 06),
+  DateTime(2026, 08, 06),
+  DateTime(2026, 08, 07),
+  DateTime(2026, 11, 05),
+  DateTime(2026, 11, 06),
+  DateTime(2026, 12, 25),
+  DateTime(2026, 12, 28),
 ];
