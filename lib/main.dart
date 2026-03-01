@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'services/theme.dart';
 import 'services/code.dart';
 import 'services/show_dialog_on_special_date.dart';
-import 'services/json_alart_handler.dart';
+import 'services/json_alert_handler.dart';
 import 'services/theme_provider.dart';
 import 'services/intro_screen_handler.dart';
 import 'pages/portrait_layout.dart';
