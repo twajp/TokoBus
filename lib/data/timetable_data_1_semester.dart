@@ -547,11 +547,11 @@ Map timetableDataSemester() {
       1: {'title': 'キャンパス → 小手指駅', 'string0': '発車時刻', 'string1': '残り時間', 'string2': '降車場所', 'string3': '車椅子'},
       2: {'title': 'キャンパス → FRC', 'string0': '発車時刻', 'string1': '残り時間', 'string2': '乗車場所', 'string3': '接続'},
       3: {'title': 'FRC → キャンパス', 'string0': '発車時刻', 'string1': '残り時間', 'string2': '降車場所', 'string3': '接続'},
-      'tableVer': '2025年度秋学期',
+      'tableVer': '2026年度春学期',
       'dayOfWeek': '',
       'selectedTableNames': [],
     },
-    'startDate': DateTime(2026, 01, 07),
+    'startDate': DateTime(2026, 04, 01),
     'exceptions': {
       // 授業を行う祝日(時刻表PDFに大学暦に載っていない日があった場合)
       'exceptionalHolidays': [],
@@ -567,18 +567,8 @@ Map timetableDataSemester() {
     },
     'url': {
       'waseda_bus_page': 'https://www.waseda.jp/fhum/hum/facility/bus-parking/',
-      'default_pdf': 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/09/School-Bus-Timetable-Tokorozawa-Campus-AY2025-Fall-Semester.pdf',
+      'default_pdf': 'https://www.waseda.jp/fhum/hum/assets/uploads/2026/03/School-Bus-Timetable-Tokorozawa-Campus-AY2026-Spring-Semester.pdf',
       'special_pdf': {
-        DateTime(2025, 10, 04): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/09/School_Bus_Special_Schedule_4th_11st_October_2025.pdf',
-        DateTime(2025, 10, 11): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/09/School_Bus_Special_Schedule_4th_11st_October_2025.pdf',
-        DateTime(2025, 10, 18): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/09/School_Bus_Special_Schedule_18th_19th_October_2025.pdf',
-        DateTime(2025, 10, 19): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/09/School_Bus_Special_Schedule_18th_19th_October_2025.pdf',
-        DateTime(2025, 11, 15): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/09/School_Bus_Special_Schedule_15th_November_2025.pdf',
-        DateTime(2025, 12, 13): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/10/School_Bus_Special_Schedule_13th_14th_December_2025.pdf',
-        DateTime(2025, 12, 14): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/10/School_Bus_Special_Schedule_13th_14th_December_2025.pdf',
-        DateTime(2026, 01, 24): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/12/School_Bus_Special_Schedule_24th_January_2026.pdf',
-        DateTime(2026, 01, 25): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/12/School_Bus_Special_Schedule_25th_January_2026.pdf',
-        DateTime(2026, 02, 01): 'https://www.waseda.jp/fhum/hum/assets/uploads/2025/12/School_Bus_Special_Schedule_1st_February_2026.pdf',
       },
     },
   };
