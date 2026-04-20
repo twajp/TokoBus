@@ -17,7 +17,7 @@ dependencies:
   url_launcher: ^6.3.2
   http: ^1.6.0
   shared_preferences: ^2.5.5
-  settings_ui: ^2.0.2
+  settings_ui: ^3.0.1
   provider: ^6.1.5
   dots_indicator: ^4.0.1
   introduction_screen: ^4.0.0
