@@ -57,7 +57,7 @@ jobs:
           flutter pub global activate cider
           cider version
 
-      # Secrets からrelease.jks を生成
+      # Secrets から release.jks を生成
       - name: Create release.jks
         run: echo -n ${{ secrets.ANDROID_KEY_JKS_BASE64 }} | base64 -d > android/app/release.jks # -n で改行を消している
 
@@ -79,5 +79,5 @@ jobs:
           serviceAccountJsonPlainText: ${{ secrets.ANDROID_ACCOUNT_KEY_JSON }}
           packageName: jp.twa.tokobus
           releaseFiles: build/app/outputs/bundle/release/app-release.aab
-          track: internal
+          tracks: internal
 #          status: draft
