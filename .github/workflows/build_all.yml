@@ -6,11 +6,12 @@ on:
       bump:
         type: choice
         description: Choose Bump Target
+        default: patch
         options:
-          - build
-          - patch
-          - minor
           - major
+          - minor
+          - patch
+          - build
       target:
         type: choice
         description: Choose Build Target
