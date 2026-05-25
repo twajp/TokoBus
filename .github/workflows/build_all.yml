@@ -3,9 +3,9 @@ name: Build All
 on:
   workflow_dispatch:
     inputs:
-      bump:
+      bump_type:
         type: choice
-        description: Choose Bump Target
+        description: Choose Bump Type
         default: patch
         options:
           - major
@@ -58,8 +58,8 @@ jobs:
 
       - name: Bump up version
         run: |
-          echo choice: ${{ github.event.inputs.bump }}
-          cider bump ${{ github.event.inputs.bump }} --bump-build
+          echo choice: ${{ github.event.inputs.bump_type }}
+          cider bump ${{ github.event.inputs.bump_type }} --bump-build
           echo "VERSION_NAME=$(cider version | grep -o -E "([0-9]+\.){1}[0-9]+(\.[0-9]+)?")" >> $GITHUB_ENV
           echo "VERSION_FULL=$(cider version)" >> $GITHUB_ENV
 
