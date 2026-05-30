@@ -9,7 +9,7 @@ class CompactTimetableWidget extends StatelessWidget {
 
   const CompactTimetableWidget({super.key, required this.timetable, required this.deviceHeight, required this.deviceWidth, required this.tableIndex});
 
-  width1() {
+  double width1() {
     if (deviceHeight > deviceWidth) {
       return deviceWidth;
     } else {
@@ -17,7 +17,7 @@ class CompactTimetableWidget extends StatelessWidget {
     }
   }
 
-  width2() {
+  double width2() {
     if (deviceHeight > deviceWidth) {
       return deviceWidth;
     } else {

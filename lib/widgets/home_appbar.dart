@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-homeAppBar({required BuildContext context, required timetable}) {
+AppBar homeAppBar({required BuildContext context, required timetable}) {
   return AppBar(
     title: Image.asset('assets/icon/icon_transparent.png', height: kToolbarHeight),
     actions: [
