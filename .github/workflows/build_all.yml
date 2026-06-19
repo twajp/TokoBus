@@ -32,7 +32,7 @@ jobs:
     outputs:
       COMMIT_ID: ${{ steps.commit_id.outputs.COMMIT_ID }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
